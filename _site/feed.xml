@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Strata</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 12 Jan 2016 23:58:28 +0800</pubDate>
-    <lastBuildDate>Tue, 12 Jan 2016 23:58:28 +0800</lastBuildDate>
+    <title>Microdust</title>
+    <description>在遙遠的地方 一切虔誠終必相遇</description>
+    <link>http://azeril.me/</link>
+    <atom:link href="http://azeril.me/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 18 Jan 2016 10:59:54 +0800</pubDate>
+    <lastBuildDate>Mon, 18 Jan 2016 10:59:54 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -41,7 +40,7 @@
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;盐野先生的《罗马人的故事》，从八月开始正式阅读，陆陆续续读到了十一月，三个来月便跨过了千年。打算先缓一阵再继续。
+  &lt;p&gt;盐野先生的《罗马人的故事》，从八月开始正式阅读，陆陆续续读到了十一月，三个来月便跨过了千年。打算先缓一阵再继续。&lt;br /&gt;
 这套历史书的魅力，不由引我去拿中学时代所捧读的《明朝那些事儿》做比较。通俗而严谨，虽比不上后者风趣幽默，却同样充满了魅力。那些人物的魅力，也是书写的字里行间所传达的那种踏实感自然的舒展。千端万绪一时不知从何说起，也无妨。还未全部读完，但在此先一作推荐。这是一段值得有一个出发的旅程。&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -122,8 +121,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2016/01/01/Reading-Review.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2016/01/01/Reading-Review.html</guid>
+        <link>http://azeril.me/blog/Reading-Review.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Reading-Review.html</guid>
         
         <category>Tool</category>
         
@@ -543,8 +542,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2016/01/01/Films-Review.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2016/01/01/Films-Review.html</guid>
+        <link>http://azeril.me/blog/Films-Review.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Films-Review.html</guid>
         
         <category>Film</category>
         
@@ -739,8 +738,8 @@
 &lt;/table&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/20/The-Best-New-Tools.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/20/The-Best-New-Tools.html</guid>
+        <link>http://azeril.me/blog/The-Best-New-Tools.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/The-Best-New-Tools.html</guid>
         
         <category>Tool</category>
         
@@ -761,7 +760,7 @@
 
 &lt;p&gt;关于密码保护，比较好的方式是根据用途、重要程度以及日常使用场景进行区分，并有针对性地采用相互独立的账户体系和密码模型。&lt;/p&gt;
 
-&lt;p&gt;一方面，保障最为重要的服务能安然置身事外；&lt;br /&gt;
+&lt;p&gt;一方面，保障最为重要的服务能安然置身事外；  &lt;br /&gt;
 一方面，对于不同的重要性差异巨大的账户进行有效隔离，建立起一个数据屏障；&lt;/p&gt;
 
 &lt;p&gt;哪怕被泄露了密码，也只是一部分账户因此受到牵连和进行挽救，其它密码集合依旧能安全并且可靠地使用。&lt;/p&gt;
@@ -880,7 +879,7 @@
   &lt;li&gt;Uppercase Letters 大写字母 A..Z&lt;/li&gt;
   &lt;li&gt;Lowercase Letters 小写字母 a..z&lt;/li&gt;
   &lt;li&gt;Numbers 数字 0..9&lt;/li&gt;
-  &lt;li&gt;Symbol 符号 &lt;code class=&quot;highlighter-rouge&quot;&gt;~ ` ! @ # $ % ^ &amp;amp; * ( ) _ - + = { } [ ] \ | : ; &quot; &#39; &amp;lt; &amp;gt; , . ? /&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Symbol 符号 &lt;code&gt;~ ` ! @ # $ % ^ &amp;amp; * ( ) _ - + = { } [ ] \ | : ; &quot; &#39; &amp;lt; &amp;gt; , . ? /&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;密码不合适使用的内容/组合：&lt;/p&gt;
@@ -981,8 +980,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 15 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/15/Multidimensional-Accounts-System.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/15/Multidimensional-Accounts-System.html</guid>
+        <link>http://azeril.me/blog/Multidimensional-Accounts-System.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Multidimensional-Accounts-System.html</guid>
         
         <category>Tech</category>
         
@@ -1230,8 +1229,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 14 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/14/Workflowy.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/14/Workflowy.html</guid>
+        <link>http://azeril.me/blog/Workflowy.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Workflowy.html</guid>
         
         <category>Tool</category>
         
@@ -1272,8 +1271,8 @@
 
 </description>
         <pubDate>Sat, 12 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/12/Broken-And-Ashes.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/12/Broken-And-Ashes.html</guid>
+        <link>http://azeril.me/blog/Broken-And-Ashes.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Broken-And-Ashes.html</guid>
         
         <category>Tech</category>
         
@@ -1397,8 +1396,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 10 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/10/The-Tips-Of-Doc-Naming.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/10/The-Tips-Of-Doc-Naming.html</guid>
+        <link>http://azeril.me/blog/The-Tips-Of-Doc-Naming.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/The-Tips-Of-Doc-Naming.html</guid>
         
         <category>Tech</category>
         
@@ -1411,47 +1410,43 @@
         <title>修复 Jekyll 升级 3.0 版后的预览问题</title>
         <description>&lt;p&gt;前天深夜手贱 update 了 rubygems，还一并更新了 gems 的所有安装包，与时俱进麽。结果，昨天想用 Jekyll 博客本地预览服务时发现 Jekyll 升级到了 3.0.1 版本，自动生成本地博客的服务很果断地出问题了…&lt;/p&gt;
 
-&lt;p&gt;运行 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ jekyll serve&lt;/code&gt; 出现报错：&lt;/p&gt;
+&lt;p&gt;运行 &lt;code&gt;$ jekyll serve&lt;/code&gt; 出现报错：&lt;/p&gt;
 
 &lt;p&gt;最开始遇到的提示是：&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Deprecation: You appear to have pagination turned on, but you haven’t included the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-paginate&lt;/code&gt; gem. Ensure you have &lt;code class=&quot;highlighter-rouge&quot;&gt;gems: [jekyll-paginate]&lt;/code&gt; in your configuration file.&lt;/p&gt;
+  &lt;p&gt;Deprecation: You appear to have pagination turned on, but you haven’t included the &lt;code&gt;jekyll-paginate&lt;/code&gt; gem. Ensure you have &lt;code&gt;gems: [jekyll-paginate]&lt;/code&gt; in your configuration file.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;install-jekyll-paginate&quot;&gt;Install Jekyll-paginate&lt;/h2&gt;
 
 &lt;p&gt;安装 Jekyll-paginate 插件：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ sudo gem install jekyll-paginate
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo gem install jekyll-paginate
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;确认是否已经包含在已安装的 gem 插件列表中：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ gem list
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gem list
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;然后，将 &lt;code class=&quot;highlighter-rouge&quot;&gt;gems: [jekyll-paginate]&lt;/code&gt; 这一段设定添加到自己博客仓库主目录下的博客设置文件 _config.yml 中。&lt;/p&gt;
+&lt;p&gt;然后，将 &lt;code&gt;gems: [jekyll-paginate]&lt;/code&gt; 这一段设定添加到自己博客仓库主目录下的博客设置文件 _config.yml 中。&lt;/p&gt;
 
 &lt;h2 id=&quot;install-pygmentsrb&quot;&gt;Install pygments.rb&lt;/h2&gt;
 
 &lt;p&gt;而后安装 pygments.rb 依赖到系统中。&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ gem install pygments.rb
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gem install pygments.rb
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;添加 pygments.rb 到现有的 gemfile 中：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-gem &#39;pygments.rb&#39;
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gem &#39;pygments.rb&#39;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;嗯…这个文件就算解决了。但是！升级这么折腾的事岂会让我这么轻松愉快就跑起 Jekyll 博客来呢……&lt;/p&gt;
 
-&lt;p&gt;再次运行 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ jekyll serve&lt;/code&gt; 遇到一个新的问题：&lt;/p&gt;
+&lt;p&gt;再次运行 &lt;code&gt;$ jekyll serve&lt;/code&gt; 遇到一个新的问题：&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Since v3.0, permalinks for pages in subfolders must be relative to the site source directory, not the parent directory. Check http://jekyllrb.com/docs/upgrading/ for more info.&lt;/p&gt;
@@ -1459,7 +1454,7 @@ gem &#39;pygments.rb&#39;
 
 &lt;p&gt;解决方案：&lt;/p&gt;
 
-&lt;p&gt;删除 _config.yml 文件下的 &lt;code class=&quot;highlighter-rouge&quot;&gt;relative_permalinks: true&lt;/code&gt; 一项。&lt;/p&gt;
+&lt;p&gt;删除 _config.yml 文件下的 &lt;code&gt;relative_permalinks: true&lt;/code&gt; 一项。&lt;/p&gt;
 
 &lt;p&gt;再次运行服务，恢复正常啦。&lt;/p&gt;
 
@@ -1473,8 +1468,8 @@ gem &#39;pygments.rb&#39;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 10 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/10/Repair-Jekyll-Serve-Problems.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/10/Repair-Jekyll-Serve-Problems.html</guid>
+        <link>http://azeril.me/blog/Repair-Jekyll-Serve-Problems.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Repair-Jekyll-Serve-Problems.html</guid>
         
         <category>Tech</category>
         
@@ -1565,22 +1560,20 @@ gem &#39;pygments.rb&#39;
   &lt;li&gt;qiniu（依赖 ruby/rubygems 工具，Mac 自带），命令如下：&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-sudo gem install qiniu
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo gem install qiniu
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;如果报错，频繁出现的幺蛾子是：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-ERROR:  While executing gem ... (Errno::EPERM)
+&lt;pre&gt;&lt;code&gt;ERROR:  While executing gem ... (Errno::EPERM)
     Operation not permitted - /usr/bin/restclient
-&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;请看此 Issue：&lt;a href=&quot;https://github.com/sass/sass/issues/1769&quot;&gt;Sass won’t install on El Capitan · Issue #1769 · sass/sass&lt;/a&gt;。注意将&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install -n /usr/local/bin GEM_NAME_HERE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo gem install -n /usr/local/bin GEM_NAME_HERE&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;命令中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;GEM_NAME_HERE&lt;/code&gt; 替换为 &lt;code class=&quot;highlighter-rouge&quot;&gt;qiniu&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;命令中的 &lt;code&gt;GEM_NAME_HERE&lt;/code&gt; 替换为 &lt;code&gt;qiniu&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;如果不是，自己动手丰衣足食啦。&lt;/p&gt;
 
@@ -1645,8 +1638,8 @@ ERROR:  While executing gem ... (Errno::EPERM)
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 09 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/09/How-To-Use-Image-Hosting-Quickly.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/09/How-To-Use-Image-Hosting-Quickly.html</guid>
+        <link>http://azeril.me/blog/How-To-Use-Image-Hosting-Quickly.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/How-To-Use-Image-Hosting-Quickly.html</guid>
         
         <category>Tech</category>
         
@@ -1687,8 +1680,8 @@ ERROR:  While executing gem ... (Errno::EPERM)
 
 </description>
         <pubDate>Mon, 07 Dec 2015 00:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/blog/2015/12/07/Learning-By-Learning.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/blog/2015/12/07/Learning-By-Learning.html</guid>
+        <link>http://azeril.me/blog/Learning-By-Learning.html</link>
+        <guid isPermaLink="true">http://azeril.me/blog/Learning-By-Learning.html</guid>
         
         <category>Tutorial</category>
         
