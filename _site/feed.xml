@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microdust</title>
-    <description>在遙遠的地方 一切虔誠終必相遇</description>
+    <title>核桃爹的技术博客</title>
+    <description>宠辱不惊，看庭前花开花落；去留无意，望天上云卷云舒</description>
     <link>http://azeril.me/</link>
     <atom:link href="http://azeril.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 18 Jan 2016 10:59:54 +0800</pubDate>
-    <lastBuildDate>Mon, 18 Jan 2016 10:59:54 +0800</lastBuildDate>
+    <pubDate>Mon, 18 Jan 2016 15:36:56 +0800</pubDate>
+    <lastBuildDate>Mon, 18 Jan 2016 15:36:56 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
