@@ -17,12 +17,12 @@ tags_path : tags.html
 BASE_PATH : http://hetaodie.github.io
 
 
-title : uno-dbyll
+title : hetaodie
 
 
 
 author:
-  name: Ankan Biswas
+  name: 
   role: Jekyll Theme
   email: support@ankanbiswas.in
   github: talk2ankan
@@ -30,4 +30,4 @@ author:
   facebook: talk2ankan
   googleplus: +AnkanBiswasWorkspace
   bio: "Simple, clean, responsive and stylist theme for jekyll. "
-  uno-dbyll: ./uno-dbyll.png
+  uno-dbyll: http://hetaodie.github.io/uno-dbyll.png
