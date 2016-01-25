@@ -1,6 +1,6 @@
 $(document).ready(function(){
   alert("hello world");
-if(window.location.href=="http://http://hetaodie.github.io/")
+if(window.location.href=="http://blog.ankanbiswas.in/uno-dbyll/")
 {
 $("#sidebar").css({width:'100%'});
 $("#btnblog").click(function(){

@@ -4,9 +4,11 @@ markdown: kramdown
 
 highlighter: pygments
 paginate: 10 # pagination based on number of posts
+paginate_path: "page/:num"
 
 categories_path : categories.html
 tags_path : tags.html
+BASE_PATH : http://hetaodie.github.io
 
 title : hetaodie
 
