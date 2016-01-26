@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html>
+---
+layout: page
+title: "Search"
+date: 
+modified:
+excerpt:
+image:
+  feature:
+search_omit: true
+sitemap: false
+---
+  
+<!-- Search form -->
+<form method="get" action="{{ site.url }}/search/" data-search-form class="simple-search">
+  <label for="q">Search {{ site.title }} for:</label>
+  <input type="search" name="q" id="q" placeholder="What are you looking for?" data-search-input id="goog-wm-qt" autofocus />
+  <input type="submit" value="Search" id="goog-wm-sb" />
+</form>
 
+<!-- Search results placeholder -->
+<h6 data-search-found>
+  <span data-search-found-count></span> result(s) found for &ldquo;<span data-search-found-term></span>&rdquo;.
+</h6>
+<ul class="post-list" data-search-results></ul>
 
-  <body>
-    <div id="search-demo-container">
-      <input type="text" id="search-input" placeholder="search...">
-      <ul id="results-container"></ul>
-    </div>
-    <script src="{{ site.baseurl }}/js/jekyll-search.js" type="text/javascript"></script>
-
-
-     <script type="text/javascript">
-      SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: 'search.json',
-        searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-        noResultsText: 'No results found',
-        limit: 20,
-        fuzzy: false,
-        exclude: ['Welcome']
-      })
-    </script>
-
-  </body>
-
-</html>
+<!-- Search result template -->
+<script type="text/x-template" id="search-result">
+  <li><article>
+    <a href="##Url##">##Title## <span class="excerpt">##Excerpt##</span></a>
+  </article></li>
+</script>ß
