@@ -1,7 +1,5 @@
-# This is the default format.
-# For more see: http://jekyllrb.com/docs/permalinks/
+
 permalink: /:title
-# https://help.github.com/articles/migrating-your-pages-site-from-maruku
 markdown: kramdown
 
 highlighter: pygments
@@ -22,12 +20,12 @@ title : hetaodie
 
 
 author:
-  name: 
-  role: Jekyll Theme
-  email: support@ankanbiswas.in
-  github: talk2ankan
-  twitter: talk2ankan
-  facebook: talk2ankan
+  name: xu wei
+  role: Mobile development
+  email: hetaodie@gmail.com
+  github: hetaodie
+  twitter: hetaodie
+  facebook: hetaodie
   googleplus: +AnkanBiswasWorkspace
-  bio: "Simple, clean, responsive and stylist theme for jekyll. "
+  bio: 简单，深入的研究移动客户端开发技术"
   uno-dbyll: http://hetaodie.github.io/uno-dbyll.png
