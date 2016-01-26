@@ -16,6 +16,8 @@ search_json_path: search.json
 
 BASE_PATH : http://hetaodie.github.io
 
+logo: uno-dbyll.png
+search: true
 
 title : hetaodie
 
