@@ -1,0 +1,31 @@
+
+permalink: /:title
+markdown: kramdown
+
+highlighter: pygments
+paginate: 20 # pagination based on number of posts
+paginate_path: "page/:num"
+
+categories_path : categories.html
+tags_path : tags.html
+search_path : categories.html
+
+BASE_PATH : http://hetaodie.github.io
+
+logo: uno-dbyll.png
+search: true
+
+title : hetaodie
+
+
+
+author:
+  name: xu wei
+  role: Mobile development
+  email: hetaodie@gmail.com
+  github: hetaodie
+  twitter: hetaodie
+  facebook: hetaodie
+  googleplus: +AnkanBiswasWorkspace
+  bio: 简单，深入的研究移动客户端开发技术"
+  uno-dbyll: http://hetaodie.github.io/uno-dbyll.png
