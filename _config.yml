@@ -11,8 +11,7 @@ paginate_path: "page/:num"
 #
 categories_path : categories.html
 tags_path : tags.html
-search_path : search.html
-search_json_path: search.json
+search_path : search/cb-footer-add.html
 
 BASE_PATH : http://hetaodie.github.io
 
