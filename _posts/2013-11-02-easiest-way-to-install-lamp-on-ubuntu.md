@@ -3,7 +3,7 @@ layout: post
 title: Easiest Way To Install Lamp On Ubuntu
 description: original post at WOWMORON
 tagline: original post at wowmoron.wordpress.com
-image: /assets/media/lamp.jpg
+image: /assets/media/Effective-Objective.jpg
 categories: [linux]
 tags: [ubuntu, lamp, setup, tasksel]
 ---
