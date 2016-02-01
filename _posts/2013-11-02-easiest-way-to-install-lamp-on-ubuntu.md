@@ -3,7 +3,7 @@ layout: post
 title: Easiest Way To Install Lamp On Ubuntu
 description: original post at WOWMORON
 tagline: original post at wowmoron.wordpress.com
-image: /assets/media/effective-Objective.jpg
+image: /assets/media/effective-object2.0.jpg
 categories: [linux]
 tags: [ubuntu, lamp, setup, tasksel]
 ---
@@ -62,5 +62,15 @@ type in and save:
 
 and open the following url in your browser:
 
-
 <a href="http://localhost/phptest.php">http://localhost/phptest.php</a>
+
+[Markdown][1]
+[1]:http://daringfireball.net/projects/markdown/syntax
+
+![](http://hetaodie.github.io/assets/media/effective-object2.0.jpg)
+
+
+
+
+
+
