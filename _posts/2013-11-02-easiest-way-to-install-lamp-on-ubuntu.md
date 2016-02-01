@@ -65,6 +65,7 @@ and open the following url in your browser:
 <a href="http://localhost/phptest.php">http://localhost/phptest.php</a>
 
 [Markdown][1]
+
 [1]:http://daringfireball.net/projects/markdown/syntax
 
 ![](http://hetaodie.github.io/assets/media/effective-object2.0.jpg)
