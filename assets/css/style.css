@@ -62,7 +62,7 @@ article {
 }
 
 #article_body{
-	font-family: 'STKaiti', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: large;
 }
 
@@ -112,8 +112,8 @@ footer {
 }
 
 .title{
-	font-family: 'STKaiti', sans-serif;
-	font-size: 30px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 45px;
 	text-shadow:0 0 5px #000;
 }
 .hr-line {
