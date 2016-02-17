@@ -25,18 +25,18 @@ h1,h2,h3,h4,h5,h6 { font-family: 'Ubuntu', sans-serif; }
 }
 
 .author-bio{
-font-family: 'STXingkai','Raleway', sans-serif;
+font-family: 'STHeiti','Raleway', sans-serif;
 }
 
 .author-name{
-	font-family: 'STXingkai','Raleway', sans-serif;
+	font-family: 'STHeiti','Raleway', sans-serif;
 }
 
 .page-header {
 	color: #e74c3c;
 	text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 	padding: 0 5% 0;
-	font-family: 'STXingkai', ubuntu;
+	font-family: 'STHeiti', ubuntu;
 }
 
 
@@ -62,7 +62,7 @@ article {
 }
 
 #article_body{
-	font-family: 'STXingkai','Raleway', sans-serif;
+	font-family: 'STKaiti','Raleway', sans-serif;
 	font-size: large;
 }
 
@@ -99,7 +99,7 @@ footer {
 }
 
 .sidebar-header .title a{
-	font-family: 'STXingkai','Raleway', sans-serif;
+	font-family: 'STHeiti','Raleway', sans-serif;
 	text-decoration: none;
 	color: inherit;
 	outline: none;
@@ -112,7 +112,7 @@ footer {
 }
 
 .title{
-	font-family: 'STXingkai','Raleway', sans-serif;
+	font-family: 'STKaiti','Raleway', sans-serif;
 	font-size: 45px;
 	text-shadow:0 0 5px #000;
 }
