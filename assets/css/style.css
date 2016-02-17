@@ -99,7 +99,7 @@ footer {
 }
 
 .sidebar-header .title a{
-	font-family: 'helvetica', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	text-decoration: none;
 	color: inherit;
 	outline: none;
@@ -112,7 +112,7 @@ footer {
 }
 
 .title{
-	font-family: 'Raleway', sans-serif;
+	font-family: 'helvetica', sans-serif;
 	font-size: 45px;
 	text-shadow:0 0 5px #000;
 }
