@@ -141,6 +141,75 @@ _cmd在Objective-C的方法中表示当前方法的selector，正如同self表�
 
 {% endhighlight %}
 
+# const,static,extern简介
+
+## const与宏的区别
+
+- const简介:之前常用的字符串常量，一般是抽成宏，但是苹果不推荐我们抽成宏，推荐我们使用const常量
+	- 编译时刻:宏是预编译（编译之前处理），const是编译阶段。
+	- 编译检查:宏不做检查，不会报编译错误，只是替换，const会编译检查，会报编译错误。
+	- 宏的好处:宏能定义一些函数，方法。 const不能。
+	- 宏的坏处:使用大量宏，容易造成编译时间久，每次都需要重新替换。
+
+## const作用：限制类型
+- const仅仅用来修饰右边的变量（基本数据变量p，指针变量*p）。
+- 被const修饰的变量是只读的。
+
+**const基本使用**
+
+{% highlight ruby %}
+	
+	// const两种用法
+    // const:修饰基本变量p
+    // 这两种写法是一样的，const只修饰右边的基本变量b
+    const int b = 20; // b:只读变量
+    int const b = 20; // b:只读变量
+
+{% endhighlight %}
+
+
+{% highlight ruby %}
+
+	// const修饰指针变量访问的内存空间，修饰的是右边*p1，
+    // 两种方式一样
+    const int *p1; // *p1：常量 p1:变量
+    int const *p1; // *p1：常量 p1:变量
+    
+    // const修饰指针变量p1
+    int * const p1; // *p1:变量 p1:常量
+    
+{% endhighlight %}
+
+## const开发中使用场景:
+
+- 当一个方法参数只读.
+- 定义只读全局变量
+
+{% highlight ruby %}
+
+// 定义只读全局常量
+NSString * const str  = @"123";
+
+{% endhighlight %}
+
+
+## static作用
+
+- 修饰局部变量：
+	1. 延长局部变量的生命周期,程序结束才会销毁。
+	2. 局部变量只会生成一份内存,只会初始化一次。
+- 修饰全局变量
+	1. 只能在本文件中访问,修改全局变量的作用域,生命周期不会改
+
+## extern
+
+### extern作用
+
+- 只是用来获取全局变量(包括全局静态变量)的值，不能用于定义变量。
+
+### extern工作原理
+
+- 先在当前文件查找有没有全局变量，没有找到，才会去其他文件查找。
 
 {% highlight ruby %}
 {% endhighlight %}
