@@ -97,6 +97,39 @@ objc_setAssociatedObject(object, &key, nil, OBJC_ASSOCIATION_ASSIGN);
 
 {% endhighlight %}
 
+# 安全的主线程运行的宏定义
+
+## 同步切换到主线程
+
+{% highlight ruby %}
+
+\#define dispatch_main_sync_safe(block)\
+    if ([NSThread isMainThread]) {\
+        block();\
+    } else {\
+        dispatch_sync(dispatch_get_main_queue(), block);\
+    }
+{% endhighlight %}
+
+## 异步切换到主线程
+{% highlight ruby %}
+
+\#define dispatch_main_async_safe(block)\
+    if ([NSThread isMainThread]) {\
+        block();\
+    } else {\
+        dispatch_async(dispatch_get_main_queue(), block);\
+    }
+    
+{% endhighlight %}
+
+# ios中_cmd 的用法
+
+_cmd在Objective-C的方法中表示当前方法的selector，正如同self表示当前方法调用的对象实例。
+
+{% highlight ruby %}
+
+{% endhighlight %}
 <!--![]({{ page.image1 }})-->
 
 <!--# Demo
