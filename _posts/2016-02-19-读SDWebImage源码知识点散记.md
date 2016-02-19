@@ -127,8 +127,22 @@ objc_setAssociatedObject(object, &key, nil, OBJC_ASSOCIATION_ASSIGN);
 
 _cmd在Objective-C的方法中表示当前方法的selector，正如同self表示当前方法调用的对象实例。
 
+# 标准的多线程单例定义方式
 {% highlight ruby %}
 
++(id)sharedManager {
+    static dispatch_once_t once;
+    static id instance;
+    dispatch_once(&once, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
+}
+
+{% endhighlight %}
+
+
+{% highlight ruby %}
 {% endhighlight %}
 <!--![]({{ page.image1 }})-->
 
