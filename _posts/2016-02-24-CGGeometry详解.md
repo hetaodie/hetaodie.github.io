@@ -108,6 +108,56 @@ CGRectIntegral 将表示原点的值向下取整，表示大小的值向上取�
 `CGFloat CGRectGetHeight(CGRect rect);`<br />
 获取矩形高度
 
+# 多个矩阵的判断
+
+`bool CGRectEqualToRect(CGRect rect1, CGRect rect2);`<br />
+判断两个矩形是否相等
+
+`bool CGRectIsEmpty(CGRect rect);`<br />
+判断是否为零矩形
+
+`CGRectIsNull(CGRect rect);`<br />
+判断是否为空矩形
+
+`bool CGRectIsInfinite(CGRect rect);`<br />
+判断是否为无限矩形
+
+
+`CGRect CGRectUnion(CGRect r1, CGRect r2);`<br />
+返回两个矩形的并集
+
+`CGRect CGRectIntersection(CGRect r1, CGRect r2);`<br />
+返回两个矩形的交集，如果没有交集，返回空矩形
+
+`bool CGRectContainsPoint(CGRect rect, CGPoint point);`<br />
+判断点是否在矩形内
+
+`bool CGRectContainsRect(CGRect rect1, CGRect rect2);`<br />
+判断矩形1是否包含矩形2
+
+`bool CGRectIntersectsRect(CGRect rect1, CGRect rect2);`<br />
+判断矩形1和矩形2是否相交
+
+`CFDictionaryRef CGPointCreateDictionaryRepresentation(CGPoint point);`<br />
+返回一个表示点的字典
+
+`bool CGPointMakeWithDictionaryRepresentation(CFDictionaryRef dict,
+  CGPoint *point);`<br />
+将字典转换为点
+
+`CFDictionaryRef CGSizeCreateDictionaryRepresentation(CGSize size);`<br />
+返回一个表示尺寸的字典
+
+`bool CGSizeMakeWithDictionaryRepresentation(CFDictionaryRef dict,
+  CGSize *size) ;`<br />
+将字典转换为尺寸
+
+`CFDictionaryRef CGRectCreateDictionaryRepresentation(CGRect);`
+返回一个表示矩形的字典
+
+`bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict,
+  CGRect *rect);`
+将字典转化为矩形
  
 
 {% highlight ruby %}
