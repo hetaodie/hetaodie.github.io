@@ -156,14 +156,52 @@ CGRectIntegral 将表示原点的值向下取整，表示大小的值向上取�
 返回一个表示矩形的字典
 
 `bool CGRectMakeWithDictionaryRepresentation(CFDictionaryRef dict,
-  CGRect *rect);`
+  CGRect *rect);`<br />
 将字典转化为矩形
  
 
+
+# CGRectDivide
+
+`void CGRectDivide(CGRect rect, CGRect *slice, CGRect *remainder,
+  CGFloat amount, CGRectEdge edge);`<br />
+  这个函数用来分割矩形，参数rect是源矩形，slice和remainder是分割后的两部分矩形，amount是分割线，edge是分割选项。
+
+注意：1、edge是一个宏，定义了分割的方式如下：
+
+
 {% highlight ruby %}
+
+typedef CF_ENUM(uint32_t, CGRectEdge) {
+  //从x的最小处进行垂直分割
+  CGRectMinXEdge, 
+  //从y的最小处进行水平分割
+  CGRectMinYEdge, 
+  //从x最大处进行垂直分割
+  CGRectMaxXEdge,
+  //从y最大处进行水平分割
+  CGRectMaxYEdge
+};
+
+{% endhighlight %}
+
+2、slice和remainder是地址。
+
+3、举例如下，将会分割出两个矩形分别为(40,0,60,100)(0,0,40,100);
+
+{% highlight ruby %}
+
+CGRect rect = CGRectMake(0, 0, 100, 100);
+    CGRect slice ;
+    CGRect remainder;
+    CGRectDivide(rect, &slice, &remainder, 60, CGRectMaxXEdge);
+
+
 {% endhighlight %}
 
 
+{% highlight ruby %}
+{% endhighlight %}
 
 <!--本文所用的超链接-->
 
