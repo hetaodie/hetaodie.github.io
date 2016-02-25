@@ -21,6 +21,10 @@
     <div class="article_body" id="article_body">
     {{ content }}
     </div>
+    <div>
+      <h4 class="section-title">如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</h4>
+      <img src="../assets/alipay.png" />
+    </div>
 
     {% unless page.categories == empty %}
     <ul class="tag_box list-unstyled list-inline">
@@ -76,8 +80,9 @@
     <div>
       <section class="share col-sm-6">
         <h4 class="section-title">如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</h4>
-        <img src="../assets/alipay.png" />
-<!--         <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text={{page.title | encode}}{% if site.author.twitter%}&via={{site.author.twitter}}{% endif %}"
+      <!--   <h4 class="section-title">Share Post</h4>
+        <img src="../assets/alipay.png" /> -->
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text={{page.title | encode}}{% if site.author.twitter%}&via={{site.author.twitter}}{% endif %}"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <i class="fa fa-twitter fa-lg"></i>
           Twitter
@@ -91,7 +96,7 @@
            onclick="window.open('https://plus.google.com/share?url='+window.location.href, 'google-plus-share', 'width=490,height=530');return false;">
           <i class="fa fa-google-plus fa-lg"></i>
           Google+
-        </a> -->
+        </a>
       </section>
 
       <section class="col-sm-6 author">
