@@ -236,11 +236,24 @@ NSString * const str  = @"123";
 - 一个中断服务子程序中会访问到的非自动变量(Non-automatic variables)
 - 多线程应用中被几个任务共享的变量  
 
+# URl的使用
+
+{% highlight ruby %}
+
+NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/search?id=1"];    
+        NSLog(@"scheme:%@", [url scheme]); //协议 http    
+        NSLog(@"host:%@", [url host]);     //域名 www.baidu.com    
+      NSLog(@"absoluteString:%@", [url absoluteString]); //完整的url字符串 http://www.baidu.com:8080/search?id=1    
+  (刚才在真机上跑了一下，并没有打印出来端口 8080 啊)
+        NSLog(@"relativePath: %@", [url relativePath]); //相对路径 search    
+        NSLog(@"port :%@", [url port]);  // 端口 8080    
+        NSLog(@"path: %@", [url path]);  // 路径 search    
+        NSLog(@"pathComponents:%@", [url pathComponents]); // search    
+        NSLog(@"Query:%@", [url query]);  //参数 id=1
+
+{% endhighlight %}
+
 {% highlight ruby %}
 {% endhighlight %}
 
 
-
-<!--本文所用的超链接-->
-
-[1]:https://github.com/hetaodie/AVPlayerDemo
