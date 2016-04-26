@@ -15,6 +15,7 @@ image5: /assets/media/autoLayout/5.jpg
 image6: /assets/media/autoLayout/6.jpg
 image7: /assets/media/autoLayout/7.jpg
 image8: /assets/media/autoLayout/8.jpg
+image9: /assets/media/autoLayout/9.jpg
 
 
 ---
