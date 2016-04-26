@@ -173,6 +173,18 @@ self.prototypeCell  = [self.tableView dequeueReusableCellWithIdentifier:@"C1"];
 
 ![]({{ page.image9 }})
 
+
+# Demo
+
+具体Demo代码下载：
+
+[Demo][1]
+
+
+<!--本文所用的超链接-->
+
+[1]:https://github.com/hetaodie/CellHeightDemo-master
+
 {% highlight ruby %}
 
 {% endhighlight %}
