@@ -368,9 +368,9 @@ NSAttributedString *attr15 = [[NSAttributedString alloc]initWithString:str15 att
 NSString *const NSLinkAttributeName;
 
 
-点击去github下载[TextViewDemo][1]
+点击去github下载[AttributedStringDemo][1]
 
  
 <!--本文所用的超链接-->
 
-[1]:https://github.com/hetaodie/TextViewDemo.git
+[1]:https://github.com/hetaodie/AttributedStringDemo.git
