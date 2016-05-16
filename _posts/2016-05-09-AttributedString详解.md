@@ -1,6 +1,6 @@
 ---
 layout: post
-title:AttributedString详解
+title: AttributedString详解
 description: 详细讲解了AttributedString常用的api和在使用过程中的一些技巧和常见问题的解决方法，并配置了一个小demo。
 
 tagline: original post at hetaodie.github.io
