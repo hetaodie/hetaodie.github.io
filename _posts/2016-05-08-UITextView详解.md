@@ -5,7 +5,7 @@ description: 详细讲解了UITextView常用的api和在使用过程中的一些
 
 tagline: original post at hetaodie.github.io
 categories: [iOS]
-tags: [iOS, title:UITextView]
+tags: [iOS, UITextView]
 ---
 **目录**
 
