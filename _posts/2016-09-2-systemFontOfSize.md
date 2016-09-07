@@ -1,0 +1,35 @@
+---
+layout: post
+title: iOS新方法systemFontOfSize: weight:
+description: iOS新方法systemFontOfSize: weight:。
+
+tagline: original post at hetaodie.github.io
+categories: [iOS]
+tags: [iOS,新方法]
+
+---
+
+
+
+# 说明
+
+今天写项目时发现一个调整字体的新方法systemFontOfSize: weight:
+这个方法是iOS8.2之后出来的,但是iOS8.0的机器也能运行这个方法,只不过是苹果在8.2时将这个方法变为了共有API
+前一个就是调整字体大小,主要说说后一个,以下的这些都是填入权重值(即weight:后)
+
+# weight 参数说明
+
+
+```objective-c
+UIFontWeightUltraLight  - 超细字体
+UIFontWeightThin  - 纤细字体
+UIFontWeightLight  - 亮字体
+UIFontWeightRegular  - 常规字体
+UIFontWeightMedium  - 介于Regular和Semibold之间
+UIFontWeightSemibold  - 半粗字体
+UIFontWeightBold  - 加粗字体
+UIFontWeightHeavy  - 介于Bold和Black之间
+UIFontWeightBlack  - 最粗字体(理解)
+
+```
+
