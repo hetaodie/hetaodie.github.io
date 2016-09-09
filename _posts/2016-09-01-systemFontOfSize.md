@@ -1,7 +1,7 @@
 ---
 layout: post
 title: iOS新方法systemFontOfSize: weight:
-description: iOS新方法systemFontOfSize: weight:。
+description: iOS新方法systemFontOfSize: weight:
 
 tagline: original post at hetaodie.github.io
 categories: [iOS]
