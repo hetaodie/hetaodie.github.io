@@ -97,6 +97,68 @@ var factorial = function(n) {
 ![]({{ page.image3 }})
 
 
+这里有几个重要的地方需要说明。
+
+### jsContext执行evaluateScript方法后的返回值类型
+
+对于native来说，返回的类型都是JSValue，这是Native对js执行对象的统一封装类型，实际上他对应的js类型不同会导致它的使用方法也不相同，常见的类型比如返回数值类型和返回一个函数。
+
+如果是返回数值类型，JSValue也对应了一组转换的API可以把JSValue转换成任何对于的native对象，例如：
+
+{% highlight ruby %}
+
+- (NSArray *)toArray;
+- (NSDictionary *)toDictionary;
+- (NSDate *)toDate;
+- (NSString *)toString;
+- (NSNumber *)toNumber;
+- (uint32_t)toUInt32;
+- (id)toObject;
+... 还有很多就不一一列举
+
+{% endhighlight %}
+
+如果返回的是一个函数类型，这可以使用 ` jsvalue callWithArguments `方法进行js函数调用，例如：
+
+{% highlight ruby %}
+
+   //注册一个匿名函数
+    JSValue *jsFunction = [self.jsContext evaluateScript:@" (function() { return 'hello objc' })"];
+    //调用
+    JSValue *value2 = [jsFunction callWithArguments:nil];
+    
+{% endhighlight %}
+
+js是非常美妙的，主要这里的js是一段闭包代码，主要看下面两段代码的区别
+
+{% highlight ruby %}
+
+(function() { return 'hello objc' })
+function() { return 'hello objc' }
+
+{% endhighlight %}
+
+第一行是一个闭包，在js中执行这段代码会返回一个函数，而第二行是定义一个函数，执行第二行的结果是定义了一个匿名函数，但是执行结果无返回值。
+
+所以执行下面这段代码时省略了()，那么jsFunction的值就会为空了，很多移动端研发工程师不熟悉js代码很容易出现这样的错误。
+
+{% highlight ruby %}
+
+   JSValue *jsFunction = [self.jsContext evaluateScript:@" (function() { return 'hello objc' })"];
+   
+{% endhighlight %}
+
+当然如果我们在运行时中定义一个函数，后面也是可以调用的，只是不是使用callWithArguments方法了，示例如下：
+
+{% highlight ruby %}
+
+ [self.jsContext evaluateScript:@"var hello = function(){ return 'hello' }"];
+  JSValue *value1 = [self.jsContext evaluateScript:@"hello()"];
+  
+{% endhighlight %}
+
+执行后的结果就是value1或得到一个string类型的值：“hello”
+
 ## JavaScript → Objective-C
 
 可以通过两种方式在 JavaScript 中调用 Objective-C
@@ -108,6 +170,7 @@ var factorial = function(n) {
 
 
 {% highlight ruby %}
+
 
 - (void) testMakeUIColor  
     {  
@@ -324,7 +387,43 @@ JSContext ↔ JSGlobalContextRef ：
 
 {% endhighlight %}
 
+## 异常处理
 
+
+{% highlight ruby %}
+
+//注册js错误处理
+- (void)jsExceptionHandler {
+    self.jsContext.exceptionHandler = ^(JSContext *con, JSValue *exception) {
+        NSLog(@"%@", exception);
+        con.exception = exception;
+    };
+}
+
+{% endhighlight %}
+
+## JavaScriptCore和UIWebView的结合使用
+
+上面的代码都是基于JSContext的，如果声明了一个UIWebView，也可以使用UIWebView获取到JSContext对象，就可以使用JavaScriptCore的Api了，在UIWebView中获取JSContext的方法是：
+
+{% highlight ruby %}
+
+ JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+
+{% endhighlight %}
+
+不过遗憾的是WKWebView目前我还没有找到获取JSContext的方法，如果有知道的朋友也希望能联系我。
+
+## JSVirtualMachine
+
+在创建jscontext的时候，可以传入一个JSVirtualMachine对象，如果没有传入这个对象，会新建一个JSVirtualMachine对象。
+
+JSVirtualMachine主要有3个作用：
+1. 支持js并发，多个VM之间的js操作是并发的
+2. 使用JSVirtualMachine初始化的多个context，可以共享jsvalue对象 
+3. 解决循环引用问题
+
+	注意，当我们 export 一个 OC 或 Swift object 到 JS 中时，不能在这个object 中存储对应的 JS values。这种行为会导致一个retain cycle，JSValue objects 持有他们对应的 JSContext 的强引用，JSContext 则持有export到JS的native object的强引用，即 native object(OC or Swift object) —> JSValue —> JSContext —> native object
 
 {% highlight ruby %}
 
