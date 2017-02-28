@@ -37,3 +37,32 @@ tags: [AVAudioPlayer]
 
 {% endhighlight %}
 
+# 对象方法
+
+{% highlight ruby %}
+
+/* 使用文件URL初始化播放器，注意这个URL不能是HTTP URL，只能是File URL */
+- (instancetype)initWithContentsOfURL:(NSURL *)url error:(NSError **)outError    
+/* 使用NSData初始化播放器，注意使用此方法时必须文件格式和文件后缀一致，否则出错，所以相比此方法更推荐使用上述方法或- (instancetype)initWithData:(NSData *)data fileTypeHint:(NSString *)utiString error:(NSError **)outError方法进行初始化 */
+- (instancetype)initWithData:(NSData *)data error:(NSError **)outError    
+- (BOOL)prepareToPlay; //加载音频文件到缓冲区，注意即使在播放之前音频文件没有加载到缓冲区程序也会隐式调用此方法。    
+- (BOOL)play;     //播放音频文件
+- (BOOL)playAtTime:(NSTimeInterval)time    //在指定的时间开始播放音频
+- (void)pause;    //暂停播放
+- (void)stop;    //停止播放
+- (void)updateMeters    //更新音频测量值，注意如果要更新音频测量值必须 设置meteringEnabled为YES，通过音频测量值可以即时获得音频分贝等信息
+- (float)peakPowerForChannel:(NSUInteger)channelNumber;    //获得指定声道的分贝峰值，注意如果要获得分贝峰值必须在此之前调用updateMeters方法
+- (float)averagePowerForChannel:(NSUInteger)channelNumber;    //获得指定声道的分贝平均值，注意如果要获得分贝平均值必须在此之前调用updateMeters方法
+
+{% endhighlight %}
+
+## 代理方法
+
+{% highlight ruby %}
+
+/* 音频播放完成后调用 */
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag;    
+/* 音频解码发生错误后调用 */
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error;
+
+{% endhighlight %}
