@@ -66,3 +66,9 @@ tags: [AVAudioPlayer]
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error;
 
 {% endhighlight %}
+
+点击去github下载[AVAudioPlayerDemo][1]
+
+<!--本文所用的超链接-->
+
+[1]:https://github.com/hetaodie/AVAudioPlayerDemo.git
