@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AndroidStudio
-description: 
+description: 详细讲解了android的布局结构
 
 tagline: original post at hetaodie.github.io
 categories: [Android]

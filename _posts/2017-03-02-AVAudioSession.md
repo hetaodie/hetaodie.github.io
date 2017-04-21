@@ -2,7 +2,7 @@
 
 layout: post
 title: AVAudioSession
-description: 
+description: 详细介绍了，AVAudioSession的七大类别，选项和七大模式，这些选择决定这音频使用的各个场景。
 tagline: original post at hetaodie.github.io
 categories: [iOS]
 tags: [AVAudioSession]
