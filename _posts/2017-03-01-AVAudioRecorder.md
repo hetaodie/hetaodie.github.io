@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AVAudioRecorder2
+title: AVAudioRecorder
 description: 详细介绍了AVAudioRecorder的使用
 
 tagline: original post at hetaodie.github.io
