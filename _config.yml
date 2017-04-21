@@ -3,7 +3,7 @@ permalink: /:title
 markdown: kramdown
 
 highlighter: pygments
-paginate: 20 # pagination based on number of posts
+paginate: 30 # pagination based on number of posts
 paginate_path: "page/:num"
 
 
