@@ -77,6 +77,7 @@ AVAudioSession 的主要功能包括以下几点功能：
 
 - (BOOL)setCategory:(NSString *)category withOptions:(AVAudioSessionCategoryOptions)options error:(NSError **)outError
 
+{% endhighlight %}
 
 ## 七大模式
 
