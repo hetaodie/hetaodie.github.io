@@ -1,8 +1,8 @@
 ---
+
 layout: post
 title: AVAudioSession
-description: 详细介绍了AVAudioSession的使用含义，常用的场景的使用，器category，options，和模式都给了详细的讲解。并对常用的方法进行了封装。
-
+description: 
 tagline: original post at hetaodie.github.io
 categories: [iOS]
 tags: [AVAudioSession]
@@ -14,7 +14,7 @@ tags: [AVAudioSession]
 * 目录
  {:toc  }
  
-#  说明
+# 说明
 `AVAudioSession` 是一个单例对象，并用来为音频类app向系统传递一些配置信息。 其
 
 AVAudioSession 的主要功能包括以下几点功能：
