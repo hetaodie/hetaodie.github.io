@@ -7,8 +7,6 @@ tagline: original post at hetaodie.github.io
 categories: [iOS]
 tags: [AVAudioSession]
 
-image1: /assets/media/audio/AVAudioRecorder.png
-
 ---
 
 **目录**
