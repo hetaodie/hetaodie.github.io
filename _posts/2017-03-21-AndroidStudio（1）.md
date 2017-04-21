@@ -5,7 +5,7 @@ description:
 
 tagline: original post at hetaodie.github.io
 categories: [Android]
-tags: [AndroidStudio]
+tags: [Android Studio]
 
 image1: /assets/media/android/androidLinearLayout.jpg
 image2: /assets/media/android/androidRelativeLayout.jpg
