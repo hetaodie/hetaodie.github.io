@@ -8,9 +8,9 @@ categories: [Android]
 tags: [Android Studio]
 
 image1: /assets/media/android/activity1.jpg
-image2: /assets/media/android/activity2.png
 image3: /assets/media/android/activity3.jpg
-image4: /assets/media/android/androidGridLayout.jpg
+image4: /assets/media/android/activity4.jpg
+image5: /assets/media/android/activity5.jpg
 
 ---
 
@@ -22,7 +22,6 @@ image4: /assets/media/android/androidGridLayout.jpg
 #  Activity调用逻辑
 ![]({{ page.image1 }})
 
-![]({{ page.image2 }})
 
 1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次
 
@@ -382,6 +381,137 @@ public class OtherActivity extends Activity {
 
 	singleInstance模式应该算是四种启动模式中最特殊也最复杂的一个了，你也需要多花点功夫来理解这个模式。不同于以上三种启动模式，指定为 singleInstance模式的活动会启用一个新的返回栈来管理这个活动，这个模式主要解决了在不同app之间的共享活动实例的问题。
 
+
+# other
+
+## 随时关闭所有Activity
+
+说明：
+- 有时我们可能会打开了很多个Activity，突然来个这样的需求，在某个页面可以关掉 所有的Activity并退出程序！好吧，下面提供一个关闭所有Activity的方法， 就是用一个list集合来存储所有Activity!
+
+![]({{ page.image4 }})
+
+
+{% highlight ruby %}
+
+public class ActivityCollector {  
+    public static LinkedList<Activity> activities = new LinkedList<Activity>();  
+    public static void addActivity(Activity activity)  
+    {  
+        activities.add(activity);  
+    }  
+    public static void removeActivity(Activity activity)  
+    {  
+        activities.remove(activity);  
+    }  
+    public static void finishAll()  
+    {  
+        for(Activity activity:activities)  
+        {  
+            if(!activity.isFinishing())  
+            {  
+                activity.finish();  
+            }  
+        }  
+    }  
+} 
+
+/** 
+ * 退出应用程序 
+ */  
+public void AppExit(Context context) {  
+    try {  
+        ActivityCollector.finishAll();  
+        ActivityManager activityMgr = (ActivityManager) context  
+                .getSystemService(Context.ACTIVITY_SERVICE);  
+        activityMgr.killBackgroundProcesses(context.getPackageName());  
+        System.exit(0);  
+    } catch (Exception ignored) {}  
+}  
+
+{% endhighlight %}
+
+## 为Activity设置过场动画 
+- 第一种方式：
+
+![]({{ page.image5 }})
+
+- 第二种方式
+通过style进行配置，这个是全局的哦，就是所有的Activity都会加载这个动画！
+实现代码如下：
+①在style.xml中自定义style：
+
+{% highlight ruby %}
+
+<!-- 默认Activity跳转动画 -->
+<style name="default_animation" mce_bogus="1" parent="@android:style/Animation.Activity">
+    <item name="android:activityOpenEnterAnimation">@anim/default_anim_in</item>
+    <item name="android:activityOpenExitAnimation">@anim/anim_stay</item>
+    <item name="android:activityCloseEnterAnimation">@anim/anim_stay</item>
+    <item name="android:activityCloseExitAnimation">@anim/default_anim_out</item>
+</style>
+
+{% endhighlight %}
+
+
+
+解释：
+4个item分别代表:
+Activity A跳转到Activity B时Activity B进入动画;
+Activity A跳转到Activity B时Activity A退出动画;
+Activity B返回Activity A时Activity A的进入动画
+Activity B返回Activity A时ActivityB的退出动画
+
+②然后修改下AppTheme:
+
+
+{% highlight ruby %}
+
+<style name="AppTheme" mce_bogus="1" parent="@android:style/Theme.Light">
+        <item name="android:windowAnimationStyle">@style/default_animation</item>
+        <item name="android:windowNoTitle">true</item>
+</style>
+
+{% endhighlight %}
+
+③最后在appliction设置下：
+
+
+{% highlight ruby %}
+
+<application
+   android:icon="@drawable/logo"
+   android:label="@string/app_name"
+   android:theme="@style/AppTheme" >
+
+{% endhighlight %}
+
+## 设置Activity全屏的方法
+
+1. 代码隐藏ActionBar
+在Activity的onCreate方法中调用getActionBar.hide();即可
+2. 通过requestWindowFeature设置
+requestWindowFeature(Window.FEATURE_NO_TITLE); 该代码需要在setContentView ()之前调用，不然会报错！！！
+3. 通过AndroidManifest.xml的theme
+在需要全屏的Activity的标签内设置 theme = @android:style/Theme.NoTitleBar.FullScreen
+
+# ctivity，Task和Back Stack的一些概念
+![]({{ page.image6 }})
+![]({{ page.image7 }})
+
+Task是Activity的集合，是一个概念，实际使用的Back Stack来存储Activity，可以有多个Task，但是 同一时刻只有一个栈在最前面，其他的都在后台！那栈是如何产生的呢？
+答：当我们通过主屏幕，点击图标打开一个新的App，此时会创建一个新的Task！举个例子：
+我们通过点击通信录APP的图标打开APP，这个时候会新建一个栈1，然后开始把新产生的Activity添加进来，可能我们在通讯录的APP中打开了短信APP的页面，但是此时不会新建一个栈，而是继续添加到栈1中，这是 Android推崇一种用户体验方式，即不同应用程序之间的切换能使用户感觉就像是同一个应用程序， 很连贯的用户体验，官方称其为seamless (无缝衔接）！ ——————这个时候假如我们点击Home键，回到主屏幕，此时栈1进入后台，我们可能有下述两种操作：
+1）点击菜单键(正方形那个按钮)，点击打开刚刚的程序，然后栈1又回到前台了！ 又或者我们点击主屏幕上通信录的图标，打开APP，此时也不会创建新的栈，栈1回到前台！
+2）如果此时我们点击另一个图标打开一个新的APP，那么此时则会创建一个新的栈2，栈2就会到前台， 而栈1继续呆在后台；
+3) 后面也是这样...以此类推！
+
+如上面所述，Android会将新成功启动的Activity添加到同一个Task中并且按照以"先进先出"方式管理多个Task 和Back Stack，用户就无需去担心Activites如何与Task任务进行交互又或者它们是如何存在于Back Stack中！ 或许，你想改变这种正常的管理方式。比如，你希望你的某个Activity能够在一个新的Task中进行管理； 或者你只想对某个Activity进行实例化，又或者你想在用户离开任务时清理Task中除了根Activity所有Activities。你可以做这些事或者更多，只需要通过修改AndroidManifest.xml中 < activity >的相关属性值或者在代码中通过传递特殊标识的Intent给startActivity( )就可以轻松的实现 对Actvitiy的管理了。
+
 <!--本文所用的超链接-->
+
+{% highlight ruby %}
+
+{% endhighlight %}
 
 [1]:https://github.com/hetaodie/AVAudioRecorderDemo.git
