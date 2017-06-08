@@ -127,14 +127,6 @@ public class MyActivity extends ActionBarActivity {
 } 
 
 {% endhighlight %}
-
-{% highlight ruby %}
-
-{% endhighlight %}
-
-{% highlight ruby %}
-
-{% endhighlight %}
 <!--本文所用的超链接-->
 
 [1]:https://github.com/hetaodie/AVAudioRecorderDemo.git
