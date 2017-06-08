@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SurfaceView
-description: 详细讲解了SurfaceView特点，原理和实现方式
+description: 详细讲解了SurfaceView特点原理和实现方式
 
 tagline: original post at hetaodie.github.io
 categories: [Android]
