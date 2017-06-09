@@ -1,11 +1,11 @@
 ---
 layout: post
 title: GLSurfaceview
-description: 详细讲解了SurfaceView特点，原理和实现方式
+description: GLSurfaceView是一个视图，继承至SurfaceView，它内嵌的surface专门负责OpenGL渲染。
 
 tagline: original post at hetaodie.github.io
 categories: [Android]
-tags: [Android Studio]
+tags: [Android SurfaceView]
 
 image1: /assets/media/android/surfaceview1.jpg
 image2: /assets/media/android/AsyncTask2.jpg
@@ -19,120 +19,60 @@ image3: /assets/media/android/AsyncTask3.jpg
  {:toc  }
 
  
-# 优势
+# 特点
 
 ![]({{ page.image1 }})
 
-1. SurfaceView的刷新处于主动，有利于频繁的更新画面。
-2. SurfaceView的绘制在子线程进行，避免了UI线程的阻塞。
-3. SurfaceView在底层实现了一个双缓冲机制，效率大大提升。
+   1. 管理一个surface，这个surface就是一块特殊的内存，能直接排版到android的视图view上。
+   2. 管理一个EGL display，它能让opengl把内容渲染到上述的surface上。
+   3. 用户自定义渲染器(render)。
+   4. 让渲染器在独立的线程里运作，和UI线程分离。
+   5. 支持按需渲染(on-demand)和连续渲染(continuous)。
+   6. 一些可选工具，如调试。
 
-4. Surface是纵深排序的，这说明它总在自己所在的窗口的后面。SurfaceView 提供了一个可见区域，只有在这个可见区域内的surface部分内容才可见，可见区域外部部分不可 见。surface的排版显示受到视图层级关系的影响，它的兄弟节点会在顶端显示。这意味者surface的内容会被它的兄弟视图遮挡，这一特性可以用来放置遮盖物（overlays）(例如：文本和按钮等控件)。但是，当surface上面有透明控件时，它的每次变化都会引起框架重新计算它和顶层控件的透明效果，这会影响性能。可以通过SurfaceHolder接口访问这个surface,getHolder()方法可以得到这个接口。
+# 使用GLSurfaceView
 
-# SurfaceView 的实现
+**通常会继承GLSurfaceView，并重载一些和用户输入事件有关的方法。如果你不需要重载事件方法，GLSurfaceView也可以直接使用， 你可以使用set方法来为该类提供自定义的行为。例如，GLSurfaceView的渲染被委托给渲染器在独立的渲染线程里进行，这一点和普通视图不一 样，setRenderer(Renderer)设置渲染器。**
 
-1. 首先这个自定义的SurfaceView类必须继承SurfaceView实现SurfaceHolder.Callback接口。
-2. 实现SurfaceHolder.Callback中的三个SurfaceView生命周期，分别为：
+## 初始化GLSurfaceView
+初始化过程其实仅需要你使用setRenderer(Renderer)设置一个渲染器(render)。当然，你也可以修改GLSurfaceView一些默认配置。
 
+ - setDebugFlags(int)
+ - setEGLConfigChooser(boolean)
+ - setEGLConfigChooser(EGLConfigChooser)
+ - setEGLConfigChooser(int, int, int, int, int, int)
+ - setGLWrapper(GLWrapper) 
 
-{% highlight ruby %}
+## 定制android.view.Surface
+ GLSurfaceView默认会创建像素格式为PixelFormat.RGB_565的surface。如果需要透明效果，调用 getHolder().setFormat(PixelFormat.TRANSLUCENT)。透明(TRANSLUCENT)的surface的像 素格式都是32位，每个色彩单元都是8位深度，像素格式是设备相关的，这意味着它可能是ARGB、RGBA或其它。<br />
+ 
+## 选择EGL配置
 
-surfaceCreated(SurfaceHolder holder)
-surfaceChanged(SurfaceHolder holder, int format, int width, int height) 
-surfaceDestroyed(SurfaceHolder holder)
+ Android设备往往支持多种EGL配置，可以使用不同数目的通道(channel)，也可以指定每个通道具有不同数目的位(bits)深度。因此， 在渲染器工作之前就应该指定EGL的配置。GLSurfaceView默认EGL配置的像素格式为RGB_656，16位的深度缓存(depth buffer)，默认不开启遮罩缓存(stencil buffer)。如果你要选择不同的EGL配置，请使用setEGLConfigChooser方法中的一种。
+ 
+## 调试行为
 
+你可以调用调试方法setDebugFlags(int)或setGLWrapper(GLSurfaceView.GLWrapper)来自定义 GLSurfaceView一些行为。在setRenderer方法之前或之后都可以调用调试方法，不过最好是在之前调用，这样它们能立即生效。
 
-{% endhighlight %}
+## 设置渲染器
 
-# 例子
+渲染器设定之后，你可以使用setRenderMode(int)指定渲染模式是按需(on demand)还是连续(continuous)。默认是连续渲染。
 
+## 渲染模式
 
-{% highlight ruby %}
+渲染器设定之后，你可以使用setRenderMode(int)指定渲染模式是按需(on demand)还是连续(continuous)。默认是连续渲染。
 
-public class PencilView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
-     private SurfaceHolder mHolder;
-     private Canvas mCanvas;
-     private boolean mIsRunning;
+## 生命周期
 
-public PencilView(Context context) {
-    this(context, null);
-}
+Activity窗口暂停(pause)或恢复(resume)时，GLSurfaceView都会收到通知，此时它的onPause方法和 onResume方法应该被调用。这样做是为了让GLSurfaceView暂停或恢复它的渲染线程，以便它及时释放或重建OpenGL的资源。
 
-public PencilView(Context context, AttributeSet attrs) {
-    this(context, attrs, 0);
-}
+## 事件处理
 
-public PencilView(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-    init();
-}
+为了处理事件，一般都是继承GLSurfaceView类并重载它的事件方法。但是由于GLSurfaceView是多线程操作，所以需要一些特殊的处 理。由于渲染器在独立的渲染线程里，你应该使用Java的跨线程机制跟渲染器通讯。queueEvent(Runnable)方法就是一种相对简单的操作。
 
-private void init() {
-    mHolder = getHolder();
-    mHolder.addCallback(this);
-}
-
-@Override
-public void surfaceCreated(SurfaceHolder holder) {
-    mIsRunning = true;
-    new Thread(this).start();
-}
+**注：如果在UI线程里调用渲染器的方法，很容易收到“call to OpenGL ES API with no current context”的警告，典型的误区就是在键盘或鼠标事件方法里直接调用opengl es的API，因为UI事件和渲染绘制在不同的线程里。更甚者，这种情况下调用glDeleteBuffers这种释放资源的方法，可能引起程序的崩溃， 因为UI线程想释放它，渲染线程却要使用它。)**
 
 
-@Override
-public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-}
-
-@Override
-public void surfaceDestroyed(SurfaceHolder holder) {
-    mIsRunning = false;
-}
-
-@Override
-public void run() {
-    long start = System.currentTimeMillis();
-
-    while (mIsRunning) {
-        draw();
-    }
-}
-
-private void draw() {
-    mCanvas = mHolder.lockCanvas();
-    if (mCanvas != null) {
-        try {
-           //使用获得的Canvas做具体的绘制
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            mHolder.unlockCanvasAndPost(mCanvas);
-        }
-    }
-}
-
-{% endhighlight %}
-
-# 常用api
-
-**setZOrderMediaOverlay**
-
-API5
-控制surface view的surface是否放置在窗口中另一个正则surface view的顶部（但仍然在窗口本身之后）。 这通常用于将覆盖放置在底层媒体surface view的顶部。
-注意，这必须在surface view的包含窗口附加到窗口管理器之前设置。
-调用此方法将覆盖对setZOrderOnTop（boolean）的任何先前调用。
-
-**SetZOrderOnTop**
-
-API5
-控制surface view的表面是否放置在其窗口的顶部。 通常，它放在窗口后面，以使其（大部分）看起来与层次结构中的视图合成。 通过设置此项，您可以将其放置在窗口上方。 这意味着SurfaceView的窗口的内容不会出现在它的表面之上。
-注意，这必须在surface view的包含窗口附加到窗口管理器之前设置。
-调用这将覆盖任何以前的调用setZOrderMediaOverlay（boolean）。
-
-
-{% highlight ruby %}
-
-{% endhighlight %}
 <!--本文所用的超链接-->
 
 [1]:https://github.com/hetaodie/AVAudioRecorderDemo.git
