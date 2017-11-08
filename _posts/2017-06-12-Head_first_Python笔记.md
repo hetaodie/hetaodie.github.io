@@ -1,0 +1,37 @@
+---
+layout: post
+title: Head_first_Python笔记
+description: 记录下python的读书笔记
+
+tagline: original post at hetaodie.github.io
+categories: [Python]
+tags: [Python]
+
+image1: /assets/media/python/python1.png
+image2: /assets/media/android/camera2.png
+image3: /assets/media/android/camera3.png
+image4: /assets/media/android/camera4.png
+image5: /assets/media/android/camera5.png
+image6: /assets/media/android/camera6.png
+image7: /assets/media/android/camera7.png
+---
+
+**目录**
+
+* 目录
+ {:toc  }
+ 
+ # 基础知识
+ ## 基本操作
+ 1、常用操作符
+ ![]({{ page.image1 }})
+ 
+ 
+ 
+{% highlight ruby %}
+
+{% endhighlight %}
+
+<!--本文所用的超链接-->
+
+[1]:https://github.com/hetaodie/AVAudioRecorderDemo.git
