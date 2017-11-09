@@ -6,7 +6,7 @@ description: 记录下python的读书笔记
 tagline: original post at hetaodie.github.io
 categories: [Python]
 tags: [Python]
-
+image0: /assets/media/python/python0.png
 image1: /assets/media/python/python1.png
 image2: /assets/media/android/camera2.png
 image3: /assets/media/android/camera3.png
@@ -20,13 +20,107 @@ image7: /assets/media/android/camera7.png
 
 * 目录
  {:toc  }
- 
+
+  
  # 基础知识
+ **基本语法总汇**
+   ![]({{ page.image1 }})
+   
+**新建脚本文件时需要在文件的头部进行如下声明：**
+{% highlight ruby %}
+#！/usr/bin/python
+ 
+{% endhighlight %}
+
+**当有中文时，应加入**
+
+{% highlight ruby %}
+# -*- coding: UTF-8 -*-  
+{% endhighlight %} 
+
  ## 基本操作
- 1、常用操作符
+ 1. 常用操作符
  ![]({{ page.image1 }})
+ 2. 通过+可以连接两个字符串
+ 3. ‘*’表示乘法，但“*”操作符用于一个字符串和一个整数时，它变成了“字符串复制”操作符。他将原来的字符串复制若干次，次数就是整型的值。
+ {% highlight ruby %}
+‘weixu’* 3
+其结果为：
+ ‘weixuweixuweixu’
  
- 
+{% endhighlight %}
+4. python的变量名是区分大小写的
+
+## 控制流
+1. 布尔数据类型只有两种值：True和False。首字母必须大写。
+2. not操作符只作用于一个布尔值（或表达式）。not操作符求值为相反的布尔值。
+3. 通过代码行的缩进来控制代码块的开始和结束。
+4. 代码块有3条规则：
+	1. 缩进增加时，代码块开始；
+	2. 代码块可以包含其他代码块；
+	3. 缩进减少为零，或减少为外面包围代码块的缩进，代码块结束
+5. 条件语句：
+	1. if语句包含以下部分：
+		1. if 关键字
+		2. 条件
+		3. 冒号（:）
+		4. 在下一行开始，缩进的代码块
+	2. elif语句包含以下部分
+		1. elif关键字
+		2. 条件
+		3. 冒号（:）
+		4. 在下一行开始，缩进的代码块
+	3. else语句包含以下部分：
+		1. else关键字
+		2. 冒号
+		3. 在下一行开始，缩进的代码块
+
+{% highlight ruby %}
+
+if name = 'weixu':
+    print('hi, weixu')
+elif age < 12:
+    print('You are not weixu ')
+else:
+    print('You are not weixu, and >=12')
+    
+{% endhighlight %}
+6. while 循环语句：
+	1. 格式while 条件 冒号（:）
+	2. while循环中的break语句用来跳出循环
+	3. while循环中的continue用来调整本次循环，进入下一个循环
+7. for循环语句包含以下部分
+	1. for关键字
+	2. 一个变量名
+	3. in关键字
+	4. 调用range()方法，最多传入3个参数
+	5. 冒号(:)
+	6. 从下一行开始，缩退的代码块
+8. range()函数开始、停止和步长参数
+	1. 三个参数用逗号(,)分割
+	2. 第一个参数省略表示用0开始
+	3. 第三个参数省略表示步长为1
+	4. 可是使用负数为步长，让循环计数逐渐减少
+
+## 导入模块
+在开始使用一个模块中的函数之前，必须使用import语句导入该模块
+import语句包含以下部分：
+1. import 关键字
+2. 模块的名称
+3. 可选的更多的模块名称，之间用逗号(,)隔开
+
+## 函数
+	
+	
+
+
+# 常用函数汇总
+1. print()函数将括号内的字符串显示在屏幕上。
+2. input()函数等待用户在键盘上输入一些文本，并按下回车键
+3. len()函数传递一个字符串，然后使用该函数获得该字符的个数
+4. str()函数可以传入一个整型值，并求值为它的字符串形式
+5. int()函数把传入的字符串转换为整型
+6. float()函数把传入的字符串转换为浮点数的形式
  
 {% highlight ruby %}
 
