@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [转]eglMakeCurrent及其相关知识
+title: 11111
 description: 引用Android中MakeCurrent相关的知识
 categories: [opengles]
 tags: [android, opengles]
