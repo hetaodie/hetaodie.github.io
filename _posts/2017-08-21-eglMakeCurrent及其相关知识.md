@@ -1,15 +1,14 @@
 ---
 layout: post
 title: [转]eglMakeCurrent及其相关知识
-description: 记录下python 中 numpy的基本语法
-
-tagline: original post at hetaodie.github.io
+description: 引用Android中MakeCurrent相关的知识
 categories: [opengles]
-tags: [android opengles]
+tags: [android, opengles]
 
 ---
 
 **目录**
+
 * 目录
  {:toc  }
 
