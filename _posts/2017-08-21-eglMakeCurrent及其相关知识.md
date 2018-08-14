@@ -1,11 +1,11 @@
 ---
 layout: post
-title: [转]谈谈eglMakeCurrent、eglSwapBuffers、glFlush和glFinish
+title: [转]eglMakeCurrent及其相关知识
 description: 记录下python 中 numpy的基本语法
 
 tagline: original post at hetaodie.github.io
-categories: [Python]
-tags: [Python]
+categories: [opengles]
+tags: [android opengles]
 
 ---
 
