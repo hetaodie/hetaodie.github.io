@@ -164,4 +164,9 @@ numpy.empty(shape, dtype = float, order = 'C')
 numpy.ones(shape, dtype = float, order = 'C')
 ```
 
-​	
+
+
+```html
+<iframe src="http://nbviewer.jupyter.org/github/LiaoPan/MyCodeSpace/blob/master/Demo_juypter.ipynb" width="850" height="500"></iframe>
+```
+
