@@ -62,18 +62,12 @@ $("#sidebar").animate({width:'10%'},'slow');
         <i class="fa fa-github"></i>
       </a>
       {% endif %}
-      {% if site.author.twitter %}
-      <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/{{ site.author.twitter }}">
-        <i class="fa fa-twitter"></i>
-      </a>
-      {% endif %}
-       {% if site.author.email %}
+      {% if site.author.email %}
       <a type="button" class="navbar-toggle nav-link" href="mailto:{{ site.author.email }}">
         <i class="fa fa-envelope"></i>
       </a>
       {% endif %}
      
-
      
       <a class="navbar-brand" href="{{ site.BASE_PATH }}">
         <img src="{{site.author.uno-dbyll}}" class="img-circle" style="height:35px;width:35px"/>
@@ -113,7 +107,7 @@ $("#sidebar").animate({width:'10%'},'slow');
 		{% include sidebar.html %}
 	</div>
 
-<div class="col-sm-6 col-sm-offset-2" id="container">
+<div class="col-sm-10 col-sm-offset-2" id="container">
   {{ content }}
 
 <footer class="navbar navbar-default">
