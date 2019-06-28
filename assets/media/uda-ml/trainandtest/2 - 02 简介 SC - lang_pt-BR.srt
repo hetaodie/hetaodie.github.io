@@ -1,0 +1,87 @@
+1
+00:00:00,200 --> 00:00:02,200
+Este é o esboço desta seção.
+
+2
+00:00:02,233 --> 00:00:04,733
+No aprendizado de máquina
+nós temos um problema,
+
+3
+00:00:04,767 --> 00:00:08,567
+normalmente precisamos avaliar
+dados e fazer previsões.
+
+4
+00:00:08,600 --> 00:00:12,000
+O problema é representado
+por este carro quebrado.
+
+5
+00:00:12,033 --> 00:00:14,600
+Para resolver o problema,
+nós temos ferramentas,
+
+6
+00:00:14,633 --> 00:00:16,500
+que são os algoritmos,
+
+7
+00:00:16,533 --> 00:00:19,833
+coisas como regressão linear
+ou logística, SVMs,
+
+8
+00:00:19,867 --> 00:00:22,533
+redes neurais,
+árvores de decisão, etc.
+
+9
+00:00:22,567 --> 00:00:25,367
+Como sabemos quais ferramentas
+funcionam melhores?
+
+10
+00:00:25,400 --> 00:00:27,600
+Para isso, nós temos
+ferramentas de medidas
+
+11
+00:00:27,633 --> 00:00:30,433
+que avaliam os algoritmos.
+
+12
+00:00:30,467 --> 00:00:33,267
+Após avaliar os algoritmos,
+os parâmetros
+
+13
+00:00:33,300 --> 00:00:35,667
+e decidir quais são melhores
+para os problemas,
+
+14
+00:00:35,700 --> 00:00:38,100
+então nós resolvemos
+o problema.
+
+15
+00:00:38,133 --> 00:00:40,867
+Nesta seção, nós aprenderemos
+as ferramentas de medida.
+
+16
+00:00:40,900 --> 00:00:43,633
+Nós veremos métricas e técnicas
+que nos informam
+
+17
+00:00:43,667 --> 00:00:46,300
+quando um algoritmo funciona bem
+com os dados
+
+18
+00:00:46,333 --> 00:00:48,833
+e como ajustá-lo
+para que funcione melhor.
+
