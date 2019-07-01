@@ -1,0 +1,153 @@
+1
+00:00:00,233 --> 00:00:04,400
+Vejamos os modelos médicos
+e de spam.
+
+2
+00:00:04,433 --> 00:00:08,133
+Para o modelo médico,
+temos quatro possibilidades:
+
+3
+00:00:08,167 --> 00:00:09,867
+o positivo verdadeiro,
+
+4
+00:00:09,900 --> 00:00:13,733
+quando paciente está doente
+e é diagnosticado corretamente,
+
+5
+00:00:13,767 --> 00:00:15,333
+o negativo positivo,
+
+6
+00:00:15,367 --> 00:00:19,933
+quando ele não está doente
+e é diagnosticado corretamente,
+
+7
+00:00:19,967 --> 00:00:22,300
+o falso positivo,
+quando ele está saudável,
+
+8
+00:00:22,333 --> 00:00:24,867
+mas é diagnosticado
+como doente,
+
+9
+00:00:24,900 --> 00:00:27,700
+e o falso negativo,
+quando ele está doente,
+
+10
+00:00:27,733 --> 00:00:30,333
+mas é diagnosticado
+como saudável.
+
+11
+00:00:30,367 --> 00:00:34,533
+Vamos ignorar os corretos
+e focar nos erros.
+
+12
+00:00:34,567 --> 00:00:36,200
+Abaixo nos temos
+um questionário.
+
+13
+00:00:36,233 --> 00:00:40,733
+Qual é pior? Um falso positivo
+ou um falso negativo?
+
+14
+00:00:40,767 --> 00:00:45,633
+Qual é o pior erro, diagnosticar
+erroneamente como saudável
+
+15
+00:00:45,667 --> 00:00:47,933
+ou como não saudável?
+
+16
+00:00:47,967 --> 00:00:50,867
+Vejamos outro modelo,
+o de e-mails spam.
+
+17
+00:00:50,900 --> 00:00:52,100
+Nós temos dois e-mails,
+
+18
+00:00:52,133 --> 00:00:54,967
+um da vovó dizendo
+que ela fez cookies,
+
+19
+00:00:55,000 --> 00:00:57,567
+e um spam de uma fonte
+duvidosa.
+
+20
+00:00:57,600 --> 00:01:00,867
+Neste modelo, nós também temos
+quatro possibilidades:
+
+21
+00:01:00,900 --> 00:01:05,633
+positivo verdadeiro, quando
+o spam vai para a pasta de spam,
+
+22
+00:01:05,667 --> 00:01:06,833
+negativo verdadeiro,
+
+23
+00:01:06,867 --> 00:01:09,967
+quando o e-mail da vovó
+vai para a caixa de entrada,
+
+24
+00:01:10,000 --> 00:01:14,333
+falso positivo, quando o da vovó
+vai para a pasta de spam,
+
+25
+00:01:14,367 --> 00:01:18,867
+e falso negativo, quando o spam
+vai para a caixa de entrada.
+
+26
+00:01:18,900 --> 00:01:23,067
+Vamos ignorar as corretas
+e focar nos erros.
+
+27
+00:01:23,100 --> 00:01:26,467
+Abaixo há outro questionário.
+Qual é o pior,
+
+28
+00:01:26,500 --> 00:01:29,200
+o falso positivo
+ou o falso negativo?
+
+29
+00:01:29,233 --> 00:01:31,433
+Qual é o pior erro,
+
+30
+00:01:31,467 --> 00:01:34,433
+enviar o e-mail da vovó
+para a pasta de spam
+
+31
+00:01:34,467 --> 00:01:38,133
+ou enviar o e-mail spam
+para a caixa de entrada?
+
+32
+00:01:38,167 --> 00:01:40,000
+Escreva as respostas abaixo.
+

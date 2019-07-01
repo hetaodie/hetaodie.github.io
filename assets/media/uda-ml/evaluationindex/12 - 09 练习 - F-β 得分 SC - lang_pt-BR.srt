@@ -1,0 +1,241 @@
+1
+00:00:00,333 --> 00:00:04,433
+Agora que vimos o F1-Score,
+vejamos algo mais geral.
+
+2
+00:00:04,467 --> 00:00:05,900
+Este é o conceito:
+
+3
+00:00:05,933 --> 00:00:09,033
+se a precisão estiver aqui
+e o recall aqui,
+
+4
+00:00:09,067 --> 00:00:11,533
+o F1-Score estará no meio.
+
+5
+00:00:11,567 --> 00:00:13,633
+Isso dá mais importância
+aos dois.
+
+6
+00:00:13,667 --> 00:00:16,033
+Se um for menor,
+isso chamará a atenção,
+
+7
+00:00:16,067 --> 00:00:18,033
+mas trará os dois
+da mesma forma.
+
+8
+00:00:18,067 --> 00:00:21,300
+Digamos que nosso modelo
+se preocupe mais com a precisão,
+
+9
+00:00:21,333 --> 00:00:23,967
+então precisaremos de algo
+que leve nesta direção,
+
+10
+00:00:24,000 --> 00:00:28,733
+com F0,5-Score.
+Chamamos isso de beta,
+
+11
+00:00:28,767 --> 00:00:30,433
+beta igual a 0,5.
+
+12
+00:00:30,467 --> 00:00:33,700
+Quanto menor for o beta,
+mais próximos da precisão.
+
+13
+00:00:33,733 --> 00:00:36,833
+Se quisermos um modelo
+que se preocupe com o recall,
+
+14
+00:00:36,867 --> 00:00:39,667
+pegamos um beta maior,
+por exemplo, beta de dois,
+
+15
+00:00:39,700 --> 00:00:41,700
+então a métrica será F2.
+
+16
+00:00:41,733 --> 00:00:43,667
+Se você gosta de fórmulas,
+aqui estão.
+
+17
+00:00:43,700 --> 00:00:47,467
+O F1-Score é duas vezes
+e a precisão vezes o recall
+
+18
+00:00:47,500 --> 00:00:49,833
+dividido pela precisão
+mais o recall.
+
+19
+00:00:49,867 --> 00:00:53,933
+Nós só inserimos o beta
+para direcionar a fórmula
+
+20
+00:00:53,967 --> 00:00:55,867
+para um lado
+ou para o outro,
+
+21
+00:00:55,900 --> 00:00:58,467
+dependendo do tamanho
+do beta.
+
+22
+00:00:59,367 --> 00:01:02,333
+Vejamos. Para o exemplo
+da detecção de fraude,
+
+23
+00:01:02,367 --> 00:01:04,233
+qual beta devemos utilizar?
+
+24
+00:01:04,267 --> 00:01:07,400
+Eu pensei que este deveria ser
+um modelo de alto recall,
+
+25
+00:01:07,433 --> 00:01:09,400
+pois precisamos identificar
+as fraudes,
+
+26
+00:01:09,433 --> 00:01:13,200
+e não tinha problema identificar
+algo que não era.
+
+27
+00:01:13,233 --> 00:01:15,133
+Então algo como F10.
+
+28
+00:01:15,167 --> 00:01:17,433
+Mas talvez sacrificássemos
+muito a precisão
+
+29
+00:01:17,467 --> 00:01:21,133
+e enviaríamos muitas
+notificações sobre as transações
+
+30
+00:01:21,167 --> 00:01:22,767
+que julgássemos ser
+fraudulentas
+
+31
+00:01:22,800 --> 00:01:26,133
+e os usuários se irritariam.
+Então podemos utilizar o F2.
+
+32
+00:01:26,167 --> 00:01:30,533
+Mas devemos focar no recall,
+pois não queremos perder
+
+33
+00:01:30,567 --> 00:01:32,233
+muitas transações
+fraudulentas,
+
+34
+00:01:32,267 --> 00:01:34,500
+então nós passamos para F5.
+
+35
+00:01:34,533 --> 00:01:36,167
+Não é uma ciência exata.
+
+36
+00:01:36,200 --> 00:01:40,200
+Encontrar um bom valor beta
+requer intuição dos dados
+
+37
+00:01:40,233 --> 00:01:41,933
+e muita experimentação.
+
+38
+00:01:41,967 --> 00:01:44,200
+Vamos fazer um questionário.
+
+39
+00:01:44,233 --> 00:01:47,000
+Vejamos três modelos
+possíveis.
+
+40
+00:01:47,033 --> 00:01:48,533
+No primeiro,
+nós somos a NASA
+
+41
+00:01:48,567 --> 00:01:50,967
+e o modelo detecta
+partes com mau funcionamento
+
+42
+00:01:51,000 --> 00:01:52,333
+em uma espaçonave.
+
+43
+00:01:52,367 --> 00:01:55,333
+No segundo, temos um sistema
+para recomendar vídeos
+
+44
+00:01:55,367 --> 00:01:58,833
+e temos um modelo para enviar
+notificações nos celulares
+
+45
+00:01:58,867 --> 00:02:01,100
+sobre vídeos
+que eles possam gostar.
+
+46
+00:02:01,133 --> 00:02:04,233
+No terceiro, nós somos uma loja
+e temos um modelo para enviar
+
+47
+00:02:04,267 --> 00:02:06,967
+amostras grátis
+para clientes em potencial.
+
+48
+00:02:07,000 --> 00:02:10,533
+Digamos que um deles
+tem um F beta score igual a um,
+
+49
+00:02:10,567 --> 00:02:14,800
+o outro, F0,5, e o outro F2.
+
+50
+00:02:14,833 --> 00:02:16,333
+Qual é qual?
+
+51
+00:02:16,367 --> 00:02:17,900
+Escreva as respostas abaixo.
+
