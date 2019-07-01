@@ -1,0 +1,214 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.980
+Now that we learned F1 score,
+
+2
+00:00:01.980 --> 00:00:05.825
+let's introduce something a bit more general. Here's the concept.
+
+3
+00:00:05.825 --> 00:00:07.395
+If we have precision over here,
+
+4
+00:00:07.394 --> 00:00:08.894
+and recall over here,
+
+5
+00:00:08.894 --> 00:00:11.480
+then F1 score is somewhere around the middle,
+
+6
+00:00:11.480 --> 00:00:13.410
+that gives as much importance to both.
+
+7
+00:00:13.410 --> 00:00:15.000
+Of course if one of them is smaller,
+
+8
+00:00:15.000 --> 00:00:18.059
+it raises a flag but it treats them both the same.
+
+9
+00:00:18.059 --> 00:00:21.195
+Now let's say our model cares a bit more about precision than recall.
+
+10
+00:00:21.195 --> 00:00:23.960
+Then we want something more skewed towards precision.
+
+11
+00:00:23.960 --> 00:00:27.350
+So we'll say it's F0.5 score.
+
+12
+00:00:27.350 --> 00:00:28.530
+So we call that beta.
+
+13
+00:00:28.530 --> 00:00:31.530
+Beta is 0.5. The smaller the beta,
+
+14
+00:00:31.530 --> 00:00:33.740
+the more towards precision that we get.
+
+15
+00:00:33.740 --> 00:00:37.005
+Or if we want our model to care more about the recall than in the direction,
+
+16
+00:00:37.005 --> 00:00:38.940
+we pick a larger beta, say beta equals two.
+
+17
+00:00:38.939 --> 00:00:41.484
+So our metric is F2.
+
+18
+00:00:41.484 --> 00:00:43.519
+If you like formulas, here they are.
+
+19
+00:00:43.520 --> 00:00:46.655
+Remember that the F1 score is two times precision,
+
+20
+00:00:46.655 --> 00:00:49.969
+times recall, divided by precision plus recall.
+
+21
+00:00:49.969 --> 00:00:52.170
+So in the formula for beta, you just introduce a beta
+
+22
+00:00:52.170 --> 00:00:54.539
+over here that will skew your formula towards either
+
+23
+00:00:54.539 --> 00:01:00.075
+one or the other one depending on if beta is small or large. So let's see.
+
+24
+00:01:00.075 --> 00:01:02.190
+If we have the fraud detection example,
+
+25
+00:01:02.189 --> 00:01:04.549
+which beta should we use?
+
+26
+00:01:04.549 --> 00:01:08.340
+I would initially think that this needs to be a high recall model since we need to catch
+
+27
+00:01:08.340 --> 00:01:10.230
+all the fraud cases and it's okay if we
+
+28
+00:01:10.230 --> 00:01:13.395
+accidentally detect and investigate some that are not.
+
+29
+00:01:13.394 --> 00:01:14.935
+Something like F10.
+
+30
+00:01:14.935 --> 00:01:18.240
+But then maybe we're sacrificing too much precision and we accidentally sending
+
+31
+00:01:18.239 --> 00:01:20.280
+our customers too many notifications
+
+32
+00:01:20.280 --> 00:01:22.590
+about their transactions without them being fraudulent,
+
+33
+00:01:22.590 --> 00:01:23.969
+and they're starting to get annoyed.
+
+34
+00:01:23.969 --> 00:01:26.164
+So we can move a bit toward say, F2.
+
+35
+00:01:26.165 --> 00:01:28.830
+But then maybe we would discover that we need to focus a bit more on
+
+36
+00:01:28.829 --> 00:01:31.980
+recall because we really don't want to miss too many for two transactions,
+
+37
+00:01:31.980 --> 00:01:34.520
+so we go here to F5.
+
+38
+00:01:34.519 --> 00:01:36.170
+It's not an exact science.
+
+39
+00:01:36.170 --> 00:01:40.215
+Finding a good value of beta requires a lot of intuition of your data,
+
+40
+00:01:40.215 --> 00:01:42.150
+and a lot of experimentation.
+
+41
+00:01:42.150 --> 00:01:44.260
+Now let's test our knowledge and let's have a quiz.
+
+42
+00:01:44.260 --> 00:01:46.770
+So let's look at three possible models.
+
+43
+00:01:46.769 --> 00:01:49.319
+In the first one we are NASA and we have a model for
+
+44
+00:01:49.319 --> 00:01:52.329
+detecting malfunctioning parts on a spaceship.
+
+45
+00:01:52.329 --> 00:01:56.549
+In the second one, we have a video recommender system and we have a model
+
+46
+00:01:56.549 --> 00:02:01.049
+for sending users phone notifications of our new videos they may like.
+
+47
+00:02:01.049 --> 00:02:02.769
+In the third one we are a store,
+
+48
+00:02:02.769 --> 00:02:06.854
+and we have a model for sending free samples in the mail to potential clients.
+
+49
+00:02:06.855 --> 00:02:10.707
+Let's say one of them has an F beta score of F1,
+
+50
+00:02:10.707 --> 00:02:12.872
+the other one is F0.5,
+
+51
+00:02:12.872 --> 00:02:14.594
+and the other one is F2.
+
+52
+00:02:14.594 --> 00:02:16.430
+Which one is which?
+
+53
+00:02:16.430 --> 00:02:18.900
+Enter your answers below.
+

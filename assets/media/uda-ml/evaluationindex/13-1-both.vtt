@@ -1,0 +1,914 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.940
+>>Now, we'll learn another technique to evaluate a model called
+
+2
+00:00:00.000 --> 00:00:02.940
+现在我们将学习另一个评估模型的技巧
+
+3
+00:00:02.940 --> 00:00:07.144
+叫做受试者工作特性曲线 简称 ROC 曲线
+
+4
+00:00:02.940 --> 00:00:07.144
+the Receiver Operator Characteristic curve or ROC curve for short,
+
+5
+00:00:07.144 --> 00:00:09.119
+它的工作原理如下
+
+6
+00:00:07.144 --> 00:00:09.119
+and it works as follows.
+
+7
+00:00:09.119 --> 00:00:11.399
+Consider this data which is now one dimensional,
+
+8
+00:00:09.119 --> 00:00:11.399
+有一组数据 现在是一维的
+
+9
+00:00:11.400 --> 00:00:14.050
+所有红点和蓝点都在一条直线上
+
+10
+00:00:11.400 --> 00:00:14.050
+so all the red and blue points lie in one line,
+
+11
+00:00:14.050 --> 00:00:16.455
+and we want to find the correct split.
+
+12
+00:00:14.050 --> 00:00:16.455
+我们想要找到正确的拆分方法
+
+13
+00:00:16.454 --> 00:00:19.034
+可以在这里拆分
+
+14
+00:00:16.454 --> 00:00:19.034
+So, we can have a split like around here,
+
+15
+00:00:19.035 --> 00:00:21.405
+or maybe here, or here.
+
+16
+00:00:19.035 --> 00:00:21.405
+这里或这里
+
+17
+00:00:21.405 --> 00:00:22.730
+都是很好的拆分位置
+
+18
+00:00:21.405 --> 00:00:22.730
+All of them are good splits.
+
+19
+00:00:22.730 --> 00:00:25.039
+我们称其为好的拆分
+
+20
+00:00:22.730 --> 00:00:25.039
+So, we'll call this a good split.
+
+21
+00:00:25.039 --> 00:00:30.539
+现在看看这组数据 看出可以在这里完美地拆分
+
+22
+00:00:25.039 --> 00:00:30.539
+Now, we can look at this data which as you can see is perfectly separable over here.
+
+23
+00:00:30.539 --> 00:00:32.640
+我们称其为完美拆分
+
+24
+00:00:30.539 --> 00:00:32.640
+So, we'll call that a perfect split.
+
+25
+00:00:32.640 --> 00:00:35.310
+最后是这个非常随机的数据
+
+26
+00:00:32.640 --> 00:00:35.310
+And finally, we have this data over here which is pretty much random,
+
+27
+00:00:35.310 --> 00:00:37.594
+and there's not much to split here.
+
+28
+00:00:35.310 --> 00:00:37.594
+没有可拆分的位置
+
+29
+00:00:37.594 --> 00:00:39.240
+似乎在任何地方放置界线
+
+30
+00:00:37.594 --> 00:00:39.240
+It seems that anywhere we put the boundary,
+
+31
+00:00:39.240 --> 00:00:40.500
+每侧都有一半的蓝点
+
+32
+00:00:39.240 --> 00:00:40.500
+we'll have about half blue,
+
+33
+00:00:40.500 --> 00:00:42.409
+和一半的红点
+
+34
+00:00:40.500 --> 00:00:42.409
+half red points on each side.
+
+35
+00:00:42.409 --> 00:00:45.579
+So, we'll call that a bad split or a random split.
+
+36
+00:00:42.409 --> 00:00:45.579
+我们称其为坏的拆分或随机拆分
+
+37
+00:00:45.579 --> 00:00:47.399
+现在要做的是得出一个指标或数字
+
+38
+00:00:45.579 --> 00:00:47.399
+And now what we want is to come up with a metric or
+
+39
+00:00:47.399 --> 00:00:49.964
+对于完美拆分来说很高
+
+40
+00:00:47.399 --> 00:00:49.964
+some number that is high for the perfect split,
+
+41
+00:00:49.965 --> 00:00:51.570
+对于好的拆分来说中等大小
+
+42
+00:00:49.965 --> 00:00:51.570
+medium for the good split,
+
+43
+00:00:51.570 --> 00:00:53.335
+and low for the random split.
+
+44
+00:00:51.570 --> 00:00:53.335
+对于随机拆分来说很低
+
+45
+00:00:53.335 --> 00:00:56.365
+实际上 让完美拆分的得分为 1
+
+46
+00:00:53.335 --> 00:00:56.365
+In fact, something that gives the perfect split a score of one,
+
+47
+00:00:56.365 --> 00:00:58.965
+the good split something around 0.8,
+
+48
+00:00:56.365 --> 00:00:58.965
+好的拆分在 0.8 左右
+
+49
+00:00:58.965 --> 00:01:02.060
+随机拆分在 0.5 左右
+
+50
+00:00:58.965 --> 00:01:02.060
+and the random split something around 0.5.
+
+51
+00:01:02.060 --> 00:01:04.879
+That's where the ROC curve will help us.
+
+52
+00:01:02.060 --> 00:01:04.879
+这时候 ROC 曲线就能派上用场了
+
+53
+00:01:04.879 --> 00:01:06.405
+我们看看如何构建这些数字
+
+54
+00:01:04.879 --> 00:01:06.405
+So, let's see how to construct these numbers.
+
+55
+00:01:06.405 --> 00:01:10.165
+Let's take our good data and let's cut it over here.
+
+56
+00:01:06.405 --> 00:01:10.165
+我们看看好的数据 在这里拆分
+
+57
+00:01:10.165 --> 00:01:12.300
+Now, we'll calculate two ratios.
+
+58
+00:01:10.165 --> 00:01:12.300
+现在计算两个比例
+
+59
+00:01:12.299 --> 00:01:14.399
+The first one is a true positive rate, which means,
+
+60
+00:01:12.299 --> 00:01:14.399
+第一个是真阳性比例
+
+61
+00:01:14.400 --> 00:01:17.160
+即在所有阳性标记的点中
+
+62
+00:01:14.400 --> 00:01:17.160
+out of all the positively labeled points,
+
+63
+00:01:17.159 --> 00:01:19.979
+有多少点分类正确？
+
+64
+00:01:17.159 --> 00:01:19.979
+how many did we classify correctly?
+
+65
+00:01:19.980 --> 00:01:21.960
+也就是真阳性的点数量
+
+66
+00:01:19.980 --> 00:01:21.960
+That means, the number of true positives,
+
+67
+00:01:21.959 --> 00:01:25.849
+divided by the total number of positively labeled points.
+
+68
+00:01:21.959 --> 00:01:25.849
+除以阳性标记的点总数
+
+69
+00:01:25.849 --> 00:01:27.780
+看看结果是多少
+
+70
+00:01:25.849 --> 00:01:27.780
+So, let's see how much this is.
+
+71
+00:01:27.780 --> 00:01:30.224
+There are seven positively labeled numbers,
+
+72
+00:01:27.780 --> 00:01:30.224
+有 7 个阳性标记的数字
+
+73
+00:01:30.224 --> 00:01:33.329
+and six of them have been correctly labeled positive.
+
+74
+00:01:30.224 --> 00:01:33.329
+其中 6 个正确地标记为阳性
+
+75
+00:01:33.329 --> 00:01:39.569
+So, this ratio is six out of seven, or 0.857.
+
+76
+00:01:33.329 --> 00:01:39.569
+比例是 6/7 等于 0.857
+
+77
+00:01:39.569 --> 00:01:44.836
+现在看看假阳性比例 即在所有阴性点中
+
+78
+00:01:39.569 --> 00:01:44.836
+Now, let's look at the false positive rate which means out of all the negative points,
+
+79
+00:01:44.837 --> 00:01:49.250
+how many of them did the model incorrectly think they were positives?
+
+80
+00:01:44.837 --> 00:01:49.250
+模型错误地认为有多少点是阳性的
+
+81
+00:01:49.250 --> 00:01:52.984
+So out of the seven negatively labeled points,
+
+82
+00:01:49.250 --> 00:01:52.984
+在 7 个阴性标记的点中
+
+83
+00:01:52.984 --> 00:01:55.950
+模型认为有 2 个是阳性的
+
+84
+00:01:52.984 --> 00:01:55.950
+the model thought two of them were positive.
+
+85
+00:01:55.950 --> 00:02:02.320
+So the false positive rate is two out of seven, or 0.286.
+
+86
+00:01:55.950 --> 00:02:02.320
+因此假阳性比例是 2/7 等于 0.286
+
+87
+00:02:02.319 --> 00:02:04.689
+And we'll just remember these two numbers.
+
+88
+00:02:02.319 --> 00:02:04.689
+我们只需记住这两个数字
+
+89
+00:02:04.689 --> 00:02:06.000
+Now, what we'll do,
+
+90
+00:02:04.689 --> 00:02:06.000
+我们要做的是
+
+91
+00:02:06.000 --> 00:02:10.995
+is we'll move this boundary around and calculate the same pair of numbers.
+
+92
+00:02:06.000 --> 00:02:10.995
+四处移动这个界线 并计算相同的数字对
+
+93
+00:02:10.995 --> 00:02:12.990
+放在这里
+
+94
+00:02:10.995 --> 00:02:12.990
+So, let's play it over here.
+
+95
+00:02:12.990 --> 00:02:15.305
+真阳性比例是多少？
+
+96
+00:02:12.990 --> 00:02:15.305
+What is the true positive rate over here?
+
+97
+00:02:15.305 --> 00:02:17.830
+Well, the model thinks everything is positive.
+
+98
+00:02:15.305 --> 00:02:17.830
+模型认为所有点都是阳性的
+
+99
+00:02:17.830 --> 00:02:20.580
+因此所有阳性点都是真的阳性
+
+100
+00:02:17.830 --> 00:02:20.580
+So in particular, all the positives are true positives.
+
+101
+00:02:20.580 --> 00:02:25.005
+真阳性比例是 7/7 等于 1
+
+102
+00:02:20.580 --> 00:02:25.005
+So, the true positive rate is seven divided by seven, which is one.
+
+103
+00:02:25.004 --> 00:02:27.000
+And for the false positive rate.
+
+104
+00:02:25.004 --> 00:02:27.000
+对于假阳性比例
+
+105
+00:02:27.000 --> 00:02:29.534
+Well, since the model thinks everything is positive,
+
+106
+00:02:27.000 --> 00:02:29.534
+因为模型认为所有点都是阳性
+
+107
+00:02:29.534 --> 00:02:32.014
+then all the negatives are false positive.
+
+108
+00:02:29.534 --> 00:02:32.014
+因此所有阴性都是假阳性
+
+109
+00:02:32.014 --> 00:02:37.949
+So, the false positive rate is again seven divided by seven, which is one.
+
+110
+00:02:32.014 --> 00:02:37.949
+因此假阳性比例是 7/7 等于 1
+
+111
+00:02:37.949 --> 00:02:41.969
+记住这两个值 1 和 1
+
+112
+00:02:37.949 --> 00:02:41.969
+So again, we'll remember these two values one and one.
+
+113
+00:02:41.969 --> 00:02:43.375
+再看看另一个极端情况
+
+114
+00:02:41.969 --> 00:02:43.375
+And now let's go to the other extreme.
+
+115
+00:02:43.375 --> 00:02:47.860
+将界线放在这里 现在看看真阳性比例
+
+116
+00:02:43.375 --> 00:02:47.860
+Let's put the bar over here and now let's see what is the true positive rate.
+
+117
+00:02:47.860 --> 00:02:49.560
+模型认为所有点都不是阳性
+
+118
+00:02:47.860 --> 00:02:49.560
+Well, the model thinks nothing is positive.
+
+119
+00:02:49.560 --> 00:02:54.284
+So in particular, there are no true positives and the ratio is zero divided by seven,
+
+120
+00:02:49.560 --> 00:02:54.284
+因此没有真阳性 比例是 0/7 等于 0
+
+121
+00:02:54.284 --> 00:02:56.900
+which is zero. And for the false positive rate?
+
+122
+00:02:54.284 --> 00:02:56.900
+那么假阳性比例呢？
+
+123
+00:02:56.900 --> 00:02:59.985
+Well, again, the model thinks nothing is positive,
+
+124
+00:02:56.900 --> 00:02:59.985
+模型认为没有点是阳性
+
+125
+00:02:59.985 --> 00:03:01.455
+因此没有假阳性
+
+126
+00:02:59.985 --> 00:03:01.455
+so there are no false positives.
+
+127
+00:03:01.455 --> 00:03:05.175
+比例是 0/7 等于 0
+
+128
+00:03:01.455 --> 00:03:05.175
+And the ratio is zero over seven, which again is zero.
+
+129
+00:03:05.175 --> 00:03:07.219
+记住这两个数字
+
+130
+00:03:05.175 --> 00:03:07.219
+And we'll remember these two numbers.
+
+131
+00:03:07.219 --> 00:03:09.939
+We can see that no matter how the data looks,
+
+132
+00:03:07.219 --> 00:03:09.939
+可以看出无论数据是怎样的
+
+133
+00:03:09.939 --> 00:03:13.284
+两个极端始终为 (1,1)
+
+134
+00:03:09.939 --> 00:03:13.284
+the two extremes will always be one,
+
+135
+00:03:13.284 --> 00:03:15.449
+和 (0,0)
+
+136
+00:03:13.284 --> 00:03:15.449
+one and zero, zero.
+
+137
+00:03:15.449 --> 00:03:20.069
+现在可以计算所有可能的拆分情况 并记下这些数字
+
+138
+00:03:15.449 --> 00:03:20.069
+And now, we can do this for every possible split and record those numbers.
+
+139
+00:03:20.069 --> 00:03:22.340
+我们计算出了几个值
+
+140
+00:03:20.069 --> 00:03:22.340
+So here we have a few of them that we've calculated.
+
+141
+00:03:22.340 --> 00:03:24.050
+现在比较神奇的是
+
+142
+00:03:22.340 --> 00:03:24.050
+And now, the magic happens.
+
+143
+00:03:24.050 --> 00:03:27.735
+We just pluck these numbers in the plane, and we get a curve.
+
+144
+00:03:24.050 --> 00:03:27.735
+我们将这些数字代入平面里 得出了一条曲线
+
+145
+00:03:27.735 --> 00:03:32.275
+我们计算曲线下方的面积 大约是 0.8
+
+146
+00:03:27.735 --> 00:03:32.275
+And now, we calculate the area under the curve and here we get around 0.8.
+
+147
+00:03:32.275 --> 00:03:34.965
+不太准确 但是大概这么多
+
+148
+00:03:32.275 --> 00:03:34.965
+This is actually not accurate, but it's around there.
+
+149
+00:03:34.965 --> 00:03:37.740
+You can calculate it on your own and see how much you get.
+
+150
+00:03:34.965 --> 00:03:37.740
+你可以自己计算下 看看结果是多少
+
+151
+00:03:37.740 --> 00:03:40.064
+我们现在对完美拆分执行相同的流程
+
+152
+00:03:37.740 --> 00:03:40.064
+So now, let's do the same thing for the perfect split.
+
+153
+00:03:40.064 --> 00:03:41.919
+这是所有的比例结果
+
+154
+00:03:40.064 --> 00:03:41.919
+Here are all the ratios.
+
+155
+00:03:41.919 --> 00:03:43.994
+注意如果界线在红色那一侧
+
+156
+00:03:41.919 --> 00:03:43.994
+Notice that the boundary is on the red side,
+
+157
+00:03:43.995 --> 00:03:45.855
+and the true positive ratio is
+
+158
+00:03:43.995 --> 00:03:45.855
+真阳性比例是 1
+
+159
+00:03:45.854 --> 00:03:49.334
+因为每个阳性点都被预测为阳性
+
+160
+00:03:45.854 --> 00:03:49.334
+one since every positive number has been predicted positive.
+
+161
+00:03:49.335 --> 00:03:52.439
+类似地 如果界线在蓝色一侧
+
+162
+00:03:49.335 --> 00:03:52.439
+Similarly, if the boundaries on the blue side then every negative number
+
+163
+00:03:52.439 --> 00:03:56.324
+has been predicted negative and so the false positive ratio is zero.
+
+164
+00:03:52.439 --> 00:03:56.324
+那么所有阴性点都被预测为阴性 因此假阳性比例是 0
+
+165
+00:03:56.324 --> 00:03:58.739
+尤其是 在完美拆分点
+
+166
+00:03:56.324 --> 00:03:58.739
+In particular, at the perfect split point,
+
+167
+00:03:58.740 --> 00:04:00.504
+结果是 (0,1)
+
+168
+00:03:58.740 --> 00:04:00.504
+we have a zero comma one.
+
+169
+00:04:00.504 --> 00:04:02.039
+Thus, when we pluck these numbers,
+
+170
+00:04:00.504 --> 00:04:02.039
+代入这些数字后
+
+171
+00:04:02.039 --> 00:04:04.229
+the curve looks like a square,
+
+172
+00:04:02.039 --> 00:04:04.229
+曲线看起来像个正方形
+
+173
+00:04:04.229 --> 00:04:07.530
+and the square has area one, which means,
+
+174
+00:04:04.229 --> 00:04:07.530
+正方形的面积是 1
+
+175
+00:04:07.530 --> 00:04:12.319
+the area under the ROC curve for the perfect split is one.
+
+176
+00:04:07.530 --> 00:04:12.319
+也就是完美拆分的 ROC 曲线下方的面积是 1
+
+177
+00:04:12.319 --> 00:04:14.275
+最后看看随机拆分
+
+178
+00:04:12.319 --> 00:04:14.275
+And finally, we do this for the random split.
+
+179
+00:04:14.275 --> 00:04:15.685
+In here, you can try it on your own.
+
+180
+00:04:14.275 --> 00:04:15.685
+你可以自己试试
+
+181
+00:04:15.685 --> 00:04:20.030
+But basically, since every split leaves on each side around half blue, half red points,
+
+182
+00:04:15.685 --> 00:04:20.030
+因为每种拆分都让每侧一半的蓝点和一半的红点
+
+183
+00:04:20.029 --> 00:04:22.544
+many pair of numbers will be close to each other,
+
+184
+00:04:20.029 --> 00:04:22.544
+很多数字对都将相互接近
+
+185
+00:04:22.545 --> 00:04:24.750
+and the curve will be very close to being
+
+186
+00:04:22.545 --> 00:04:24.750
+曲线将非常接近
+
+187
+00:04:24.750 --> 00:04:27.904
+一个(0,0) 和 (1,1) 之间的三角形
+
+188
+00:04:24.750 --> 00:04:27.904
+just a diagonal between zero, zero and one, one.
+
+189
+00:04:27.904 --> 00:04:29.579
+So if the model is random,
+
+190
+00:04:27.904 --> 00:04:29.579
+如果模型是随机的
+
+191
+00:04:29.579 --> 00:04:33.779
+then the area under the ROC curve is around 0.5.
+
+192
+00:04:29.579 --> 00:04:33.779
+那么 ROC 曲线下方的面积约为 0.5
+
+193
+00:04:33.779 --> 00:04:36.299
+So to summarize, we have three possible scenarios:
+
+194
+00:04:33.779 --> 00:04:36.299
+总结下 有三个可能的情形
+
+195
+00:04:36.300 --> 00:04:38.520
+some random data which is hard to split,
+
+196
+00:04:36.300 --> 00:04:38.520
+一些难以拆分的随机数据
+
+197
+00:04:38.519 --> 00:04:42.224
+一些很好拆分偶尔出现错误的良好数据
+
+198
+00:04:38.519 --> 00:04:42.224
+some pretty good data which we can split well making some errors,
+
+199
+00:04:42.225 --> 00:04:46.254
+以及拆分后没有错误的完美拆分数据
+
+200
+00:04:42.225 --> 00:04:46.254
+and some perfectly divided data which we can split with no errors.
+
+201
+00:04:46.254 --> 00:04:48.014
+And each one is associated with a curve,
+
+202
+00:04:46.254 --> 00:04:48.014
+每个都有一个曲线
+
+203
+00:04:48.014 --> 00:04:52.544
+and the areas under the curve are close to 0.5 for the random model.
+
+204
+00:04:48.014 --> 00:04:52.544
+随机模型的曲线下面积接近 0.5
+
+205
+00:04:52.545 --> 00:04:55.131
+Some are close to one for the good model,
+
+206
+00:04:52.545 --> 00:04:55.131
+一些接近 1
+
+207
+00:04:55.130 --> 00:04:58.699
+对好的模型来说大约为 0.8 完美模型是 1
+
+208
+00:04:55.130 --> 00:04:58.699
+so around 0.8 and one for the perfect model.
+
+209
+00:04:58.699 --> 00:05:03.615
+总结下 ROC 曲线下的面积越接近 1
+
+210
+00:04:58.699 --> 00:05:03.615
+So in summary, the closer your area under the ROC curve is to one,
+
+211
+00:05:03.615 --> 00:05:05.920
+模型就越好
+
+212
+00:05:03.615 --> 00:05:05.920
+the better your model is.
+
+213
+00:05:05.920 --> 00:05:07.786
+现在提个问题
+
+214
+00:05:05.920 --> 00:05:07.786
+Now here is a question,
+
+215
+00:05:07.786 --> 00:05:12.204
+can the area under the curve be less than 0.5?
+
+216
+00:05:07.786 --> 00:05:12.204
+曲线下的面积可以小于 0.5 吗？
+
+217
+00:05:12.204 --> 00:05:15.384
+In fact, yes, it can be all the way to zero.
+
+218
+00:05:12.204 --> 00:05:15.384
+实际上可以 可以一直为 0
+
+219
+00:05:15.384 --> 00:05:18.615
+How would a model look if the area under the curve is zero?
+
+220
+00:05:15.384 --> 00:05:18.615
+如果曲线下面积为 0 模型该是怎样的？
+
+221
+00:05:18.615 --> 00:05:20.314
+Well, it will look more backwards.
+
+222
+00:05:18.615 --> 00:05:20.314
+看起来就更倒退
+
+223
+00:05:20.314 --> 00:05:22.199
+It'll have more blue points in the red area,
+
+224
+00:05:20.314 --> 00:05:22.199
+红色区域有更多的蓝点
+
+225
+00:05:22.199 --> 00:05:23.694
+and the red points in the blue area.
+
+226
+00:05:22.199 --> 00:05:23.694
+蓝色区域有更多的红点
+
+227
+00:05:23.694 --> 00:05:25.250
+So maybe flipping the data may help.
+
+228
+00:05:23.694 --> 00:05:25.250
+或许翻转数据会有帮助
+
