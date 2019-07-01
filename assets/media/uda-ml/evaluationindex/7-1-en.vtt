@@ -1,0 +1,158 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.929
+So let's go back to our two examples,
+
+2
+00:00:01.929 --> 00:00:03.599
+the Medical Model and Spam E-mail Model.
+
+3
+00:00:03.600 --> 00:00:07.919
+Recalled for the medical model we have four possibilities.
+
+4
+00:00:07.919 --> 00:00:10.320
+A true positive, which is when
+
+5
+00:00:10.320 --> 00:00:13.765
+the patient is sick and we correctly diagnosed him as sick.
+
+6
+00:00:13.765 --> 00:00:16.350
+A true negative, which is when the patient is
+
+7
+00:00:16.350 --> 00:00:20.075
+not sick and we correctly diagnosed him as not sick.
+
+8
+00:00:20.074 --> 00:00:21.869
+A false positive, which is when a patient is
+
+9
+00:00:21.870 --> 00:00:25.005
+healthy and we incorrectly diagnosed him as sick.
+
+10
+00:00:25.004 --> 00:00:26.489
+And finally, a false negative,
+
+11
+00:00:26.489 --> 00:00:30.625
+which is when the patient is sick and we incorrectly diagnosed him as healthy.
+
+12
+00:00:30.625 --> 00:00:34.289
+Now let's forget about the two correct ones and focus only on the mistakes.
+
+13
+00:00:34.289 --> 00:00:36.255
+Below we'll have a quiz.
+
+14
+00:00:36.255 --> 00:00:37.920
+Which one do you think is worse,
+
+15
+00:00:37.920 --> 00:00:41.010
+a false positive or a false negative?
+
+16
+00:00:41.009 --> 00:00:44.339
+In other words, what is a worse mistake to misdiagnose
+
+17
+00:00:44.340 --> 00:00:48.055
+a healthy patient as sick or a sick patient as healthy?
+
+18
+00:00:48.054 --> 00:00:49.524
+Now let's go back to our other model,
+
+19
+00:00:49.524 --> 00:00:50.804
+the Spam E-mail Model.
+
+20
+00:00:50.804 --> 00:00:51.990
+So we have two emails,
+
+21
+00:00:51.990 --> 00:00:54.240
+one non-spam from a grandmother telling us she baked
+
+22
+00:00:54.240 --> 00:00:57.300
+cookies and one spam from a questionable source.
+
+23
+00:00:57.299 --> 00:00:58.909
+Recall that for this model,
+
+24
+00:00:58.909 --> 00:01:00.819
+we again have four possibilities.
+
+25
+00:01:00.820 --> 00:01:05.325
+A true positive, which is when the spam e-mail gets correctly sent into the spam folder.
+
+26
+00:01:05.325 --> 00:01:06.816
+A true negative, which is when
+
+27
+00:01:06.816 --> 00:01:09.870
+our grandmother's e-mail gets correctly send to the Inbox folder.
+
+28
+00:01:09.870 --> 00:01:11.969
+A false positive, which is when the grandmother's e-mail
+
+29
+00:01:11.969 --> 00:01:14.465
+accidentally gets sent to the spam folder.
+
+30
+00:01:14.465 --> 00:01:15.659
+And finally, a false negative,
+
+31
+00:01:15.659 --> 00:01:19.140
+which is when a spam e-mail accidentally gets sent to our inbox.
+
+32
+00:01:19.140 --> 00:01:23.094
+Now again, let's forget about the two correct ones and focus only on the mistakes.
+
+33
+00:01:23.094 --> 00:01:24.980
+So below there will be another quiz.
+
+34
+00:01:24.980 --> 00:01:26.475
+Which one do you think is worse,
+
+35
+00:01:26.474 --> 00:01:29.369
+a false positive or a false negative?
+
+36
+00:01:29.370 --> 00:01:31.380
+In other words, what is a worst mistake?
+
+37
+00:01:31.379 --> 00:01:33.420
+To accidentally send your grandmother's e-mail to
+
+38
+00:01:33.420 --> 00:01:38.085
+the spam folder or to accidentally send the spam e-mail into your inbox?
+
+39
+00:01:38.084 --> 00:01:40.809
+Enter your answers below.
+

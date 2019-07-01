@@ -1,0 +1,282 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.140
+So, let's define the Precision metric as follows.
+
+2
+00:00:00.000 --> 00:00:03.140
+精度指标的定义如下
+
+3
+00:00:03.140 --> 00:00:05.759
+下面是医疗模型的混淆矩阵
+
+4
+00:00:03.140 --> 00:00:05.759
+Here is the Confusion matrix of the medical model.
+
+5
+00:00:05.759 --> 00:00:09.119
+我们用红色叉号表示要务必避免的情形
+
+6
+00:00:05.759 --> 00:00:09.119
+And we've added a red X in the spot that we really want to avoid,
+
+7
+00:00:09.119 --> 00:00:10.609
+which is the false negatives.
+
+8
+00:00:09.119 --> 00:00:10.609
+即假阴性
+
+9
+00:00:10.609 --> 00:00:12.949
+精度可以帮助回答
+
+10
+00:00:10.609 --> 00:00:12.949
+So Precision will be the answer to a question out of
+
+11
+00:00:12.949 --> 00:00:15.739
+all the points predicted to be positive,
+
+12
+00:00:12.949 --> 00:00:15.739
+在所有预测为阳性的点中
+
+13
+00:00:15.740 --> 00:00:19.469
+有多少是真阳性的点？
+
+14
+00:00:15.740 --> 00:00:19.469
+how many of them were actually positive?
+
+15
+00:00:19.469 --> 00:00:22.229
+In this case, the question translates to,
+
+16
+00:00:19.469 --> 00:00:22.229
+在这种情况下 该问题就相当于
+
+17
+00:00:22.230 --> 00:00:25.469
+在诊断为生病的所有患者当中
+
+18
+00:00:22.230 --> 00:00:25.469
+out of all the patients that we diagnosed as sick,
+
+19
+00:00:25.469 --> 00:00:28.109
+有多少位真正的生病了？
+
+20
+00:00:25.469 --> 00:00:28.109
+how many were actually sick?
+
+21
+00:00:28.109 --> 00:00:29.399
+精度是这列
+
+22
+00:00:28.109 --> 00:00:29.399
+So Precision is this column,
+
+23
+00:00:29.399 --> 00:00:33.210
+因为这列是诊断为生病的患者
+
+24
+00:00:29.399 --> 00:00:33.210
+because this column are the sick patients that we diagnosed as sick.
+
+25
+00:00:33.210 --> 00:00:38.590
+也就是 1000（诊断正确的人数）除以 1800
+
+26
+00:00:33.210 --> 00:00:38.590
+So it is 1000 that were correct divided by 1800,
+
+27
+00:00:38.590 --> 00:00:41.990
+which is the total number of patients diagnosed as sick.
+
+28
+00:00:38.590 --> 00:00:41.990
+即所有诊断为生病的患者人数
+
+29
+00:00:41.990 --> 00:00:44.715
+结果是 55.6%
+
+30
+00:00:41.990 --> 00:00:44.715
+This number is 55.7%.
+
+31
+00:00:44.715 --> 00:00:47.715
+数字不太大 因为不是很精确的模型
+
+32
+00:00:44.715 --> 00:00:47.715
+It's not a high number because this is not a very precise model.
+
+33
+00:00:47.715 --> 00:00:52.800
+但可以接受 因为我们要避免这个红色 X
+
+34
+00:00:47.715 --> 00:00:52.800
+But again, this is okay because what we're doing is avoiding this red X.
+
+35
+00:00:52.799 --> 00:00:56.309
+现在看看垃圾邮件模型 精度是多少？
+
+36
+00:00:52.799 --> 00:00:56.309
+Now, let's look at the spam e-mail model. What is this Precision?
+
+37
+00:00:56.310 --> 00:00:59.984
+在这个模型中 精度很重要
+
+38
+00:00:56.310 --> 00:00:59.984
+Now, know that in this model Precision is very important,
+
+39
+00:00:59.984 --> 00:01:02.865
+因为要避免的红色 X 位于这列
+
+40
+00:00:59.984 --> 00:01:02.865
+because the red X that we're avoiding is in this column.
+
+41
+00:01:02.865 --> 00:01:07.079
+红色 X 是不小心发送到垃圾文件夹的非垃圾邮件
+
+42
+00:01:02.865 --> 00:01:07.079
+The red X is the non-spam emails that were accidentally sent to the spam folder.
+
+43
+00:01:07.079 --> 00:01:10.914
+So those 30 errors are really bad and we want to avoid them.
+
+44
+00:01:07.079 --> 00:01:10.914
+这 30 个错误很糟糕 我们需要避免它们
+
+45
+00:01:10.915 --> 00:01:12.210
+So again, Precision says,
+
+46
+00:01:10.915 --> 00:01:12.210
+精度表示
+
+47
+00:01:12.209 --> 00:01:14.250
+out of all the e-mails sent to the spam folder,
+
+48
+00:01:12.209 --> 00:01:14.250
+在所有发送到垃圾文件夹的电子邮件当中
+
+49
+00:01:14.250 --> 00:01:16.489
+有多少实际上是垃圾邮件？
+
+50
+00:01:14.250 --> 00:01:16.489
+how many of them were actually spam?
+
+51
+00:01:16.489 --> 00:01:19.362
+也就是 100（正确分类的垃圾邮件）
+
+52
+00:01:16.489 --> 00:01:19.362
+So we have 100, which are correct,
+
+53
+00:01:19.362 --> 00:01:21.450
+divide it by 130,
+
+54
+00:01:19.362 --> 00:01:21.450
+除以 130
+
+55
+00:01:21.450 --> 00:01:24.505
+即发送到垃圾文件夹的所有邮件
+
+56
+00:01:21.450 --> 00:01:24.505
+which is all the ones we've sent to the spam folder.
+
+57
+00:01:24.504 --> 00:01:28.379
+结果是 76.9% 更高了
+
+58
+00:01:24.504 --> 00:01:28.379
+This number is 76.9% which is higher.
+
+59
+00:01:28.379 --> 00:01:31.015
+This is better, since this model needs high Precision,
+
+60
+00:01:28.379 --> 00:01:31.015
+这样更好 因为这个模型需要高精度
+
+61
+00:01:31.015 --> 00:01:33.055
+因此这个数字最好很大
+
+62
+00:01:31.015 --> 00:01:33.055
+so the number better be big.
+
+63
+00:01:33.055 --> 00:01:34.755
+Now, let's do an exercise.
+
+64
+00:01:33.055 --> 00:01:34.755
+现在做道练习
+
+65
+00:01:34.754 --> 00:01:37.030
+Let's go to our linear model over here.
+
+66
+00:01:34.754 --> 00:01:37.030
+转到这里的线性模型
+
+67
+00:01:37.030 --> 00:01:39.504
+What is the Precision of this linear model?
+
+68
+00:01:37.030 --> 00:01:39.504
+该线性模型的精度是多少？
+
+69
+00:01:39.504 --> 00:01:42.000
+Enter your answer below.
+
+70
+00:01:39.504 --> 00:01:42.000
+请将答案填在下方
+

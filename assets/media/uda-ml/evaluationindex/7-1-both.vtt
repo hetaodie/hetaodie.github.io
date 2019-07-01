@@ -1,0 +1,314 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.929
+So let's go back to our two examples,
+
+2
+00:00:00.000 --> 00:00:01.929
+看看我们的两个示例
+
+3
+00:00:01.929 --> 00:00:03.599
+医疗模型和垃圾邮件模型
+
+4
+00:00:01.929 --> 00:00:03.599
+the Medical Model and Spam E-mail Model.
+
+5
+00:00:03.600 --> 00:00:07.919
+对于医疗模型 有四种可能性
+
+6
+00:00:03.600 --> 00:00:07.919
+Recalled for the medical model we have four possibilities.
+
+7
+00:00:07.919 --> 00:00:10.320
+A true positive, which is when
+
+8
+00:00:07.919 --> 00:00:10.320
+真阳性 即患者生病了
+
+9
+00:00:10.320 --> 00:00:13.765
+我们正确地诊断出他生病了
+
+10
+00:00:10.320 --> 00:00:13.765
+the patient is sick and we correctly diagnosed him as sick.
+
+11
+00:00:13.765 --> 00:00:16.350
+A true negative, which is when the patient is
+
+12
+00:00:13.765 --> 00:00:16.350
+真阴性 患者没生病
+
+13
+00:00:16.350 --> 00:00:20.075
+我们正确地诊断为他没生病
+
+14
+00:00:16.350 --> 00:00:20.075
+not sick and we correctly diagnosed him as not sick.
+
+15
+00:00:20.074 --> 00:00:21.869
+A false positive, which is when a patient is
+
+16
+00:00:20.074 --> 00:00:21.869
+假阳性 患者很健康
+
+17
+00:00:21.870 --> 00:00:25.005
+我们错误地诊断为生病了
+
+18
+00:00:21.870 --> 00:00:25.005
+healthy and we incorrectly diagnosed him as sick.
+
+19
+00:00:25.004 --> 00:00:26.489
+最后是假阴性
+
+20
+00:00:25.004 --> 00:00:26.489
+And finally, a false negative,
+
+21
+00:00:26.489 --> 00:00:30.625
+患者生病了 我们错误地诊断为很健康
+
+22
+00:00:26.489 --> 00:00:30.625
+which is when the patient is sick and we incorrectly diagnosed him as healthy.
+
+23
+00:00:30.625 --> 00:00:34.289
+我们忽略两个正确的情形 只关注错误的情形
+
+24
+00:00:30.625 --> 00:00:34.289
+Now let's forget about the two correct ones and focus only on the mistakes.
+
+25
+00:00:34.289 --> 00:00:36.255
+下面是个小测验
+
+26
+00:00:34.289 --> 00:00:36.255
+Below we'll have a quiz.
+
+27
+00:00:36.255 --> 00:00:37.920
+Which one do you think is worse,
+
+28
+00:00:36.255 --> 00:00:37.920
+哪个情况更糟糕
+
+29
+00:00:37.920 --> 00:00:41.010
+假阳性或假阴性？
+
+30
+00:00:37.920 --> 00:00:41.010
+a false positive or a false negative?
+
+31
+00:00:41.009 --> 00:00:44.339
+换句话说 将健康人士误诊为生病了
+
+32
+00:00:41.009 --> 00:00:44.339
+In other words, what is a worse mistake to misdiagnose
+
+33
+00:00:44.340 --> 00:00:48.055
+或者将生病的患者诊断为健康人士 哪种情况更糟糕？
+
+34
+00:00:44.340 --> 00:00:48.055
+a healthy patient as sick or a sick patient as healthy?
+
+35
+00:00:48.054 --> 00:00:49.524
+回到另一个模型
+
+36
+00:00:48.054 --> 00:00:49.524
+Now let's go back to our other model,
+
+37
+00:00:49.524 --> 00:00:50.804
+即垃圾邮件模型
+
+38
+00:00:49.524 --> 00:00:50.804
+the Spam E-mail Model.
+
+39
+00:00:50.804 --> 00:00:51.990
+我们有两封邮件
+
+40
+00:00:50.804 --> 00:00:51.990
+So we have two emails,
+
+41
+00:00:51.990 --> 00:00:54.240
+一个是祖母发来的非垃圾邮件 告诉我们她烘焙了一些曲奇
+
+42
+00:00:51.990 --> 00:00:54.240
+one non-spam from a grandmother telling us she baked
+
+43
+00:00:54.240 --> 00:00:57.300
+cookies and one spam from a questionable source.
+
+44
+00:00:54.240 --> 00:00:57.300
+另一封是可疑人员发来的垃圾邮件
+
+45
+00:00:57.299 --> 00:00:58.909
+对于这个模型
+
+46
+00:00:57.299 --> 00:00:58.909
+Recall that for this model,
+
+47
+00:00:58.909 --> 00:01:00.819
+we again have four possibilities.
+
+48
+00:00:58.909 --> 00:01:00.819
+也有四种情况
+
+49
+00:01:00.820 --> 00:01:05.325
+A true positive, which is when the spam e-mail gets correctly sent into the spam folder.
+
+50
+00:01:00.820 --> 00:01:05.325
+真阳性即垃圾邮件正确地发送到垃圾文件夹
+
+51
+00:01:05.325 --> 00:01:06.816
+真阴性 即祖母的邮件
+
+52
+00:01:05.325 --> 00:01:06.816
+A true negative, which is when
+
+53
+00:01:06.816 --> 00:01:09.870
+our grandmother's e-mail gets correctly send to the Inbox folder.
+
+54
+00:01:06.816 --> 00:01:09.870
+正确地发送到了收件箱文件夹里
+
+55
+00:01:09.870 --> 00:01:11.969
+A false positive, which is when the grandmother's e-mail
+
+56
+00:01:09.870 --> 00:01:11.969
+假阴性 即祖母的邮件
+
+57
+00:01:11.969 --> 00:01:14.465
+accidentally gets sent to the spam folder.
+
+58
+00:01:11.969 --> 00:01:14.465
+不小心发送到了垃圾文件夹里
+
+59
+00:01:14.465 --> 00:01:15.659
+And finally, a false negative,
+
+60
+00:01:14.465 --> 00:01:15.659
+最后是假阴性
+
+61
+00:01:15.659 --> 00:01:19.140
+即垃圾邮件不小心发送到了收件箱里
+
+62
+00:01:15.659 --> 00:01:19.140
+which is when a spam e-mail accidentally gets sent to our inbox.
+
+63
+00:01:19.140 --> 00:01:23.094
+我们再次忽略正确的情形并仅侧重于错误的情形
+
+64
+00:01:19.140 --> 00:01:23.094
+Now again, let's forget about the two correct ones and focus only on the mistakes.
+
+65
+00:01:23.094 --> 00:01:24.980
+So below there will be another quiz.
+
+66
+00:01:23.094 --> 00:01:24.980
+下面是另一道测验
+
+67
+00:01:24.980 --> 00:01:26.475
+Which one do you think is worse,
+
+68
+00:01:24.980 --> 00:01:26.475
+你觉得哪种情况更糟糕
+
+69
+00:01:26.474 --> 00:01:29.369
+a false positive or a false negative?
+
+70
+00:01:26.474 --> 00:01:29.369
+假阳性或假阴性？
+
+71
+00:01:29.370 --> 00:01:31.380
+In other words, what is a worst mistake?
+
+72
+00:01:29.370 --> 00:01:31.380
+换句话说 哪个错误最糟糕？
+
+73
+00:01:31.379 --> 00:01:33.420
+To accidentally send your grandmother's e-mail to
+
+74
+00:01:31.379 --> 00:01:33.420
+不小心将祖母的电子邮件发送到垃圾文件夹
+
+75
+00:01:33.420 --> 00:01:38.085
+the spam folder or to accidentally send the spam e-mail into your inbox?
+
+76
+00:01:33.420 --> 00:01:38.085
+或不小心将垃圾邮件发到收件箱里？
+
+77
+00:01:38.084 --> 00:01:40.809
+Enter your answers below.
+
+78
+00:01:38.084 --> 00:01:40.809
+请将答案填在下方
+

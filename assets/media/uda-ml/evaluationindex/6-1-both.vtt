@@ -1,0 +1,266 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.365
+Now, accuracy may not always be the best metric to use.
+
+2
+00:00:00.000 --> 00:00:03.365
+准确率并非始终是最佳指标
+
+3
+00:00:03.365 --> 00:00:05.054
+我们看一个示例
+
+4
+00:00:03.365 --> 00:00:05.054
+Let's look at this example.
+
+5
+00:00:05.054 --> 00:00:07.615
+该示例是检测信用卡欺诈行为
+
+6
+00:00:05.054 --> 00:00:07.615
+It consists of detecting credit card fraud.
+
+7
+00:00:07.615 --> 00:00:10.740
+So we have a bunch of data in the form of credit card transactions,
+
+8
+00:00:07.615 --> 00:00:10.740
+有一堆信用卡交易数据
+
+9
+00:00:10.740 --> 00:00:12.794
+有些数据是良好的数据 例如左侧的数据
+
+10
+00:00:10.740 --> 00:00:12.794
+and some of them are good like the ones on the left,
+
+11
+00:00:12.794 --> 00:00:15.870
+and some of them are fraudulent like the ones in the right.
+
+12
+00:00:12.794 --> 00:00:15.870
+有些是欺诈行为 例如右侧的数据
+
+13
+00:00:15.869 --> 00:00:17.160
+我们来看看数字
+
+14
+00:00:15.869 --> 00:00:17.160
+So let's look at the numbers.
+
+15
+00:00:17.160 --> 00:00:21.300
+There are 284,335 good transactions,
+
+16
+00:00:17.160 --> 00:00:21.300
+有 284,335 条良好的交易
+
+17
+00:00:21.300 --> 00:00:24.570
+和 472 条欺诈性交易
+
+18
+00:00:21.300 --> 00:00:24.570
+and 472 fraudulent transactions.
+
+19
+00:00:24.570 --> 00:00:25.835
+这其实是现实生活中的数据
+
+20
+00:00:24.570 --> 00:00:25.835
+This is actually real data.
+
+21
+00:00:25.835 --> 00:00:28.260
+我们试着找出一个准确率很高的模型
+
+22
+00:00:25.835 --> 00:00:28.260
+So let's try to come up with a model that has great accuracy.
+
+23
+00:00:28.260 --> 00:00:31.165
+即大部分时间都正确的模型
+
+24
+00:00:28.260 --> 00:00:31.165
+So a model that is correct most of the time.
+
+25
+00:00:31.164 --> 00:00:36.479
+能想到准确率超过 99% 的模型吗？
+
+26
+00:00:31.164 --> 00:00:36.479
+Can you help me think of a model that has over 99% accuracy?
+
+27
+00:00:36.479 --> 00:00:39.359
+So here's a model that has over 99% accuracy,
+
+28
+00:00:36.479 --> 00:00:39.359
+下面描述下准确率超过 99% 的模型
+
+29
+00:00:39.359 --> 00:00:42.494
+也就是超过 99% 的时间都正确
+
+30
+00:00:39.359 --> 00:00:42.494
+which means it is correct over 99% of the time.
+
+31
+00:00:42.494 --> 00:00:46.679
+模型说 所有交易都是良好的交易
+
+32
+00:00:42.494 --> 00:00:46.679
+The model says, all the transactions are good.
+
+33
+00:00:46.679 --> 00:00:48.750
+这个模型的准确率是多少
+
+34
+00:00:46.679 --> 00:00:48.750
+Now, what is the accuracy of this model namely,
+
+35
+00:00:48.750 --> 00:00:51.195
+即多少次是正确的？
+
+36
+00:00:48.750 --> 00:00:51.195
+how many times are we correct?
+
+37
+00:00:51.195 --> 00:01:00.359
+284,887 次中有 284,335 次是正确的
+
+38
+00:00:51.195 --> 00:01:00.359
+Well, we're correct 284,335 times out of 384,887 times.
+
+39
+00:01:00.359 --> 00:01:03.945
+结果是 99.83%
+
+40
+00:01:00.359 --> 00:01:03.945
+And that is 99.83%.
+
+41
+00:01:03.945 --> 00:01:06.769
+So this model must be pretty good if it's accurate that high, right?
+
+42
+00:01:03.945 --> 00:01:06.769
+所以这个模型肯定很不错 因为准确率如此的高 对吧？
+
+43
+00:01:06.769 --> 00:01:10.659
+实际并非这样 该模型没有发现任何不好的数据
+
+44
+00:01:06.769 --> 00:01:10.659
+Well, not really. This model is not catching any of the bad ones.
+
+45
+00:01:10.659 --> 00:01:14.484
+And the point of the model is to catch the fraudulent transactions.
+
+46
+00:01:10.659 --> 00:01:14.484
+模型的意义就是发现欺诈交易
+
+47
+00:01:14.484 --> 00:01:18.269
+So let's look at another model. To get a model that catches all the bad transactions.
+
+48
+00:01:14.484 --> 00:01:18.269
+我们再看看另一个模型 能获得发现所有欺诈交易的模型吗？
+
+49
+00:01:18.269 --> 00:01:19.894
+Can we think of one?
+
+50
+00:01:18.269 --> 00:01:19.894
+我们能想到一个吗？
+
+51
+00:01:19.894 --> 00:01:23.075
+Well here's one, I'm going to label all transactions fraudulent.
+
+52
+00:01:19.894 --> 00:01:23.075
+下面介绍一个 我将所有交易标记为欺诈行为
+
+53
+00:01:23.075 --> 00:01:25.350
+很棒了吧？我们发现了所有的欺诈交易
+
+54
+00:01:23.075 --> 00:01:25.350
+So that's great, right? Now we're catching
+
+55
+00:01:25.349 --> 00:01:28.519
+是好的模型吗？
+
+56
+00:01:25.349 --> 00:01:28.519
+all the fraudulent transactions. Now, is that a good model?
+
+57
+00:01:28.519 --> 00:01:30.959
+答案是否定的 也是一个糟糕的模型
+
+58
+00:01:28.519 --> 00:01:30.959
+Well, no that's also a terrible model since it's accidentally
+
+59
+00:01:30.959 --> 00:01:33.750
+catching all the good ones. So it's pretty tricky, right?
+
+60
+00:01:30.959 --> 00:01:33.750
+因为将所有好的交易也标记为欺诈交易 很棘手吧
+
+61
+00:01:33.750 --> 00:01:37.424
+仅通过准确率来评估模型比较棘手
+
+62
+00:01:33.750 --> 00:01:37.424
+It's pretty tricky to just look at accuracy and use that to evaluate our model,
+
+63
+00:01:37.424 --> 00:01:41.459
+because it may completely miss the point when the data is skewed like this one.
+
+64
+00:01:37.424 --> 00:01:41.459
+因为对于这样偏斜的数据集 可能会完全忽略一些点
+
+65
+00:01:41.459 --> 00:01:46.000
+So in this section, we'll study some different metrics that can catch this more easily.
+
+66
+00:01:41.459 --> 00:01:46.000
+在这部分 我们将学习一些不同的指标 可以更轻松地发现这类点
+

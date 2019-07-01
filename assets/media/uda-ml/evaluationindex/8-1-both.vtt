@@ -1,0 +1,282 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.740
+So, for the medical model, it seems that we'd much rather
+
+2
+00:00:00.000 --> 00:00:02.740
+对于医疗模型 似乎我们宁愿
+
+3
+00:00:02.740 --> 00:00:06.339
+将健康人士误诊为生病人士 并继续加以检查
+
+4
+00:00:02.740 --> 00:00:06.339
+misdiagnose a healthy person as sick and send them for more tests,
+
+5
+00:00:06.339 --> 00:00:10.814
+也不希望将生病人士误诊为健康人士 并让他们直接回家而不接受治疗
+
+6
+00:00:06.339 --> 00:00:10.814
+than misdiagnose a sick person who's healthy and send them home without treatment.
+
+7
+00:00:10.814 --> 00:00:14.174
+In this case, a false negative is much worse than a false positive.
+
+8
+00:00:10.814 --> 00:00:14.174
+在这种情况下假阴性比假阳性更糟糕
+
+9
+00:00:14.175 --> 00:00:15.630
+这个模型的规则是
+
+10
+00:00:14.175 --> 00:00:15.630
+So the rule of this model is,
+
+11
+00:00:15.630 --> 00:00:17.725
+I want to find all the sick people.
+
+12
+00:00:15.630 --> 00:00:17.725
+我想要找出所有生病的人士
+
+13
+00:00:17.725 --> 00:00:20.465
+不小心找到了更多的生病人士也没关系
+
+14
+00:00:17.725 --> 00:00:20.465
+I'm okay if I accidentally bring some more as sick,
+
+15
+00:00:20.464 --> 00:00:22.964
+but I need to find all the sick people.
+
+16
+00:00:20.464 --> 00:00:22.964
+我需要找到所有生病的人
+
+17
+00:00:22.964 --> 00:00:25.780
+对于垃圾邮件
+
+18
+00:00:22.964 --> 00:00:25.780
+And for the spam email model, let's see.
+
+19
+00:00:25.780 --> 00:00:29.054
+假阴性是指垃圾邮件进入了收件箱
+
+20
+00:00:25.780 --> 00:00:29.054
+A false negative means a spam email made its way into your inbox,
+
+21
+00:00:29.054 --> 00:00:30.519
+你只需将其删掉
+
+22
+00:00:29.054 --> 00:00:30.519
+and all you have to do is delete it.
+
+23
+00:00:30.519 --> 00:00:32.439
+因此不太方便
+
+24
+00:00:30.519 --> 00:00:32.439
+So it's a bit of an inconvenience.
+
+25
+00:00:32.439 --> 00:00:34.484
+另一方面假阳性是什么情况呢？
+
+26
+00:00:32.439 --> 00:00:34.484
+On the other hand, what's a false positive?
+
+27
+00:00:34.484 --> 00:00:37.799
+Your grandma, the poor lady learned to type an email only to tell
+
+28
+00:00:34.484 --> 00:00:37.799
+可怜的外婆学会了发电子邮件
+
+29
+00:00:37.799 --> 00:00:41.544
+只为了告诉你她做了一些曲奇 但是你给删了 太可怕了
+
+30
+00:00:37.799 --> 00:00:41.544
+you she baked cookies and you delete it. That's terrible.
+
+31
+00:00:41.545 --> 00:00:45.689
+因此我们希望假阳性的惩罚比假阴性的更重
+
+32
+00:00:41.545 --> 00:00:45.689
+So here, we want to punish false positives more than false negatives.
+
+33
+00:00:45.689 --> 00:00:47.474
+这个模型的含义是
+
+34
+00:00:45.689 --> 00:00:47.474
+So this model basically says,
+
+35
+00:00:47.475 --> 00:00:50.145
+我并不关心是否找到了所有的垃圾邮件
+
+36
+00:00:47.475 --> 00:00:50.145
+I don't really care if I find all the spam emails,
+
+37
+00:00:50.145 --> 00:00:51.585
+但有一点值得肯定的是
+
+38
+00:00:50.145 --> 00:00:51.585
+but one thing is for sure,
+
+39
+00:00:51.585 --> 00:00:54.975
+如果说某封邮件是垃圾邮件 则最好是垃圾邮件
+
+40
+00:00:51.585 --> 00:00:54.975
+if I say that an email is spam, it better be spam.
+
+41
+00:00:54.975 --> 00:00:59.075
+因此 医疗模型和电子邮件模型在本质上是完全不同的
+
+42
+00:00:54.975 --> 00:00:59.075
+So as we can see, the medical model and the email model are fundamentally different.
+
+43
+00:00:59.075 --> 00:01:01.980
+The medical model as we saw is okay with false positives,
+
+44
+00:00:59.075 --> 00:01:01.980
+医疗模型可以接受假阳性
+
+45
+00:01:01.979 --> 00:01:03.549
+but not with false negatives.
+
+46
+00:01:01.979 --> 00:01:03.549
+但不能接受假阴性
+
+47
+00:01:03.549 --> 00:01:05.700
+Since we're okay misdiagnosing some patients
+
+48
+00:01:03.549 --> 00:01:05.700
+因为我们可以将某人误诊为生病人士
+
+49
+00:01:05.700 --> 00:01:08.325
+只要找到所有生病人士即可
+
+50
+00:01:05.700 --> 00:01:08.325
+as sick as long as we find all the sick people.
+
+51
+00:01:08.325 --> 00:01:09.689
+另一方面
+
+52
+00:01:08.325 --> 00:01:09.689
+The email model on the other hand,
+
+53
+00:01:09.689 --> 00:01:12.299
+is okay with false negatives but not with false positives,
+
+54
+00:01:09.689 --> 00:01:12.299
+邮件模型可以接受假阴性 但不能接受假阳性
+
+55
+00:01:12.299 --> 00:01:15.649
+因为我们不需要找到所有的垃圾邮件
+
+56
+00:01:12.299 --> 00:01:15.649
+since we don't necessarily need to find all the spam emails.
+
+57
+00:01:15.650 --> 00:01:17.205
+但有一定可以肯定的是
+
+58
+00:01:15.650 --> 00:01:17.205
+But one thing is for sure,
+
+59
+00:01:17.204 --> 00:01:20.635
+that if we do label something as spam, it better be spam.
+
+60
+00:01:17.204 --> 00:01:20.635
+如果将某个邮件标记为垃圾邮件 则最好是垃圾邮件
+
+61
+00:01:20.635 --> 00:01:24.090
+我们将介绍两种指标 精度和召回率
+
+62
+00:01:20.635 --> 00:01:24.090
+For this, we introduce use two metrics, precision and recall.
+
+63
+00:01:24.090 --> 00:01:27.795
+They will measure the exact things that we want namely,
+
+64
+00:01:24.090 --> 00:01:27.795
+它们将能够衡量我们想衡量的内容
+
+65
+00:01:27.795 --> 00:01:30.765
+the medical model needs to be a high-recall model,
+
+66
+00:01:27.795 --> 00:01:30.765
+即医疗模型需要是高召回率模型
+
+67
+00:01:30.765 --> 00:01:34.200
+and the email model needs to be a high-precision model.
+
+68
+00:01:30.765 --> 00:01:34.200
+电子邮件模型需要是高精度模型
+
+69
+00:01:34.200 --> 00:01:38.000
+We'll talk about them more in detail in the next couple of videos.
+
+70
+00:01:34.200 --> 00:01:38.000
+我们将在接下来的几个视频中详细讲解这两个概念
+
