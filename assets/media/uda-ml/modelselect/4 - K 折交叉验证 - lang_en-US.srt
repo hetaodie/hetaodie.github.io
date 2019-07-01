@@ -1,0 +1,114 @@
+1
+00:00:00,120 --> 00:00:03,550
+As the last thing, we'll learn a very
+useful method to recycle our data
+
+2
+00:00:03,549 --> 00:00:06,279
+called k-fold cross validation.
+
+3
+00:00:06,280 --> 00:00:10,080
+As we have learned, testing is done by
+separating our data into a training and
+
+4
+00:00:10,080 --> 00:00:11,300
+a testing set.
+
+5
+00:00:11,300 --> 00:00:14,679
+But this is not always ideal as we seem
+to be throwing away some data that
+
+6
+00:00:14,679 --> 00:00:17,259
+could be useful for
+training our algorithm.
+
+7
+00:00:17,260 --> 00:00:20,070
+Is there anything we can do
+to not throw away this data?
+
+8
+00:00:20,070 --> 00:00:22,089
+But at the same time not cheat?
+
+9
+00:00:22,089 --> 00:00:23,289
+Well here's the solution, and
+
+10
+00:00:23,289 --> 00:00:25,809
+this is when K Fold Cross Validation
+comes in to play.
+
+11
+00:00:26,850 --> 00:00:30,850
+What we do with K Fold Cross Validation
+is to break our data in to K buckets.
+
+12
+00:00:30,850 --> 00:00:32,859
+In this case, K is four.
+
+13
+00:00:32,859 --> 00:00:35,979
+Then we just train our model K times.
+
+14
+00:00:35,979 --> 00:00:39,619
+Each time using a different
+bucket as our testing set and
+
+15
+00:00:39,619 --> 00:00:43,030
+the remaining points
+as our training set.
+
+16
+00:00:43,030 --> 00:00:46,520
+Then we average the results
+to get a final model.
+
+17
+00:00:46,520 --> 00:00:49,280
+The command to do this in
+sklearn is very simple.
+
+18
+00:00:49,280 --> 00:00:52,420
+All we have to do is
+create a KFold object
+
+19
+00:00:52,420 --> 00:00:56,469
+where the parameters are the size of the
+data and the size of the testing set.
+
+20
+00:00:56,469 --> 00:01:00,649
+It is always recommended to randomize
+our data to remove any hint of a bias.
+
+21
+00:01:00,649 --> 00:01:02,850
+Here we are still splitting
+our data into buckets,
+
+22
+00:01:02,850 --> 00:01:05,900
+except these are chosen
+randomly instead of in order.
+
+23
+00:01:05,900 --> 00:01:08,760
+Randomizing is also easily
+done in sklearn by setting
+
+24
+00:01:08,760 --> 00:01:12,980
+the shuffle parameter to true when
+we initialize our KFold object.
+
