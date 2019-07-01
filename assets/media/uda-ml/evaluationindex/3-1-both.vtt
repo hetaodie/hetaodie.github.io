@@ -1,0 +1,114 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.420
+So let's see. The true positives are the points that
+
+2
+00:00:00.400 --> 00:00:01.439
+我们来看一下
+
+3
+00:00:01.439 --> 00:00:04.439
+真阳性是实际为阳性
+
+4
+00:00:03.420 --> 00:00:07.140
+are positive and the model correctly labels as positive.
+
+5
+00:00:04.440 --> 00:00:07.150
+且模型正确标记为阳性的点
+
+6
+00:00:07.140 --> 00:00:09.570
+These are the six blue points over here.
+
+7
+00:00:07.150 --> 00:00:09.890
+它们是这里的六个蓝色点
+
+8
+00:00:09.570 --> 00:00:11.880
+The true negatives are the points that are
+
+9
+00:00:09.890 --> 00:00:12.870
+真阴性是实际为阴性
+
+10
+00:00:11.880 --> 00:00:15.155
+negative and the model correctly labels as negative.
+
+11
+00:00:12.869 --> 00:00:15.160
+且模型阳性确标记为阴性的点
+
+12
+00:00:15.155 --> 00:00:18.650
+These are the five negative red points over here.
+
+13
+00:00:15.160 --> 00:00:17.803
+它们是这里的五个阴性的红色点
+
+14
+00:00:17.803 --> 00:00:20.996
+假阳性是实际为阴性
+
+15
+00:00:18.650 --> 00:00:20.970
+The false positives are the points that are negative
+
+16
+00:00:20.970 --> 00:00:23.970
+but the model incorrectly labels as positive.
+
+17
+00:00:20.996 --> 00:00:23.960
+但模型错误标记为阳性的点
+
+18
+00:00:23.960 --> 00:00:26.230
+它们是这里的两个红点
+
+19
+00:00:23.970 --> 00:00:26.220
+These are these two red points over here.
+
+20
+00:00:26.220 --> 00:00:29.340
+And finally, the false negatives are the points that
+
+21
+00:00:26.230 --> 00:00:30.271
+最后 假阴性是实际为阳性
+
+22
+00:00:29.340 --> 00:00:33.195
+are positive but the model incorrectly labels as negative.
+
+23
+00:00:30.271 --> 00:00:32.475
+但模型标记为阴性的点
+
+24
+00:00:32.475 --> 00:00:35.939
+就是这里这个蓝色点
+
+25
+00:00:33.195 --> 00:00:35.930
+That's just this blue point over here.
+
+26
+00:00:35.930 --> 00:00:38.130
+So there we go. That's the confusion matrix.
+
+27
+00:00:35.939 --> 00:00:36.960
+就这样
+
+28
+00:00:36.960 --> 00:00:38.160
+这就是混淆矩阵
+
