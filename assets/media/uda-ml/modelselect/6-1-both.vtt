@@ -1,0 +1,402 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.560
+So here's a summary of what we do in machine learning.
+
+2
+00:00:00.000 --> 00:00:02.560
+下面总结下机器学习的过程
+
+3
+00:00:02.560 --> 00:00:05.580
+首先用训练数据训练一堆模型
+
+4
+00:00:02.560 --> 00:00:05.580
+First, we train a bunch of models with our training data.
+
+5
+00:00:05.580 --> 00:00:09.589
+然后使用交叉验证数据挑选最佳模型
+
+6
+00:00:05.580 --> 00:00:09.589
+Then, we use a cross-validation data to pick the best of these models.
+
+7
+00:00:09.589 --> 00:00:13.144
+And finally, we test it with the testing data to make sure our model is good.
+
+8
+00:00:09.589 --> 00:00:13.144
+最后 使用测试数据测试模型是否很好
+
+9
+00:00:13.144 --> 00:00:16.239
+下面举个训练逻辑回归模型的例子
+
+10
+00:00:13.144 --> 00:00:16.239
+So here's an example of training a logistic regression model.
+
+11
+00:00:16.239 --> 00:00:18.274
+Let's say, we have four candidates,
+
+12
+00:00:16.239 --> 00:00:18.274
+假设有四个模型
+
+13
+00:00:18.274 --> 00:00:19.964
+第一个是一次模型
+
+14
+00:00:18.274 --> 00:00:19.964
+we train a model of degree one,
+
+15
+00:00:19.964 --> 00:00:24.425
+which is a line and one of degree two, three, and four.
+
+16
+00:00:19.964 --> 00:00:24.425
+是一条直线 然后是二次 三次 四次
+
+17
+00:00:24.425 --> 00:00:26.190
+我们使用训练数据训练它们
+
+18
+00:00:24.425 --> 00:00:26.190
+We train them with the training data to find
+
+19
+00:00:26.190 --> 00:00:29.130
+并算出多项式的斜率和系数等等
+
+20
+00:00:26.190 --> 00:00:29.130
+the slope and the coefficients of the polynomials et cetera.
+
+21
+00:00:29.129 --> 00:00:34.564
+然后使用交叉验证数据计算所有这些模型的 F1 得分
+
+22
+00:00:29.129 --> 00:00:34.564
+Then we use the cross-validation data to calculate say the F1 score of all these models.
+
+23
+00:00:34.564 --> 00:00:38.259
+然后选择 F1 得分最高的模型
+
+24
+00:00:34.564 --> 00:00:38.259
+And then, we pick the model with the highest F1 score.
+
+25
+00:00:38.259 --> 00:00:42.570
+最后 使用测试数据确保模型效果很好
+
+26
+00:00:38.259 --> 00:00:42.570
+As a final step, we use our testing data to make sure our model is good.
+
+27
+00:00:42.570 --> 00:00:46.259
+So the parameters of the algorithm in this case are the coefficients
+
+28
+00:00:42.570 --> 00:00:46.259
+因此这里的算法参数就是多项式的系数
+
+29
+00:00:46.259 --> 00:00:50.189
+但是多项式的次数就像物性参数
+
+30
+00:00:46.259 --> 00:00:50.189
+of the polynomial but the degree of the polynomial is like a matter parameter.
+
+31
+00:00:50.189 --> 00:00:52.859
+我们称之为超参数
+
+32
+00:00:50.189 --> 00:00:52.859
+We call those hyper parameters.
+
+33
+00:00:52.859 --> 00:00:54.089
+我们再看一个示例
+
+34
+00:00:52.859 --> 00:00:54.089
+Let's see another example. Let's say,
+
+35
+00:00:54.090 --> 00:00:55.580
+we're training a decision tree.
+
+36
+00:00:54.090 --> 00:00:55.580
+假设我们要训练一个决策树
+
+37
+00:00:55.579 --> 00:00:57.390
+超参数是什么？
+
+38
+00:00:55.579 --> 00:00:57.390
+So what are the hyper parameters?
+
+39
+00:00:57.390 --> 00:01:00.615
+其中一个是深度 假设深度是 1
+
+40
+00:00:57.390 --> 00:01:00.615
+Well, one of them is depth. Let's say we have one of depth one,
+
+41
+00:01:00.615 --> 00:01:02.825
+2 3 和 4
+
+42
+00:01:00.615 --> 00:01:02.825
+two, three, and four.
+
+43
+00:01:02.825 --> 00:01:06.765
+我们使用训练数据训练深度为 1 2 3 和 4 的
+
+44
+00:01:02.825 --> 00:01:06.765
+We use the training data to train a bunch of trees of depth one,
+
+45
+00:01:06.765 --> 00:01:09.420
+决策树
+
+46
+00:01:06.765 --> 00:01:09.420
+two, three, and four.
+
+47
+00:01:09.420 --> 00:01:13.519
+参数是树叶和节点等的阈值
+
+48
+00:01:09.420 --> 00:01:13.519
+So the parameters here are the thresholds in the leaves and the nodes et cetera.
+
+49
+00:01:13.519 --> 00:01:16.259
+然后使用交叉验证集
+
+50
+00:01:13.519 --> 00:01:16.259
+Then, we take the F1 score and calculate it on
+
+51
+00:01:16.260 --> 00:01:19.805
+the cross-validation set on each of these models.
+
+52
+00:01:16.260 --> 00:01:19.805
+计算每个模型的 F1 得分
+
+53
+00:01:19.805 --> 00:01:22.235
+并选出效果最好的模型
+
+54
+00:01:19.805 --> 00:01:22.235
+Then we pick the one that did the best.
+
+55
+00:01:22.234 --> 00:01:23.834
+And finally, with the testing set,
+
+56
+00:01:22.234 --> 00:01:23.834
+最后使用测试集
+
+57
+00:01:23.834 --> 00:01:25.539
+we make sure this model is good.
+
+58
+00:01:23.834 --> 00:01:25.539
+确保该模型很好
+
+59
+00:01:25.540 --> 00:01:28.475
+So what happens if we have more than one hyper parameter?
+
+60
+00:01:25.540 --> 00:01:28.475
+如果有多个超参数呢？
+
+61
+00:01:28.474 --> 00:01:31.069
+这里只有一个超参数 是深度
+
+62
+00:01:28.474 --> 00:01:31.069
+Here we only have one which is depth.
+
+63
+00:01:31.069 --> 00:01:33.479
+如果训练支持向量机呢？
+
+64
+00:01:31.069 --> 00:01:33.479
+What if we're training a support vector machine?
+
+65
+00:01:33.480 --> 00:01:35.820
+在支持向量机中 我们有一些超参数
+
+66
+00:01:33.480 --> 00:01:35.820
+So in an SVM, we as we have some hyper parameters like
+
+67
+00:01:35.819 --> 00:01:38.759
+the kernel which can be linear or polynomial, for example.
+
+68
+00:01:35.819 --> 00:01:38.759
+例如内核 可以是线性或多项式
+
+69
+00:01:38.760 --> 00:01:40.620
+And we also have the gamma parameter,
+
+70
+00:01:38.760 --> 00:01:40.620
+还有 γ 参数
+
+71
+00:01:40.620 --> 00:01:43.430
+which if it's small, gives a solutions like this.
+
+72
+00:01:40.620 --> 00:01:43.430
+如果它很小 则结果是这样的
+
+73
+00:01:43.430 --> 00:01:44.670
+And if it's large,
+
+74
+00:01:43.430 --> 00:01:44.670
+如果很大
+
+75
+00:01:44.670 --> 00:01:46.750
+则结果是这样的
+
+76
+00:01:44.670 --> 00:01:46.750
+It gives a solution like that.
+
+77
+00:01:46.750 --> 00:01:51.135
+如何选择最佳内核和 γ 组合？
+
+78
+00:01:46.750 --> 00:01:51.135
+So how do we pick the best combination between kernel and gamma?
+
+79
+00:01:51.135 --> 00:01:55.365
+很简单 我们使用网格搜索法
+
+80
+00:01:51.135 --> 00:01:55.365
+Well, very simple, it's called grid search and it literally just says
+
+81
+00:01:55.364 --> 00:01:58.809
+也就是制作一个表格并列出所有可能的组合 然后选择最佳的组合
+
+82
+00:01:55.364 --> 00:01:58.809
+make a table with all the possibilities and pick the best one.
+
+83
+00:01:58.810 --> 00:02:02.469
+这里的列是可以使用的不同内核 包括线性或多项式
+
+84
+00:01:58.810 --> 00:02:02.469
+Our columns here are the different kernels we can use, linear and polynomial.
+
+85
+00:02:02.469 --> 00:02:05.189
+行是不同的 γ 值
+
+86
+00:02:02.469 --> 00:02:05.189
+And the rows are the different values of gamma.
+
+87
+00:02:05.189 --> 00:02:09.599
+It's recommended to take a few values that grow exponentially such as 0.1,
+
+88
+00:02:05.189 --> 00:02:09.599
+建议设置几个按指数级增长的值 例如 0.1
+
+89
+00:02:09.599 --> 00:02:13.185
+1 10 100 1000 等等
+
+90
+00:02:09.599 --> 00:02:13.185
+1, 10, 100, 1000, etc.
+
+91
+00:02:13.185 --> 00:02:15.870
+So again, we use our training set to train a bunch of
+
+92
+00:02:13.185 --> 00:02:15.870
+我们使用训练集训练多个
+
+93
+00:02:15.870 --> 00:02:19.509
+linear models and polynomial models with different values of gamma.
+
+94
+00:02:15.870 --> 00:02:19.509
+具有不同 γ 值的线性模型和多项式模型
+
+95
+00:02:19.509 --> 00:02:24.269
+Then we use the cross validation set to calculate the F1 score on all these models.
+
+96
+00:02:19.509 --> 00:02:24.269
+然后使用交叉验证集计算这些模型的 F1 得分
+
+97
+00:02:24.270 --> 00:02:28.305
+And then we simply pick the one with the highest F1 score.
+
+98
+00:02:24.270 --> 00:02:28.305
+并选择 F1 得分最高的模型
+
+99
+00:02:28.305 --> 00:02:33.420
+And finally, we use a testing set to make sure that what we did was good.
+
+100
+00:02:28.305 --> 00:02:33.420
+最后 使用测试集检测所选的模型效果是否很好
+

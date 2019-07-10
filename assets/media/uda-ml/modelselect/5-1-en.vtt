@@ -1,0 +1,374 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.915
+In this section, we'll learn a way to tell overfitting,
+
+2
+00:00:02.915 --> 00:00:04.735
+under-fitting and a good model.
+
+3
+00:00:04.735 --> 00:00:06.750
+So, here we have our data three times.
+
+4
+00:00:06.750 --> 00:00:10.589
+Our data seems to be well split by a quadratic equation of degree two.
+
+5
+00:00:10.589 --> 00:00:13.091
+So, we're going to try and fit three models.
+
+6
+00:00:13.092 --> 00:00:15.690
+The first one, a linear or degree one model,
+
+7
+00:00:15.689 --> 00:00:21.509
+which doesn't do a very good job since it under fits so it's a high bias model.
+
+8
+00:00:21.510 --> 00:00:26.295
+The second one, a quadratic model of degree two, which is just right.
+
+9
+00:00:26.295 --> 00:00:29.460
+And the third one, a higher degree polynomial of degree
+
+10
+00:00:29.460 --> 00:00:33.910
+six which over fits so it's a high variance model.
+
+11
+00:00:33.909 --> 00:00:37.539
+Now, we'll draw some curves that will be able to tell these models apart.
+
+12
+00:00:37.539 --> 00:00:40.890
+Let's start here with a high bias linear model.
+
+13
+00:00:40.890 --> 00:00:42.299
+We're going to start training the model with
+
+14
+00:00:42.299 --> 00:00:45.629
+very few points and increase the number of points gradually.
+
+15
+00:00:45.630 --> 00:00:48.675
+If we train this model with say four points,
+
+16
+00:00:48.674 --> 00:00:52.679
+we can do a pretty good job fitting the training set.
+
+17
+00:00:52.679 --> 00:00:56.542
+So we have a tiny training error which we'll plot in the graph in the right,
+
+18
+00:00:56.542 --> 00:00:59.240
+but once we evaluate in the cross-validation data,
+
+19
+00:00:59.240 --> 00:01:02.520
+well, since we have trained them all on only four points,
+
+20
+00:01:02.520 --> 00:01:07.040
+it cannot be a very good model so it probably has a pretty high cross validation error.
+
+21
+00:01:07.040 --> 00:01:09.045
+We won't show the cross validation set,
+
+22
+00:01:09.045 --> 00:01:12.725
+but you can pretty much imagine any other random subset of this data.
+
+23
+00:01:12.724 --> 00:01:15.164
+We plot the cross violation error over here,
+
+24
+00:01:15.165 --> 00:01:19.185
+and now we increase to eight points and we train the linear model again.
+
+25
+00:01:19.185 --> 00:01:23.575
+The training error may increase a bit since it's harder to fit eight points than four,
+
+26
+00:01:23.575 --> 00:01:26.894
+but since we have a slightly better model and we've used more data to train it,
+
+27
+00:01:26.894 --> 00:01:30.257
+then maybe the cross validation error has decreased a bit
+
+28
+00:01:30.257 --> 00:01:34.250
+but not much since it's a linear model trying to fit quadratic data.
+
+29
+00:01:34.250 --> 00:01:38.280
+Here are the training and cross validation errors in the graph.
+
+30
+00:01:38.280 --> 00:01:41.480
+Now, we increase to 12 points and we train the model again.
+
+31
+00:01:41.480 --> 00:01:46.240
+Once more, the training error may increase a bit since there's more training data to fit,
+
+32
+00:01:46.239 --> 00:01:48.780
+but the cross validation error will also decrease a
+
+33
+00:01:48.780 --> 00:01:52.019
+bit since we have a better model to train with more data,
+
+34
+00:01:52.019 --> 00:01:54.829
+but it still won't decrease by much.
+
+35
+00:01:54.829 --> 00:01:57.239
+It seems that as we increase the number of points more and more,
+
+36
+00:01:57.239 --> 00:01:59.879
+the training error will keep increasing and the testing error will
+
+37
+00:01:59.879 --> 00:02:02.859
+keep decreasing so if we draw these two curves,
+
+38
+00:02:02.859 --> 00:02:05.250
+they'll get closer and closer to each other,
+
+39
+00:02:05.250 --> 00:02:07.319
+and maybe converge at some point.
+
+40
+00:02:07.319 --> 00:02:09.900
+The point they converge should be high anyway since we don't
+
+41
+00:02:09.900 --> 00:02:14.069
+expect these models to have small error as they are under-fitting.
+
+42
+00:02:14.069 --> 00:02:15.509
+Now, let's do the exact same thing with
+
+43
+00:02:15.509 --> 00:02:18.929
+the quadratic model so let's remember that this is the good model.
+
+44
+00:02:18.930 --> 00:02:21.180
+Training with four points, just as before,
+
+45
+00:02:21.180 --> 00:02:24.939
+we can do pretty well in the training set so we have a small training error,
+
+46
+00:02:24.939 --> 00:02:27.704
+but since we trained the model in very few points,
+
+47
+00:02:27.705 --> 00:02:30.180
+we probably didn't do very well in the cross validation
+
+48
+00:02:30.180 --> 00:02:33.540
+set so our cross validation error is large.
+
+49
+00:02:33.539 --> 00:02:36.419
+Now, if we increased to eight points, again,
+
+50
+00:02:36.419 --> 00:02:40.379
+our training error increases since we have more points to fit,
+
+51
+00:02:40.379 --> 00:02:44.324
+but since our model knows more as it's trained on more points,
+
+52
+00:02:44.324 --> 00:02:49.049
+then the cross validation error has decreased and if we go to 12 points,
+
+53
+00:02:49.050 --> 00:02:51.005
+the same thing happens again.
+
+54
+00:02:51.004 --> 00:02:55.394
+Training error increases, cross validation error decreases.
+
+55
+00:02:55.395 --> 00:03:01.890
+So, as before, these curves get closer and closer to each other except,
+
+56
+00:03:01.889 --> 00:03:04.439
+now they convert to a lower point since the model is
+
+57
+00:03:04.439 --> 00:03:07.146
+good and we expect expect it to have small error.
+
+58
+00:03:07.146 --> 00:03:10.465
+Finally, let's do the same thing with the degree six model.
+
+59
+00:03:10.465 --> 00:03:13.300
+Let's remember that this is the model that over fits.
+
+60
+00:03:13.300 --> 00:03:15.105
+Let's train with four points.
+
+61
+00:03:15.104 --> 00:03:19.094
+Again, we can fit four points very easily so we have a small training error.
+
+62
+00:03:19.094 --> 00:03:22.090
+And again, as we don't have very much information for a point six model,
+
+63
+00:03:22.090 --> 00:03:24.789
+probably didn't do very well in the cross validation set,
+
+64
+00:03:24.789 --> 00:03:27.409
+so we have a large cross validation error.
+
+65
+00:03:27.409 --> 00:03:30.155
+Now, if we increase the training set to eight points,
+
+66
+00:03:30.155 --> 00:03:32.460
+we have a slightly large training error and
+
+67
+00:03:32.460 --> 00:03:36.620
+a slightly smaller testing error just like before.
+
+68
+00:03:36.620 --> 00:03:40.305
+Now, if we increase the training set to eight points,
+
+69
+00:03:40.305 --> 00:03:43.560
+then we have a slightly larger training error and
+
+70
+00:03:43.560 --> 00:03:46.620
+a slightly smaller cross validation error and
+
+71
+00:03:46.620 --> 00:03:50.319
+this happens again for 12 points as we've seen before,
+
+72
+00:03:50.319 --> 00:03:52.844
+but now, something interesting happens.
+
+73
+00:03:52.844 --> 00:03:55.169
+The training error will never grow too large
+
+74
+00:03:55.169 --> 00:03:57.719
+since models that overfit tend to do very well in
+
+75
+00:03:57.719 --> 00:04:00.319
+the training set as they can fit it very well
+
+76
+00:04:00.319 --> 00:04:03.224
+and the cross validation error will never get too low,
+
+77
+00:04:03.224 --> 00:04:08.609
+since as we've seen models that overfit do not do very well in the cross validation set.
+
+78
+00:04:08.610 --> 00:04:10.305
+As we increase the number of points,
+
+79
+00:04:10.305 --> 00:04:11.859
+these two curves will get closer,
+
+80
+00:04:11.859 --> 00:04:14.070
+but will not converge to the same point.
+
+81
+00:04:14.069 --> 00:04:16.800
+There will always be a distance between them.
+
+82
+00:04:16.800 --> 00:04:19.395
+In summary, here we have three models: the high bias,
+
+83
+00:04:19.394 --> 00:04:21.365
+the good one and the high variance.
+
+84
+00:04:21.365 --> 00:04:23.670
+In the high bias or underfitting model,
+
+85
+00:04:23.670 --> 00:04:27.330
+the curves get close to each other and converge to a high point.
+
+86
+00:04:27.329 --> 00:04:29.490
+In the good model, the curves again,
+
+87
+00:04:29.490 --> 00:04:32.444
+go close to each other and converge to a low point,
+
+88
+00:04:32.444 --> 00:04:34.685
+and in the high variance or overfitting model,
+
+89
+00:04:34.685 --> 00:04:37.439
+the curves do not get close to each other.
+
+90
+00:04:37.439 --> 00:04:40.913
+The training one stays low and the cross validation one stays high.
+
+91
+00:04:40.913 --> 00:04:43.215
+So this is a way to tell between under-fitting,
+
+92
+00:04:43.214 --> 00:04:45.739
+overfitting, and just right.
+
+93
+00:04:45.740 --> 00:04:49.660
+We just look at the learning curves and see what shape they form.
+

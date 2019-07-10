@@ -1,0 +1,212 @@
+﻿WEBVTT
+
+1
+00:00:00.120 --> 00:00:03.550
+As the last thing, we'll learn a very
+useful method to recycle our data
+
+2
+00:00:00.120 --> 00:00:03.550
+最后 我们学习一个非常有用的循环利用数据的方法
+
+3
+00:00:03.549 --> 00:00:06.279
+称为 k 折交叉验证
+
+4
+00:00:03.549 --> 00:00:06.279
+called k-fold cross validation.
+
+5
+00:00:06.280 --> 00:00:10.080
+如之前所学 我们将数据分为训练集和测试集
+
+6
+00:00:06.280 --> 00:00:10.080
+As we have learned, testing is done by
+separating our data into a training and
+
+7
+00:00:10.080 --> 00:00:11.300
+a testing set.
+
+8
+00:00:10.080 --> 00:00:11.300
+来进行测试
+
+9
+00:00:11.300 --> 00:00:14.679
+但这并不总是理想的做法 因为我们似乎会扔掉一些
+
+10
+00:00:11.300 --> 00:00:14.679
+But this is not always ideal as we seem
+to be throwing away some data that
+
+11
+00:00:14.679 --> 00:00:17.259
+could be useful for
+training our algorithm.
+
+12
+00:00:14.679 --> 00:00:17.259
+对训练我们的算法有用的数据
+
+13
+00:00:17.260 --> 00:00:20.070
+那么有办法可以让我们不用扔掉这些数据
+
+14
+00:00:17.260 --> 00:00:20.070
+Is there anything we can do
+to not throw away this data?
+
+15
+00:00:20.070 --> 00:00:22.089
+而同时又不用作弊吗？
+
+16
+00:00:20.070 --> 00:00:22.089
+But at the same time not cheat?
+
+17
+00:00:22.089 --> 00:00:23.289
+这里有一个解决方法
+
+18
+00:00:22.089 --> 00:00:23.289
+Well here's the solution, and
+
+19
+00:00:23.289 --> 00:00:25.809
+this is when K Fold Cross Validation
+comes in to play.
+
+20
+00:00:23.289 --> 00:00:25.809
+也是 K 折交叉验证派上用场的时候
+
+21
+00:00:26.850 --> 00:00:30.850
+在 K 折交叉验证中 我们将数据分为 K 个包
+
+22
+00:00:26.850 --> 00:00:30.850
+What we do with K Fold Cross Validation
+is to break our data in to K buckets.
+
+23
+00:00:30.850 --> 00:00:32.859
+在这个例子中 K 等于 4
+
+24
+00:00:30.850 --> 00:00:32.859
+In this case, K is four.
+
+25
+00:00:32.859 --> 00:00:35.979
+然后我们将模型培训 K 次
+
+26
+00:00:32.859 --> 00:00:35.979
+Then we just train our model K times.
+
+27
+00:00:35.979 --> 00:00:39.619
+每次将不同的包用作测试集
+
+28
+00:00:35.979 --> 00:00:39.619
+Each time using a different
+bucket as our testing set and
+
+29
+00:00:39.619 --> 00:00:43.030
+而剩下的点作为训练集
+
+30
+00:00:39.619 --> 00:00:43.030
+the remaining points
+as our training set.
+
+31
+00:00:43.030 --> 00:00:46.520
+然后我们求结果的平均值 来得到最终模型
+
+32
+00:00:43.030 --> 00:00:46.520
+Then we average the results
+to get a final model.
+
+33
+00:00:46.520 --> 00:00:49.280
+The command to do this in
+sklearn is very simple.
+
+34
+00:00:46.520 --> 00:00:49.280
+在 sklearn 中执行此操作的命令非常简单
+
+35
+00:00:49.280 --> 00:00:52.420
+All we have to do is
+create a KFold object
+
+36
+00:00:49.280 --> 00:00:52.420
+我们要做的就是创建一个 KFold 对象
+
+37
+00:00:52.420 --> 00:00:56.469
+where the parameters are the size of the
+data and the size of the testing set.
+
+38
+00:00:52.420 --> 00:00:56.469
+其中参数为数据的大小和测试集的大小
+
+39
+00:00:56.469 --> 00:01:00.649
+It is always recommended to randomize
+our data to remove any hint of a bias.
+
+40
+00:00:56.469 --> 00:01:00.649
+始终建议随机化我们的数据 以消除任何可能的偏差
+
+41
+00:01:00.649 --> 00:01:02.850
+Here we are still splitting
+our data into buckets,
+
+42
+00:01:00.649 --> 00:01:02.850
+这里我们仍然将数据拆分为包
+
+43
+00:01:02.850 --> 00:01:05.900
+except these are chosen
+randomly instead of in order.
+
+44
+00:01:02.850 --> 00:01:05.900
+但是是随机而非顺序选择
+
+45
+00:01:05.900 --> 00:01:08.760
+在 sklearn 中进行随机化也很容易 只需
+
+46
+00:01:05.900 --> 00:01:08.760
+Randomizing is also easily
+done in sklearn by setting
+
+47
+00:01:08.760 --> 00:01:12.980
+the shuffle parameter to true when
+we initialize our KFold object.
+
+48
+00:01:08.760 --> 00:01:12.980
+在初始化 KFold 对象时将 shuffle 参数设为 true 即可
+
