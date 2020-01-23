@@ -1,0 +1,184 @@
+1
+00:00:00,000 --> 00:00:03,779
+So here's another way to deal with non-linear data like this.
+
+2
+00:00:03,779 --> 00:00:06,240
+What we do is we use a piecewise linear function,
+
+3
+00:00:06,240 --> 00:00:09,919
+which is really just a combination of lines that will fit the data well.
+
+4
+00:00:09,919 --> 00:00:14,219
+And how do we do this? Well, we can use our good old friends, the neural networks.
+
+5
+00:00:14,220 --> 00:00:16,530
+So, here's are an example of a neural network used for
+
+6
+00:00:16,530 --> 00:00:20,054
+classification with n inputs and some bias units,
+
+7
+00:00:20,054 --> 00:00:23,429
+and a bunch of ReLu activation functions.
+
+8
+00:00:23,429 --> 00:00:25,344
+And at the end, you can see a sigmoid function,
+
+9
+00:00:25,344 --> 00:00:28,349
+and this is because we're using the neural network for classification, so,
+
+10
+00:00:28,350 --> 00:00:32,344
+we want the final answer to be a number from 0-1.
+
+11
+00:00:32,344 --> 00:00:34,295
+But what if we don't need this neural network for
+
+12
+00:00:34,295 --> 00:00:36,480
+classification instead we need it for regression?
+
+13
+00:00:36,479 --> 00:00:38,694
+So we don't want it to return a number from 0-1.
+
+14
+00:00:38,695 --> 00:00:41,030
+Instead, we want it to return any number.
+
+15
+00:00:41,030 --> 00:00:43,195
+Well, let me show you a very simple trick.
+
+16
+00:00:43,195 --> 00:00:46,230
+All you have to do is to actually remove the final sigmoid unit,
+
+17
+00:00:46,229 --> 00:00:49,709
+and just return the value you had before.
+
+18
+00:00:49,710 --> 00:00:55,405
+This value is the weighted sum of the outputs of the previous layer, and that's it.
+
+19
+00:00:55,405 --> 00:00:56,770
+And in order to train this network,
+
+20
+00:00:56,770 --> 00:00:58,905
+we would use a different error or loss function.
+
+21
+00:00:58,905 --> 00:01:01,995
+It would just be as we've seen in the section given by the mean squared
+
+22
+00:01:01,994 --> 00:01:06,469
+error function or the square of the difference between the label and the prediction,
+
+23
+00:01:06,469 --> 00:01:09,287
+that is (y - y-hat) squared.
+
+24
+00:01:09,287 --> 00:01:12,660
+Of course, we'd be adding it or averaging over all the points.
+
+25
+00:01:12,659 --> 00:01:15,689
+But mainly, if we use this function and combine with the back propagation,
+
+26
+00:01:15,689 --> 00:01:19,894
+we'll be able to train our neural network just as we did for classification.
+
+27
+00:01:19,894 --> 00:01:22,667
+So, this is how I picture regression of networks in my head.
+
+28
+00:01:22,667 --> 00:01:25,530
+On the hidden layer, we'll have a bunch of linear functions and the inputs,
+
+29
+00:01:25,530 --> 00:01:28,349
+which are X and the biased unit 1,
+
+30
+00:01:28,349 --> 00:01:31,079
+and there's linear functions are simply lines.
+
+31
+00:01:31,079 --> 00:01:32,320
+Then we combine them with the ReLu one.
+
+32
+00:01:32,320 --> 00:01:35,069
+And the way to combine them with the ReLu is by turning the part of
+
+33
+00:01:35,069 --> 00:01:39,169
+the line that is negative or underneath the X axis into zero.
+
+34
+00:01:39,170 --> 00:01:40,560
+Now, the next layer just takes
+
+35
+00:01:40,560 --> 00:01:44,165
+linear combinations of these linear functions combined with ReLus.
+
+36
+00:01:44,165 --> 00:01:46,109
+This is how these linear combinations look,
+
+37
+00:01:46,109 --> 00:01:48,179
+they look like piecewise linear functions.
+
+38
+00:01:48,180 --> 00:01:51,633
+We can also use other activation functions here such as sigmoid or TanH.
+
+39
+00:01:51,632 --> 00:01:53,064
+We would still train these networks using
+
+40
+00:01:53,064 --> 00:01:55,709
+back propagation to minimize the mean square error.
+
+41
+00:01:55,709 --> 00:01:58,199
+And these networks would look like this when you're combining
+
+42
+00:01:58,200 --> 00:02:02,549
+linear functions with sigmoids and then taking linear combinations of those.
+
+43
+00:02:02,549 --> 00:02:04,560
+So, in general, this is fantastic news.
+
+44
+00:02:04,560 --> 00:02:07,695
+This means that we can use neural networks not just for classification,
+
+45
+00:02:07,694 --> 00:02:08,930
+but also for regression,
+
+46
+00:02:08,930 --> 00:02:11,530
+just by removing the final activation function
+

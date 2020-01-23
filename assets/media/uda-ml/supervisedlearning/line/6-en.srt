@@ -1,0 +1,188 @@
+1
+00:00:00,000 --> 00:00:03,745
+So, here is another trick that will help us move a point closer to a line,
+
+2
+00:00:03,745 --> 00:00:05,754
+and is very similar to the Absolute Trick,
+
+3
+00:00:05,754 --> 00:00:08,144
+but it has a little bit of extra grading.
+
+4
+00:00:08,144 --> 00:00:09,285
+It is based on the premise,
+
+5
+00:00:09,285 --> 00:00:11,580
+if we have a point that is close to a line,
+
+6
+00:00:11,580 --> 00:00:13,484
+then this distance is small,
+
+7
+00:00:13,484 --> 00:00:16,750
+and we want to move the line very little.
+
+8
+00:00:16,750 --> 00:00:19,320
+But if the point is far from the line,
+
+9
+00:00:19,320 --> 00:00:22,980
+then we want to move the line a lot more.
+
+10
+00:00:22,980 --> 00:00:25,140
+The absolute trick that we'll learned previously does not
+
+11
+00:00:25,140 --> 00:00:27,495
+have this property because if we remember,
+
+12
+00:00:27,495 --> 00:00:34,079
+the absolute trick adds alpha to the y-intercept W2 and p times alpha to the slope W1.
+
+13
+00:00:34,079 --> 00:00:36,570
+This has nothing to do with how far the point is from
+
+14
+00:00:36,570 --> 00:00:39,435
+the line since p is just the horizontal distance.
+
+15
+00:00:39,435 --> 00:00:42,265
+So let's just add the vertical distance to this formula.
+
+16
+00:00:42,265 --> 00:00:45,134
+Let's look at this vertical distance between the point and the line.
+
+17
+00:00:45,134 --> 00:00:46,949
+The distance is q minus y,
+
+18
+00:00:46,950 --> 00:00:51,950
+because y is the value of the line and q is the value of the y-coordinate at the point.
+
+19
+00:00:51,950 --> 00:00:53,804
+So what we do here is very simple.
+
+20
+00:00:53,804 --> 00:00:57,030
+We just take this q minus y and multiply it into what we
+
+21
+00:00:57,030 --> 00:01:00,719
+are adding to both the y-intercept and to the slope.
+
+22
+00:01:00,719 --> 00:01:03,619
+This will again make the line go up by a bit and rotate in
+
+23
+00:01:03,619 --> 00:01:07,734
+the direction except that now if the point is far from or close to the line,
+
+24
+00:01:07,734 --> 00:01:10,709
+the amount the line moves will be affected.
+
+25
+00:01:10,709 --> 00:01:14,084
+And here's our new equation with a factor of q minus y.
+
+26
+00:01:14,084 --> 00:01:16,119
+Notice that here, we get something for free.
+
+27
+00:01:16,120 --> 00:01:18,885
+If the point is underneath the line instead of over the line,
+
+28
+00:01:18,885 --> 00:01:21,609
+then q minus y is actually a negative value.
+
+29
+00:01:21,609 --> 00:01:24,980
+And if this is the case, then we're subtracting something from the slope,
+
+30
+00:01:24,980 --> 00:01:29,400
+thus rotating the line in this direction instead still towards the point.
+
+31
+00:01:29,400 --> 00:01:32,020
+So this trick also takes care of points that are under the line
+
+32
+00:01:32,019 --> 00:01:35,435
+and we don't have to have two rules like we had on the absolute trick.
+
+33
+00:01:35,435 --> 00:01:37,820
+We just have one rule for both.
+
+34
+00:01:37,819 --> 00:01:40,179
+And again, let's clarify this with an example.
+
+35
+00:01:40,180 --> 00:01:41,340
+In this example over here,
+
+36
+00:01:41,340 --> 00:01:43,115
+we have the point 5,15.
+
+37
+00:01:43,114 --> 00:01:47,280
+And notice that this distance is going to be two because the line goes to
+
+38
+00:01:47,280 --> 00:01:52,519
+the point 5,13 as two times five plus three, is 13.
+
+39
+00:01:52,519 --> 00:01:53,575
+Now, to change things a bit,
+
+40
+00:01:53,575 --> 00:01:56,280
+we'll use 0.01 as our learning rate.
+
+41
+00:01:56,280 --> 00:02:01,969
+So with the absolute trick, we'd be adding 0.01 to the y-intercept and 0.05 to the slope.
+
+42
+00:02:01,969 --> 00:02:03,870
+But now, as our new trick sets,
+
+43
+00:02:03,870 --> 00:02:08,810
+we multiply the two numbers that we're adding to the slope and to the y-intercept by two,
+
+44
+00:02:08,810 --> 00:02:14,545
+which means we're adding 0.1 to the slope and 0.02 to the y-intercept.
+
+45
+00:02:14,544 --> 00:02:18,369
+So the equation of our new line is Y equals 2.1X plus
+
+46
+00:02:18,370 --> 00:02:22,969
+3.02 and that line is going to be closer to the point.
+
+47
+00:02:22,969 --> 00:02:25,000
+So that's it. That's the Square Trick.
+

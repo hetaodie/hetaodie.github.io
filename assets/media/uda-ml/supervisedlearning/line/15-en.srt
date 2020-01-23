@@ -1,0 +1,176 @@
+1
+00:00:00,000 --> 00:00:02,395
+So, here's an interesting observation.
+
+2
+00:00:02,395 --> 00:00:04,294
+In order to minimize the mean squared error,
+
+3
+00:00:04,294 --> 00:00:07,245
+we do not actually need to use gradient descent or the tricks.
+
+4
+00:00:07,245 --> 00:00:11,019
+We can actually do this in a closed mathematical form. Let me show you.
+
+5
+00:00:11,019 --> 00:00:16,289
+Here's our data, (X1,Y1) all the way to (xm,ym) and in this case m is 5.
+
+6
+00:00:16,289 --> 00:00:20,250
+And the areas of the squares represent our squared error.
+
+7
+00:00:20,250 --> 00:00:23,609
+So, our input is point X1 up to point xm and our labels are Y1 up to ym,
+
+8
+00:00:23,609 --> 00:00:26,076
+and our predictions are of the form,
+
+9
+00:00:26,077 --> 00:00:30,105
+Yi hat equals w_1x_i plus w2, where
+
+10
+00:00:30,105 --> 00:00:34,015
+w_1 is a slope of the line and w_2 is the Y intercept.
+
+11
+00:00:34,015 --> 00:00:37,289
+And the mean squared error is given by this formula over here.
+
+12
+00:00:37,289 --> 00:00:39,839
+Notice that I've written the error as a function of w_1
+
+13
+00:00:39,840 --> 00:00:42,510
+and w_2 since given any w_1 and w_2,
+
+14
+00:00:42,509 --> 00:00:48,099
+we can calculate the predictions and the error based on these values of w_1 and w_2.
+
+15
+00:00:48,100 --> 00:00:49,545
+Now, as we know from calculus,
+
+16
+00:00:49,545 --> 00:00:50,835
+in order to minimize this error,
+
+17
+00:00:50,835 --> 00:00:53,910
+we need to take the derivatives with respect to the two input variables,
+
+18
+00:00:53,909 --> 00:00:57,859
+w_1 and w_2, and set them both equal to zero.
+
+19
+00:00:57,859 --> 00:00:59,060
+We calculate the derivatives,
+
+20
+00:00:59,060 --> 00:01:01,440
+and you can see the full calculation in the instructor notes,
+
+21
+00:01:01,439 --> 00:01:03,494
+and we get these two formulas.
+
+22
+00:01:03,494 --> 00:01:08,700
+And now we just need to solve for w_1 and w_2 for these two equations to be zero.
+
+23
+00:01:08,700 --> 00:01:10,105
+So, what do we have now?
+
+24
+00:01:10,105 --> 00:01:13,320
+We have a system of two equations and two unknowns.
+
+25
+00:01:13,319 --> 00:01:16,369
+We can easily solve this using linear algebra.
+
+26
+00:01:16,370 --> 00:01:17,865
+So, another question is,
+
+27
+00:01:17,864 --> 00:01:19,869
+why don't we do this all the time?
+
+28
+00:01:19,870 --> 00:01:23,040
+Why do we have to go through many gradient descent steps instead of just
+
+29
+00:01:23,040 --> 00:01:26,895
+solving a system of equations and unknowns? Well, think about this.
+
+30
+00:01:26,894 --> 00:01:30,102
+If you didn't have only two dimensions in the input but you have n,
+
+31
+00:01:30,102 --> 00:01:34,304
+then you would have n equations with n unknowns.
+
+32
+00:01:34,305 --> 00:01:38,280
+And solving a system of n equations with n unknowns is very expensive,
+
+33
+00:01:38,280 --> 00:01:39,730
+because if n is big,
+
+34
+00:01:39,730 --> 00:01:41,640
+then at some point of our solution,
+
+35
+00:01:41,640 --> 00:01:43,790
+we have to invert an n by n matrix.
+
+36
+00:01:43,790 --> 00:01:45,840
+Inverting a huge matrix is something that
+
+37
+00:01:45,840 --> 00:01:48,469
+takes a lot of time and a lot of computing power.
+
+38
+00:01:48,469 --> 00:01:50,829
+So, this is simply not feasible.
+
+39
+00:01:50,829 --> 00:01:53,640
+So instead, this is why we use gradient descent.
+
+40
+00:01:53,640 --> 00:01:56,265
+It will not give us the exact answer necessarily,
+
+41
+00:01:56,265 --> 00:01:57,900
+but it will get us pretty close to
+
+42
+00:01:57,900 --> 00:02:02,070
+the best answer which will give us a solution that fits our data pretty well.
+
+43
+00:02:02,069 --> 00:02:04,049
+But if we had infinite computing power,
+
+44
+00:02:04,049 --> 00:02:07,129
+we would just solve the system and solve linear regression in one
+

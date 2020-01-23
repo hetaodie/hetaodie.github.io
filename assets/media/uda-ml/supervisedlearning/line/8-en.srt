@@ -1,0 +1,176 @@
+1
+00:00:00,000 --> 00:00:02,250
+In the last video, we'll learn how to decrease
+
+2
+00:00:02,250 --> 00:00:06,570
+an error function by walking along the negative of its gradient.
+
+3
+00:00:06,570 --> 00:00:10,140
+Now in this video, we're going to learn formulas for these error functions.
+
+4
+00:00:10,140 --> 00:00:12,690
+The two most common error functions for a linear regression are
+
+5
+00:00:12,689 --> 00:00:16,120
+the mean absolute error and the mean squared error.
+
+6
+00:00:16,120 --> 00:00:18,030
+First, we'll learn the mean absolute error.
+
+7
+00:00:18,030 --> 00:00:20,450
+So, here's our point and our line.
+
+8
+00:00:20,449 --> 00:00:22,289
+The point has coordinates (x,
+
+9
+00:00:22,289 --> 00:00:25,619
+y) and the line is called y-hat since it's the prediction.
+
+10
+00:00:25,620 --> 00:00:27,839
+So, our prediction for this point is going to be the point in
+
+11
+00:00:27,839 --> 00:00:30,210
+the line with the same X coordinate as our point,
+
+12
+00:00:30,210 --> 00:00:32,700
+that is the point (x, y-hat).
+
+13
+00:00:32,700 --> 00:00:37,750
+This means the vertical distance from the point to the line is (y - y-hat),
+
+14
+00:00:37,750 --> 00:00:40,920
+and that's what we'll be calling the error.
+
+15
+00:00:40,920 --> 00:00:42,570
+Notice that this is not the actual distance to
+
+16
+00:00:42,570 --> 00:00:44,968
+the line since it would be a perpendicular segment,
+
+17
+00:00:44,968 --> 00:00:48,035
+but it's the vertical distance from the point to the line,
+
+18
+00:00:48,034 --> 00:00:51,029
+which is the distance between the point and its prediction.
+
+19
+00:00:51,030 --> 00:00:53,160
+Now, our total error is going to be the sum of
+
+20
+00:00:53,159 --> 00:00:55,979
+all these distances for all the points in our data set,
+
+21
+00:00:55,979 --> 00:00:58,369
+and sometimes we'll use this as our error.
+
+22
+00:00:58,369 --> 00:01:01,155
+But in this case, we'll use the average or the mean absolute error,
+
+23
+00:01:01,155 --> 00:01:04,295
+which is the sum of all the errors divided by M,
+
+24
+00:01:04,295 --> 00:01:06,765
+the number of points in our data set.
+
+25
+00:01:06,765 --> 00:01:08,579
+Using the sum or the average won't change
+
+26
+00:01:08,579 --> 00:01:11,480
+our algorithm since we would only scalar error by a constant,
+
+27
+00:01:11,480 --> 00:01:13,859
+namely M. And noticed something here which
+
+28
+00:01:13,859 --> 00:01:16,719
+is that we have an absolute value around the (y - y-hat).
+
+29
+00:01:16,719 --> 00:01:19,010
+The reason is that when the point is on top of the line,
+
+30
+00:01:19,010 --> 00:01:20,605
+the distances (y - y-hat),
+
+31
+00:01:20,605 --> 00:01:22,200
+but if it's under the line,
+
+32
+00:01:22,200 --> 00:01:24,579
+then it's (y-hat - y).
+
+33
+00:01:24,579 --> 00:01:26,515
+We want the error to always be positive.
+
+34
+00:01:26,515 --> 00:01:30,375
+Otherwise, negative errors will cancel with positive errors.
+
+35
+00:01:30,375 --> 00:01:32,730
+Therefore, we take the absolute value of (y - y-hat).
+
+36
+00:01:32,730 --> 00:01:38,670
+So, our mean absolute error is the average of all absolute errors, or in other words,
+
+37
+00:01:38,670 --> 00:01:43,115
+the sum of all these absolute values divided by the number of points,
+
+38
+00:01:43,114 --> 00:01:47,750
+which is M. We're going to plot this error over here on a graph.
+
+39
+00:01:47,750 --> 00:01:49,680
+Obviously as we mentioned before,
+
+40
+00:01:49,680 --> 00:01:51,163
+the graph has more dimensions,
+
+41
+00:01:51,162 --> 00:01:54,375
+but this is a two dimensional simplification of that graph.
+
+42
+00:01:54,375 --> 00:01:56,894
+And as we descend in this graph using gradient descent,
+
+43
+00:01:56,894 --> 00:01:59,310
+we get a better and better line until we find
+
+44
+00:01:59,310 --> 00:02:02,400
+the best possible fit with the smallest possible mean absolute error.
+

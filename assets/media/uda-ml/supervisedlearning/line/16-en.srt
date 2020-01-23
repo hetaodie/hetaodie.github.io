@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:02,129
+So what happens if we have data that looks like this,
+
+2
+00:00:02,129 --> 00:00:04,639
+where a line won't really do a good job fitting it?
+
+3
+00:00:04,639 --> 00:00:07,709
+Maybe we would like to have a curve or some polynomial?
+
+4
+00:00:07,710 --> 00:00:12,434
+Maybe something along the lines of 2x cubed minus 8x squared, et cetera.
+
+5
+00:00:12,435 --> 00:00:15,894
+This can be solved using a very similar algorithm than linear regression.
+
+6
+00:00:15,894 --> 00:00:18,254
+All we have to do is, instead of considering lines,
+
+7
+00:00:18,254 --> 00:00:21,210
+we consider higher degree polynomials.
+
+8
+00:00:21,210 --> 00:00:23,105
+This would give us more ways to solve our problem.
+
+9
+00:00:23,105 --> 00:00:26,039
+For example, this problem here will make us solve for four weights,
+
+10
+00:00:26,039 --> 00:00:29,324
+w1, w2, w3 and w4.
+
+11
+00:00:29,324 --> 00:00:31,829
+But the algorithm is the same thing.
+
+12
+00:00:31,829 --> 00:00:35,729
+We just take the mean absolute or squared error and take the derivative the respect to
+
+13
+00:00:35,729 --> 00:00:37,890
+the four variables and use gradient descent to
+
+14
+00:00:37,890 --> 00:00:41,399
+modify these four weights in order to minimize the error.
+
+15
+00:00:41,399 --> 00:00:44,000
+This algorithm is known as polynomial regression.
+

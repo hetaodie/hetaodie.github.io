@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:02,160
+So, here's the question. What is better,
+
+2
+00:00:02,160 --> 00:00:05,564
+the mean absolute error or the mean squared error?
+
+3
+00:00:05,565 --> 00:00:07,200
+Well, there's no real answer to this.
+
+4
+00:00:07,200 --> 00:00:09,234
+Both are used for a lot of different purposes.
+
+5
+00:00:09,234 --> 00:00:12,269
+But here's one property that actually tears them apart.
+
+6
+00:00:12,269 --> 00:00:14,519
+So, here's a set of data and we're going to try to
+
+7
+00:00:14,519 --> 00:00:17,675
+fit it by minimizing the mean absolute error.
+
+8
+00:00:17,675 --> 00:00:20,969
+So, let's say we have line A, line B,
+
+9
+00:00:20,969 --> 00:00:24,044
+and line C, and the question is,
+
+10
+00:00:24,045 --> 00:00:28,160
+which one of these lines gives us a smaller mean absolute error?
+
+11
+00:00:28,160 --> 00:00:29,510
+Enter your answer below.
+

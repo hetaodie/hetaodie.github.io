@@ -1,0 +1,152 @@
+1
+00:00:00,000 --> 00:00:01,350
+So in the previous example,
+
+2
+00:00:01,350 --> 00:00:03,905
+we had a one column input and one column output.
+
+3
+00:00:03,904 --> 00:00:07,244
+The input was the size of the house and the output was the price.
+
+4
+00:00:07,245 --> 00:00:09,845
+So, we had a two-dimensional problem.
+
+5
+00:00:09,845 --> 00:00:12,450
+Our prediction for the price would be a line and
+
+6
+00:00:12,449 --> 00:00:16,309
+the equation would just be a constant times size plus another constant.
+
+7
+00:00:16,309 --> 00:00:18,029
+What if we had more columns in the input?
+
+8
+00:00:18,030 --> 00:00:20,450
+For example, size, and school quality.
+
+9
+00:00:20,449 --> 00:00:22,739
+Well now, we have a three-dimensional graph because we have
+
+10
+00:00:22,739 --> 00:00:25,414
+two dimensions for the input and one for the output.
+
+11
+00:00:25,414 --> 00:00:27,413
+So now, our points don't live in the plane,
+
+12
+00:00:27,413 --> 00:00:31,019
+but they look like points flying in three-dimensional space.
+
+13
+00:00:31,019 --> 00:00:34,130
+And what we do here is we fit a plane through them instead of fitting a line.
+
+14
+00:00:34,130 --> 00:00:38,905
+And our equation won't be a constant times one variable plus another constant.
+
+15
+00:00:38,905 --> 00:00:41,910
+It's going to be a constant times school quality,
+
+16
+00:00:41,909 --> 00:00:44,543
+plus another constant times size,
+
+17
+00:00:44,543 --> 00:00:46,204
+plus a third constant.
+
+18
+00:00:46,204 --> 00:00:49,039
+And that's what happens when we're in three dimensions.
+
+19
+00:00:49,039 --> 00:00:51,210
+So, what happens if we're in n dimensions?
+
+20
+00:00:51,210 --> 00:00:56,730
+So, in this case, we have n minus one columns in the input and one in the output.
+
+21
+00:00:56,729 --> 00:00:58,299
+So, for example, the inputs are size,
+
+22
+00:00:58,299 --> 00:01:00,617
+school quality, number of rooms, et cetera.
+
+23
+00:01:00,618 --> 00:01:05,640
+Well now, we have the same thing except our data lives in n-dimensional space.
+
+24
+00:01:05,640 --> 00:01:08,340
+So for our input, we have n minus one variables,
+
+25
+00:01:08,340 --> 00:01:11,594
+namely X1, X2, up to Xn minus one.
+
+26
+00:01:11,594 --> 00:01:13,170
+And for the output of the prediction,
+
+27
+00:01:13,170 --> 00:01:16,085
+we only have one variable, y hat.
+
+28
+00:01:16,084 --> 00:01:18,419
+And our prediction would be an n minus
+
+29
+00:01:18,420 --> 00:01:21,784
+one dimensional hyper plane living in n dimensions.
+
+30
+00:01:21,784 --> 00:01:23,575
+And since it's hard to picture n dimensions,
+
+31
+00:01:23,575 --> 00:01:29,954
+just think of a linear equation in n variables such as y hat equals W1X1 plus W2X2,
+
+32
+00:01:29,954 --> 00:01:35,280
+plus all the way to Wn minus one Xn minus one, plus Wn.
+
+33
+00:01:35,280 --> 00:01:38,215
+And that's how we do predictions for higher dimensions.
+
+34
+00:01:38,215 --> 00:01:40,924
+In order to find the weights W1 up to Wn,
+
+35
+00:01:40,924 --> 00:01:44,864
+the algorithm is exactly the same thing as for two variables.
+
+36
+00:01:44,864 --> 00:01:47,295
+We can either do the absolute or square tricks,
+
+37
+00:01:47,295 --> 00:01:50,549
+or we can calculate the mean absolute or square errors,
+
+38
+00:01:50,549 --> 00:01:53,429
+and minimize using grading descent.
+

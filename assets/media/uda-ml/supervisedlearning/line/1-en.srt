@@ -1,0 +1,64 @@
+1
+00:00:00,000 --> 00:00:02,093
+So let's say we're studying the housing market,
+
+2
+00:00:02,093 --> 00:00:05,990
+and our task is to predict the price of a house given its size.
+
+3
+00:00:05,990 --> 00:00:12,895
+So we have a small house that costs $70,000 and a big house that costs $160,000.
+
+4
+00:00:12,895 --> 00:00:17,220
+We'd like to estimate the price of this medium-sized house over here.
+
+5
+00:00:17,220 --> 00:00:18,775
+So how do we do it?
+
+6
+00:00:18,775 --> 00:00:23,460
+Well, first we put them in a grid where the x-axis represents the size of
+
+7
+00:00:23,460 --> 00:00:29,200
+the house in square feet and the y-axis represents the price of the house.
+
+8
+00:00:29,200 --> 00:00:35,000
+And to help us out, we have collected some previous data in the form of these blue dots.
+
+9
+00:00:35,000 --> 00:00:36,780
+These are other houses that we've looked at and we've
+
+10
+00:00:36,780 --> 00:00:39,800
+recorded their prices with respect to their size.
+
+11
+00:00:39,800 --> 00:00:47,575
+In here, we can see that small house is priced at $70,000 and the big one at $160,000.
+
+12
+00:00:47,575 --> 00:00:49,405
+Now, it's time for a small quiz.
+
+13
+00:00:49,405 --> 00:00:56,365
+What do you think is the best estimate for the price of the medium house given this data?
+
+14
+00:00:56,365 --> 00:00:59,029
+Would it be $80,000,
+
+15
+00:00:59,029 --> 00:01:03,030
+$120,000, or $190,000?
+
+16
+00:01:03,030 --> 00:01:04,680
+Submit your answer.
+

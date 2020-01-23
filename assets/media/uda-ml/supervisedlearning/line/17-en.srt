@@ -1,0 +1,508 @@
+1
+00:00:00,000 --> 00:00:03,589
+Now, we'll learn a very important concept called regularization.
+
+2
+00:00:03,589 --> 00:00:07,439
+This is a very useful technique to improve our models and make sure they don't overfit.
+
+3
+00:00:07,440 --> 00:00:12,359
+And notice that this concept works for regression and for classification.
+
+4
+00:00:12,359 --> 00:00:15,824
+We'll actually explain it using a classification problem but as you can see,
+
+5
+00:00:15,824 --> 00:00:19,304
+all the arguments here work just as well with regression algorithms.
+
+6
+00:00:19,304 --> 00:00:21,405
+So, let's look at some data.
+
+7
+00:00:21,405 --> 00:00:23,089
+And here's the data,
+
+8
+00:00:23,089 --> 00:00:25,125
+and let's make two copies of it.
+
+9
+00:00:25,125 --> 00:00:28,975
+And let's look at two models that classify this data.
+
+10
+00:00:28,975 --> 00:00:31,635
+The first one is a line,
+
+11
+00:00:31,635 --> 00:00:35,719
+and the second one is a higher degree polynomial.
+
+12
+00:00:35,719 --> 00:00:37,780
+So, the question is, which one is better?
+
+13
+00:00:37,780 --> 00:00:39,980
+Well, they both have their pros and cons, right?
+
+14
+00:00:39,979 --> 00:00:42,549
+The one on the left makes a couple of mistakes, as you can see,
+
+15
+00:00:42,549 --> 00:00:44,984
+there's a red point and the blue in the wrong side,
+
+16
+00:00:44,984 --> 00:00:47,155
+but it's much simpler.
+
+17
+00:00:47,155 --> 00:00:50,715
+And the one on the right makes zero mistakes,
+
+18
+00:00:50,715 --> 00:00:52,440
+but it's actually a bit more complicated.
+
+19
+00:00:52,439 --> 00:00:53,879
+So, let's say we want the one on the left,
+
+20
+00:00:53,880 --> 00:00:56,370
+because the one on the right overfits,
+
+21
+00:00:56,369 --> 00:00:58,574
+and it just doesn't generalize well.
+
+22
+00:00:58,575 --> 00:01:04,343
+So, the problem is that when we train the model,
+
+23
+00:01:04,343 --> 00:01:07,825
+the one in the right will appear more likely and the reason is the following.
+
+24
+00:01:07,825 --> 00:01:12,900
+Let's say the question is 3X_1 + 4X_2 + 5 = 0, for the line,
+
+25
+00:01:12,900 --> 00:01:14,609
+and equation of polynomial something much more
+
+26
+00:01:14,609 --> 00:01:17,489
+complicated with higher degree terms like X_1_squared,
+
+27
+00:01:17,489 --> 00:01:20,849
+or X_1, X_2, or X_1_cubed et cetera.
+
+28
+00:01:20,849 --> 00:01:22,769
+But when we're training the model,
+
+29
+00:01:22,769 --> 00:01:25,560
+the model takes an error and minimizes it.
+
+30
+00:01:25,560 --> 00:01:28,710
+So, the one in the left has a small error,
+
+31
+00:01:28,709 --> 00:01:30,464
+because it makes these two mistakes,
+
+32
+00:01:30,465 --> 00:01:32,070
+but it's an error nonetheless.
+
+33
+00:01:32,069 --> 00:01:34,079
+So, this is the error it gets.
+
+34
+00:01:34,079 --> 00:01:39,674
+The one on the right has a much smaller error because it doesn't misclassify any point.
+
+35
+00:01:39,674 --> 00:01:45,015
+So, any model in its right mind would pick the one on the right.
+
+36
+00:01:45,015 --> 00:01:48,840
+So, how do we do to pick the one in the left?
+
+37
+00:01:48,840 --> 00:01:50,325
+Well, here's an idea,
+
+38
+00:01:50,325 --> 00:01:52,320
+if we look at this polynomial,
+
+39
+00:01:52,319 --> 00:01:55,289
+it's much simpler than the one in the right, and in particular,
+
+40
+00:01:55,290 --> 00:01:56,380
+the coefficients are small, that three, four, five,
+
+41
+00:01:56,379 --> 00:01:59,954
+whereas if I look at this one.
+
+42
+00:01:59,954 --> 00:02:03,170
+These numbers are much bigger.
+
+43
+00:02:03,170 --> 00:02:04,500
+So, it's a lot more of them.
+
+44
+00:02:04,500 --> 00:02:12,014
+So, if we find a way to increment the error by some function of these numbers,
+
+45
+00:02:12,014 --> 00:02:13,649
+that would be very helpful.
+
+46
+00:02:13,650 --> 00:02:14,680
+So, let's do that,
+
+47
+00:02:14,680 --> 00:02:15,805
+and I'll show you the detail later,
+
+48
+00:02:15,805 --> 00:02:17,069
+but the idea is that we take
+
+49
+00:02:17,069 --> 00:02:20,389
+these three and four and notice we're forgetting about the constant term,
+
+50
+00:02:20,389 --> 00:02:23,339
+there's a reason for that.
+
+51
+00:02:23,340 --> 00:02:26,129
+But if we take this three and four and add them to the error,
+
+52
+00:02:26,129 --> 00:02:27,990
+we get a slightly bigger error.
+
+53
+00:02:27,990 --> 00:02:30,990
+But what if we take this two two four minus three six four,
+
+54
+00:02:30,990 --> 00:02:34,004
+and add them to the error, and now we get a huge error.
+
+55
+00:02:34,004 --> 00:02:38,219
+And now we can see that the model on the left is better,
+
+56
+00:02:38,219 --> 00:02:39,599
+because it has a smaller error.
+
+57
+00:02:39,599 --> 00:02:41,685
+So, in summary what we did is,
+
+58
+00:02:41,685 --> 00:02:46,930
+we took the complexity of the model into account when we calculated the error,
+
+59
+00:02:46,930 --> 00:02:51,629
+and then that way a simpler model has an edge over a complicated model.
+
+60
+00:02:51,629 --> 00:02:53,689
+And simpler models tend to generalize better.
+
+61
+00:02:53,689 --> 00:02:55,615
+So, that's what we want.
+
+62
+00:02:55,615 --> 00:02:58,770
+But let me be more detailed on how to
+
+63
+00:02:58,770 --> 00:03:03,125
+take those green coefficients and turn them into part of the error.
+
+64
+00:03:03,125 --> 00:03:06,270
+There's a method called L1 regularization, and it's very simple.
+
+65
+00:03:06,270 --> 00:03:07,965
+This is a complicated polynomial.
+
+66
+00:03:07,965 --> 00:03:12,780
+And what it does is it takes the coefficients and just adds the absolute values.
+
+67
+00:03:12,780 --> 00:03:18,569
+So, as you can see there is two minus two minus four etc.
+
+68
+00:03:18,569 --> 00:03:24,909
+it just takes the absolute value of those and adds them to 21.
+
+69
+00:03:24,909 --> 00:03:27,060
+And in this case, you can see that we're taking
+
+70
+00:03:27,060 --> 00:03:29,604
+the absolute values of three and four, and we get seven.
+
+71
+00:03:29,604 --> 00:03:31,284
+So, seven is much less than 21.
+
+72
+00:03:31,284 --> 00:03:36,020
+So, that's why the complicated model gives you a much higher error.
+
+73
+00:03:36,020 --> 00:03:40,710
+That's L1 regularization and L1 is attached to the absolute value.
+
+74
+00:03:40,710 --> 00:03:43,590
+L2 regularization is very similar.
+
+75
+00:03:43,590 --> 00:03:45,525
+And what we do here is,
+
+76
+00:03:45,525 --> 00:03:46,770
+instead of taking the absolute value,
+
+77
+00:03:46,770 --> 00:03:51,990
+we just add the squares of the coefficients.
+
+78
+00:03:51,990 --> 00:03:57,480
+So, we get 2_squared plus -2_squared plus -4_squared etc, we get 85.
+
+79
+00:03:57,479 --> 00:03:59,294
+And for the linear case,
+
+80
+00:03:59,294 --> 00:04:02,919
+we just get 3_squared plus 4_squared which is 25, which is much smaller.
+
+81
+00:04:02,919 --> 00:04:05,009
+So again we can see that the complex model gets
+
+82
+00:04:05,009 --> 00:04:08,379
+punished a lot more than the simple model.
+
+83
+00:04:08,379 --> 00:04:12,435
+But now, the question is how do we tune these parameters,
+
+84
+00:04:12,435 --> 00:04:16,769
+because maybe we want a bit of the more complicated model etc.
+
+85
+00:04:16,769 --> 00:04:19,594
+So, we have this parameter called lambda,
+
+86
+00:04:19,595 --> 00:04:24,890
+and what lambda does is it multiplies into the complexity error,
+
+87
+00:04:24,889 --> 00:04:28,039
+multiplies into that green error to make it bigger or smaller.
+
+88
+00:04:28,040 --> 00:04:29,935
+So, let's say we have a small λ.
+
+89
+00:04:29,935 --> 00:04:33,274
+We take the green error and multiply it by a small λ,
+
+90
+00:04:33,274 --> 00:04:35,039
+so we get something very small.
+
+91
+00:04:35,040 --> 00:04:39,290
+So, the model in the right still wins because the error is smaller,
+
+92
+00:04:39,290 --> 00:04:42,715
+and we have some complexity error but it's much smaller.
+
+93
+00:04:42,714 --> 00:04:47,310
+Now, if we take a large λ then we're multiplying the green error by a lot,
+
+94
+00:04:47,310 --> 00:04:49,860
+and now we can see that the simpler model
+
+95
+00:04:49,860 --> 00:04:54,360
+is much better because it gives us a smaller error.
+
+96
+00:04:54,360 --> 00:05:00,725
+So in summary, this is what happens if we have a large lambda,
+
+97
+00:05:00,725 --> 00:05:03,404
+then we're punishing complexity by a lot,
+
+98
+00:05:03,404 --> 00:05:06,389
+and we're picking a simpler model.
+
+99
+00:05:06,389 --> 00:05:11,175
+Whereas if we have a small λ then we're punishing complexity by a small amount,
+
+100
+00:05:11,175 --> 00:05:15,655
+so we are okay with having more complex models.
+
+101
+00:05:15,654 --> 00:05:19,349
+Now the question is which one to use, L1 or L2?
+
+102
+00:05:19,350 --> 00:05:25,740
+So here's a cheat sheet with some benefits of each L1 and L2.
+
+103
+00:05:25,740 --> 00:05:28,655
+So L1 regularization is actually computationally
+
+104
+00:05:28,654 --> 00:05:31,649
+inefficient even though it seems simpler,
+
+105
+00:05:31,649 --> 00:05:32,784
+because it doesn't have squares.
+
+106
+00:05:32,785 --> 00:05:38,390
+But actually those absolute values are hard to differentiate.
+
+107
+00:05:38,389 --> 00:05:40,192
+Whereas in L2 regularization,
+
+108
+00:05:40,192 --> 00:05:42,389
+the squares have a very nice derivative and so
+
+109
+00:05:42,389 --> 00:05:45,209
+that makes things very easy to do computationally.
+
+110
+00:05:45,209 --> 00:05:50,519
+The only time L1 regularization is faster than L2 is when the data is sparse.
+
+111
+00:05:50,519 --> 00:05:53,407
+So, let's say you have a thousand counts of data,
+
+112
+00:05:53,408 --> 00:05:56,819
+but really only 10 of them are relevant,
+
+113
+00:05:56,819 --> 00:06:01,409
+and there's a lot of zeroes in between then L1 is better.
+
+114
+00:06:01,410 --> 00:06:04,328
+So, as I said, L1 is better for sparse outputs,
+
+115
+00:06:04,327 --> 00:06:07,634
+and L2 is better for non-sparse outputs.
+
+116
+00:06:07,634 --> 00:06:11,514
+When there's just a lot of column to our zero, L1 is better.
+
+117
+00:06:11,514 --> 00:06:17,594
+But when the data is very equally distributed among columns and the L2 is better.
+
+118
+00:06:17,595 --> 00:06:23,010
+And L1 has one huge benefit which is that it gives this feature selection.
+
+119
+00:06:23,009 --> 00:06:26,279
+So, let's say we have again data of a thousand columns,
+
+120
+00:06:26,279 --> 00:06:28,934
+but really only 10 of them matter,
+
+121
+00:06:28,935 --> 00:06:30,805
+and the rest are just noise.
+
+122
+00:06:30,805 --> 00:06:37,745
+L1 will notice this and will make those irrelevant columns of data zero.
+
+123
+00:06:37,745 --> 00:06:41,326
+L2 on the other hand, will not do this.
+
+124
+00:06:41,326 --> 00:06:44,700
+L2 will just kind of take all the columns and treat them
+
+125
+00:06:44,699 --> 00:06:48,704
+equally and give us a combination of all of them as our result.
+
+126
+00:06:48,704 --> 00:06:50,144
+So, that's it.
+
+127
+00:06:50,144 --> 00:06:52,000
+That's regularization.
+

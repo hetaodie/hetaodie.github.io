@@ -1,0 +1,284 @@
+1
+00:00:00,000 --> 00:00:02,069
+So now that we learn the absolute trick and
+
+2
+00:00:02,069 --> 00:00:04,544
+the square trick and how they are used in linear regression,
+
+3
+00:00:04,544 --> 00:00:08,789
+we still want to have some intuition on how these things get figured out.
+
+4
+00:00:08,789 --> 00:00:10,799
+These tricks still seem a little too magical,
+
+5
+00:00:10,800 --> 00:00:12,165
+and we'd like to find their origin.
+
+6
+00:00:12,164 --> 00:00:14,739
+So let's do this in a much more formal way.
+
+7
+00:00:14,740 --> 00:00:16,170
+Let's say we have our points,
+
+8
+00:00:16,170 --> 00:00:18,330
+and our plan is to develop an algorithm which will
+
+9
+00:00:18,329 --> 00:00:21,309
+find the line that best fits this set of points.
+
+10
+00:00:21,309 --> 00:00:23,414
+And the algorithm works like this.
+
+11
+00:00:23,414 --> 00:00:27,280
+First, it will draw a random line and it'll calculate the error.
+
+12
+00:00:27,280 --> 00:00:32,579
+The error is some measure of how far the points are from the line.
+
+13
+00:00:32,579 --> 00:00:35,579
+In this drawing, it looks like it's the sum of these distances,
+
+14
+00:00:35,579 --> 00:00:39,329
+but it could be any measure that tells us how far we are from the points.
+
+15
+00:00:39,329 --> 00:00:43,225
+Now we're going to move the line around and see if we can decrease this error.
+
+16
+00:00:43,225 --> 00:00:47,484
+We move in this direction and we see that the error kind of increases,
+
+17
+00:00:47,484 --> 00:00:49,344
+so that's not the way to go.
+
+18
+00:00:49,344 --> 00:00:53,689
+So we move in the other direction and see that the error decreased,
+
+19
+00:00:53,689 --> 00:00:56,189
+so we picked this one and stay there.
+
+20
+00:00:56,189 --> 00:00:59,588
+Now we'll repeat the process many times over and over,
+
+21
+00:00:59,588 --> 00:01:01,579
+every time descending the error a bit,
+
+22
+00:01:01,579 --> 00:01:03,429
+until we get to the perfect line.
+
+23
+00:01:03,429 --> 00:01:04,829
+So to minimize this error,
+
+24
+00:01:04,829 --> 00:01:07,254
+we're going to use something called a gradient descent.
+
+25
+00:01:07,254 --> 00:01:09,069
+So let me talk a bit about gradient descent.
+
+26
+00:01:09,069 --> 00:01:12,719
+The way it works is we're standing here on top of a mountain, this is called Mt.
+
+27
+00:01:12,719 --> 00:01:15,704
+Rainierror, as it measures how big our error is.
+
+28
+00:01:15,704 --> 00:01:18,149
+And we want to descend from this mountain.
+
+29
+00:01:18,150 --> 00:01:19,926
+In order to descend from this mountain,
+
+30
+00:01:19,926 --> 00:01:22,040
+we need to minimize our height.
+
+31
+00:01:22,040 --> 00:01:25,950
+And on the left we have a problem of fitting the line to the data,
+
+32
+00:01:25,950 --> 00:01:31,469
+which we can do by minimizing the error or the distance from the line to the points.
+
+33
+00:01:31,469 --> 00:01:35,734
+So descending from the mountain is equivalent to getting the line closer to the points.
+
+34
+00:01:35,734 --> 00:01:37,560
+Now if you want to descend from the mountain,
+
+35
+00:01:37,560 --> 00:01:39,570
+we would look at the directions where we can walk down
+
+36
+00:01:39,569 --> 00:01:42,599
+and find the one that makes us descend the most.
+
+37
+00:01:42,599 --> 00:01:44,704
+And let's say this is direction.
+
+38
+00:01:44,704 --> 00:01:47,250
+So we descend a bit in this direction.
+
+39
+00:01:47,250 --> 00:01:50,900
+This is equivalent to getting the line a little bit closer to the points.
+
+40
+00:01:50,900 --> 00:01:53,250
+So in our height is smaller because we're closer to
+
+41
+00:01:53,250 --> 00:01:56,474
+the points since our distance to them is smaller.
+
+42
+00:01:56,474 --> 00:02:00,069
+And again and again, we look at what makes his descent the most from the mountain,
+
+43
+00:02:00,069 --> 00:02:01,619
+and let's say we get here.
+
+44
+00:02:01,620 --> 00:02:04,439
+Now we're at a point where we've descended from the mountain,
+
+45
+00:02:04,439 --> 00:02:08,734
+and on the right, we found the line that is very close to our points.
+
+46
+00:02:08,735 --> 00:02:10,480
+Thus, we've solved our problem,
+
+47
+00:02:10,479 --> 00:02:12,104
+and that is gradient descent.
+
+48
+00:02:12,104 --> 00:02:13,669
+In a more mathematical way,
+
+49
+00:02:13,669 --> 00:02:14,909
+what happens to the following.
+
+50
+00:02:14,909 --> 00:02:17,479
+We have a plot, and here's a plot in two dimensions.
+
+51
+00:02:17,479 --> 00:02:20,564
+Although in reality, the plot will be in higher dimensions.
+
+52
+00:02:20,564 --> 00:02:22,027
+We have our weights on the x-axis,
+
+53
+00:02:22,027 --> 00:02:23,969
+and our error on the y-axis.
+
+54
+00:02:23,969 --> 00:02:27,544
+And we have an error function that looks like this.
+
+55
+00:02:27,544 --> 00:02:30,509
+We're standing over here and the way to descend is to actually take
+
+56
+00:02:30,509 --> 00:02:34,679
+the derivative or gradient of the error function with respect to the weights.
+
+57
+00:02:34,680 --> 00:02:38,649
+This gradient is going to point to a direction where the function increases the most.
+
+58
+00:02:38,649 --> 00:02:41,009
+Therefore, the negative of this gradient is going to point
+
+59
+00:02:41,009 --> 00:02:44,340
+down in the direction where the function decreases the most.
+
+60
+00:02:44,340 --> 00:02:49,314
+So what we do is, we take a step in the direction of the negative of that gradient.
+
+61
+00:02:49,314 --> 00:02:51,254
+This means, we're taking our weight, W_i,
+
+62
+00:02:51,254 --> 00:02:56,469
+and changing them to W_i minus the derivative of the error with respect to W_i.
+
+63
+00:02:56,469 --> 00:02:59,064
+In real life, we'll be multiplying this derivative by
+
+64
+00:02:59,064 --> 00:03:02,270
+the learning rate since we want to make small steps.
+
+65
+00:03:02,270 --> 00:03:04,094
+This means, the error function is decreasing,
+
+66
+00:03:04,094 --> 00:03:05,995
+and we're closer to the minimum.
+
+67
+00:03:05,995 --> 00:03:07,740
+If we do this several times,
+
+68
+00:03:07,740 --> 00:03:11,680
+we get to either a minimum or pretty good value where the error is small.
+
+69
+00:03:11,680 --> 00:03:12,885
+Once we get to that point,
+
+70
+00:03:12,884 --> 00:03:16,229
+then we've reached a pretty good solution for our linear regression problem.
+
+71
+00:03:16,229 --> 00:03:18,000
+And that's what gradient descent is all about.
+

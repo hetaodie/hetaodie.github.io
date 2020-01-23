@@ -1,0 +1,76 @@
+1
+00:00:00,000 --> 00:00:04,125
+So here's a trick that will help us fit a line through a set of points.
+
+2
+00:00:04,125 --> 00:00:08,390
+Let's say that these are points and we start by drawing some random line.
+
+3
+00:00:08,390 --> 00:00:11,040
+And we're going to ask every point what it
+
+4
+00:00:11,039 --> 00:00:14,399
+wants for the model to be better, and then listen to them.
+
+5
+00:00:14,400 --> 00:00:16,144
+So let's go one by one.
+
+6
+00:00:16,144 --> 00:00:17,939
+Let's take this point over here,
+
+7
+00:00:17,940 --> 00:00:21,125
+and ask it what would it want the line to do.
+
+8
+00:00:21,125 --> 00:00:24,545
+Well, the point would want the line to move closer.
+
+9
+00:00:24,545 --> 00:00:27,480
+So we'll listen to that point and move closer.
+
+10
+00:00:27,480 --> 00:00:29,423
+Now if we ask all the points,
+
+11
+00:00:29,423 --> 00:00:31,035
+they would tell us the same thing.
+
+12
+00:00:31,035 --> 00:00:32,923
+So we move closer to all of them,.
+
+13
+00:00:32,923 --> 00:00:36,984
+Then we listen to them again and we take another step that gets closer to all of them.
+
+14
+00:00:36,984 --> 00:00:38,609
+Now it's trickier because we have a point
+
+15
+00:00:38,609 --> 00:00:41,240
+underneath that pulls it down, but that's still okay.
+
+16
+00:00:41,240 --> 00:00:43,170
+And basically, the idea is that we take
+
+17
+00:00:43,170 --> 00:00:46,289
+a few steps that make us go closer to all the points.
+
+18
+00:00:46,289 --> 00:00:48,460
+And that's it, that's linear regression.
+
+19
+00:00:48,460 --> 00:00:51,280
+In the next few videos, we'll see this in a bit more detail.
+
