@@ -1,0 +1,132 @@
+1
+00:00:00,000 --> 00:00:03,419
+Now, you may be wondering what happens if we have more data columns,
+
+2
+00:00:03,419 --> 00:00:04,905
+so not just testing grades,
+
+3
+00:00:04,905 --> 00:00:08,085
+but maybe something else like the ranking of the student in the class.
+
+4
+00:00:08,085 --> 00:00:11,060
+How do we fit three columns of data?
+
+5
+00:00:11,060 --> 00:00:14,608
+Well, the only difference is that now we won't be working in two dimensions,
+
+6
+00:00:14,608 --> 00:00:16,940
+we'll be working in three.
+
+7
+00:00:16,940 --> 00:00:19,260
+So now we have three axis, X1 for the test,
+
+8
+00:00:19,260 --> 00:00:21,929
+X2 for the grades, and X3 for the class ranking.
+
+9
+00:00:21,928 --> 00:00:23,628
+And our data will look like this,
+
+10
+00:00:23,629 --> 00:00:27,379
+like a bunch of blue and red points flying around in 3D.
+
+11
+00:00:27,379 --> 00:00:30,359
+And our equation won't be aligned in two dimension but a plane in
+
+12
+00:00:30,359 --> 00:00:33,920
+three dimensions with a similar equation as before.
+
+13
+00:00:33,920 --> 00:00:40,423
+Now the equation would be W1X1 + W2X2 + W3X3 + B= 0,
+
+14
+00:00:40,423 --> 00:00:43,929
+which will separate the space into two regions.
+
+15
+00:00:43,929 --> 00:00:47,443
+This equation can still be abbreviated by WX + B = 0,
+
+16
+00:00:47,442 --> 00:00:52,489
+except our vectors will now have three entries instead of two.
+
+17
+00:00:52,490 --> 00:00:55,975
+And our prediction will still be Y high equals one if WX + B is
+
+18
+00:00:55,975 --> 00:01:00,895
+greater than or equal to zero and zero of WX + B is less than zero.
+
+19
+00:01:00,895 --> 00:01:02,490
+And what if we have many columns,
+
+20
+00:01:02,490 --> 00:01:04,605
+like say n of them?
+
+21
+00:01:04,605 --> 00:01:09,400
+Well, it's the same thing. Now our data just leaps in n dimensional space.
+
+22
+00:01:09,400 --> 00:01:12,120
+Now, I have trouble picturing things in more than three dimensions.
+
+23
+00:01:12,120 --> 00:01:16,582
+But if we can imagine that the points are just things with n coordinates called X1,
+
+24
+00:01:16,581 --> 00:01:20,024
+X2, X3, all the way up to Xn,
+
+25
+00:01:20,024 --> 00:01:22,245
+with our labels being y,
+
+26
+00:01:22,245 --> 00:01:26,849
+then our boundary is just an n-1 dimensional hyper-plane,
+
+27
+00:01:26,849 --> 00:01:32,030
+which is a high dimensional equivalent of a line in 2D or a plane in 3D.
+
+28
+00:01:32,030 --> 00:01:35,849
+And the equation of this n-1 dimensional hyper-plane is going to be
+
+29
+00:01:35,849 --> 00:01:42,380
+W1X1+ W2X2 + all the way to WnXn + B = 0,
+
+30
+00:01:42,379 --> 00:01:49,030
+which we can still abbreviate to WX + B = 0 where our vectors now have n entries.
+
+31
+00:01:49,030 --> 00:01:51,632
+And our prediction is still the same as before.
+
+32
+00:01:51,632 --> 00:01:55,530
+It is y hat equals 1 if WX + B is greater than or equal to
+
+33
+00:01:55,530 --> 00:02:01,000
+zero and Y hat equal zero if WX + B is less than zero.
+
