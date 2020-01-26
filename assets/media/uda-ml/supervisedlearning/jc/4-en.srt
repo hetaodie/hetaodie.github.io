@@ -1,0 +1,148 @@
+1
+00:00:00,000 --> 00:00:01,815
+Okay, so let's do some math.
+
+2
+00:00:01,815 --> 00:00:05,279
+Let's assign to each data point an initial weight of one.
+
+3
+00:00:05,280 --> 00:00:07,259
+Now, let's fit our first learner.
+
+4
+00:00:07,259 --> 00:00:10,455
+Before, we wanted to minimize the number of errors.
+
+5
+00:00:10,455 --> 00:00:15,765
+Now, we want to minimize the sum of weights of the incorrectly classified points which,
+
+6
+00:00:15,765 --> 00:00:17,640
+as of now, is the same.
+
+7
+00:00:17,640 --> 00:00:19,365
+So, here is the model.
+
+8
+00:00:19,364 --> 00:00:22,664
+If we add the weights of the correctly classified points,
+
+9
+00:00:22,664 --> 00:00:24,780
+we get a seven,
+
+10
+00:00:24,780 --> 00:00:26,850
+and three for the incorrectly classified points.
+
+11
+00:00:26,850 --> 00:00:30,405
+So, let's weight the incorrectly classified points a bit more.
+
+12
+00:00:30,405 --> 00:00:35,905
+How much? Well, let's make it enough to have this model be a 50-50 model.
+
+13
+00:00:35,905 --> 00:00:38,259
+So if we take these three points and weight them by
+
+14
+00:00:38,259 --> 00:00:41,469
+a factor of seven over three, or 2.33,
+
+15
+00:00:41,469 --> 00:00:43,869
+then our model now has seven as the sum
+
+16
+00:00:43,869 --> 00:00:46,239
+of the weights of the correctly classified points,
+
+17
+00:00:46,240 --> 00:00:50,679
+and also seven as the sum of the weights of the incorrectly classified points.
+
+18
+00:00:50,679 --> 00:00:53,979
+So, this model now is lame, and we need a second one.
+
+19
+00:00:53,979 --> 00:00:56,229
+And our second model will be this one,
+
+20
+00:00:56,229 --> 00:00:58,884
+which fits the newly weighted data best.
+
+21
+00:00:58,884 --> 00:01:03,609
+For this one, we can see that if we add the weights on the correctly classified points,
+
+22
+00:01:03,609 --> 00:01:08,140
+we get 11, and for the incorrectly classified ones, we get three again.
+
+23
+00:01:08,140 --> 00:01:10,719
+So, let's weigh the incorrectly classified points.
+
+24
+00:01:10,719 --> 00:01:15,265
+By how much? Well, enough to make this model a 50-50 model again.
+
+25
+00:01:15,265 --> 00:01:17,439
+Notice that if we weigh these three errors,
+
+26
+00:01:17,439 --> 00:01:19,569
+each one by a factor of 11 over three,
+
+27
+00:01:19,569 --> 00:01:25,989
+or 3.66, now the sum of the weights of the incorrectly classified points is 11.
+
+28
+00:01:25,989 --> 00:01:30,265
+So, our model is just a 50-50 model again. That's lame.
+
+29
+00:01:30,265 --> 00:01:33,715
+Let's fit a third model in this newly weighted data.
+
+30
+00:01:33,715 --> 00:01:35,950
+And here's our third model.
+
+31
+00:01:35,950 --> 00:01:39,370
+Now what is the added weight of the correctly classified points?
+
+32
+00:01:39,370 --> 00:01:42,835
+Now it's 19, and still three for the incorrect ones.
+
+33
+00:01:42,834 --> 00:01:45,574
+We can keep this going, but let's stop.
+
+34
+00:01:45,575 --> 00:01:47,734
+We have built three models.
+
+35
+00:01:47,734 --> 00:01:49,579
+And here are the three models,
+
+36
+00:01:49,579 --> 00:01:51,844
+or weak learners, that we built.
+
+37
+00:01:51,844 --> 00:01:55,400
+In the next video, we will learn how to combine them.
+

@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:02,850
+Hello! And welcome to this ensemble methods section.
+
+2
+00:00:02,850 --> 00:00:05,550
+In this section, we'll learn how to take a bunch of
+
+3
+00:00:05,549 --> 00:00:08,474
+models and join them together to get a better model.
+
+4
+00:00:08,474 --> 00:00:11,414
+We'll learn two of the most popular ensemble methods,
+
+5
+00:00:11,414 --> 00:00:13,904
+namely bagging and boosting.
+
+6
+00:00:13,904 --> 00:00:16,710
+Actually, bagging has nothing to do with a bag.
+
+7
+00:00:16,710 --> 00:00:19,185
+It's short for bootstrap aggregating.
+
+8
+00:00:19,184 --> 00:00:22,259
+So here's the premise, let's say we have to take a test,
+
+9
+00:00:22,260 --> 00:00:24,240
+a true-false test for simplicity.
+
+10
+00:00:24,239 --> 00:00:27,134
+And we're not feeling super comfortable for this test,
+
+11
+00:00:27,135 --> 00:00:29,115
+we want a little help from our friends.
+
+12
+00:00:29,114 --> 00:00:30,779
+So here are our friends.
+
+13
+00:00:30,780 --> 00:00:32,954
+In the first method, bagging,
+
+14
+00:00:32,954 --> 00:00:34,570
+what we'll do is the following.
+
+15
+00:00:34,570 --> 00:00:38,359
+We'll get each of our friends to answer the test separately,
+
+16
+00:00:38,359 --> 00:00:41,134
+and now at the end, we combine them.
+
+17
+00:00:41,134 --> 00:00:43,939
+How do we combine them? There are many ways.
+
+18
+00:00:43,939 --> 00:00:46,879
+For example, if the answers on the tests are values,
+
+19
+00:00:46,880 --> 00:00:48,664
+we could average their answers.
+
+20
+00:00:48,664 --> 00:00:51,920
+Since they are yes-no questions, let's consider voting.
+
+21
+00:00:51,920 --> 00:00:53,465
+So for each question,
+
+22
+00:00:53,465 --> 00:00:56,720
+we will check which option got more answers from our friends,
+
+23
+00:00:56,719 --> 00:00:58,174
+and we'll answer that.
+
+24
+00:00:58,174 --> 00:01:00,409
+Thus, we combine our friends into
+
+25
+00:01:00,409 --> 00:01:03,619
+some genius friend that hopefully will do better on the test.
+
+26
+00:01:03,619 --> 00:01:05,134
+Now boosting is similar,
+
+27
+00:01:05,135 --> 00:01:08,405
+except it just tries harder to exploit our friends strengths.
+
+28
+00:01:08,405 --> 00:01:11,954
+So let's say we pick our first friend and he answers a test.
+
+29
+00:01:11,954 --> 00:01:13,739
+Now let's say this friend is a philosopher,
+
+30
+00:01:13,739 --> 00:01:16,454
+so he answered all the philosophy questions correctly,
+
+31
+00:01:16,454 --> 00:01:18,870
+but didn't answer the science ones very well.
+
+32
+00:01:18,870 --> 00:01:21,255
+So we pick among our friends to see who can help,
+
+33
+00:01:21,254 --> 00:01:23,564
+and surprise, we have a scientist friend.
+
+34
+00:01:23,564 --> 00:01:27,179
+So we get her to answer the test and focus on the science questions.
+
+35
+00:01:27,180 --> 00:01:29,520
+Now let's say she knows nothing about sports,
+
+36
+00:01:29,519 --> 00:01:31,259
+and neither do our first friend.
+
+37
+00:01:31,260 --> 00:01:33,660
+So we see that those questions are all wrong.
+
+38
+00:01:33,659 --> 00:01:36,929
+So we get our friend who knows about sports to answer these questions,
+
+39
+00:01:36,930 --> 00:01:39,378
+and then keep doing that with our math friend,
+
+40
+00:01:39,378 --> 00:01:41,924
+our musician friend, et cetera.
+
+41
+00:01:41,924 --> 00:01:44,579
+At the end, we have combined them into
+
+42
+00:01:44,579 --> 00:01:48,170
+a super smart friend who does very well in the exam.
+
+43
+00:01:48,170 --> 00:01:50,210
+This method is called boosting.
+
+44
+00:01:50,209 --> 00:01:51,724
+And here's some notation.
+
+45
+00:01:51,724 --> 00:01:54,844
+In this section, we'll call our friends the weak learners,
+
+46
+00:01:54,844 --> 00:01:58,129
+and the resulting smart friend, the strong learner.
+
+47
+00:01:58,129 --> 00:02:00,920
+These weak learners are not necessarily weak,
+
+48
+00:02:00,920 --> 00:02:05,224
+but we simply denote them as such because we're joining them to create a stronger one.
+
+49
+00:02:05,224 --> 00:02:07,099
+And in general, this is what we we'll do.
+
+50
+00:02:07,099 --> 00:02:11,314
+We have a bunch of models and we put them together to form a better model.
+
+51
+00:02:11,314 --> 00:02:14,629
+And these models don't necessarily need to be very good.
+
+52
+00:02:14,629 --> 00:02:19,530
+As a matter of fact, all we need is that they do just slightly better than random chance.
+

@@ -1,0 +1,140 @@
+1
+00:00:00,000 --> 00:00:01,649
+Boosting, as we saw before,
+
+2
+00:00:01,649 --> 00:00:02,924
+is a bit more elaborate.
+
+3
+00:00:02,924 --> 00:00:08,039
+There are a few ways to do it but one of the most popular is this algorithm, AdaBoost,
+
+4
+00:00:08,039 --> 00:00:11,189
+discovered by Freund and Schapire in 1996,
+
+5
+00:00:11,189 --> 00:00:12,824
+and here's the gist of it,
+
+6
+00:00:12,824 --> 00:00:15,989
+although we'll develop the math in a bit more detail later.
+
+7
+00:00:15,990 --> 00:00:18,839
+I must say, if you look at it in the literature,
+
+8
+00:00:18,839 --> 00:00:20,445
+you may find that a bit different.
+
+9
+00:00:20,445 --> 00:00:23,100
+But I promise you, aside from trivial things like
+
+10
+00:00:23,100 --> 00:00:26,640
+multiplying all the weights by its constants which won't change the outcome,
+
+11
+00:00:26,640 --> 00:00:29,789
+what I'll be showing you with the exact same Adaboost algorithm.
+
+12
+00:00:29,789 --> 00:00:32,850
+The idea is the following: we fit our first learner in order to
+
+13
+00:00:32,850 --> 00:00:36,750
+maximize accuracy or equivalently minimize the number of errors.
+
+14
+00:00:36,750 --> 00:00:40,679
+There's so few good ones but one can check that we can do no better than three errors,
+
+15
+00:00:40,679 --> 00:00:42,914
+so let's fit it and this is the model.
+
+16
+00:00:42,914 --> 00:00:44,850
+We'll remember this model for later.
+
+17
+00:00:44,850 --> 00:00:49,020
+Now, our second learner needs to fix on the mistakes that this one has made.
+
+18
+00:00:49,020 --> 00:00:53,880
+So what we'll do is we'll take the misclassified points and make them bigger.
+
+19
+00:00:53,880 --> 00:00:58,365
+In other words, we'll punish the model more if it misses these points.
+
+20
+00:00:58,365 --> 00:01:01,335
+So, the next weak learner needs to focus on these more.
+
+21
+00:01:01,335 --> 00:01:05,670
+Our second weak learner will be this one which correctly classifies these points.
+
+22
+00:01:05,670 --> 00:01:07,685
+We'll remember this form for later.
+
+23
+00:01:07,685 --> 00:01:10,480
+Now again, we punish the points that are misclassified
+
+24
+00:01:10,480 --> 00:01:13,525
+by this one by enlarging these points over here.
+
+25
+00:01:13,525 --> 00:01:17,080
+On our third weak learner is this one which tries really
+
+26
+00:01:17,079 --> 00:01:20,920
+hard to correctly classify the big points. We'll remember this one.
+
+27
+00:01:20,920 --> 00:01:24,114
+Now, we can keep going but let's say three is enough.
+
+28
+00:01:24,114 --> 00:01:26,649
+Now, we want to combine these models,
+
+29
+00:01:26,650 --> 00:01:29,140
+and I'll be more specific about combining the later.
+
+30
+00:01:29,140 --> 00:01:32,590
+But for now, let's imagine that we're making them both like before.
+
+31
+00:01:32,590 --> 00:01:34,780
+So, our resulting model is this,
+
+32
+00:01:34,780 --> 00:01:36,280
+which when we fit in the data,
+
+33
+00:01:36,280 --> 00:01:38,515
+we realize it fits it very well.
+
+34
+00:01:38,515 --> 00:01:41,379
+So as I said, I was a bit vague on the details,
+
+35
+00:01:41,379 --> 00:01:44,329
+but let me be more specific in the next few videos.
+

@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:02,220
+Now, in order to combine models,
+
+2
+00:00:02,220 --> 00:00:05,269
+we'll actually weigh them by how well they're doing.
+
+3
+00:00:05,269 --> 00:00:09,625
+In this way, if one of our friends just answer the questions better,
+
+4
+00:00:09,625 --> 00:00:11,580
+we'll believe that friend more.
+
+5
+00:00:11,580 --> 00:00:13,699
+So, let's turn into a hypothetical question.
+
+6
+00:00:13,699 --> 00:00:15,129
+We have three friends.
+
+7
+00:00:15,130 --> 00:00:17,339
+One always tells the truth,
+
+8
+00:00:17,339 --> 00:00:21,149
+the other one tells the truth half of the time and lies half of the time,
+
+9
+00:00:21,149 --> 00:00:22,769
+and we don't know which half,
+
+10
+00:00:22,769 --> 00:00:25,134
+and the third one always lies.
+
+11
+00:00:25,135 --> 00:00:30,505
+The question is, which one of these three is the one that we should ignore the most?
+
+12
+00:00:30,504 --> 00:00:32,159
+Equivalently, here, we have three models.
+
+13
+00:00:32,159 --> 00:00:34,109
+The first one is always correct,
+
+14
+00:00:34,109 --> 00:00:36,390
+the second one is correct half of the time,
+
+15
+00:00:36,390 --> 00:00:39,655
+and the third one is wrong every single time.
+
+16
+00:00:39,655 --> 00:00:42,429
+Which of these models is worst for us?
+
+17
+00:00:42,429 --> 00:00:44,000
+Try your answer below.
+

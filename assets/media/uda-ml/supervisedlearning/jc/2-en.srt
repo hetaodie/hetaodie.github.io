@@ -1,0 +1,168 @@
+1
+00:00:00,000 --> 00:00:01,526
+So, let's start with bagging.
+
+2
+00:00:01,526 --> 00:00:04,500
+Here's our data in the form of some random blue points.
+
+3
+00:00:04,500 --> 00:00:06,450
+And for simplicity, we'll say that
+
+4
+00:00:06,450 --> 00:00:09,285
+our weak learners will be the simplest possible learner,
+
+5
+00:00:09,285 --> 00:00:11,625
+a decision tree of one node.
+
+6
+00:00:11,625 --> 00:00:15,460
+So, all of them are either horizontal or a vertical line that says,
+
+7
+00:00:15,460 --> 00:00:16,920
+"On this side everything is positive,
+
+8
+00:00:16,920 --> 00:00:19,040
+and on this side everything is negative."
+
+9
+00:00:19,039 --> 00:00:21,359
+So, back to our data. Let's do the following.
+
+10
+00:00:21,359 --> 00:00:23,910
+Since our data may be huge,
+
+11
+00:00:23,910 --> 00:00:27,707
+in general, we don't want to train many models on the same data.
+
+12
+00:00:27,707 --> 00:00:29,459
+This would be very expensive.
+
+13
+00:00:29,460 --> 00:00:32,414
+Instead, we'll just take subsets of it,
+
+14
+00:00:32,414 --> 00:00:35,850
+and train a weak learner on each one of these subsets.
+
+15
+00:00:35,850 --> 00:00:38,969
+Then, we'll figure out how to combine these learners.
+
+16
+00:00:38,969 --> 00:00:41,420
+So, here's our first subset of data,
+
+17
+00:00:41,420 --> 00:00:44,325
+and our first model, our first learner, is this one.
+
+18
+00:00:44,325 --> 00:00:46,095
+We'll remember this one.
+
+19
+00:00:46,094 --> 00:00:48,713
+Now, here's our second subset of data,
+
+20
+00:00:48,713 --> 00:00:49,980
+and our second learner.
+
+21
+00:00:49,979 --> 00:00:53,879
+And if it looks like I'm being too lucky picking my data and my learners, yes, I am.
+
+22
+00:00:53,880 --> 00:00:55,868
+In general, these learners can be terrible.
+
+23
+00:00:55,868 --> 00:00:57,307
+But, if our data is large enough,
+
+24
+00:00:57,307 --> 00:01:00,990
+picking a random subset normally gives us good intuition on the data,
+
+25
+00:01:00,990 --> 00:01:03,085
+plus it makes the process run quickly.
+
+26
+00:01:03,085 --> 00:01:05,165
+And finally, our third subset of data,
+
+27
+00:01:05,165 --> 00:01:06,800
+on our third learner,
+
+28
+00:01:06,799 --> 00:01:09,280
+notice that I never partition that data.
+
+29
+00:01:09,280 --> 00:01:12,942
+We are completely allowed to repeat points among our subsets,
+
+30
+00:01:12,942 --> 00:01:15,759
+and to even not consider some of the points at all.
+
+31
+00:01:15,760 --> 00:01:19,100
+At every step, we pick a fully random subset of data.
+
+32
+00:01:19,099 --> 00:01:21,409
+And now, we have three weak learners.
+
+33
+00:01:21,409 --> 00:01:24,679
+How do we combine them? Well, what about voting?
+
+34
+00:01:24,680 --> 00:01:27,350
+We overimpose them over the data and say,
+
+35
+00:01:27,349 --> 00:01:29,344
+if two of more of them say blue,
+
+36
+00:01:29,344 --> 00:01:33,064
+then blue, and if two of more of them say red, then red.
+
+37
+00:01:33,064 --> 00:01:34,759
+If we have an even number of models,
+
+38
+00:01:34,760 --> 00:01:37,010
+we can pick any way we want to break ties.
+
+39
+00:01:37,010 --> 00:01:39,310
+Although, with lots of points and lots of models,
+
+40
+00:01:39,310 --> 00:01:42,450
+it's hard to imagine that we'd get a tie somewhere. It may happen, though.
+
+41
+00:01:42,450 --> 00:01:46,170
+And voila, this is what we obtain when we make the models vote.
+
+42
+00:01:46,170 --> 00:01:49,000
+So, that's it. That's the bagging algorithm.
+

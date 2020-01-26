@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:01,935
+And yes, it's easy to think.
+
+2
+00:00:01,935 --> 00:00:04,000
+Let's forget about the one that always lies.
+
+3
+00:00:04,000 --> 00:00:06,424
+And in real life, maybe that's a good thing.
+
+4
+00:00:06,424 --> 00:00:09,820
+But in here, we could really get good information out of this one.
+
+5
+00:00:09,820 --> 00:00:13,205
+What if we ask this friend a lot of yes/no questions.
+
+6
+00:00:13,205 --> 00:00:15,320
+Well, we'll always get the wrong answers,
+
+7
+00:00:15,320 --> 00:00:18,280
+so all we have to do is do the exact opposite.
+
+8
+00:00:18,280 --> 00:00:22,625
+In this way, the complete liar gives us a lot of information.
+
+9
+00:00:22,625 --> 00:00:26,100
+In contrast, the one who lies half of the time doesn't really help
+
+10
+00:00:26,100 --> 00:00:30,200
+us much since we have no idea if we should believe them or not.
+
+11
+00:00:30,199 --> 00:00:33,195
+And obviously, the truthful one is super helpful, too.
+
+12
+00:00:33,195 --> 00:00:37,079
+So, we conclude that the worst one is this one in the middle.
+
+13
+00:00:37,079 --> 00:00:39,299
+In the same way, we'll have our three models.
+
+14
+00:00:39,299 --> 00:00:41,099
+Model one is the truthful one,
+
+15
+00:00:41,100 --> 00:00:42,750
+which is always correct.
+
+16
+00:00:42,750 --> 00:00:43,979
+Model two is the random one,
+
+17
+00:00:43,979 --> 00:00:45,869
+which is correct roughly half of the time.
+
+18
+00:00:45,869 --> 00:00:49,144
+And model three is a liar, which is always wrong.
+
+19
+00:00:49,145 --> 00:00:53,760
+So, what we'll do is we'll assign the truthful model a large positive weight,
+
+20
+00:00:53,759 --> 00:00:57,179
+the random model a weight of zero since it's useless,
+
+21
+00:00:57,179 --> 00:00:58,469
+and the liar model
+
+22
+00:00:58,469 --> 00:01:03,589
+a large negative weight since we'll do the exact opposite as this model says.
+
+23
+00:01:03,590 --> 00:01:06,659
+So, here's a bit of math. We have our number line and
+
+24
+00:01:06,659 --> 00:01:10,304
+we want our weight function to look like this.
+
+25
+00:01:10,305 --> 00:01:13,520
+Super positive for the truthful models,
+
+26
+00:01:13,519 --> 00:01:15,524
+zero for the useless models,
+
+27
+00:01:15,525 --> 00:01:18,580
+and super negative for the liar models.
+
+28
+00:01:18,579 --> 00:01:20,609
+Let's remember how the models look.
+
+29
+00:01:20,609 --> 00:01:22,319
+They look like this.
+
+30
+00:01:22,319 --> 00:01:23,909
+And let's look at the accuracy.
+
+31
+00:01:23,909 --> 00:01:26,584
+The truthful model has accuracy around one,
+
+32
+00:01:26,584 --> 00:01:29,619
+the random model has accuracy around 50 percent,
+
+33
+00:01:29,620 --> 00:01:32,520
+and the liar model has accurate around zero.
+
+34
+00:01:32,519 --> 00:01:35,250
+So this function will help us check it out.
+
+35
+00:01:35,250 --> 00:01:40,275
+Y equals natural logarithm of x divided by one over x,
+
+36
+00:01:40,275 --> 00:01:42,930
+where x is the accuracy.
+
+37
+00:01:42,930 --> 00:01:46,725
+Check this out. It's very negative for values close to zero.
+
+38
+00:01:46,724 --> 00:01:50,189
+For 0.5, it's logarithm of 0.5 divide by 0.5,
+
+39
+00:01:50,189 --> 00:01:53,120
+which is logarithm of one, which is zero.
+
+40
+00:01:53,120 --> 00:01:56,905
+And finally, is very positive for values close to one.
+
+41
+00:01:56,905 --> 00:01:59,460
+There are actually much heavier mathematical reasons for this
+
+42
+00:01:59,459 --> 00:02:02,409
+to be the function but that's outside the scope of this course.
+
+43
+00:02:02,409 --> 00:02:03,869
+In the instructor comments,
+
+44
+00:02:03,870 --> 00:02:05,730
+we'll link some reading material including
+
+45
+00:02:05,730 --> 00:02:09,435
+the original paper by Froyin and Shapir, if you're curious.
+
+46
+00:02:09,435 --> 00:02:12,120
+And if your head is spinning and your alarms are going off because
+
+47
+00:02:12,120 --> 00:02:14,670
+you saw potential division by zero, don't worry.
+
+48
+00:02:14,669 --> 00:02:16,344
+We'll deal with that in a bit.
+
+49
+00:02:16,344 --> 00:02:19,724
+So, we conclude that a great formula for weight is this.
+
+50
+00:02:19,724 --> 00:02:24,340
+Natural logarithm of accuracy divided by one minus accuracy.
+
+51
+00:02:24,340 --> 00:02:28,930
+So, a small quiz. Can you find the weights for these three models over here?
+
+52
+00:02:28,930 --> 00:02:31,000
+Enter your answers below..
+

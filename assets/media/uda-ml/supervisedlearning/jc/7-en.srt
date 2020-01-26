@@ -1,0 +1,160 @@
+1
+00:00:00,000 --> 00:00:05,190
+So one shortcut. Maybe you notice that the formula for the weight can also be written as
+
+2
+00:00:05,190 --> 00:00:07,589
+the natural logarithm of the number of
+
+3
+00:00:07,589 --> 00:00:12,914
+correctly classified points divided by the number of incorrectly classified points.
+
+4
+00:00:12,914 --> 00:00:16,064
+This is just obtained by multiplying the top and bottom of the formula
+
+5
+00:00:16,065 --> 00:00:19,455
+inside the logarithm by the number of data points.
+
+6
+00:00:19,454 --> 00:00:24,539
+So in the first model we have seven points correctly classified and one incorrect,
+
+7
+00:00:24,539 --> 00:00:30,074
+therefore the weight is the natural logarithm of seven divided by one which is 1.95.
+
+8
+00:00:30,074 --> 00:00:33,089
+Equivalently, the second one has weight logarithm of four
+
+9
+00:00:33,090 --> 00:00:36,405
+divided by four which is logarithm of one which is zero.
+
+10
+00:00:36,405 --> 00:00:40,755
+This makes sense as the model has 50% accuracy, so it's useless.
+
+11
+00:00:40,755 --> 00:00:44,700
+And for the third one we have two correct ones and six incorrect ones,
+
+12
+00:00:44,700 --> 00:00:49,170
+so the weight of this is logarithm of two divided by six,
+
+13
+00:00:49,170 --> 00:00:52,335
+which is minus 1.099.
+
+14
+00:00:52,335 --> 00:00:54,359
+Notice that the weight is negative,
+
+15
+00:00:54,359 --> 00:00:57,119
+which means we listen to this model but we will do
+
+16
+00:00:57,119 --> 00:01:00,884
+the exact opposite as it says since it lies most of the time.
+
+17
+00:01:00,884 --> 00:01:02,429
+Now what about these two models?
+
+18
+00:01:02,429 --> 00:01:05,219
+The first one has weight logarithm of eight over
+
+19
+00:01:05,219 --> 00:01:08,799
+zero since it makes no mistakes. What is it?
+
+20
+00:01:08,799 --> 00:01:12,819
+And even worse the second one has logarithm of zero over
+
+21
+00:01:12,819 --> 00:01:17,154
+eight which is logarithm of zero which is undefined too. What do we do?
+
+22
+00:01:17,155 --> 00:01:20,379
+Well, we can think of eight over zero as infinity,
+
+23
+00:01:20,379 --> 00:01:23,229
+so the first one has weight infinity and for
+
+24
+00:01:23,230 --> 00:01:26,500
+the second one we can think of the logarithm of zero as negative infinity.
+
+25
+00:01:26,500 --> 00:01:28,989
+So the second one has weight negative infinity.
+
+26
+00:01:28,989 --> 00:01:32,004
+Now, does this make sense? Well, let's think about it.
+
+27
+00:01:32,004 --> 00:01:34,299
+This would mess up our calculations
+
+28
+00:01:34,299 --> 00:01:38,289
+but if one of our weak learners classifies the data perfectly,
+
+29
+00:01:38,290 --> 00:01:40,015
+then we're pretty much done, right?
+
+30
+00:01:40,015 --> 00:01:42,670
+This says, listen to it infinitely and
+
+31
+00:01:42,670 --> 00:01:45,515
+don't listen to the others and the second one same thing.
+
+32
+00:01:45,515 --> 00:01:48,935
+If one of our weak learners manages to get everything wrong,
+
+33
+00:01:48,935 --> 00:01:52,325
+then doing the complete opposite already classifies our data well.
+
+34
+00:01:52,325 --> 00:01:55,310
+So assigning it a weight of minus infinity just says,
+
+35
+00:01:55,310 --> 00:01:56,780
+just listen to this model but do
+
+36
+00:01:56,780 --> 00:01:59,435
+the complete opposite and don't worry about the other models.
+
+37
+00:01:59,435 --> 00:02:03,034
+These two are not very likely to happen in the practice,
+
+38
+00:02:03,034 --> 00:02:05,465
+so this is actually not very concerning.
+
+39
+00:02:05,465 --> 00:02:07,520
+It's still good to know what happens in
+
+40
+00:02:07,519 --> 00:02:10,729
+extreme cases for consistency checks like this one.
+
