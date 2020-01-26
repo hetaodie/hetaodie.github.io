@@ -1,0 +1,160 @@
+1
+00:00:00,000 --> 00:00:01,350
+We'll start with an example.
+
+2
+00:00:01,350 --> 00:00:03,720
+Let's say we're in an office and there are two people,
+
+3
+00:00:03,720 --> 00:00:07,964
+Alex and Brenda, and they are both there the same amount of time.
+
+4
+00:00:07,964 --> 00:00:11,490
+One day we're in the office and we see someone passing by really fast.
+
+5
+00:00:11,490 --> 00:00:13,095
+We can't tell who it is,
+
+6
+00:00:13,095 --> 00:00:14,820
+but we'd like to take a guess.
+
+7
+00:00:14,820 --> 00:00:16,844
+So far with all we know,
+
+8
+00:00:16,844 --> 00:00:21,015
+all we can infer is that since they're both in the office the same amount of time,
+
+9
+00:00:21,015 --> 00:00:23,370
+the probability of the person being Alex is
+
+10
+00:00:23,370 --> 00:00:28,039
+50% and the probability of the person being Brenda is also 50%.
+
+11
+00:00:28,039 --> 00:00:30,640
+But now let's try to use more information so
+
+12
+00:00:30,640 --> 00:00:33,414
+we can make a better guess of who the person is.
+
+13
+00:00:33,414 --> 00:00:35,575
+When we saw the person running by,
+
+14
+00:00:35,575 --> 00:00:38,290
+we noticed that they were wearing a red sweater,
+
+15
+00:00:38,289 --> 00:00:40,600
+so we'll use that piece of information.
+
+16
+00:00:40,600 --> 00:00:42,850
+We've known Alex and Brenda for awhile,
+
+17
+00:00:42,850 --> 00:00:45,789
+and actually we've noticed that Alex wears a red sweater
+
+18
+00:00:45,789 --> 00:00:49,539
+two days a week and Brenda wears a red sweater three days a week.
+
+19
+00:00:49,539 --> 00:00:52,524
+We don't know which days, but we are sure of this fact.
+
+20
+00:00:52,524 --> 00:00:54,460
+Also when we say week, we mean work week,
+
+21
+00:00:54,460 --> 00:00:57,579
+so five days, although at the end this won't matter much.
+
+22
+00:00:57,579 --> 00:01:00,070
+So, now what we'll do is we'll use
+
+23
+00:01:00,070 --> 00:01:03,130
+this piece of information to help us make a better guess.
+
+24
+00:01:03,130 --> 00:01:06,689
+First off, since Alex wears a red sweater less than Brenda,
+
+25
+00:01:06,689 --> 00:01:09,149
+it's easy to imagine that it's a bit less likely that
+
+26
+00:01:09,150 --> 00:01:12,120
+the person we saw is Alex than that it is Brenda.
+
+27
+00:01:12,120 --> 00:01:13,859
+But exactly how likely?
+
+28
+00:01:13,859 --> 00:01:17,655
+Well, let's say that if we saw a person pass by five times,
+
+29
+00:01:17,655 --> 00:01:20,070
+it would make sense to think that two of these times it was
+
+30
+00:01:20,069 --> 00:01:23,287
+Alex since he wears a red sweater twice a week,
+
+31
+00:01:23,287 --> 00:01:27,239
+and the other three times it was Brenda since she wears a red sweater three times a week.
+
+32
+00:01:27,239 --> 00:01:33,359
+Therefore, from here we can infer that the probabilities are 40 and 60.
+
+33
+00:01:33,359 --> 00:01:36,629
+We've used the information about the color of the sweater to obtain
+
+34
+00:01:36,629 --> 00:01:40,459
+better probabilities about who was the person who passed by.
+
+35
+00:01:40,459 --> 00:01:44,500
+This is Bayes Theorem and we'll learn it more in detail in the next few videos.
+
+36
+00:01:44,500 --> 00:01:47,515
+The initial guess we had, the 50-50 guess,
+
+37
+00:01:47,515 --> 00:01:50,170
+is called the prior since it's all we could
+
+38
+00:01:50,170 --> 00:01:53,680
+infer prior to the new information about the red sweater.
+
+39
+00:01:53,680 --> 00:01:56,260
+The final guess we have, the 60-40 guess,
+
+40
+00:01:56,260 --> 00:02:01,469
+is called the posterior since we've inferred it after the new information has arrived.
+

@@ -1,0 +1,324 @@
+1
+00:00:00,000 --> 00:00:03,484
+Well, let's see. Let's use Bayes theorem to calculate it.
+
+2
+00:00:03,484 --> 00:00:05,134
+We'll use the following notation,
+
+3
+00:00:05,134 --> 00:00:07,064
+S will stand for sick,
+
+4
+00:00:07,065 --> 00:00:08,970
+H will stand for healthy,
+
+5
+00:00:08,970 --> 00:00:12,740
+and the plus sign will stand for testing positive.
+
+6
+00:00:12,740 --> 00:00:15,435
+So, since one out of every 10,000 people are sick,
+
+7
+00:00:15,435 --> 00:00:20,039
+we get that P of S is 0.0001.
+
+8
+00:00:20,039 --> 00:00:24,750
+Similarly, P of H is 0.9999.
+
+9
+00:00:24,750 --> 00:00:27,240
+Since the test has 99 percent accuracy,
+
+10
+00:00:27,239 --> 00:00:29,414
+both for sick and for healthy patients,
+
+11
+00:00:29,414 --> 00:00:34,969
+we see that P of plus, given S,
+
+12
+00:00:34,969 --> 00:00:41,759
+is 0.99, the probability that the sick patient will get correctly diagnosed.
+
+13
+00:00:41,759 --> 00:00:43,399
+And that P of plus,
+
+14
+00:00:43,399 --> 00:00:45,772
+given H, is 0.01,
+
+15
+00:00:45,773 --> 00:00:50,800
+the probability that the healthy patient will get incorrectly diagnosed as sick.
+
+16
+00:00:50,799 --> 00:00:52,500
+So, plugging this into the new formula,
+
+17
+00:00:52,500 --> 00:00:54,960
+we get that the probability of being diagnosed as
+
+18
+00:00:54,960 --> 00:00:59,310
+positive when you're sick is exactly 0.0098,
+
+19
+00:00:59,310 --> 00:01:02,054
+which is less than one percent.
+
+20
+00:01:02,054 --> 00:01:04,227
+Really, less than one percent,
+
+21
+00:01:04,227 --> 00:01:06,655
+when the test has 99 percent accuracy?
+
+22
+00:01:06,655 --> 00:01:10,200
+That's strange. But I guess that's the answer to the quiz.
+
+23
+00:01:10,200 --> 00:01:14,280
+So, less than one percent falls in this category of zero to 20 percent.
+
+24
+00:01:14,280 --> 00:01:15,465
+I'm still puzzled though,
+
+25
+00:01:15,465 --> 00:01:19,704
+why less than one percent if the test is correct 99 percent of the time?
+
+26
+00:01:19,704 --> 00:01:23,310
+Well, let's explore. Let's go back to the tree of possibilities.
+
+27
+00:01:23,310 --> 00:01:25,844
+Let's say we start with one million patients,
+
+28
+00:01:25,844 --> 00:01:28,914
+and they have two options, healthy and sick.
+
+29
+00:01:28,915 --> 00:01:32,068
+Now, since one out of every 10,000 patients is sick,
+
+30
+00:01:32,067 --> 00:01:34,328
+then from this group of one million patients,
+
+31
+00:01:34,328 --> 00:01:40,680
+a hundred will be sick and the remaining 999,900 will be healthy.
+
+32
+00:01:40,680 --> 00:01:43,160
+Now, let's remember that for every 100 patients,
+
+33
+00:01:43,159 --> 00:01:47,689
+99 get correctly diagnosed and one gets incorrectly diagnosed.
+
+34
+00:01:47,689 --> 00:01:51,519
+This happens both for sick and for healthy patients.
+
+35
+00:01:51,519 --> 00:01:55,824
+So let's see how many of these patients will get diagnosed positively or negatively.
+
+36
+00:01:55,825 --> 00:01:57,930
+Out of the 100 sick ones,
+
+37
+00:01:57,930 --> 00:02:00,505
+99 will be correctly diagnosed as
+
+38
+00:02:00,504 --> 00:02:05,364
+positive and one will be incorrectly diagnosed as negative.
+
+39
+00:02:05,364 --> 00:02:06,765
+Now, out of the healthy ones,
+
+40
+00:02:06,765 --> 00:02:12,780
+one percent or 9,999 will be incorrectly diagnosed as positive and
+
+41
+00:02:12,780 --> 00:02:20,400
+the remaining 99 percent or 989,901 will be correctly diagnosed as negative.
+
+42
+00:02:20,400 --> 00:02:22,560
+Now, let's really examine these four groups.
+
+43
+00:02:22,560 --> 00:02:27,414
+The first group is the sick people who we will send for more tests or treatment.
+
+44
+00:02:27,414 --> 00:02:31,889
+The second is the unlucky sick people that will be sent home with no treatment.
+
+45
+00:02:31,889 --> 00:02:37,109
+The third is a slightly confused healthy people who will be sent for more tests.
+
+46
+00:02:37,110 --> 00:02:39,900
+And the fourth group or the majority is the people who are
+
+47
+00:02:39,900 --> 00:02:42,849
+healthy and were correctly diagnosed healthy and sent home.
+
+48
+00:02:42,849 --> 00:02:44,439
+But now, here's the thing.
+
+49
+00:02:44,439 --> 00:02:46,125
+We know we tested positively,
+
+50
+00:02:46,125 --> 00:02:48,919
+so we must be among one of these two groups,
+
+51
+00:02:48,919 --> 00:02:54,764
+the sick people who tested positively or the healthy people who tested positively.
+
+52
+00:02:54,764 --> 00:02:58,762
+One group is much larger and has 9,999 people,
+
+53
+00:02:58,763 --> 00:03:01,890
+whereas the other one has only 99 people.
+
+54
+00:03:01,889 --> 00:03:07,349
+The probability that we're in this group is much larger than that we're in this group.
+
+55
+00:03:07,349 --> 00:03:11,609
+As a matter of fact, the probability that we are in the small group is
+
+56
+00:03:11,610 --> 00:03:18,210
+99 divided by the sum 99 plus 9,999,
+
+57
+00:03:18,210 --> 00:03:19,965
+which is, you guessed it,
+
+58
+00:03:19,965 --> 00:03:25,479
+0.0098, which is smaller than one percent.
+
+59
+00:03:25,479 --> 00:03:30,804
+This is the probability of being sick if you are diagnosed as positive.
+
+60
+00:03:30,805 --> 00:03:34,310
+But why is the group of healthy people who tested positively so
+
+61
+00:03:34,310 --> 00:03:37,939
+much larger than the group of sick people who tested positively?
+
+62
+00:03:37,939 --> 00:03:41,974
+The reason is because even though the test only fails one percent of the time,
+
+63
+00:03:41,974 --> 00:03:43,759
+that one percent is much,
+
+64
+00:03:43,759 --> 00:03:49,159
+much larger than the one out of 10,000 rate of sickness among the population.
+
+65
+00:03:49,159 --> 00:03:53,254
+In other words, in a group of 10,000 healthy people,
+
+66
+00:03:53,254 --> 00:03:57,579
+one percent or 100 of them will get misdiagnosed as sick.
+
+67
+00:03:57,580 --> 00:04:00,575
+On the other hand, in a group of 10,000 people,
+
+68
+00:04:00,574 --> 00:04:04,099
+around one will be sick. This is much less.
+
+69
+00:04:04,099 --> 00:04:06,500
+So, if you know you've tested positively,
+
+70
+00:04:06,500 --> 00:04:12,627
+you are still more likely to be among the 100 errors than among the ones sick.
+
+71
+00:04:12,627 --> 00:04:13,954
+And how much more likely?
+
+72
+00:04:13,955 --> 00:04:15,235
+Around a hundred times.
+
+73
+00:04:15,235 --> 00:04:17,480
+And that's why our probability of being sick while
+
+74
+00:04:17,480 --> 00:04:21,129
+being diagnosed positively is around one percent.
+
+75
+00:04:21,129 --> 00:04:23,209
+This phenomenon is called a false positive,
+
+76
+00:04:23,209 --> 00:04:25,099
+and it has been a nightmare for the medical world,
+
+77
+00:04:25,100 --> 00:04:26,945
+the legal world, and many others.
+
+78
+00:04:26,944 --> 00:04:30,439
+Search false positives on Google and you'll see many cases
+
+79
+00:04:30,439 --> 00:04:34,219
+in which people have been misdiagnosed, misjudged, etcetera.
+
+80
+00:04:34,220 --> 00:04:36,405
+So, always be aware of false positives.
+
+81
+00:04:36,404 --> 00:04:38,000
+They are very sneaky.
+

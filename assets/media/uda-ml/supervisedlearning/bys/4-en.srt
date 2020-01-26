@@ -1,0 +1,372 @@
+1
+00:00:00,000 --> 00:00:02,669
+Bayes Theorem can get a little more complex.
+
+2
+00:00:02,669 --> 00:00:04,365
+Let's take a look at a small example,
+
+3
+00:00:04,365 --> 00:00:07,804
+and what we'll do here is we'll mess a bit with the prior probability.
+
+4
+00:00:07,804 --> 00:00:12,855
+So, again, we have Alex and Brenda in the office and we saw someone pass by quickly.
+
+5
+00:00:12,855 --> 00:00:14,845
+And we don't know who the person is.
+
+6
+00:00:14,845 --> 00:00:17,580
+So let's say we look more carefully at their schedules and we
+
+7
+00:00:17,579 --> 00:00:21,195
+realize that Alex actually works from the office most of the time.
+
+8
+00:00:21,195 --> 00:00:23,820
+He comes by three days a week.
+
+9
+00:00:23,820 --> 00:00:26,160
+And Brenda travels a lot for work so
+
+10
+00:00:26,160 --> 00:00:29,030
+she actually comes to the office only one day a week.
+
+11
+00:00:29,030 --> 00:00:32,490
+So, initially, without knowing anything about the red sweater,
+
+12
+00:00:32,490 --> 00:00:37,935
+all we know is that it's three times more likely to see Alex than to see Brenda.
+
+13
+00:00:37,935 --> 00:00:45,429
+Therefore, our prior probabilities are 0.75 for Alex and 0.25 for Brenda.
+
+14
+00:00:45,429 --> 00:00:48,825
+And let's say that we have this happening throughout all the weeks.
+
+15
+00:00:48,825 --> 00:00:50,859
+But now we use our extra knowledge,
+
+16
+00:00:50,859 --> 00:00:54,030
+which is that the person we saw had a red sweater.
+
+17
+00:00:54,030 --> 00:00:55,685
+The rule is still as before,
+
+18
+00:00:55,685 --> 00:00:58,710
+as Alex wears red twice a week,
+
+19
+00:00:58,710 --> 00:01:01,420
+and Brenda wears red three times a week.
+
+20
+00:01:01,420 --> 00:01:08,135
+So, naively, we would think that the real probabilities are not exactly 0.75 or 0.25,
+
+21
+00:01:08,135 --> 00:01:11,959
+because Brenda wears a red sweater more than Alex.
+
+22
+00:01:11,959 --> 00:01:13,899
+So they should be a little closer to each other.
+
+23
+00:01:13,900 --> 00:01:17,960
+Let's calculate them. So, we'll do the following.
+
+24
+00:01:17,959 --> 00:01:21,149
+Let's think of the columns as weeks instead.
+
+25
+00:01:21,150 --> 00:01:24,375
+So now, for each five-day work week,
+
+26
+00:01:24,375 --> 00:01:27,959
+Alex wears red twice and Brenda three times.
+
+27
+00:01:27,959 --> 00:01:30,799
+So we color the days they wore red.
+
+28
+00:01:30,799 --> 00:01:33,224
+Now, since we know the person wore red,
+
+29
+00:01:33,224 --> 00:01:35,459
+we forget about the times that they didn't.
+
+30
+00:01:35,459 --> 00:01:38,724
+So, we have nine times someone wore red.
+
+31
+00:01:38,724 --> 00:01:40,140
+Six of them are Alex,
+
+32
+00:01:40,140 --> 00:01:42,239
+and three of them are Brenda.
+
+33
+00:01:42,239 --> 00:01:46,530
+Therefore, among nine times we saw someone wearing red,
+
+34
+00:01:46,530 --> 00:01:48,570
+two thirds of the times it was Alex,
+
+35
+00:01:48,569 --> 00:01:50,625
+and one third of the time it was Brenda.
+
+36
+00:01:50,625 --> 00:01:55,185
+Thus, our posterior probabilities are two thirds,
+
+37
+00:01:55,185 --> 00:01:57,990
+or 0.67, for Alex,
+
+38
+00:01:57,989 --> 00:02:01,459
+and one third, or 0.33, for Brenda.
+
+39
+00:02:01,459 --> 00:02:03,224
+So, it looks like we did a little bit of magic.
+
+40
+00:02:03,224 --> 00:02:05,744
+Let's do this again in a more mathematical way.
+
+41
+00:02:05,745 --> 00:02:06,930
+We saw a person,
+
+42
+00:02:06,930 --> 00:02:10,080
+and initially all we know is that it's Alex with
+
+43
+00:02:10,080 --> 00:02:15,170
+a 75 percent probability and Brenda with a 25 percent probability,
+
+44
+00:02:15,169 --> 00:02:19,339
+since Alex comes to the office three times a week and Brenda once a week.
+
+45
+00:02:19,340 --> 00:02:21,525
+But now new information comes to light,
+
+46
+00:02:21,525 --> 00:02:24,460
+which is that the person is wearing a red sweater,
+
+47
+00:02:24,460 --> 00:02:29,570
+and the data says that Alex wears red two times a week.
+
+48
+00:02:29,569 --> 00:02:31,049
+So, now we look at Alex.
+
+49
+00:02:31,050 --> 00:02:33,710
+What is the probability that he's wearing red?
+
+50
+00:02:33,710 --> 00:02:38,955
+Since the work week has five days and the probability of him wearing red is two fifths,
+
+51
+00:02:38,955 --> 00:02:45,775
+or 0.4 and the probability of him not wearing red is the complement, so 0.6.
+
+52
+00:02:45,775 --> 00:02:49,689
+Same thing with Brenda. Since she wears red three times a week,
+
+53
+00:02:49,689 --> 00:02:53,668
+then the probability of her wearing red today is 0.6,
+
+54
+00:02:53,668 --> 00:02:57,250
+and the probability of her not wearing red is 0.4.
+
+55
+00:02:57,250 --> 00:03:00,664
+Now, by the formula of conditional probability,
+
+56
+00:03:00,664 --> 00:03:04,784
+the probability that these two will happen is the product of the two probabilities,
+
+57
+00:03:04,784 --> 00:03:08,270
+p of Alex, times p of red given Alex.
+
+58
+00:03:08,270 --> 00:03:12,350
+Therefore, the probability of the person we saw is Alex, and that they're wearing red,
+
+59
+00:03:12,349 --> 00:03:17,245
+is precisely 0.75 times 0.4.
+
+60
+00:03:17,245 --> 00:03:19,480
+We multiply them and put the result here.
+
+61
+00:03:19,479 --> 00:03:22,039
+We calculate the other probabilities in the same way.
+
+62
+00:03:22,039 --> 00:03:24,699
+The probability of the person we saw is Alex and that he's not
+
+63
+00:03:24,699 --> 00:03:27,777
+wearing red is 0.75 times 0.6.
+
+64
+00:03:27,777 --> 00:03:30,519
+The probability that the person we saw is Brenda and that
+
+65
+00:03:30,520 --> 00:03:33,520
+she's wearing red is again the product of these probabilities,
+
+66
+00:03:33,520 --> 00:03:35,844
+which is 0.25 times 0.6.
+
+67
+00:03:35,844 --> 00:03:38,919
+And finally, the probably of the person we saw is Brenda and that she's
+
+68
+00:03:38,919 --> 00:03:42,030
+not wearing red is 0.25 times 0.4.
+
+69
+00:03:42,030 --> 00:03:45,525
+And now here's where the Bayesian magic happens. Are you ready?
+
+70
+00:03:45,525 --> 00:03:47,469
+We have four possible scenarios,
+
+71
+00:03:47,469 --> 00:03:50,240
+and you can check that these four probabilities add to one.
+
+72
+00:03:50,240 --> 00:03:52,085
+But we know one thing,
+
+73
+00:03:52,085 --> 00:03:55,030
+that the person we saw was wearing red.
+
+74
+00:03:55,030 --> 00:03:57,849
+Therefore, out of these four scenarios,
+
+75
+00:03:57,849 --> 00:03:59,574
+only two are plausible,
+
+76
+00:03:59,574 --> 00:04:02,659
+the two when the person is wearing red.
+
+77
+00:04:02,659 --> 00:04:04,620
+So, we forget about the other two.
+
+78
+00:04:04,620 --> 00:04:08,515
+Now, since our new universe consists of only these two scenarios,
+
+79
+00:04:08,514 --> 00:04:10,854
+then the probabilities should be higher.
+
+80
+00:04:10,854 --> 00:04:15,439
+But the ratio should still be the same with respect to each other.
+
+81
+00:04:15,439 --> 00:04:18,490
+This means we need to normalize them, or,
+
+82
+00:04:18,490 --> 00:04:22,620
+equivalently, divide them by something so that they now add to 1.
+
+83
+00:04:22,620 --> 00:04:25,810
+The thing we should divide them by is the sum of the two.
+
+84
+00:04:25,810 --> 00:04:31,600
+So our new probability of the person being Alex is the top one, namely,
+
+85
+00:04:31,600 --> 00:04:35,575
+0.75 times 0.4, divided by the sum of the two,
+
+86
+00:04:35,574 --> 00:04:37,479
+namely, 0.75 times 0.4,
+
+87
+00:04:37,480 --> 00:04:40,004
+plus 0.25 times 0.6.
+
+88
+00:04:40,004 --> 00:04:45,415
+This is precisely two thirds, or 0.67.
+
+89
+00:04:45,415 --> 00:04:49,170
+And now, we can see that the complement is the probability that the person is Brenda,
+
+90
+00:04:49,170 --> 00:04:52,625
+which is one third,or 0.33.
+
+91
+00:04:52,625 --> 00:04:56,694
+If we take Brenda's probability and divide it by the sum of both probabilities,
+
+92
+00:04:56,694 --> 00:05:00,305
+we can see that we get one third, as desired.
+
+93
+00:05:00,305 --> 00:05:04,000
+And that's it. That is Bayes theorem at its full potential.
+

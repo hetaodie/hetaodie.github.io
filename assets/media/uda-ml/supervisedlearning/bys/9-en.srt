@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:01,439
+So, let's see. We have
+
+2
+00:00:01,439 --> 00:00:04,439
+three spam emails and one of them contains the word "easy" which means
+
+3
+00:00:04,440 --> 00:00:10,190
+the probability of an email containing the word "easy" given that it's spam is one-third.
+
+4
+00:00:10,189 --> 00:00:14,449
+Since two out of the three spam emails contained the word "money," then the probability
+
+5
+00:00:14,449 --> 00:00:18,605
+of an email containing the word "money" given that it's spam is two-thirds.
+
+6
+00:00:18,605 --> 00:00:23,769
+And similarly, there are five ham emails and one of them contains the word "easy," then
+
+7
+00:00:23,769 --> 00:00:28,980
+the probability of an email containing the word "easy" given that it is ham is one-fifth.
+
+8
+00:00:28,980 --> 00:00:31,039
+And same thing for the word "money."
+
+9
+00:00:31,039 --> 00:00:34,159
+And the main gist of Bayesian learning is the following: We go
+
+10
+00:00:34,159 --> 00:00:37,399
+from what's known which is P of easy given spam,
+
+11
+00:00:37,399 --> 00:00:39,704
+and P of money given spam,
+
+12
+00:00:39,704 --> 00:00:45,710
+to what's inferred which is P of spam given that it contains the word
+
+13
+00:00:45,710 --> 00:00:48,320
+"easy" which is one half since there are
+
+14
+00:00:48,320 --> 00:00:52,520
+two emails containing the word "easy" and only one of them is spam,
+
+15
+00:00:52,520 --> 00:00:57,380
+and P of spam given that it contains the word "money" which is
+
+16
+00:00:57,380 --> 00:00:59,690
+two-thirds since there are three e-mails
+
+17
+00:00:59,689 --> 00:01:03,469
+containing the word "money" and two of them are spam.
+
+18
+00:01:03,469 --> 00:01:06,194
+And now, here's the naive part of my base.
+
+19
+00:01:06,194 --> 00:01:10,334
+We pretend that these are independent and just multiply them together to obtain
+
+20
+00:01:10,334 --> 00:01:12,799
+the probability that the email is spam if it
+
+21
+00:01:12,799 --> 00:01:15,524
+contains the word "easy" and the word "money."
+
+22
+00:01:15,525 --> 00:01:17,210
+Of course, this is not true in general.
+
+23
+00:01:17,209 --> 00:01:21,589
+But making this assumption normally gives us some pretty good results,
+
+24
+00:01:21,590 --> 00:01:24,290
+and it's not such a crazy assumption after all.
+
+25
+00:01:24,290 --> 00:01:26,140
+We'll see this more in detail later.
+

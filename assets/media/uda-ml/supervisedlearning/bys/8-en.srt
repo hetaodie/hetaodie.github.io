@@ -1,0 +1,124 @@
+1
+00:00:00,000 --> 00:00:04,500
+Now, the question is, "How do we use this wonderful base theorem to do machine learning?"
+
+2
+00:00:04,500 --> 00:00:06,629
+And the answer is, repeatedly.
+
+3
+00:00:06,629 --> 00:00:08,654
+Let's look at this example,
+
+4
+00:00:08,654 --> 00:00:10,980
+a spam email classifier.
+
+5
+00:00:10,980 --> 00:00:14,190
+So, let's say we have some data in the form of a bunch of emails.
+
+6
+00:00:14,189 --> 00:00:17,864
+Some of them are spam, and some of them are not spam, which we call ham.
+
+7
+00:00:17,864 --> 00:00:19,875
+Spam are, "win money now,
+
+8
+00:00:19,875 --> 00:00:21,495
+make cash easy, et cetera."
+
+9
+00:00:21,495 --> 00:00:23,100
+And the ham are "How are you?,
+
+10
+00:00:23,100 --> 00:00:24,735
+There you are, et cetera."
+
+11
+00:00:24,734 --> 00:00:27,000
+And now, what we'll do is,
+
+12
+00:00:27,000 --> 00:00:29,414
+when a new email comes in and say,
+
+13
+00:00:29,414 --> 00:00:33,060
+"Easy money," and we want to check if it's spam or ham.
+
+14
+00:00:33,060 --> 00:00:34,800
+So we take it word by word.
+
+15
+00:00:34,799 --> 00:00:37,559
+Of course, we can be more effective if we took into
+
+16
+00:00:37,560 --> 00:00:41,085
+account the order of the words but for this classifier, we won't.
+
+17
+00:00:41,085 --> 00:00:43,350
+It's surprising how good it can be even if it
+
+18
+00:00:43,350 --> 00:00:45,885
+doesn't take into account the order of the words.
+
+19
+00:00:45,884 --> 00:00:48,284
+So let's study the first word, say, easy.
+
+20
+00:00:48,284 --> 00:00:52,169
+We can see the word easy appears once among the three spam emails,
+
+21
+00:00:52,170 --> 00:00:55,125
+and once among the five ham emails.
+
+22
+00:00:55,125 --> 00:00:59,115
+And the word money, it appears twice among the three spam emails,
+
+23
+00:00:59,115 --> 00:01:01,515
+and ones among the five ham emails.
+
+24
+00:01:01,515 --> 00:01:05,250
+So let's start with calculating some preliminary probabilities as an exercise.
+
+25
+00:01:05,250 --> 00:01:06,915
+Given the data we have,
+
+26
+00:01:06,915 --> 00:01:11,589
+what is the probability of an email containing the word easy given that it is spam?
+
+27
+00:01:11,588 --> 00:01:13,504
+Here are some options.
+
+28
+00:01:13,504 --> 00:01:16,204
+And let's also calculate it for the other word.
+
+29
+00:01:16,204 --> 00:01:17,329
+Again, given our data,
+
+30
+00:01:17,329 --> 00:01:23,719
+what's the probability of an email being spam given that it contains the word money?
+
+31
+00:01:23,719 --> 00:01:26,400
+Here are the options, enter your answer below
+

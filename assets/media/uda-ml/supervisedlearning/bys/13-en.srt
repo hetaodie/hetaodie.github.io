@@ -1,0 +1,120 @@
+1
+00:00:00,000 --> 00:00:03,234
+And now, on to apply the Naive Bayes algorithm.
+
+2
+00:00:03,234 --> 00:00:05,969
+We want to calculate the probability that an email is
+
+3
+00:00:05,969 --> 00:00:09,314
+spam given that it contains the word easy and money.
+
+4
+00:00:09,314 --> 00:00:12,209
+And as we briefly stated before, we'll make an assumption.
+
+5
+00:00:12,210 --> 00:00:14,520
+We'll assume that the product of
+
+6
+00:00:14,519 --> 00:00:19,244
+the probabilities that the email is spam if it contains the word
+
+7
+00:00:19,245 --> 00:00:22,420
+easy times the probability that it's spam if it contains
+
+8
+00:00:22,420 --> 00:00:26,990
+the money is the desired probability.
+
+9
+00:00:26,989 --> 00:00:31,024
+This is a naive assumption because it could be that these two are not independent.
+
+10
+00:00:31,024 --> 00:00:33,329
+Say, it could be that emails containing the word
+
+11
+00:00:33,329 --> 00:00:36,420
+easy are more likely to contain the word money,
+
+12
+00:00:36,420 --> 00:00:41,445
+but it turns out that this assumption ends up working really well in many situations.
+
+13
+00:00:41,445 --> 00:00:43,350
+So we'll make it. And so,
+
+14
+00:00:43,350 --> 00:00:46,740
+we obtain that the probability of the email being
+
+15
+00:00:46,740 --> 00:00:52,520
+spam is one-half times two-thirds which is one-third.
+
+16
+00:00:52,520 --> 00:00:54,690
+For clarity, I've written the actual formula for
+
+17
+00:00:54,689 --> 00:00:58,604
+these two calculations using Bayes Theorem that we've done previously.
+
+18
+00:00:58,604 --> 00:01:04,920
+And these two give us again 0.5 and 0.67 for the posteriors.
+
+19
+00:01:04,920 --> 00:01:08,430
+So finally, we multiply them and we'll obtain the probability of an email being
+
+20
+00:01:08,430 --> 00:01:13,695
+spam given that it has the words easy and money is 0.33.
+
+21
+00:01:13,694 --> 00:01:15,974
+And in general, this is what happens.
+
+22
+00:01:15,974 --> 00:01:18,000
+Let's say we have n suspicious words,
+
+23
+00:01:18,000 --> 00:01:21,090
+for example, easy, money, cheap, et cetera.
+
+24
+00:01:21,090 --> 00:01:22,935
+These are our conditions,
+
+25
+00:01:22,935 --> 00:01:24,475
+and when we get a new email,
+
+26
+00:01:24,474 --> 00:01:25,905
+we test against them.
+
+27
+00:01:25,905 --> 00:01:30,150
+So, we make the naive assumption that the probability of spam given
+
+28
+00:01:30,150 --> 00:01:34,700
+that the email contains all these words is the product of these probabilities.
+
+29
+00:01:34,700 --> 00:01:37,390
+And how do we calculate each one of them?
+
+30
+00:01:37,390 --> 00:01:40,000
+Easy, using Bayes Theorem.
+
