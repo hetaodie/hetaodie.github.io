@@ -1,0 +1,284 @@
+1
+00:00:00,000 --> 00:00:04,304
+So let's go back to our Neural Network with our weights and our input.
+
+2
+00:00:04,304 --> 00:00:08,745
+And recall that the weights with superscript one belong to the first layer.
+
+3
+00:00:08,744 --> 00:00:12,619
+And the weights with superscript two belong to the second layer.
+
+4
+00:00:12,619 --> 00:00:15,384
+Also recall that the bias is not called B anymore.
+
+5
+00:00:15,384 --> 00:00:18,434
+Now it's called W31 W32 et cetera,
+
+6
+00:00:18,434 --> 00:00:22,679
+for convenience so that we can have everything in matrix notation.
+
+7
+00:00:22,679 --> 00:00:25,189
+And now what happens with the input?
+
+8
+00:00:25,190 --> 00:00:27,859
+So let's do the Feedforward Process.
+
+9
+00:00:27,859 --> 00:00:30,169
+In the first layer,
+
+10
+00:00:30,170 --> 00:00:33,590
+we take the input and multiply it by the weights and that
+
+11
+00:00:33,590 --> 00:00:37,720
+gives us each one which is a linear function of the input and the weights.
+
+12
+00:00:37,719 --> 00:00:42,149
+Same thing with H_2 given by this formula over here.
+
+13
+00:00:42,149 --> 00:00:43,399
+Now in the second layer,
+
+14
+00:00:43,399 --> 00:00:46,460
+we take this h_1, h_2 and then you bias.
+
+15
+00:00:46,460 --> 00:00:48,649
+Apply the sigmoid function,
+
+16
+00:00:48,649 --> 00:00:51,739
+and then apply a linear function to them by
+
+17
+00:00:51,740 --> 00:00:55,445
+multiplying them by the weights and adding them to get a value of
+
+18
+00:00:55,445 --> 00:00:58,969
+h. And finally in the third layer we
+
+19
+00:00:58,969 --> 00:01:03,039
+just take a sigmoid function of H to get our prediction.
+
+20
+00:01:03,039 --> 00:01:06,879
+Our probability between zero and one which is y_hat.
+
+21
+00:01:06,879 --> 00:01:10,640
+And we can write this in more condensed notation by
+
+22
+00:01:10,640 --> 00:01:15,530
+saying that the matrix corresponding to the first layer is W superscript 1.
+
+23
+00:01:15,530 --> 00:01:20,060
+The matrix corresponding to the second layer is W superscript 2.
+
+24
+00:01:20,060 --> 00:01:23,605
+And then the prediction y_hat is just going to be the sigmoid of
+
+25
+00:01:23,605 --> 00:01:28,734
+W superscript 2 combined with the sigmoid of W superscript 1,
+
+26
+00:01:28,733 --> 00:01:33,539
+applied to the input X, and that's Feedforward.
+
+27
+00:01:33,540 --> 00:01:39,015
+Now we're going to develop Backpropagation which is precisely the reverse of Feedforward.
+
+28
+00:01:39,015 --> 00:01:43,019
+So we're going to calculate the derivative of these error function with respect to
+
+29
+00:01:43,019 --> 00:01:48,024
+each of the weights in the labels by using the chain rule.
+
+30
+00:01:48,025 --> 00:01:51,120
+So we're going to calculate the derivative of the error function with
+
+31
+00:01:51,120 --> 00:01:55,719
+respect to each of the weights and the labels by using the chain rule.
+
+32
+00:01:55,719 --> 00:01:58,679
+So let's recall that our error function is this formula over
+
+33
+00:01:58,680 --> 00:02:02,870
+here which is a function of the prediction y_hat.
+
+34
+00:02:02,870 --> 00:02:07,579
+But since the prediction is a function of all the weights W_I_J,
+
+35
+00:02:07,579 --> 00:02:13,560
+then the error function can be seen as the function on all the W_I_J.
+
+36
+00:02:13,560 --> 00:02:16,965
+Therefore, the gradient is simply the vector formed by
+
+37
+00:02:16,965 --> 00:02:23,520
+all the partial derivatives of the error function e with respect to each of the weights.
+
+38
+00:02:23,520 --> 00:02:25,870
+So let's calculate one of the derivatives.
+
+39
+00:02:25,870 --> 00:02:31,465
+Let's calculate the derivative of e with respect to W11 superscript 1.
+
+40
+00:02:31,465 --> 00:02:33,450
+So since the prediction is simply a composition of
+
+41
+00:02:33,449 --> 00:02:35,639
+functions and by the chain rule we know that
+
+42
+00:02:35,639 --> 00:02:41,519
+the derivative with respect to this is the product of all the partial derivatives.
+
+43
+00:02:41,520 --> 00:02:44,820
+In this case, the derivative e with respect to
+
+44
+00:02:44,819 --> 00:02:49,449
+W11 is the derivative of e with respect to y_hat,
+
+45
+00:02:49,449 --> 00:02:52,875
+times the derivative of y_hat with respect to h,
+
+46
+00:02:52,875 --> 00:02:59,650
+times the derivative H with respect to H1 times the derivative of H1 respect to W11.
+
+47
+00:02:59,650 --> 00:03:03,780
+This may seem complicated but the fact that we can calculate a derivative of
+
+48
+00:03:03,780 --> 00:03:06,360
+such a complicated composition function by just
+
+49
+00:03:06,360 --> 00:03:10,230
+multiplying four partial derivatives is remarkable.
+
+50
+00:03:10,229 --> 00:03:12,369
+Now we've already calculated the first one,
+
+51
+00:03:12,370 --> 00:03:14,955
+the derivative of e with respect to y_hat.
+
+52
+00:03:14,955 --> 00:03:17,840
+And if you remember we got y_hat minus y.
+
+53
+00:03:17,840 --> 00:03:20,379
+So let's calculate out the other ones.
+
+54
+00:03:20,379 --> 00:03:24,900
+Let's zoom in a bit and look at just one piece of our multi-layer perceptor.
+
+55
+00:03:24,900 --> 00:03:31,085
+The inputs are some values H1 and H2 which are values coming in from before.
+
+56
+00:03:31,085 --> 00:03:34,895
+And once we apply the sigmoid and the linear function
+
+57
+00:03:34,895 --> 00:03:39,034
+on H1 and H2 and one corresponding to the bias unit,
+
+58
+00:03:39,034 --> 00:03:40,969
+we get a result H.
+
+59
+00:03:40,969 --> 00:03:45,069
+So now what is the derivative of H with respect to H1?
+
+60
+00:03:45,069 --> 00:03:51,114
+Well H is a sum of three things and only one of them contains H1.
+
+61
+00:03:51,115 --> 00:03:55,830
+So the second and the third summand just give us a derivative of zero.
+
+62
+00:03:55,830 --> 00:04:03,330
+The first summand gives us W11 superscript 2 because that is a constant.
+
+63
+00:04:03,330 --> 00:04:09,475
+And that times the derivative of the sigmoid function with respect to H1.
+
+64
+00:04:09,474 --> 00:04:12,604
+This is something that we calculated below in the instructor comments,
+
+65
+00:04:12,604 --> 00:04:16,865
+which is that the sigmoid function has a beautiful derivative namely;
+
+66
+00:04:16,865 --> 00:04:20,764
+the derivative of sigmoid of H is precisely sigmoid of
+
+67
+00:04:20,764 --> 00:04:23,599
+H times 1 minus sigmoid of
+
+68
+00:04:23,600 --> 00:04:27,860
+H. Again you can see the development underneath in the instructor comments.
+
+69
+00:04:27,860 --> 00:04:30,650
+You also have the chance to code this in the quiz because at the end of
+
+70
+00:04:30,649 --> 00:04:34,699
+the day we just code these formulas and then use them forever.
+
+71
+00:04:34,699 --> 00:04:37,120
+And that's it. That's how you train a neural network.
+

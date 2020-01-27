@@ -1,0 +1,312 @@
+1
+00:00:00,000 --> 00:00:02,930
+So now that we have defined what Neural Networks are,
+
+2
+00:00:02,930 --> 00:00:04,620
+we need to learn how to train them.
+
+3
+00:00:04,620 --> 00:00:07,259
+Training them really means what parameter should they
+
+4
+00:00:07,259 --> 00:00:10,710
+have on the edges in order to model our data well.
+
+5
+00:00:10,710 --> 00:00:13,290
+So in order to learn how to train them we need to look carefully at
+
+6
+00:00:13,289 --> 00:00:16,794
+how they process the input to obtain an output.
+
+7
+00:00:16,795 --> 00:00:20,220
+So let's look at our Simple Neural Network, a Perceptron.
+
+8
+00:00:20,219 --> 00:00:24,199
+This perceptron receives a data point of the form x one x two,
+
+9
+00:00:24,199 --> 00:00:27,259
+where the label is y equals one.
+
+10
+00:00:27,260 --> 00:00:29,425
+This means that the point is blue.
+
+11
+00:00:29,425 --> 00:00:31,980
+Now the perceptron is defined by a linear equations
+
+12
+00:00:31,980 --> 00:00:35,799
+say W one x one plus W two x two plus B,
+
+13
+00:00:35,799 --> 00:00:41,579
+where w one and w two are the weights and the edges and b is the bias and the note.
+
+14
+00:00:41,579 --> 00:00:43,554
+Here w one is bigger than w two,
+
+15
+00:00:43,554 --> 00:00:46,200
+so we'll denote that by drawing the edge labeled w
+
+16
+00:00:46,200 --> 00:00:49,830
+one much thicker than the H labeled w two.
+
+17
+00:00:49,829 --> 00:00:53,280
+Now with the Perceptor dots is it plots to point x one
+
+18
+00:00:53,280 --> 00:00:57,225
+x two and it out to the probability that the point is blue.
+
+19
+00:00:57,225 --> 00:01:01,300
+Here is the point is in the red area than the output is a small number,
+
+20
+00:01:01,299 --> 00:01:04,019
+since the point is not very likely to be blue.
+
+21
+00:01:04,019 --> 00:01:07,045
+This process is known as Feedforward.
+
+22
+00:01:07,045 --> 00:01:10,745
+We can see that this is a bad model because the point is actually blue,
+
+23
+00:01:10,745 --> 00:01:12,575
+given that the third coordinate,
+
+24
+00:01:12,575 --> 00:01:14,900
+the Y, is one.
+
+25
+00:01:14,900 --> 00:01:18,560
+Now if we have a more complicated neural network then the process is the same.
+
+26
+00:01:18,560 --> 00:01:20,840
+Here we have thick edges corresponding to
+
+27
+00:01:20,840 --> 00:01:24,859
+large weights and thin edges corresponding to small weights.
+
+28
+00:01:24,859 --> 00:01:30,185
+And the Neural Network plots the point in the top graph and also in the bottom graph.
+
+29
+00:01:30,185 --> 00:01:34,769
+And the outputs coming out will be a small number from the top model.
+
+30
+00:01:34,769 --> 00:01:38,569
+Then the point lies in the red area which means it has a small probability of being
+
+31
+00:01:38,569 --> 00:01:42,879
+blue and a large number from the second model.
+
+32
+00:01:42,879 --> 00:01:44,979
+So the point lights in the blue area which means it
+
+33
+00:01:44,980 --> 00:01:47,674
+has a large probability of being blue.
+
+34
+00:01:47,674 --> 00:01:50,170
+Now as the two models get combined into this
+
+35
+00:01:50,170 --> 00:01:53,170
+non-linear model and the output layer just blots
+
+36
+00:01:53,170 --> 00:01:57,765
+the point and it tells the probability that the point is blue.
+
+37
+00:01:57,765 --> 00:02:00,609
+As you can see, this is a bad model because it
+
+38
+00:02:00,609 --> 00:02:04,215
+puts a point in the red area and the point is blue.
+
+39
+00:02:04,215 --> 00:02:08,365
+Again, this process is called Feedforward and we'll look at it more carefully.
+
+40
+00:02:08,365 --> 00:02:10,715
+Here we have our neural network in the other notations.
+
+41
+00:02:10,715 --> 00:02:13,444
+So the bias is in the outside.
+
+42
+00:02:13,444 --> 00:02:15,234
+Now we have a matrix of weights.
+
+43
+00:02:15,235 --> 00:02:18,860
+The matrix W superscript one denoting the first layer.
+
+44
+00:02:18,860 --> 00:02:23,155
+And the entries are the weights W one one up to W three to.
+
+45
+00:02:23,155 --> 00:02:28,460
+Notice that the biases have now be written as W three one and W three two.
+
+46
+00:02:28,460 --> 00:02:30,520
+This is just for convenience.
+
+47
+00:02:30,520 --> 00:02:32,585
+Now in the next layer we also have a matrix.
+
+48
+00:02:32,585 --> 00:02:36,064
+This one is W superscript two for the second layer.
+
+49
+00:02:36,064 --> 00:02:38,829
+This layer contains the weights that tell us how to combine
+
+50
+00:02:38,830 --> 00:02:43,490
+the linear models in the first layer to obtain the non linear model in the second layer.
+
+51
+00:02:43,490 --> 00:02:45,019
+Now what happens is some math.
+
+52
+00:02:45,019 --> 00:02:46,480
+We have the input in the form X one X two one,
+
+53
+00:02:46,479 --> 00:02:50,435
+where the one comes from the bias unit.
+
+54
+00:02:50,435 --> 00:02:55,435
+Now we multiply it by the Matrix W one to get these outputs.
+
+55
+00:02:55,435 --> 00:03:01,259
+Then we apply the sigmoid function to turn the outputs into values between zero and one.
+
+56
+00:03:01,259 --> 00:03:05,299
+Then, the vector from these values gets a one attached for the bias unit,
+
+57
+00:03:05,300 --> 00:03:08,330
+and multiplied by the second matrix.
+
+58
+00:03:08,330 --> 00:03:10,880
+This returns an output that now gets thrown into
+
+59
+00:03:10,879 --> 00:03:15,335
+a sigmoid function to obtain the final output, which is Y hat.
+
+60
+00:03:15,335 --> 00:03:21,170
+Y hat is the prediction or the probability that the point is labeled blue.
+
+61
+00:03:21,169 --> 00:03:23,299
+So, this is what Neural Networks do.
+
+62
+00:03:23,300 --> 00:03:25,760
+They take the input vector and then apply
+
+63
+00:03:25,759 --> 00:03:29,084
+a sequence of linear models and sigmoid functions.
+
+64
+00:03:29,085 --> 00:03:30,439
+These maps, when combined,
+
+65
+00:03:30,439 --> 00:03:33,199
+become a highly nonlinear map.
+
+66
+00:03:33,199 --> 00:03:37,669
+And the final formula is simply y hat equals sigmoid of W
+
+67
+00:03:37,669 --> 00:03:43,314
+two combined with sigmoid of W one applied to x.
+
+68
+00:03:43,314 --> 00:03:45,099
+And just for redundance,
+
+69
+00:03:45,099 --> 00:03:48,719
+we do this again on a Multi-layer Perceptron or Neural Network.
+
+70
+00:03:48,719 --> 00:03:51,125
+To calculate our prediction y hat,
+
+71
+00:03:51,125 --> 00:03:53,229
+we start with the univector x,
+
+72
+00:03:53,229 --> 00:03:55,569
+then we apply the first matrix and
+
+73
+00:03:55,569 --> 00:04:00,329
+a sigmoid function to get the values in the second layer.
+
+74
+00:04:00,330 --> 00:04:03,070
+Then we apply the second Matrix and
+
+75
+00:04:03,069 --> 00:04:06,724
+another sigmoid function to get the values on the third layer.
+
+76
+00:04:06,724 --> 00:04:13,449
+And so on and so forth until we get our final prediction, y hat.
+
+77
+00:04:13,449 --> 00:04:16,420
+And this is the Feedforward process that the Neural Networks
+
+78
+00:04:16,420 --> 00:04:20,000
+use to obtain the prediction from the imprint vector.
+

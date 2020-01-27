@@ -1,0 +1,364 @@
+1
+00:00:02,399 --> 00:00:07,089
+Let's look bit closer into Cross-Entropy by switching to a different example.
+
+2
+00:00:07,089 --> 00:00:08,644
+Let's say we have three doors,
+
+3
+00:00:08,644 --> 00:00:11,275
+and no this is not the Monty Hall problem.
+
+4
+00:00:11,275 --> 00:00:15,060
+We have the green door, the red door, and the blue door.
+
+5
+00:00:15,060 --> 00:00:18,699
+And behind each door, we could have a gift or not have a gift,
+
+6
+00:00:18,699 --> 00:00:23,125
+and the probabilities of there being a gift behind each door is 0.8 for the first one,
+
+7
+00:00:23,125 --> 00:00:25,018
+0.7 for the second one,
+
+8
+00:00:25,018 --> 00:00:27,088
+and 0.1 for the third one.
+
+9
+00:00:27,088 --> 00:00:31,988
+So, for example, behind the green door there's an 80 percent probability of there
+
+10
+00:00:31,989 --> 00:00:37,270
+being a gift and a 20 percent probability of there not being a gift.
+
+11
+00:00:37,270 --> 00:00:38,759
+So, we can put the information in
+
+12
+00:00:38,759 --> 00:00:41,490
+this table where the probabilities of there being a gift are
+
+13
+00:00:41,490 --> 00:00:43,350
+given in the top row and
+
+14
+00:00:43,350 --> 00:00:47,000
+the probabilities of there not being a gift are given in the bottom row.
+
+15
+00:00:47,000 --> 00:00:49,149
+So, let's say we want to make a bet on the outcome.
+
+16
+00:00:49,149 --> 00:00:53,353
+So, we want to try to figure out what is the most likely scenario here.
+
+17
+00:00:53,353 --> 00:00:56,954
+And for that, we'll assume they're independent events.
+
+18
+00:00:56,954 --> 00:00:59,880
+In this case, the most likely scenario is just
+
+19
+00:00:59,880 --> 00:01:03,215
+obtained by picking the largest probability in each column.
+
+20
+00:01:03,215 --> 00:01:06,879
+So, for the first door is more likely to have a gift than not have a gift.
+
+21
+00:01:06,879 --> 00:01:09,209
+So, we'll say there's a gift behind the first door.
+
+22
+00:01:09,209 --> 00:01:12,629
+For the second door, it's also more likely that there's a gift.
+
+23
+00:01:12,629 --> 00:01:15,120
+So, we'll say there's a gift behind the second door.
+
+24
+00:01:15,120 --> 00:01:18,040
+And for the third door, it's much more likely that there's no gift.
+
+25
+00:01:18,040 --> 00:01:21,084
+So, we'll say there's no gift behind the third door.
+
+26
+00:01:21,084 --> 00:01:22,680
+And as the events are independent,
+
+27
+00:01:22,680 --> 00:01:25,560
+the probability for this whole arrangement is the product of
+
+28
+00:01:25,560 --> 00:01:31,349
+the three probabilities which is 0.8 x 0.7 x 0.9,
+
+29
+00:01:31,349 --> 00:01:37,109
+which ends up being 0.504 which is roughly 50 percent.
+
+30
+00:01:37,108 --> 00:01:39,643
+So, let's look on the possible scenarios in the table.
+
+31
+00:01:39,644 --> 00:01:43,079
+Here's a table with all the possible scenarios for each door
+
+32
+00:01:43,078 --> 00:01:47,074
+and there are eight scenarios since each door gives us two possibilities each.
+
+33
+00:01:47,075 --> 00:01:49,189
+And there are three doors.
+
+34
+00:01:49,188 --> 00:01:51,539
+So, we do this before to obtain the probability of
+
+35
+00:01:51,540 --> 00:01:57,674
+each arrangement by multiplying the three independent probabilities to get these numbers.
+
+36
+00:01:57,674 --> 00:02:00,180
+You can check that these numbers add to one.
+
+37
+00:02:00,180 --> 00:02:02,670
+And from the last video, we learn that the negative of
+
+38
+00:02:02,670 --> 00:02:05,855
+the logarithm of the probability is the cross-entropy.
+
+39
+00:02:05,855 --> 00:02:09,408
+So, let's go ahead and calculate the cross-entropy.
+
+40
+00:02:09,408 --> 00:02:11,473
+Here we get these numbers.
+
+41
+00:02:11,473 --> 00:02:14,429
+And notice that the events with high probability have
+
+42
+00:02:14,430 --> 00:02:20,110
+high cross-entropy and the events with low probability have a low cross-entropy.
+
+43
+00:02:20,110 --> 00:02:22,879
+For example, the second row which has probability of
+
+44
+00:02:22,878 --> 00:02:28,174
+0.504 gives a small cross-entropy of 0.69.
+
+45
+00:02:28,175 --> 00:02:32,319
+And the second to last row which is very very unlikely has a probability
+
+46
+00:02:32,318 --> 00:02:38,769
+of 0.006 gives a cross-entropy of 5.12.
+
+47
+00:02:38,770 --> 00:02:41,280
+So, let's actually calculate a formula for the cross-entropy.
+
+48
+00:02:41,280 --> 00:02:45,430
+Here we have our three doors and our sample scenario said that there's
+
+49
+00:02:45,430 --> 00:02:50,294
+a gift behind the first and second doors and no gift behind the third door.
+
+50
+00:02:50,294 --> 00:02:53,110
+Recall that the probabilities of these events happening
+
+51
+00:02:53,110 --> 00:02:55,905
+are 0.8 for a gift behind the first door,
+
+52
+00:02:55,905 --> 00:02:58,038
+0.7 for a gift behind the second door,
+
+53
+00:02:58,038 --> 00:03:01,429
+and 0.9 for a no gift behind the third door.
+
+54
+00:03:01,430 --> 00:03:03,250
+So, when we calculate the cross-entropy,
+
+55
+00:03:03,250 --> 00:03:06,430
+we get the negative of the logarithm of
+
+56
+00:03:06,430 --> 00:03:11,754
+the product which is the sum of the negatives of the logarithms of the factors,
+
+57
+00:03:11,753 --> 00:03:16,724
+which is -ln(0.8) - ln(0.7) - ln(0.9).
+
+58
+00:03:16,724 --> 00:03:20,943
+And in order to derive the formula without some variables.
+
+59
+00:03:20,943 --> 00:03:24,763
+So, let's call p1 the probability that there's a gift behind the first door,
+
+60
+00:03:24,764 --> 00:03:27,840
+p2 the probability there's a gift behind the second door,
+
+61
+00:03:27,840 --> 00:03:31,685
+and p2 the probability there's a gift behind the third door.
+
+62
+00:03:31,685 --> 00:03:34,139
+So, this 0.8 here is p1,
+
+63
+00:03:34,139 --> 00:03:36,465
+this 0.7 here is p2,
+
+64
+00:03:36,465 --> 00:03:39,009
+and this 0.9 here is 1-p3,
+
+65
+00:03:39,008 --> 00:03:40,758
+since the probability of there not being
+
+66
+00:03:40,758 --> 00:03:44,168
+a gift is one minus the probability of there being a gift.
+
+67
+00:03:44,169 --> 00:03:48,680
+And let's have another variable called y_i which will be one,
+
+68
+00:03:48,680 --> 00:03:53,539
+if there is a present behind the ith door and zero, there's no present.
+
+69
+00:03:53,538 --> 00:03:56,988
+So, y_i is technically a number of presents behind the ith door?
+
+70
+00:03:56,989 --> 00:04:04,164
+In this case, y1=1, y2=1, and y3=0.
+
+71
+00:04:04,163 --> 00:04:07,359
+So, we can put all this together and derive a formula for the cross-entropy.
+
+72
+00:04:07,360 --> 00:04:09,120
+And it's this sum.
+
+73
+00:04:09,120 --> 00:04:12,060
+Now, let's look at the formula inside the summation.
+
+74
+00:04:12,060 --> 00:04:18,139
+Noted that if there's a present behind ith door then y_i=1.
+
+75
+00:04:18,139 --> 00:04:24,350
+So, the first term is logarithm of p_i and the second term is zero.
+
+76
+00:04:24,350 --> 00:04:28,035
+Likewise, if there is no present behind the ith door,
+
+77
+00:04:28,035 --> 00:04:30,300
+then y_i is zero.
+
+78
+00:04:30,300 --> 00:04:36,459
+So, this first term is zero and this term is precisely logarithm of one minus p_i.
+
+79
+00:04:36,459 --> 00:04:40,105
+Therefore, this formula really encompasses the sums of the negatives of
+
+80
+00:04:40,105 --> 00:04:44,310
+the logarithms which is precisely the cross-entropy.
+
+81
+00:04:44,310 --> 00:04:49,435
+So, the cross-entropy really tells us when two vectors are similar or different.
+
+82
+00:04:49,435 --> 00:04:53,507
+For example, if you calculate the cross-entropy of the pair (1,1,0)
+
+83
+00:04:53,507 --> 00:04:58,685
+and (0.8,0.7,0.1) we get 0.69.
+
+84
+00:04:58,685 --> 00:05:03,550
+And that is low because 1,1,0 is a similar vector to 0.8, 0.7,
+
+85
+00:05:03,550 --> 00:05:09,169
+0.1 which means that the arrangement of gifts given by the first set
+
+86
+00:05:09,170 --> 00:05:11,660
+of numbers is likely to happen
+
+87
+00:05:11,660 --> 00:05:15,634
+based on the probabilities given by the second set of numbers.
+
+88
+00:05:15,634 --> 00:05:21,430
+But on the other hand, if we calculate the cross-entropy of the pairs (0,0,1) and (0.8,
+
+89
+00:05:21,430 --> 00:05:26,959
+0.7, 0.1) that is 5.12 which is very high.
+
+90
+00:05:26,959 --> 00:05:31,129
+This is because the arrangement of gifts being given by the first set of numbers is
+
+91
+00:05:31,129 --> 00:05:36,180
+very unlikely to happen from the probabilities given by the second set of numbers.
+

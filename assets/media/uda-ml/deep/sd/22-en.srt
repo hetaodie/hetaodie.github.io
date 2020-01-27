@@ -1,0 +1,100 @@
+1
+00:00:00,000 --> 00:00:03,654
+So as we've seen so far all our algorithms are numerical.
+
+2
+00:00:03,654 --> 00:00:05,714
+This means we need to input numbers,
+
+3
+00:00:05,714 --> 00:00:08,640
+such as a score in a test or the grades,
+
+4
+00:00:08,640 --> 00:00:12,570
+but the input data will not always look like numbers.
+
+5
+00:00:12,570 --> 00:00:14,115
+Sometimes it looks like this.
+
+6
+00:00:14,115 --> 00:00:15,925
+Let's say the model receives as an input
+
+7
+00:00:15,925 --> 00:00:18,640
+the fact that you got a gift or didn't get a gift.
+
+8
+00:00:18,640 --> 00:00:21,710
+How do we turn that into numbers? Well, that's easy.
+
+9
+00:00:21,710 --> 00:00:25,044
+If you've got a gift we'll just say that the input variable is one
+
+10
+00:00:25,044 --> 00:00:29,019
+and if you didn't get a gift we'll just say that the input variable is zero.
+
+11
+00:00:29,018 --> 00:00:30,724
+But what if we have more classes?
+
+12
+00:00:30,725 --> 00:00:34,515
+As before, let's say our classes are duck, beaver, and walrus.
+
+13
+00:00:34,515 --> 00:00:37,670
+What variable do we input in the algorithm?
+
+14
+00:00:37,670 --> 00:00:39,120
+Maybe we can input a zero, one,
+
+15
+00:00:39,119 --> 00:00:42,118
+and a two but that would not work because it would assume dependencies between
+
+16
+00:00:42,118 --> 00:00:45,269
+the classes that we can't have. So this is what we do.
+
+17
+00:00:45,270 --> 00:00:48,850
+What we do is we come up with one variable for each of the classes.
+
+18
+00:00:48,850 --> 00:00:50,700
+So our table becomes like this.
+
+19
+00:00:50,700 --> 00:00:53,520
+There's one variable for duck, one for beaver,
+
+20
+00:00:53,520 --> 00:00:58,109
+and one for walrus and each one has its corresponding column.
+
+21
+00:00:58,109 --> 00:01:01,500
+Now, if the input is a duck then the variable for duck is
+
+22
+00:01:01,500 --> 00:01:06,385
+one and the variables for beaver and walrus are zero.
+
+23
+00:01:06,385 --> 00:01:09,224
+Similarly, for the beaver and the walrus.
+
+24
+00:01:09,224 --> 00:01:14,784
+We may have more columns of data but at least there are no unnecessary dependencies.
+
+25
+00:01:14,784 --> 00:01:19,000
+This process is called One hot Encoding and it will be used a lot for processing data.
+

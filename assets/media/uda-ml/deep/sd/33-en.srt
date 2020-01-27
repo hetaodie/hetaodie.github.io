@@ -1,0 +1,180 @@
+1
+00:00:00,000 --> 00:00:03,720
+So, let's study gradient descent in more mathematical detail.
+
+2
+00:00:03,720 --> 00:00:07,830
+Error function is a function of the weights and it can be graphed like this.
+
+3
+00:00:07,830 --> 00:00:09,615
+It's got a mathematical structure so,
+
+4
+00:00:09,615 --> 00:00:11,250
+it's not Mount Errorest anymore.
+
+5
+00:00:11,250 --> 00:00:13,835
+It's more of Mount Math-er-horn.
+
+6
+00:00:13,835 --> 00:00:18,379
+So, we're standing somewhere in Mount Math-er-horn and we need to go down.
+
+7
+00:00:18,379 --> 00:00:22,019
+So, now the inputs of the functions are say W1 and
+
+8
+00:00:22,018 --> 00:00:25,828
+W2 and the error function is given by E.
+
+9
+00:00:25,829 --> 00:00:29,469
+Then the gradient of E is given by
+
+10
+00:00:29,469 --> 00:00:35,140
+the vector sum of the partial derivatives of E with respect to W1 and W2.
+
+11
+00:00:35,140 --> 00:00:38,140
+This gradient actually tells us
+
+12
+00:00:38,140 --> 00:00:42,689
+the direction we want to move if we want to increase the error function the most.
+
+13
+00:00:42,689 --> 00:00:45,909
+Thus, if we take the negative of the gradient,
+
+14
+00:00:45,909 --> 00:00:48,986
+this will tell us how to decrease the error function the most,
+
+15
+00:00:48,987 --> 00:00:51,158
+and this is precisely what we'll do.
+
+16
+00:00:51,158 --> 00:00:52,890
+At the point we're standing,
+
+17
+00:00:52,890 --> 00:00:59,048
+we'll take the negative of the gradient of the error function at that point.
+
+18
+00:00:59,048 --> 00:01:01,243
+Then we take a step in that direction.
+
+19
+00:01:01,243 --> 00:01:06,599
+Once we take a step, we'll be in a lower position so we do it again and
+
+20
+00:01:06,599 --> 00:01:12,915
+again and again until we are able to get to the bottom of the mountain.
+
+21
+00:01:12,915 --> 00:01:15,180
+So this is how we calculate the gradient.
+
+22
+00:01:15,180 --> 00:01:20,010
+We start with our initial prediction y=σ(WX+b).
+
+23
+00:01:20,010 --> 00:01:22,079
+And let's say this prediction is bad because
+
+24
+00:01:22,078 --> 00:01:24,568
+the error is large since we're high up in the mountain.
+
+25
+00:01:24,569 --> 00:01:26,879
+The prediction looks like this.
+
+26
+00:01:26,879 --> 00:01:33,694
+y=σ(W1X1+...+WnXn+b).
+
+27
+00:01:33,694 --> 00:01:36,079
+Now the error function is given by the formula we saw
+
+28
+00:01:36,078 --> 00:01:40,488
+before but what matters here is the gradient of the error function.
+
+29
+00:01:40,489 --> 00:01:44,900
+The gradient of the error function is precisely the vector formed by
+
+30
+00:01:44,900 --> 00:01:50,180
+the partial derivatives of the error function with respect to the weights and the bias.
+
+31
+00:01:50,180 --> 00:01:53,821
+Now, we take a step in the direction of the negative of the gradient.
+
+32
+00:01:53,820 --> 00:01:57,768
+As before, we don't want to make any dramatic changes so,
+
+33
+00:01:57,769 --> 00:02:01,234
+we'll introduce a smaller learning rate alpha for example,
+
+34
+00:02:01,233 --> 00:02:06,000
+0.1 and we'll multiply the gradient by that number.
+
+35
+00:02:06,000 --> 00:02:09,000
+Now taking this step is exactly the same thing
+
+36
+00:02:09,000 --> 00:02:12,568
+as updating the weights and the bias as follows.
+
+37
+00:02:12,568 --> 00:02:17,375
+The weight Wi will now become Wi' given by Wi minus α
+
+38
+00:02:17,375 --> 00:02:23,864
+multiplied by the partial derivative of the error with respect to Wi.
+
+39
+00:02:23,864 --> 00:02:28,979
+And the bias will now become b prime given by b minus
+
+40
+00:02:28,979 --> 00:02:34,164
+alpha multiplied by the partial derivative of the error with respect to b.
+
+41
+00:02:34,163 --> 00:02:36,168
+Now this will take us to a prediction with
+
+42
+00:02:36,169 --> 00:02:40,039
+a lower error function so we can conclude that the prediction we have
+
+43
+00:02:40,038 --> 00:02:43,698
+now with weights W' and b prime is
+
+44
+00:02:43,699 --> 00:02:48,085
+better than the one we had before with weights W and b.
+
+45
+00:02:48,085 --> 00:02:51,000
+This is precisely the gradient descent step.
+

@@ -1,0 +1,196 @@
+1
+00:00:00,000 --> 00:00:02,240
+So first let's add some math.
+
+2
+00:00:02,240 --> 00:00:05,490
+We're going to label the horizontal axis corresponding to the test by
+
+3
+00:00:05,490 --> 00:00:11,320
+the variable X1 and the vertical axis corresponding to the grades by the variable X2.
+
+4
+00:00:11,320 --> 00:00:14,250
+So, this boundary line that separates the blue
+
+5
+00:00:14,250 --> 00:00:17,675
+and the red points is going to have a linear equation.
+
+6
+00:00:17,675 --> 00:00:22,820
+The one drawn has equation 2X1 + X2 - 18 = 0.
+
+7
+00:00:22,820 --> 00:00:24,219
+What does this mean?
+
+8
+00:00:24,219 --> 00:00:27,629
+This means that our method for accepting or rejecting students
+
+9
+00:00:27,629 --> 00:00:31,524
+simply says the following: Take this equation as our score,
+
+10
+00:00:31,524 --> 00:00:34,734
+the score is 2*Test + Grades - 18.
+
+11
+00:00:34,734 --> 00:00:36,554
+And when the student comes in, we check their score.
+
+12
+00:00:36,554 --> 00:00:38,015
+If their score is a positive number,
+
+13
+00:00:38,015 --> 00:00:40,920
+then we accept the student and if the score is a negative number,
+
+14
+00:00:40,920 --> 00:00:42,579
+then we reject the student.
+
+15
+00:00:42,579 --> 00:00:44,408
+This is called a prediction.
+
+16
+00:00:44,408 --> 00:00:47,765
+We can say by convention that if the score is zero we'll accept a student,
+
+17
+00:00:47,765 --> 00:00:49,575
+although this won't matter much at the end.
+
+18
+00:00:49,575 --> 00:00:53,140
+And that's it. That linear equation is our model.
+
+19
+00:00:53,140 --> 00:00:54,810
+In the more general case our boundary
+
+20
+00:00:54,810 --> 00:00:56,603
+will be an equation of the form W1X1 + W2X2 + b = 0.
+
+21
+00:00:56,603 --> 00:01:04,549
+We'll abbreviate this equation in vector notation of Wx + b = 0,
+
+22
+00:01:04,549 --> 00:01:09,870
+where W is the vector W1W2 and X is the vector X1X2.
+
+23
+00:01:09,870 --> 00:01:13,364
+And we simply take the product of the two vectors.
+
+24
+00:01:13,364 --> 00:01:15,405
+We refer to x as the input,
+
+25
+00:01:15,405 --> 00:01:16,694
+the W as the weights,
+
+26
+00:01:16,694 --> 00:01:19,504
+and the b as the bias.
+
+27
+00:01:19,504 --> 00:01:22,625
+Now for a student cooordinates X1X2 will denote a label as y,
+
+28
+00:01:22,625 --> 00:01:26,188
+and the label is what we're trying to predict.
+
+29
+00:01:26,188 --> 00:01:29,279
+So if the student gets accepted- namely the point is blue,
+
+30
+00:01:29,280 --> 00:01:31,358
+then the label is y = 1.
+
+31
+00:01:31,358 --> 00:01:34,515
+And if the student gets rejected- namely the point is red,
+
+32
+00:01:34,515 --> 00:01:36,959
+and the label is y = 0.
+
+33
+00:01:36,959 --> 00:01:40,859
+Thus, each point is in the form X1X2
+
+34
+00:01:40,858 --> 00:01:45,718
+y or y is one for the blue points and zero for the red points.
+
+35
+00:01:45,718 --> 00:01:48,479
+And finally, our prediction is going to be called ŷ and it
+
+36
+00:01:48,480 --> 00:01:51,944
+will be what the algorithm predicts that the label will be.
+
+37
+00:01:51,944 --> 00:01:55,340
+In this case ŷ is one if the algorithm predicts that the student
+
+38
+00:01:55,340 --> 00:01:59,090
+gets accepted- which means the point lies over the line,
+
+39
+00:01:59,090 --> 00:02:02,159
+and ŷ is zero if the algorithm predicts that the student
+
+40
+00:02:02,159 --> 00:02:05,864
+get rejected- which means the point is under the line.
+
+41
+00:02:05,864 --> 00:02:10,620
+In math terms, this means that the prediction ŷ is 1 if
+
+42
+00:02:10,620 --> 00:02:17,465
+Wx + b is greater than or equal to zero and 0 if Wx + b is less than zero.
+
+43
+00:02:17,465 --> 00:02:20,460
+So to summarize, the points above the line have ŷ
+
+44
+00:02:20,460 --> 00:02:23,300
+equals one and the points below the line have ŷ
+
+45
+00:02:23,300 --> 00:02:30,319
+equals zero and the blue points have y equals one and the red points have y equals zero.
+
+46
+00:02:30,318 --> 00:02:33,418
+And the goal of the algorithm is to have ŷ resembling
+
+47
+00:02:33,419 --> 00:02:36,419
+y as closely as possible- which is exactly
+
+48
+00:02:36,419 --> 00:02:39,419
+equivalent to finding the boundary line that keeps most of
+
+49
+00:02:39,419 --> 00:02:43,000
+the blue points above it and most of the red points below it.
+

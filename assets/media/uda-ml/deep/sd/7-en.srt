@@ -1,0 +1,288 @@
+1
+00:00:00,000 --> 00:00:01,750
+So let's recap.
+
+2
+00:00:01,750 --> 00:00:05,025
+We have our data which is all the students.
+
+3
+00:00:05,025 --> 00:00:09,600
+The blue ones have been accepted and the red ones have been rejected.
+
+4
+00:00:09,599 --> 00:00:12,480
+And we have our model which consists of the equation,
+
+5
+00:00:12,480 --> 00:00:16,260
+2*Test + Grades -18 which gives
+
+6
+00:00:16,260 --> 00:00:18,660
+rise to this boundary line which is
+
+7
+00:00:18,660 --> 00:00:22,079
+the points where the score is zero and the prediction.
+
+8
+00:00:22,079 --> 00:00:26,409
+The prediction says that the student gets accepted if the score is positive or zero,
+
+9
+00:00:26,410 --> 00:00:29,210
+and rejected if the score is negative.
+
+10
+00:00:29,210 --> 00:00:32,579
+So now, we'll introduce the notion of a perceptron which is the building block of
+
+11
+00:00:32,579 --> 00:00:36,369
+neural networks and it's just an encoding of our equation into a small graph.
+
+12
+00:00:36,369 --> 00:00:38,579
+The way we build that is the following.
+
+13
+00:00:38,579 --> 00:00:42,399
+Here, we have our data and our boundary line and we fit it inside a node.
+
+14
+00:00:42,399 --> 00:00:44,820
+And now we have small nodes for the inputs which in
+
+15
+00:00:44,820 --> 00:00:48,024
+this case they are the test and the grades.
+
+16
+00:00:48,024 --> 00:00:52,435
+Here, we can see an example where Test = 7 and Grades = 6.
+
+17
+00:00:52,435 --> 00:00:55,557
+And what the perception does is it plots the points seven,
+
+18
+00:00:55,557 --> 00:00:59,160
+six and checks if the point is in the positive or negative area.
+
+19
+00:00:59,159 --> 00:01:02,134
+If the point's in the positive area then the returns a yes.
+
+20
+00:01:02,134 --> 00:01:05,200
+And if it is in the negative area, it returns a no.
+
+21
+00:01:05,200 --> 00:01:12,695
+So let's recall that our equation is Score = 2*Test + 1*Grade -18.
+
+22
+00:01:12,694 --> 00:01:15,119
+And that our prediction consists of accepting
+
+23
+00:01:15,120 --> 00:01:17,486
+the student if the score is positive or zero,
+
+24
+00:01:17,486 --> 00:01:20,835
+and rejecting them if the score is negative.
+
+25
+00:01:20,834 --> 00:01:27,589
+These weights 2, 1 and -18 are what define the linear equation.
+
+26
+00:01:27,590 --> 00:01:30,540
+And so, we'll use them as labels in the graph.
+
+27
+00:01:30,540 --> 00:01:34,450
+The two and one will label the edge is coming from X1, X2 respectively.
+
+28
+00:01:34,450 --> 00:01:38,454
+And the bias unit -18 will label a node.
+
+29
+00:01:38,454 --> 00:01:40,754
+Thus, when we see a node with these labels,
+
+30
+00:01:40,754 --> 00:01:44,174
+we can think of the linear equation they generate.
+
+31
+00:01:44,174 --> 00:01:48,119
+Another way to grab this node is to consider the bias as part of the input.
+
+32
+00:01:48,120 --> 00:01:51,825
+Now, this is W1 gets multiplied by X1 and W2 by X2.
+
+33
+00:01:51,825 --> 00:01:54,725
+It's natural to think that B gets multiplied by a one.
+
+34
+00:01:54,724 --> 00:01:58,409
+So we'll have the B labeling an edge is coming from a one.
+
+35
+00:01:58,409 --> 00:02:01,859
+Then what the node does is it multiply the values coming from
+
+36
+00:02:01,859 --> 00:02:05,129
+the incoming nodes by the values and the corresponding edges.
+
+37
+00:02:05,129 --> 00:02:08,144
+In this case, that's a 7*1,
+
+38
+00:02:08,145 --> 00:02:11,865
+a 6*2, and a 1* -18.
+
+39
+00:02:11,865 --> 00:02:13,770
+Then it adds them and finally,
+
+40
+00:02:13,770 --> 00:02:16,725
+it checks if the result is greater than or equal to zero.
+
+41
+00:02:16,724 --> 00:02:20,989
+If it is, then the node returns a yes, or a value of one.
+
+42
+00:02:20,990 --> 00:02:25,170
+And if it isn't, then the node returns is a no or a value of zero.
+
+43
+00:02:25,169 --> 00:02:29,280
+In this case, since the equation returns a one and that is greater than
+
+44
+00:02:29,280 --> 00:02:34,419
+zero then this node would return a value of one signaling that the student gets accepted.
+
+45
+00:02:34,419 --> 00:02:37,155
+We'll be using both notations throughout this class.
+
+46
+00:02:37,155 --> 00:02:39,104
+Although, the second one will be used more often.
+
+47
+00:02:39,104 --> 00:02:40,530
+In the general case,
+
+48
+00:02:40,530 --> 00:02:42,419
+this is how the nodes look.
+
+49
+00:02:42,419 --> 00:02:43,905
+We will have our node over here.
+
+50
+00:02:43,905 --> 00:02:48,620
+Then n inputs coming in with values X1 up to Xn,
+
+51
+00:02:48,620 --> 00:02:55,034
+and one and edges with weights W1 up to Wn and B,
+
+52
+00:02:55,034 --> 00:02:57,329
+corresponding to the bias unit.
+
+53
+00:02:57,330 --> 00:03:02,805
+And then the node calculates the linear equation Wx + b which is a summation from
+
+54
+00:03:02,805 --> 00:03:08,825
+I = 1 to n of WiXi +b.
+
+55
+00:03:08,824 --> 00:03:11,759
+This node then checks if the value is zero or bigger.
+
+56
+00:03:11,759 --> 00:03:16,560
+And if it is, then the node returns a value of one for yes.
+
+57
+00:03:16,560 --> 00:03:21,189
+And if not, then it returns a value of zero for no.
+
+58
+00:03:21,189 --> 00:03:25,987
+Note that we're using an implicit function here which is called, "The step function."
+
+59
+00:03:25,987 --> 00:03:27,150
+What the step function does,
+
+60
+00:03:27,150 --> 00:03:30,020
+is that it returns a one if the input is positive or zero,
+
+61
+00:03:30,020 --> 00:03:32,784
+and a zero if the input is negative.
+
+62
+00:03:32,784 --> 00:03:36,299
+So, in reality, these perceptrons can be seen as a combination of
+
+63
+00:03:36,300 --> 00:03:41,035
+nodes where the first node calculates the linear equation and the inputs on the weights.
+
+64
+00:03:41,034 --> 00:03:44,969
+And the second node applies the step function to the result.
+
+65
+00:03:44,969 --> 00:03:46,305
+These can be graphed as follows,
+
+66
+00:03:46,305 --> 00:03:49,605
+the summation sign represents a linear function in the first node,
+
+67
+00:03:49,604 --> 00:03:52,919
+and the drawing represents a step function in the second node.
+
+68
+00:03:52,919 --> 00:03:55,679
+In the future, we'll use different step functions
+
+69
+00:03:55,680 --> 00:03:58,905
+so this is why it's useful to specify it in the node.
+
+70
+00:03:58,905 --> 00:04:01,890
+So as we've seen, there are two ways to represent perceptrons.
+
+71
+00:04:01,889 --> 00:04:06,094
+The one on the left has a bias unit coming from an input node with a value of one,
+
+72
+00:04:06,094 --> 00:04:10,000
+and the one in the right has the bias inside the node.
+

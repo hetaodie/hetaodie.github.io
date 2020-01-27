@@ -1,0 +1,80 @@
+1
+00:00:00,000 --> 00:00:02,504
+So our goal is to train our neural network.
+
+2
+00:00:02,504 --> 00:00:06,115
+In order to do this we have to define the error function.
+
+3
+00:00:06,115 --> 00:00:10,379
+So let's look again at what the error function was for perceptrons.
+
+4
+00:00:10,380 --> 00:00:11,915
+So here's our perceptiron.
+
+5
+00:00:11,914 --> 00:00:18,619
+In the left we have our input vector with entries x_1 up to x_n and one for
+
+6
+00:00:18,620 --> 00:00:26,214
+the bias unit and the edges with weights W_1 up to W_n and b for the bias unit.
+
+7
+00:00:26,213 --> 00:00:30,504
+Finally, we can see that this perceptron uses a sigmoid function.
+
+8
+00:00:30,504 --> 00:00:36,960
+And the prediction is defined as y_hat equals sigmoid of Wx+b.
+
+9
+00:00:36,960 --> 00:00:39,770
+And as we saw this function gives us the measure of
+
+10
+00:00:39,770 --> 00:00:43,975
+the error of how badly each point is being classified.
+
+11
+00:00:43,975 --> 00:00:47,615
+Roughly, this is a very small number if the point is correctly
+
+12
+00:00:47,615 --> 00:00:50,298
+classified and a measure of how far the point
+
+13
+00:00:50,298 --> 00:00:53,509
+is from the line if the point is incorrectly classified.
+
+14
+00:00:53,509 --> 00:00:58,000
+So what are we going to do to define the error function in a multilayer perceptron?
+
+15
+00:00:58,000 --> 00:01:02,420
+Well, as we saw, our prediction is simply a combination of matrix multiplications and
+
+16
+00:01:02,420 --> 00:01:07,349
+sigmoid functions but the error function can be the exact same thing, right?
+
+17
+00:01:07,349 --> 00:01:09,569
+It can be the exact same formula except now
+
+18
+00:01:09,569 --> 00:01:13,034
+y_hat is just a bit more complicated, and still,
+
+19
+00:01:13,034 --> 00:01:15,950
+this function will tell us how badly a point gets
+
+20
+00:01:15,950 --> 00:01:20,000
+misclassified except now it's looking at a more complicated boundary.
+
