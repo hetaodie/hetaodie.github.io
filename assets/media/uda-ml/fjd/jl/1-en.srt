@@ -1,0 +1,152 @@
+1
+00:00:00,240 --> 00:00:03,140
+So Katie, this is going to be a unit on unsupervised learning.
+
+2
+00:00:03,140 --> 00:00:07,060
+>> Unsupervised learning is something that's very important,
+
+3
+00:00:07,060 --> 00:00:10,250
+because most of the time, the data that you get in the real world doesn't have
+
+4
+00:00:10,250 --> 00:00:13,210
+little flags attached that tell you the correct answer.
+
+5
+00:00:13,210 --> 00:00:15,730
+So what are you to do as a machine learner in that case?
+
+6
+00:00:15,730 --> 00:00:19,120
+You turn to unsupervised techniques to still figure something out
+
+7
+00:00:19,120 --> 00:00:20,620
+about that data.
+
+8
+00:00:20,620 --> 00:00:22,310
+>> Okay, let's talk about them.
+
+9
+00:00:22,310 --> 00:00:27,930
+Given a dataset without labels over all the data points are of the same class.
+
+10
+00:00:27,930 --> 00:00:32,530
+There are sometimes still things you can do to extract useful information.
+
+11
+00:00:32,530 --> 00:00:37,200
+Like this dataset over here, where I would say this dataset is structured in
+
+12
+00:00:37,200 --> 00:00:41,190
+a way that is useful to recognize for a machine learning algorithm.
+
+13
+00:00:41,190 --> 00:00:44,480
+>> When we look at this by eye, it looks like there's clumps or
+
+14
+00:00:44,480 --> 00:00:46,060
+clusters in the data.
+
+15
+00:00:46,060 --> 00:00:50,560
+And if we could identify those clumps or clusters, we could maybe say something
+
+16
+00:00:50,560 --> 00:00:54,730
+about a new, unknown data point and what its neighbors might be like.
+
+17
+00:00:54,730 --> 00:00:56,710
+>> Or here's a second example of data.
+
+18
+00:00:56,710 --> 00:00:58,850
+Maybe the data looks just like this.
+
+19
+00:00:58,850 --> 00:01:01,050
+There's something we can say here as well.
+
+20
+00:01:01,050 --> 00:01:01,910
+>> Right.
+
+21
+00:01:01,910 --> 00:01:05,410
+So all the data in this example looks like it lives on some kind of line or
+
+22
+00:01:05,410 --> 00:01:08,960
+some complicated shape that you seem to be drawing in there right now.
+
+23
+00:01:08,960 --> 00:01:12,582
+>> Yeah. And it's, it's, it's used to be a two-dimensional space, with x and
+
+24
+00:01:12,582 --> 00:01:13,710
+y over here.
+
+25
+00:01:13,710 --> 00:01:16,200
+But some of it we can reduce it to a one-dimensional line.
+
+26
+00:01:16,200 --> 00:01:17,580
+So that's called what?
+
+27
+00:01:17,580 --> 00:01:19,830
+>> That's called dimensionality reduction, usually.
+
+28
+00:01:19,830 --> 00:01:21,089
+>> Dimensionality reduction.
+
+29
+00:01:21,089 --> 00:01:23,200
+So we learned about, a little bit about clustering.
+
+30
+00:01:23,200 --> 00:01:25,830
+>> Clustering is what we'll learn in this lesson.
+
+31
+00:01:25,830 --> 00:01:29,288
+>> And you can see here an example of something also called unsupervised
+
+32
+00:01:29,288 --> 00:01:31,890
+learning of dimensionality reduction.
+
+33
+00:01:31,890 --> 00:01:34,010
+>> Which we will get in a future lesson.
+
+34
+00:01:34,010 --> 00:01:37,792
+>> So these kind of things where you find structure in the data without labels,
+
+35
+00:01:37,792 --> 00:01:39,938
+they're called unsupervised learning.
+
+36
+00:01:39,938 --> 00:01:42,350
+And we're now gong to dive into the wonderful,
+
+37
+00:01:42,350 --> 00:01:45,040
+wonderful magical land of unsupervised learning.
+
+38
+00:01:45,040 --> 00:01:46,100
+>> Sounds great, let's dive in.
+

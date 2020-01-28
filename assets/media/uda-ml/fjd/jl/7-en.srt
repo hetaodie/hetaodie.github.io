@@ -1,0 +1,80 @@
+1
+00:00:00,430 --> 00:00:05,630
+So now we know that these four points correspond to
+
+2
+00:00:05,630 --> 00:00:08,630
+the present class center one that was randomly chosen.
+
+3
+00:00:08,630 --> 00:00:14,130
+And these three points over here correspond to class center in the middle.
+
+4
+00:00:14,130 --> 00:00:15,200
+That's the assignment step.
+
+5
+00:00:15,200 --> 00:00:16,910
+obviously that's not good enough.
+
+6
+00:00:16,910 --> 00:00:18,780
+Now we have to optimize.
+
+7
+00:00:18,780 --> 00:00:24,840
+And what we are optimizing is, you are minimizing the total quadratic distance.
+
+8
+00:00:24,840 --> 00:00:26,610
+Of our cluster center to the points.
+
+9
+00:00:26,610 --> 00:00:29,330
+We're now free to move our cluster center.
+
+10
+00:00:29,330 --> 00:00:32,290
+I think of these little blue lines over here as rubber bands, and
+
+11
+00:00:32,290 --> 00:00:35,040
+that we're trying to find the state of minimum energy for
+
+12
+00:00:35,040 --> 00:00:38,490
+the rubber bands, where the total quadratic error is minimized.
+
+13
+00:00:38,490 --> 00:00:41,760
+And for the top one, I'm going to give you three positions.
+
+14
+00:00:41,760 --> 00:00:42,760
+They're all approximate, but
+
+15
+00:00:42,760 --> 00:00:44,990
+pick the one that looks best in terms of minimization.
+
+16
+00:00:44,990 --> 00:00:47,640
+And that's a not a trivial question at all.
+
+17
+00:00:47,640 --> 00:00:50,560
+So one could be right over here, one could be at and
+
+18
+00:00:50,560 --> 00:00:52,800
+one could be right over here.
+
+19
+00:00:52,800 --> 00:00:57,730
+Which one do you think best minimize, or is minimize of the three positions,
+
+20
+00:00:57,730 --> 00:01:00,080
+the total quadratic length of these rubber bands?
+
