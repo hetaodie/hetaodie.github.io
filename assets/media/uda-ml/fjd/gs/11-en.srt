@@ -1,0 +1,28 @@
+1
+00:00:00,000 --> 00:00:07,424
+Scikit-learn makes it as easy to do GMM clustering as the other clustering methods which,
+
+2
+00:00:07,424 --> 00:00:13,890
+basically, we have to import the mixture library from scikit-learn and Gaussian mixture.
+
+3
+00:00:13,890 --> 00:00:15,900
+And we handed the number of components,
+
+4
+00:00:15,900 --> 00:00:18,254
+number of clusters we were after.
+
+5
+00:00:18,254 --> 00:00:19,890
+We handed the dataset.
+
+6
+00:00:19,890 --> 00:00:25,484
+It fits it, and then we can predict and get the labels for all the points,
+
+7
+00:00:25,484 --> 00:00:27,869
+all the samples in our dataset
+

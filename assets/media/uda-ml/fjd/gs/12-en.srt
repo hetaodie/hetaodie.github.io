@@ -1,0 +1,312 @@
+1
+00:00:00,000 --> 00:00:03,720
+GMM clustering is a powerful method.
+
+2
+00:00:03,720 --> 00:00:07,679
+A couple of the advantages it gives us, is that one,
+
+3
+00:00:07,679 --> 00:00:10,184
+it provides us with a soft clustering,
+
+4
+00:00:10,185 --> 00:00:13,796
+so a sample membership of multiple clusterings.
+
+5
+00:00:13,795 --> 00:00:17,384
+And so that can be useful in cases where
+
+6
+00:00:17,385 --> 00:00:21,750
+you're for example let's say you're classifying documents
+
+7
+00:00:21,750 --> 00:00:25,125
+and you want each document to be part of
+
+8
+00:00:25,125 --> 00:00:30,615
+multiple topics or multiple categories and so that's useful in those scenarios.
+
+9
+00:00:30,614 --> 00:00:36,765
+But in addition to that, it also gives us flexibility in the shapes of clusters.
+
+10
+00:00:36,765 --> 00:00:39,210
+So like the example we looked at,
+
+11
+00:00:39,210 --> 00:00:42,884
+a cluster can contain another cluster inside of it.
+
+12
+00:00:42,884 --> 00:00:45,375
+On the other hand in terms of disadvantages,
+
+13
+00:00:45,375 --> 00:00:49,725
+GMM clustering is sensitive to initialization values.
+
+14
+00:00:49,725 --> 00:00:55,020
+It's possible to converge to a local optimum and it's a slow convergence rate.
+
+15
+00:00:55,020 --> 00:01:01,455
+Otherwise, it's a pretty useful and strong and powerful clustering algorithm
+
+16
+00:01:01,454 --> 00:01:05,340
+as we'll see in the couple of the applications that we'll look at.
+
+17
+00:01:05,340 --> 00:01:09,564
+So the first application we'll look at is this really cool paper,
+
+18
+00:01:09,564 --> 00:01:15,064
+which uses GMM clustering or Gaussian Mixture Models specifically,
+
+19
+00:01:15,064 --> 00:01:18,920
+to make sense of a vast number of sensor readings.
+
+20
+00:01:18,920 --> 00:01:24,469
+And so one dataset that it looks at is accelerometer reading.
+
+21
+00:01:24,469 --> 00:01:29,750
+And so let's say you give people accelerometers to carry in their pockets and then
+
+22
+00:01:29,750 --> 00:01:35,405
+you get the readings and you try to make sense of those readings.
+
+23
+00:01:35,405 --> 00:01:39,439
+Gaussian Mixture Models were useful here in terms of creating
+
+24
+00:01:39,439 --> 00:01:43,370
+a vocabulary of what different activities look like.
+
+25
+00:01:43,370 --> 00:01:46,829
+And so commuting looks sort of like this,
+
+26
+00:01:46,829 --> 00:01:48,974
+and office work looks like this,
+
+27
+00:01:48,974 --> 00:01:52,679
+and these can be estimated by Gaussian mixtures,
+
+28
+00:01:52,680 --> 00:01:56,130
+so you can learn them and then you can use them to
+
+29
+00:01:56,129 --> 00:02:01,004
+identify the different activities just based on the accelerometer reading.
+
+30
+00:02:01,004 --> 00:02:08,549
+The paper also has another dataset of velocity so this is based on GPS readings.
+
+31
+00:02:08,550 --> 00:02:14,805
+And so using those GPS readings and using a Gaussian Mixture Model clustering,
+
+32
+00:02:14,805 --> 00:02:20,270
+you can detect when people are using bikes or moving in a bike,
+
+33
+00:02:20,270 --> 00:02:22,045
+or in a bus, or in a subway,
+
+34
+00:02:22,044 --> 00:02:25,429
+based on estimating and finding out and learning
+
+35
+00:02:25,430 --> 00:02:29,569
+basically a Gaussian Mixture Model for what that activity looks like.
+
+36
+00:02:29,569 --> 00:02:32,329
+So this is the velocity and this would be the density.
+
+37
+00:02:32,330 --> 00:02:34,036
+So when you're riding a bike,
+
+38
+00:02:34,036 --> 00:02:40,310
+most of the time you're at this speed of let's say two or three meters per second,
+
+39
+00:02:40,310 --> 00:02:42,875
+and so that's the spike there.
+
+40
+00:02:42,875 --> 00:02:46,879
+And so I highly recommend reading this paper and looking
+
+41
+00:02:46,879 --> 00:02:50,870
+at how they utilize GMMs in this application.
+
+42
+00:02:50,870 --> 00:02:59,039
+It's also useful to use Gaussian mixture models to classify Pulsar stars in astronomy.
+
+43
+00:02:59,039 --> 00:03:00,150
+That's a common usage,
+
+44
+00:03:00,150 --> 00:03:01,987
+you'll find number of papers,
+
+45
+00:03:01,987 --> 00:03:03,615
+this is one of them.
+
+46
+00:03:03,615 --> 00:03:09,060
+Gaussian Mixture Models have also been used for a long time in biometrics.
+
+47
+00:03:09,060 --> 00:03:13,170
+So speaker verification, this is one example as a paper,
+
+48
+00:03:13,169 --> 00:03:17,099
+but it's also been used to identify signatures of people,
+
+49
+00:03:17,099 --> 00:03:20,835
+fingerprints, and a number of other sort of biometrics.
+
+50
+00:03:20,835 --> 00:03:24,300
+I would say that by far the coolest the uses
+
+51
+00:03:24,300 --> 00:03:26,820
+for Gaussian Mixture Models are in computer vision.
+
+52
+00:03:26,819 --> 00:03:28,259
+And this is one example.
+
+53
+00:03:28,259 --> 00:03:31,724
+So this is a model that we feed this picture to,
+
+54
+00:03:31,724 --> 00:03:35,729
+and we also feed this streaming video to.
+
+55
+00:03:35,729 --> 00:03:39,000
+And what it does is it detects the background
+
+56
+00:03:39,000 --> 00:03:42,419
+and subtracts it from the initial image here.
+
+57
+00:03:42,419 --> 00:03:47,264
+So what this does is actually it gives each pixel a Gaussian Mixture Model,
+
+58
+00:03:47,264 --> 00:03:51,839
+and then uses this streaming video to learn a model,
+
+59
+00:03:51,840 --> 00:03:59,870
+a Gaussian mixture for what actually happens in that pixel across multiple frames,
+
+60
+00:03:59,870 --> 00:04:03,849
+and then using that it can detect the background.
+
+61
+00:04:03,849 --> 00:04:07,000
+So the background we can basically identify it
+
+62
+00:04:07,000 --> 00:04:10,419
+as the element that's common in maybe in most,
+
+63
+00:04:10,419 --> 00:04:12,894
+not all, but maybe most of the frames.
+
+64
+00:04:12,895 --> 00:04:15,850
+So once we identify it we can identify
+
+65
+00:04:15,849 --> 00:04:19,045
+what is in the foreground and then we can subtract it from the top here.
+
+66
+00:04:19,045 --> 00:04:20,439
+So if we roll it back here,
+
+67
+00:04:20,439 --> 00:04:25,254
+you can see how we have this cars here and then slowly as we learn the model,
+
+68
+00:04:25,254 --> 00:04:27,189
+we can make them disappear.
+
+69
+00:04:27,189 --> 00:04:29,649
+So we have identified what is a background in
+
+70
+00:04:29,649 --> 00:04:32,620
+what is a foreground and so we can do something cool like this.
+
+71
+00:04:32,620 --> 00:04:34,375
+This is a different paper,
+
+72
+00:04:34,375 --> 00:04:36,879
+but it does pretty much the same thing.
+
+73
+00:04:36,879 --> 00:04:41,050
+This is also background subtraction using Gaussian mixture models.
+
+74
+00:04:41,050 --> 00:04:45,415
+So here, once we identify the background, we subtract it.
+
+75
+00:04:45,415 --> 00:04:50,590
+And so what we're left with is the objects in the foreground.
+
+76
+00:04:50,589 --> 00:04:52,539
+So we can use it to track people,
+
+77
+00:04:52,540 --> 00:04:57,655
+identify things that are moving in a camera feed let's say here.
+
+78
+00:04:57,654 --> 00:05:03,069
+And so these and other example papers are linked in the text below.
+

@@ -1,0 +1,516 @@
+1
+00:00:00,000 --> 00:00:03,165
+So, external indices are all good and well,
+
+2
+00:00:03,165 --> 00:00:07,275
+but they require that we have labels for our datasets.
+
+3
+00:00:07,275 --> 00:00:09,025
+Most of the time, however,
+
+4
+00:00:09,025 --> 00:00:12,915
+we're going to be working on datasets that are not labeled,
+
+5
+00:00:12,914 --> 00:00:16,289
+specifically, when we were talking about unsupervised learning.
+
+6
+00:00:16,289 --> 00:00:21,629
+And so, this is the case where internal indices are a lot more useful for us.
+
+7
+00:00:21,629 --> 00:00:25,500
+These are a few examples of internal indices,
+
+8
+00:00:25,500 --> 00:00:28,019
+and a couple of them are available in scikit-learn.
+
+9
+00:00:28,019 --> 00:00:31,454
+We'll look at silhouette index a little bit more closely.
+
+10
+00:00:31,454 --> 00:00:36,299
+It gives a score between minus one and one to any clustering that we do.
+
+11
+00:00:36,299 --> 00:00:38,354
+So, let's take an example here.
+
+12
+00:00:38,354 --> 00:00:40,979
+Let's say we have a dataset and we run it through
+
+13
+00:00:40,979 --> 00:00:43,694
+a clustering algorithm and we get this result.
+
+14
+00:00:43,695 --> 00:00:46,170
+So, this dataset is not labeled,
+
+15
+00:00:46,170 --> 00:00:51,885
+so we cannot compare against an original ground truth or original labeling.
+
+16
+00:00:51,884 --> 00:00:55,777
+So, all we have to do, all we can do is do
+
+17
+00:00:55,777 --> 00:01:01,109
+an internal index and score it using something like silhouette coefficient.
+
+18
+00:01:01,109 --> 00:01:04,500
+So, calculating the silhouette coefficient goes like this,
+
+19
+00:01:04,500 --> 00:01:07,140
+there's a silhouette coefficient for each point,
+
+20
+00:01:07,140 --> 00:01:08,670
+each sample in the dataset,
+
+21
+00:01:08,670 --> 00:01:11,564
+we can calculate a silhouette coefficient.
+
+22
+00:01:11,564 --> 00:01:14,594
+And that is basically, b minus a,
+
+23
+00:01:14,594 --> 00:01:17,579
+over whichever one is larger,
+
+24
+00:01:17,579 --> 00:01:20,715
+either a or b. So, what is a?
+
+25
+00:01:20,715 --> 00:01:24,659
+A, is the average distance to other samples in the same cluster.
+
+26
+00:01:24,659 --> 00:01:27,015
+Let's take an example, this point here.
+
+27
+00:01:27,015 --> 00:01:30,765
+Let's try to calculate the silhouette coefficient for this point.
+
+28
+00:01:30,765 --> 00:01:35,099
+A, for it is the average distance to other samples in the cluster,
+
+29
+00:01:35,099 --> 00:01:37,979
+so it's the average of these two distances.
+
+30
+00:01:37,980 --> 00:01:40,935
+Okay, and that's a. What about b?
+
+31
+00:01:40,935 --> 00:01:47,445
+B, is the average distance to samples in the closest neighboring cluster.
+
+32
+00:01:47,444 --> 00:01:51,059
+And so, to do that, we have to calculate the distance
+
+33
+00:01:51,060 --> 00:01:55,290
+between this point and every other cluster.
+
+34
+00:01:55,290 --> 00:01:58,020
+So, the distance between the point and
+
+35
+00:01:58,019 --> 00:02:02,280
+this orange cluster is the average of these two distances,
+
+36
+00:02:02,280 --> 00:02:05,969
+and then the distance between it and green is the average between these two,
+
+37
+00:02:05,969 --> 00:02:10,169
+and so we can compare those and decide that okay, yes.
+
+38
+00:02:10,169 --> 00:02:12,554
+This is the closest neighboring cluster.
+
+39
+00:02:12,555 --> 00:02:16,140
+So b is the average of these two distances.
+
+40
+00:02:16,139 --> 00:02:21,239
+We plug them in and we get a silhouette coefficient for the point.
+
+41
+00:02:21,240 --> 00:02:24,600
+We do this with every point in the clustering and
+
+42
+00:02:24,599 --> 00:02:29,370
+then we average those and we get a silhouette coefficient for the entire clustering.
+
+43
+00:02:29,370 --> 00:02:33,719
+Let's look at an example of silhouette coefficient and have it
+
+44
+00:02:33,719 --> 00:02:38,039
+help us find the best number of clusters to cluster a dataset.
+
+45
+00:02:38,039 --> 00:02:42,504
+So finding k. So let's say we have this original,
+
+46
+00:02:42,504 --> 00:02:45,504
+this dataset that is unlabeled.
+
+47
+00:02:45,504 --> 00:02:51,549
+If we run k-means on k equals two,
+
+48
+00:02:51,550 --> 00:02:52,840
+we get this result,
+
+49
+00:02:52,840 --> 00:02:54,295
+and it gets this score.
+
+50
+00:02:54,294 --> 00:02:57,280
+So, 0.798.
+
+51
+00:02:57,280 --> 00:03:00,564
+If we run K-means with k equals three,
+
+52
+00:03:00,564 --> 00:03:01,870
+we get this result,
+
+53
+00:03:01,870 --> 00:03:05,064
+and yay, it has a higher silhouette score.
+
+54
+00:03:05,064 --> 00:03:08,425
+So, this matches our intuition a lot better.
+
+55
+00:03:08,425 --> 00:03:10,225
+What about k equals four?
+
+56
+00:03:10,224 --> 00:03:15,340
+We're really hoping that silhouette score for four would be lower than three,
+
+57
+00:03:15,340 --> 00:03:18,439
+and it turns out to be much lower.
+
+58
+00:03:18,439 --> 00:03:22,204
+So this is 0.641.
+
+59
+00:03:22,205 --> 00:03:23,915
+And so from these three,
+
+60
+00:03:23,914 --> 00:03:29,674
+silhouette's coefficient tells us that k equals three is the right choice.
+
+61
+00:03:29,675 --> 00:03:35,660
+And this is very reassuring for us because we now have a mathematical formula that
+
+62
+00:03:35,659 --> 00:03:41,990
+can validate our intuition of how many clusters appear in this datasets,
+
+63
+00:03:41,990 --> 00:03:45,290
+and that's something we can do if we have multiple dimensions that we cannot
+
+64
+00:03:45,289 --> 00:03:49,444
+visualize and then intuitively split like this.
+
+65
+00:03:49,444 --> 00:03:54,364
+k equals five, much worse score, 0.491.
+
+66
+00:03:54,365 --> 00:03:57,509
+And silhouette coefficient is penalizing k
+
+67
+00:03:57,508 --> 00:04:01,354
+equals four and k equals five because a clustering like this,
+
+68
+00:04:01,354 --> 00:04:04,429
+there's not enough of a distance between these two clusters.
+
+69
+00:04:04,430 --> 00:04:08,224
+So that gets it a penalty and the lower score.
+
+70
+00:04:08,224 --> 00:04:12,710
+So, this is an example where we tried to look at four values of k,
+
+71
+00:04:12,710 --> 00:04:16,160
+we can do that with a lot more values of k. So,
+
+72
+00:04:16,160 --> 00:04:22,005
+this is a graph where we see values of k between 2 and 100.
+
+73
+00:04:22,004 --> 00:04:29,889
+And we can see that no matter how many more clusters we break the dataset into,
+
+74
+00:04:29,889 --> 00:04:33,264
+k equals three is the highest scoring silhouette score.
+
+75
+00:04:33,264 --> 00:04:36,759
+Another example we can look at is this dataset where
+
+76
+00:04:36,759 --> 00:04:40,060
+we can clearly see that values of two or three are probably
+
+77
+00:04:40,060 --> 00:04:43,030
+the best values of k for
+
+78
+00:04:43,029 --> 00:04:47,739
+this dataset and then no matter how much we increase the number of clusters,
+
+79
+00:04:47,740 --> 00:04:53,530
+it never gets a score that's quite as good or high-scoring as two or three.
+
+80
+00:04:53,529 --> 00:04:56,844
+We can also use silhouette coefficient to compare clustering
+
+81
+00:04:56,845 --> 00:05:00,345
+algorithms and how they did on a certain dataset.
+
+82
+00:05:00,345 --> 00:05:02,940
+So, this is an example where we have,
+
+83
+00:05:02,939 --> 00:05:06,389
+we are on K-means we got 0.801,
+
+84
+00:05:06,389 --> 00:05:09,336
+Single Link gets the exact same result, same score,
+
+85
+00:05:09,336 --> 00:05:11,729
+Complete Link does the same, Ward,
+
+86
+00:05:11,730 --> 00:05:15,435
+DBSCAN, all of them get the same score for doing the same job.
+
+87
+00:05:15,435 --> 00:05:17,399
+But let's look at this dataset here.
+
+88
+00:05:17,399 --> 00:05:22,199
+So K-means gets 0.637,
+
+89
+00:05:22,199 --> 00:05:25,289
+which seems okay, but let's see what Single Link does.
+
+90
+00:05:25,290 --> 00:05:29,610
+It gets a score very close to zero because
+
+91
+00:05:29,610 --> 00:05:34,580
+one cluster ate up almost the entire dataset. So, this is good.
+
+92
+00:05:34,579 --> 00:05:36,639
+This is reassuring for us.
+
+93
+00:05:36,639 --> 00:05:39,819
+Complete Link gets a an okay score,
+
+94
+00:05:39,819 --> 00:05:42,519
+Ward does even better, DBSCAN.
+
+95
+00:05:42,519 --> 00:05:45,654
+So this example starts to show us how silhouette coefficient
+
+96
+00:05:45,654 --> 00:05:49,044
+is not the index that we'll use,
+
+97
+00:05:49,045 --> 00:05:51,265
+that we should be using when you use DBSCAN.
+
+98
+00:05:51,264 --> 00:05:56,860
+Specifically because it doesn't have the concept of noise,
+
+99
+00:05:56,860 --> 00:06:02,139
+and then DBSCAN does not always tend to have
+
+100
+00:06:02,139 --> 00:06:04,870
+these compact clusters that
+
+101
+00:06:04,870 --> 00:06:09,879
+silhouette coefficient rewards a clustering algorithm for resulting.
+
+102
+00:06:09,879 --> 00:06:12,310
+And we can see something similar with the GMM,
+
+103
+00:06:12,310 --> 00:06:17,245
+which I think is a very elegant way to break down these.
+
+104
+00:06:17,245 --> 00:06:19,240
+I guess maybe the fourth-best score,
+
+105
+00:06:19,240 --> 00:06:21,985
+but I really love what it did there.
+
+106
+00:06:21,985 --> 00:06:26,410
+This final example shows a little bit of a downside of silhouette coefficient.
+
+107
+00:06:26,410 --> 00:06:28,510
+So, if we want to do
+
+108
+00:06:28,509 --> 00:06:33,939
+the two rings datasets and compare with different clustering algorithms,
+
+109
+00:06:33,939 --> 00:06:38,245
+K-means we get 0.35, Single Link however,
+
+110
+00:06:38,245 --> 00:06:40,795
+gets them and carves them out perfectly,
+
+111
+00:06:40,795 --> 00:06:43,465
+but it gets a lower score than K-means.
+
+112
+00:06:43,464 --> 00:06:47,364
+This is because silhouette coefficient is not built to
+
+113
+00:06:47,365 --> 00:06:51,879
+reward carving out datasets like this or clusters like this.
+
+114
+00:06:51,879 --> 00:06:55,540
+It wants to find those compact, dense,
+
+115
+00:06:55,540 --> 00:06:59,740
+circular clusters that are well-separated from others.
+
+116
+00:06:59,740 --> 00:07:02,905
+And so, it doesn't really work well if this is the shape of
+
+117
+00:07:02,904 --> 00:07:06,849
+your dataset or these are the clusters that you want to carve out.
+
+118
+00:07:06,850 --> 00:07:12,355
+Complete Link gets a better score even though it's a worse clustering,
+
+119
+00:07:12,355 --> 00:07:15,730
+Ward the same, DBSCAN does it perfectly,
+
+120
+00:07:15,730 --> 00:07:19,660
+just beautifully and gets a score very close to zero.
+
+121
+00:07:19,660 --> 00:07:21,860
+It's another example of why we shouldn't use
+
+122
+00:07:21,860 --> 00:07:25,235
+silhouette coefficient when we're dealing with DBSCAN.
+
+123
+00:07:25,235 --> 00:07:28,475
+GMM is very close to K-means and very close score.
+
+124
+00:07:28,475 --> 00:07:34,310
+So, for DBSCAN, we should never use silhouette coefficient.
+
+125
+00:07:34,310 --> 00:07:36,290
+There is another algorithm however,
+
+126
+00:07:36,290 --> 00:07:38,840
+and we have the paper linked below,
+
+127
+00:07:38,839 --> 00:07:44,074
+it's a internal index for density-based cluster validation,
+
+128
+00:07:44,074 --> 00:07:47,014
+that's actually it's named, DBCV,
+
+129
+00:07:47,014 --> 00:07:54,199
+density-based clustering validation, that is much better for something like DBSCAN.
+

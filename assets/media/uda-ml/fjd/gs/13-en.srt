@@ -1,0 +1,204 @@
+1
+00:00:00,000 --> 00:00:01,940
+Up until this point,
+
+2
+00:00:01,940 --> 00:00:05,198
+we looked at a number of clustering methods.
+
+3
+00:00:05,198 --> 00:00:08,100
+But choosing a clustering method is only one step in
+
+4
+00:00:08,099 --> 00:00:10,439
+a multi-step process that hopefully
+
+5
+00:00:10,439 --> 00:00:14,039
+turns the dataset that we have into knowledge and information.
+
+6
+00:00:14,039 --> 00:00:18,549
+So let's look at this cluster analysis process.
+
+7
+00:00:18,550 --> 00:00:22,580
+The first step is usually feature selection and feature extraction.
+
+8
+00:00:22,579 --> 00:00:27,859
+Feature selection is choosing distinguishing features from a set of candidates.
+
+9
+00:00:27,859 --> 00:00:30,535
+We don't have to throw all of our dataset,
+
+10
+00:00:30,535 --> 00:00:33,542
+every column of our dataset at the clustering method.
+
+11
+00:00:33,542 --> 00:00:38,917
+Sometimes we have thousands of dimensions for a dataset.
+
+12
+00:00:38,917 --> 00:00:42,914
+And so running a clustering would take a lot of resources.
+
+13
+00:00:42,914 --> 00:00:46,875
+So there are ways and tools we can use to reduce the number of
+
+14
+00:00:46,875 --> 00:00:51,099
+features and select the best ones that would result in,
+
+15
+00:00:51,098 --> 00:00:52,489
+hopefully, the best clustering.
+
+16
+00:00:52,490 --> 00:00:54,375
+That is feature selection.
+
+17
+00:00:54,375 --> 00:01:00,875
+Feature extraction is transforming the data to generate novel and useful features.
+
+18
+00:01:00,875 --> 00:01:05,939
+The best example of this is PCA or principle component analysis,
+
+19
+00:01:05,939 --> 00:01:10,314
+which we will look at in a future lesson in this nanodegree program.
+
+20
+00:01:10,314 --> 00:01:16,409
+The second step is to choose a clustering algorithm. We've seen a few of them.
+
+21
+00:01:16,409 --> 00:01:20,099
+And based on what you need to do and how your data looks,
+
+22
+00:01:20,099 --> 00:01:24,444
+you'll have to experiment with whichever ones can give you the better result.
+
+23
+00:01:24,444 --> 00:01:29,844
+No algorithm is universally applicable to every problem we may face.
+
+24
+00:01:29,844 --> 00:01:34,944
+It is also in this step that we have to choose a proximity measure.
+
+25
+00:01:34,944 --> 00:01:36,339
+So throughout this lesson,
+
+26
+00:01:36,340 --> 00:01:39,030
+we have been using Euclidean distance as a measure of
+
+27
+00:01:39,030 --> 00:01:44,070
+how close two points are in a sort of geometric sense.
+
+28
+00:01:44,069 --> 00:01:50,339
+But if, say, your data is actually documents or word embeddings,
+
+29
+00:01:50,340 --> 00:01:54,730
+your proximity measure will have to be cosine distance.
+
+30
+00:01:54,730 --> 00:01:59,700
+If your data is more of a gene expression type data,
+
+31
+00:01:59,700 --> 00:02:02,460
+you'd be using Pearson's correlation.
+
+32
+00:02:02,459 --> 00:02:04,979
+The proximity measure is usually something we
+
+33
+00:02:04,980 --> 00:02:07,465
+pass to the clustering algorithm where we'd say,
+
+34
+00:02:07,465 --> 00:02:09,094
+"All right, here's the data.
+
+35
+00:02:09,094 --> 00:02:11,699
+Here's the number of clusters," let's say and use
+
+36
+00:02:11,699 --> 00:02:16,574
+this proximity measure to calculate the distance between the points.
+
+37
+00:02:16,574 --> 00:02:19,552
+The third step is cluster validation,
+
+38
+00:02:19,552 --> 00:02:22,919
+and that is evaluating how well a clustering turn out to be.
+
+39
+00:02:22,919 --> 00:02:27,709
+So in addition to visualizing a clustering result when possible,
+
+40
+00:02:27,710 --> 00:02:30,570
+we can also use a number of scoring methods to evaluate
+
+41
+00:02:30,569 --> 00:02:34,634
+the quality of the clustering structure based on certain criteria.
+
+42
+00:02:34,634 --> 00:02:37,310
+These scoring methods are called indices.
+
+43
+00:02:37,310 --> 00:02:40,920
+So each of them is called a clustering validation index,
+
+44
+00:02:40,919 --> 00:02:44,179
+and this will be the topic of the next few videos.
+
+45
+00:02:44,180 --> 00:02:45,906
+Before we talk about validations,
+
+46
+00:02:45,906 --> 00:02:49,030
+look at the last step which is results interpretation.
+
+47
+00:02:49,030 --> 00:02:51,569
+And this is determining what insights we can
+
+48
+00:02:51,569 --> 00:02:55,049
+glean from the resulting clustering structure.
+
+49
+00:02:55,050 --> 00:02:58,380
+This is a step that needs domain expertise to give
+
+50
+00:02:58,379 --> 00:03:02,574
+labels to the clusters and try to infer some insight out of them.
+
+51
+00:03:02,574 --> 00:03:06,439
+So let's take a step back and look at cluster validation.
+

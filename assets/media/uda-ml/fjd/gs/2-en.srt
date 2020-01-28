@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:02,609
+Gaussian Mixture Model Clustering is probably
+
+2
+00:00:02,609 --> 00:00:05,514
+the most advanced clustering method that we'll discuss.
+
+3
+00:00:05,514 --> 00:00:08,054
+It is a clustering algorithm that assumes that
+
+4
+00:00:08,054 --> 00:00:11,714
+each cluster follows a certain statistical distribution.
+
+5
+00:00:11,714 --> 00:00:14,369
+It uses a lot of what we know from probabilities and
+
+6
+00:00:14,369 --> 00:00:17,579
+statistics to come up with these clusters.
+
+7
+00:00:17,579 --> 00:00:20,354
+You're probably familiar with the normal distribution,
+
+8
+00:00:20,355 --> 00:00:23,280
+also called the Gaussian distribution.
+
+9
+00:00:23,280 --> 00:00:25,410
+Many datasets that occur in real life can be
+
+10
+00:00:25,410 --> 00:00:28,829
+approximated by a Gaussian distribution like this.
+
+11
+00:00:28,829 --> 00:00:30,494
+Test scores, for example,
+
+12
+00:00:30,495 --> 00:00:32,054
+the heights of people,
+
+13
+00:00:32,054 --> 00:00:37,049
+measurement error, are a few examples of things that follow a normal distribution.
+
+14
+00:00:37,049 --> 00:00:40,229
+If you're not familiar with normal distributions, that's okay.
+
+15
+00:00:40,229 --> 00:00:43,000
+We'll recap it quickly in the next video.
+

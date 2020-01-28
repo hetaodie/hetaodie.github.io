@@ -1,0 +1,156 @@
+1
+00:00:00,000 --> 00:00:03,810
+Let's look at an example of how EM progresses.
+
+2
+00:00:03,810 --> 00:00:07,470
+And so, if this was the initial data points,
+
+3
+00:00:07,469 --> 00:00:10,814
+it would be like this.
+
+4
+00:00:10,814 --> 00:00:13,619
+And so this is a repeating video.
+
+5
+00:00:13,619 --> 00:00:18,299
+So our goal was that it would find the dataset that would be here,
+
+6
+00:00:18,300 --> 00:00:21,630
+clustered here, and then the second dataset would be clustered here.
+
+7
+00:00:21,629 --> 00:00:24,419
+And so, this run is clearly not successful
+
+8
+00:00:24,420 --> 00:00:28,605
+in finding the two clusters that we are initially after,
+
+9
+00:00:28,605 --> 00:00:32,119
+and that's because of the inputs that we gave it.
+
+10
+00:00:32,119 --> 00:00:37,685
+So here, we chose a random manual initialization of the Gaussian,
+
+11
+00:00:37,685 --> 00:00:42,869
+s and we didn't pick good initial parameters for the Gaussians.
+
+12
+00:00:42,869 --> 00:00:46,890
+But, also, this is a spherical covariance,
+
+13
+00:00:46,890 --> 00:00:53,189
+which means each Gaussian was only given a mean and a variance.
+
+14
+00:00:53,189 --> 00:00:56,204
+There are other ways of setting the covariance type,
+
+15
+00:00:56,204 --> 00:00:58,979
+and we will look at that in the next few slides here.
+
+16
+00:00:58,979 --> 00:01:03,179
+So let's do a better type of initialization.
+
+17
+00:01:03,179 --> 00:01:05,189
+So we make it the default,
+
+18
+00:01:05,189 --> 00:01:08,789
+which is it would do k-means and then use the results of
+
+19
+00:01:08,790 --> 00:01:13,200
+k-means to initialize the Gaussians in the beginning.
+
+20
+00:01:13,200 --> 00:01:15,615
+And so if we run it,
+
+21
+00:01:15,614 --> 00:01:17,879
+it would look like this.
+
+22
+00:01:17,879 --> 00:01:20,924
+So we can see that it's converging to two Gaussians,
+
+23
+00:01:20,924 --> 00:01:24,859
+but it's still not finding the two clusters that we are after.
+
+24
+00:01:24,859 --> 00:01:28,090
+So this is a good time to try to change the covariance type.
+
+25
+00:01:28,090 --> 00:01:33,385
+So instead of having simple circular Gaussians,
+
+26
+00:01:33,385 --> 00:01:39,760
+we need to be able to use a covariance matrix instead of a variance for each Gaussian.
+
+27
+00:01:39,760 --> 00:01:42,873
+And so that allows our circles to be ellipses,
+
+28
+00:01:42,873 --> 00:01:45,984
+and it also allows them to be rotated somewhat.
+
+29
+00:01:45,984 --> 00:01:47,950
+So that's the example we'll see here.
+
+30
+00:01:47,950 --> 00:01:54,960
+So these are the defaults for doing Gaussian mixture model in k-means,
+
+31
+00:01:54,959 --> 00:01:57,459
+which is the covariance would be full and
+
+32
+00:01:57,459 --> 00:02:00,524
+the initialization would be the default to k-means.
+
+33
+00:02:00,525 --> 00:02:03,155
+And so if we run it, it looks like this.
+
+34
+00:02:03,155 --> 00:02:07,489
+But we can see that it's successful in carving out this mass as
+
+35
+00:02:07,489 --> 00:02:10,340
+one Gaussian and then choosing all
+
+36
+00:02:10,340 --> 00:02:13,580
+of these other points as another Gaussian that looks like this.
+
+37
+00:02:13,580 --> 00:02:19,160
+And this is the best approximation of the initial two datasets that we had,
+
+38
+00:02:19,159 --> 00:02:22,189
+that the Gaussian mixture model can come up with,
+
+39
+00:02:22,189 --> 00:02:27,069
+that maybe other clustering methods are not able to come up with.
+

@@ -1,0 +1,92 @@
+1
+00:00:00,000 --> 00:00:05,219
+Let's say, we're looking at two test scores for each student that we have.
+
+2
+00:00:05,219 --> 00:00:06,990
+Let's say we have 99 students.
+
+3
+00:00:06,990 --> 00:00:08,804
+We have, for each one,
+
+4
+00:00:08,804 --> 00:00:12,074
+the chemistry score, and the geology test score.
+
+5
+00:00:12,074 --> 00:00:17,009
+And each of these columns has its own mean and standard deviation.
+
+6
+00:00:17,010 --> 00:00:22,080
+If we plot these in two dimensions where chemistry score is the X axis,
+
+7
+00:00:22,079 --> 00:00:24,014
+and geology score is the Y axis,
+
+8
+00:00:24,015 --> 00:00:25,664
+we have a shape like this.
+
+9
+00:00:25,664 --> 00:00:29,070
+We can plot histograms like this for each axis,
+
+10
+00:00:29,070 --> 00:00:33,929
+each test score, and we can see the bell curves re-emerging here.
+
+11
+00:00:33,929 --> 00:00:37,560
+And since this dataset has more than one variable,
+
+12
+00:00:37,560 --> 00:00:42,195
+and each of the two variables is a Gaussian distribution,
+
+13
+00:00:42,195 --> 00:00:46,335
+this dataset is called a Multivariate Gaussian distribution.
+
+14
+00:00:46,335 --> 00:00:49,185
+So, it's a Gaussian distribution in more than one variable.
+
+15
+00:00:49,185 --> 00:00:51,390
+And one visual way to look at
+
+16
+00:00:51,390 --> 00:00:56,310
+a two-dimensional Gaussian distribution is through these concentric circles.
+
+17
+00:00:56,310 --> 00:01:00,600
+And so, the center here is the mean of the two axis,
+
+18
+00:01:00,600 --> 00:01:08,954
+and this first ellipse is the mean plus or minus the standard deviation along each axis.
+
+19
+00:01:08,954 --> 00:01:12,929
+And so, this circle would contain 68 percent of the data points,
+
+20
+00:01:12,930 --> 00:01:15,450
+the second circle would contain 95,
+
+21
+00:01:15,450 --> 00:01:17,835
+and then this will contain 99 percent.
+
+22
+00:01:17,834 --> 00:01:21,164
+And so, each concentric ellipse shows us
+
+23
+00:01:21,165 --> 00:01:27,070
+where one or two or three standard deviations lie in that dataset.
+

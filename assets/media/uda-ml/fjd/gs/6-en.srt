@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:03,975
+To do Gaussian mixture model clustering in two dimensions,
+
+2
+00:00:03,975 --> 00:00:05,879
+we'll need to a little bit of setup.
+
+3
+00:00:05,879 --> 00:00:08,910
+So, assume we have two classes of students,
+
+4
+00:00:08,910 --> 00:00:12,195
+2016 class and 2017 class.
+
+5
+00:00:12,195 --> 00:00:16,980
+And they have different set of scores for the two tests, kind of like this.
+
+6
+00:00:16,980 --> 00:00:21,615
+So each of these on its own is a multivariate Gaussian distribution.
+
+7
+00:00:21,614 --> 00:00:24,509
+This one, however, is a little bit rotated but it's
+
+8
+00:00:24,510 --> 00:00:28,465
+still a Gaussian distribution in two dimensions.
+
+9
+00:00:28,464 --> 00:00:31,940
+Now, say that hackers broke into the school's systems,
+
+10
+00:00:31,940 --> 00:00:34,925
+and removed the labels of these points,
+
+11
+00:00:34,924 --> 00:00:38,149
+effectively mixing the two datasets like this,
+
+12
+00:00:38,149 --> 00:00:42,229
+with no way to retrieve the original labels.
+
+13
+00:00:42,229 --> 00:00:48,769
+And so, we ended up with this dataset that does not follow a Gaussian distribution,
+
+14
+00:00:48,770 --> 00:00:53,690
+but we know that it's made up of two separate Gaussian distributions.
+
+15
+00:00:53,689 --> 00:00:57,229
+These are reasonable conditions for us to do
+
+16
+00:00:57,229 --> 00:00:59,269
+Gaussian mixture model clustering to try to
+
+17
+00:00:59,270 --> 00:01:03,130
+retrieve the original two Gaussian distributions.
+

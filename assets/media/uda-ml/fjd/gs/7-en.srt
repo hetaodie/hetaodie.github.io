@@ -1,0 +1,80 @@
+1
+00:00:00,000 --> 00:00:05,490
+Here, we'll look at an overview of how Gaussian Mixture Model Clustering works,
+
+2
+00:00:05,490 --> 00:00:09,041
+and we'll use the dataset that we talked about in the previous video to do that.
+
+3
+00:00:09,041 --> 00:00:11,384
+To do this clustering,
+
+4
+00:00:11,384 --> 00:00:15,074
+we'll need to follow the Expectation-Maximization algorithm
+
+5
+00:00:15,074 --> 00:00:18,829
+for Gaussian mixtures and that looks like this.
+
+6
+00:00:18,829 --> 00:00:23,070
+The first step is that we initialize K Gaussian distributions.
+
+7
+00:00:23,070 --> 00:00:26,250
+K, in this case, in this example is two because we know
+
+8
+00:00:26,250 --> 00:00:29,754
+there were two original datasets, two original sources.
+
+9
+00:00:29,754 --> 00:00:36,009
+The second step is to soft-cluster the data into the two Gaussians that we initialized.
+
+10
+00:00:36,009 --> 00:00:39,599
+This is called the Expectation step or the E step.
+
+11
+00:00:39,600 --> 00:00:45,645
+The third step is to re-estimate the Gaussians based on the soft clustering.
+
+12
+00:00:45,645 --> 00:00:48,865
+This is called the Maximization step or M step.
+
+13
+00:00:48,865 --> 00:00:50,234
+And then in the fourth step,
+
+14
+00:00:50,234 --> 00:00:54,509
+we evaluate the log likelihood to check for convergence.
+
+15
+00:00:54,509 --> 00:00:57,644
+If it converges, then that's all good and well.
+
+16
+00:00:57,645 --> 00:00:59,175
+We return the results.
+
+17
+00:00:59,174 --> 00:01:03,899
+If it does not, we go back to step two and we reiterate and then we go
+
+18
+00:01:03,899 --> 00:01:09,584
+over and over again until we converge and we find the two Gaussians that we want.
+
+19
+00:01:09,584 --> 00:01:12,134
+This is a quick overview of the algorithm.
+
+20
+00:01:12,135 --> 00:01:15,350
+Let's look at it a little bit more closely in the next video.
+

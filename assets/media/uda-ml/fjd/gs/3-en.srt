@@ -1,0 +1,128 @@
+1
+00:00:00,000 --> 00:00:03,845
+Let's recap Gaussian distributions in one dimension.
+
+2
+00:00:03,845 --> 00:00:07,214
+Say, we have test scores as an example.
+
+3
+00:00:07,214 --> 00:00:12,934
+Assume that this is a dataset of how a class of students did on a certain exam.
+
+4
+00:00:12,935 --> 00:00:16,035
+Test scores tend to have this general distribution.
+
+5
+00:00:16,035 --> 00:00:18,405
+Since there's a bit of overlap in the middle here,
+
+6
+00:00:18,405 --> 00:00:22,280
+and it's hard to see how densely packed this region is,
+
+7
+00:00:22,280 --> 00:00:24,570
+we will plot a histogram.
+
+8
+00:00:24,570 --> 00:00:29,519
+The height of the histogram is basically how many points are in this band.
+
+9
+00:00:29,519 --> 00:00:32,125
+So, we can see that this is the highest bar,
+
+10
+00:00:32,125 --> 00:00:35,234
+so this indicates that this band here,
+
+11
+00:00:35,234 --> 00:00:37,920
+this contains the highest number of points from
+
+12
+00:00:37,920 --> 00:00:41,350
+all of the bands that are in the same size.
+
+13
+00:00:41,350 --> 00:00:43,814
+This histogram shows us
+
+14
+00:00:43,814 --> 00:00:49,920
+the familiar bell curve that defines a Gaussian distribution, or normal distribution.
+
+15
+00:00:49,920 --> 00:00:53,280
+This is how a Gaussian distribution looks in one dimension.
+
+16
+00:00:53,280 --> 00:00:57,795
+The numbers that describe a Gaussian distribution are,
+
+17
+00:00:57,795 --> 00:01:00,585
+one, is the mean or average,
+
+18
+00:01:00,585 --> 00:01:05,549
+here it's 66, we give it the name μ here,
+
+19
+00:01:05,549 --> 00:01:08,284
+and the standard deviation.
+
+20
+00:01:08,284 --> 00:01:11,834
+And so, the standard deviation in this case is 15,
+
+21
+00:01:11,834 --> 00:01:13,375
+that's easy to calculate.
+
+22
+00:01:13,375 --> 00:01:15,045
+And so, this region here,
+
+23
+00:01:15,045 --> 00:01:19,064
+which is the mean plus one standard deviation,
+
+24
+00:01:19,064 --> 00:01:22,745
+and the mean minus one standard deviation,
+
+25
+00:01:22,745 --> 00:01:28,310
+this point here contains 68 percent of the points in the dataset.
+
+26
+00:01:28,310 --> 00:01:31,344
+This is a property of a Gaussian distribution.
+
+27
+00:01:31,344 --> 00:01:32,730
+In this area here,
+
+28
+00:01:32,730 --> 00:01:36,750
+which is basically the mean plus two standard deviations,
+
+29
+00:01:36,750 --> 00:01:40,275
+and the mean minus two standard deviations,
+
+30
+00:01:40,275 --> 00:01:43,120
+contains 95 percent of points,
+
+31
+00:01:43,120 --> 00:01:46,740
+and this area contains 99 percent of points.
+
+32
+00:01:46,739 --> 00:01:51,000
+This is a quick look of how Gaussian distributions look in one dimension.
+
