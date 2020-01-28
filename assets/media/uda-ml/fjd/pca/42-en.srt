@@ -1,0 +1,33 @@
+1
+00:00:00,310 --> 00:00:01,624
+And I hope you said this first one.
+
+2
+00:00:01,624 --> 00:00:04,543
+That's roughly what I would expect if we
+were to project all of these points down
+
+3
+00:00:04,543 --> 00:00:06,420
+and start making xs all along the line like this.
+
+4
+00:00:06,420 --> 00:00:09,300
+There doesn't seem to be
+any particularly tight or
+
+5
+00:00:09,300 --> 00:00:13,365
+distinct clusters in this data,
+that PCA would accentuate.
+
+6
+00:00:13,365 --> 00:00:17,162
+And the data is also not
+particularly spaced out evenly.
+
+7
+00:00:17,162 --> 00:00:19,580
+So that gives you this first
+answer as the correct one.
+

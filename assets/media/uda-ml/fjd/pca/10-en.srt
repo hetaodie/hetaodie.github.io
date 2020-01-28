@@ -1,0 +1,68 @@
+1
+00:00:00,220 --> 00:00:03,100
+And you might disagree.
+
+2
+00:00:03,100 --> 00:00:06,950
+For the sake of principle component analysis actually it turns out to be
+
+3
+00:00:06,950 --> 00:00:07,510
+two dimensional.
+
+4
+00:00:07,510 --> 00:00:11,330
+Even though there's clearly a one dimensional structure underneath this
+
+5
+00:00:11,330 --> 00:00:12,930
+data that you could draw.
+
+6
+00:00:14,160 --> 00:00:17,135
+It seems pretty clear that whatever you have to do to the coordinate system
+
+7
+00:00:17,135 --> 00:00:20,640
+twists it in some sort of a non-linear way.
+
+8
+00:00:20,640 --> 00:00:25,040
+And PCA in particular specializes on just shifts and
+
+9
+00:00:25,040 --> 00:00:27,090
+rotation for the coordinate system.
+
+10
+00:00:27,090 --> 00:00:30,860
+And you can't possibly come up with a coordinate system that is just shifted and
+
+11
+00:00:30,860 --> 00:00:34,590
+only rotated from the original one to obtain one-dimensionality.
+
+12
+00:00:34,590 --> 00:00:38,430
+So, as a result, two is the answer I wanted and it was a trick question.
+
+13
+00:00:38,430 --> 00:00:40,170
+It was certainly a little unfair.
+
+14
+00:00:40,170 --> 00:00:43,820
+Because the best you can possibly do is put a coordinate system like this and
+
+15
+00:00:43,820 --> 00:00:50,090
+like this, where there's still significant variation in the y-dimension,
+
+16
+00:00:50,090 --> 00:00:51,270
+in the data points.
+
+17
+00:00:51,270 --> 00:00:55,029
+Way too much for my taste to call it one-dimensional.
+
