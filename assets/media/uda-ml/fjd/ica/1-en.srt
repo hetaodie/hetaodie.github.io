@@ -1,0 +1,480 @@
+1
+00:00:00,000 --> 00:00:02,549
+Hello. I'm Jay, and in this lesson,
+
+2
+00:00:02,549 --> 00:00:05,234
+we'll be talking about dimensionality reduction.
+
+3
+00:00:05,235 --> 00:00:09,570
+The first method we'll look at in this lesson is random projection,
+
+4
+00:00:09,570 --> 00:00:12,375
+which is a powerful dimensionality reduction method
+
+5
+00:00:12,375 --> 00:00:15,509
+that is computationally more efficient than PCA.
+
+6
+00:00:15,509 --> 00:00:18,300
+It is commonly used in cases where a dataset has
+
+7
+00:00:18,300 --> 00:00:21,705
+too many dimensions for PCA to be directly computed.
+
+8
+00:00:21,704 --> 00:00:26,909
+Let's say your application is running on a system with limited computational resources,
+
+9
+00:00:26,910 --> 00:00:31,324
+or you just find that PSA's too taxing for a specific situation that you're in.
+
+10
+00:00:31,324 --> 00:00:33,685
+Just like PCA, it takes a dataset.
+
+11
+00:00:33,685 --> 00:00:38,800
+Let's say this is our dataset with d dimensions, let's say a thousand,
+
+12
+00:00:38,799 --> 00:00:42,184
+and certain number of samples are rows,
+
+13
+00:00:42,185 --> 00:00:45,100
+let's say N. So these are our columns.
+
+14
+00:00:45,100 --> 00:00:49,164
+So it takes our dataset and it produces
+
+15
+00:00:49,164 --> 00:00:55,659
+a transformation of it that is in a much smaller number of columns,
+
+16
+00:00:55,659 --> 00:00:58,329
+so k, let's say 50,
+
+17
+00:00:58,329 --> 00:01:00,909
+for example here, but the same number of samples.
+
+18
+00:01:00,909 --> 00:01:02,139
+And each column here,
+
+19
+00:01:02,140 --> 00:01:06,765
+it captures information from multiple columns there.
+
+20
+00:01:06,765 --> 00:01:10,805
+Let's look at an oversimplified example for
+
+21
+00:01:10,805 --> 00:01:15,815
+reducing the dimensions of a dataset from two dimensions into one dimension.
+
+22
+00:01:15,814 --> 00:01:20,829
+So PCA here would try to maximize variance.
+
+23
+00:01:20,829 --> 00:01:26,450
+So it finds the vector or direction that maximizes the variance.
+
+24
+00:01:26,450 --> 00:01:28,640
+So it loses the least amount of information when it
+
+25
+00:01:28,640 --> 00:01:33,094
+projects the data from two dimensions to one.
+
+26
+00:01:33,094 --> 00:01:35,659
+And so that line would be something like this,
+
+27
+00:01:35,659 --> 00:01:38,569
+and these would be the projections.
+
+28
+00:01:38,569 --> 00:01:40,864
+And so in one dimension,
+
+29
+00:01:40,864 --> 00:01:43,224
+the dataset would look like this.
+
+30
+00:01:43,224 --> 00:01:46,634
+A random projection, so this calculation that PCA did,
+
+31
+00:01:46,635 --> 00:01:49,980
+especially if you're talking about a lot of dimensions,
+
+32
+00:01:49,980 --> 00:01:53,019
+it consumes a certain amount of resources.
+
+33
+00:01:53,019 --> 00:01:54,734
+Random projection just say,
+
+34
+00:01:54,734 --> 00:01:57,239
+we'll just pick a line, any line.
+
+35
+00:01:57,239 --> 00:02:00,539
+We'll do a projection on that. That's our dataset.
+
+36
+00:02:00,540 --> 00:02:04,804
+And so while it doesn't really make a lot of sense in a scenario,
+
+37
+00:02:04,804 --> 00:02:08,314
+in our oversimplified scenario like this from two dimensions to one,
+
+38
+00:02:08,314 --> 00:02:13,164
+it actually works, and it works really well in higher dimensions.
+
+39
+00:02:13,164 --> 00:02:18,144
+It works in a high-performance way.
+
+40
+00:02:18,145 --> 00:02:21,340
+The basic premise of a random projection is that we
+
+41
+00:02:21,340 --> 00:02:24,099
+can simply reduce the number of dimensions in
+
+42
+00:02:24,099 --> 00:02:31,000
+our dataset by multiplying it by a random matrix like this.
+
+43
+00:02:31,000 --> 00:02:35,432
+And so d, we will have d in our dataset,
+
+44
+00:02:35,432 --> 00:02:37,764
+but k is something we either compute,
+
+45
+00:02:37,764 --> 00:02:39,459
+or it's something we desire.
+
+46
+00:02:39,460 --> 00:02:42,939
+And there is a way to compute what is a conservative or
+
+47
+00:02:42,939 --> 00:02:47,770
+a good estimate for k. And so that would be the resulting dataset,
+
+48
+00:02:47,770 --> 00:02:49,795
+just multiplying by a random matrix.
+
+49
+00:02:49,794 --> 00:02:53,829
+That's all random projection is in a way.
+
+50
+00:02:53,830 --> 00:02:57,460
+Let's take a concrete example here.
+
+51
+00:02:57,460 --> 00:02:59,185
+Let's say this is our dataset,
+
+52
+00:02:59,185 --> 00:03:02,455
+and it has 12,000 dimensions,
+
+53
+00:03:02,455 --> 00:03:04,698
+and that's our d,
+
+54
+00:03:04,698 --> 00:03:08,665
+and it has 1,500 rows or samples.
+
+55
+00:03:08,664 --> 00:03:12,370
+If we give this to Scikit-learn and say, "Okay, Scikit-learn,
+
+56
+00:03:12,370 --> 00:03:16,569
+can you please do a random projection for this dataset just using your default values?"
+
+57
+00:03:16,569 --> 00:03:18,500
+it will return this dataset for us,
+
+58
+00:03:18,500 --> 00:03:27,194
+which will be in 6,200 dimensions and same number of samples, obviously.
+
+59
+00:03:27,194 --> 00:03:30,900
+So how do we know that it works,
+
+60
+00:03:30,900 --> 00:03:33,555
+and where does k come from?
+
+61
+00:03:33,555 --> 00:03:36,750
+The theoretical underpinning for
+
+62
+00:03:36,750 --> 00:03:41,009
+random projection is this idea called the Johnson-Lindenstrauss lemma,
+
+63
+00:03:41,009 --> 00:03:48,519
+which states that a dataset of N points in high-dimensional space, so this dataset,
+
+64
+00:03:48,519 --> 00:03:53,805
+endpoints high-dimensional space 12,000 is pretty high, it can be mapped,
+
+65
+00:03:53,805 --> 00:03:57,974
+that's just multiplying by this random matrix,
+
+66
+00:03:57,973 --> 00:04:00,244
+down to a space in much lower dimension,
+
+67
+00:04:00,245 --> 00:04:03,905
+which is this narrow dataset.
+
+68
+00:04:03,905 --> 00:04:07,287
+In a way, and this is why it's really important for us in a way,
+
+69
+00:04:07,287 --> 00:04:09,740
+because it can be done in a way that preserves
+
+70
+00:04:09,740 --> 00:04:13,715
+the distances between the points to a large degree.
+
+71
+00:04:13,715 --> 00:04:16,879
+So the distances between each two points,
+
+72
+00:04:16,879 --> 00:04:21,254
+each pair of points in this dataset after projection,
+
+73
+00:04:21,254 --> 00:04:23,555
+that is preserved in a certain way.
+
+74
+00:04:23,555 --> 00:04:26,990
+And that's really important because in most or in
+
+75
+00:04:26,990 --> 00:04:30,999
+a lot of supervised and unsupervised learning,
+
+76
+00:04:30,999 --> 00:04:34,290
+the algorithms really care about the distances between the points.
+
+77
+00:04:34,290 --> 00:04:36,950
+And so, we have a certain level of guarantee that
+
+78
+00:04:36,949 --> 00:04:40,534
+these distances will be distorted a little bit,
+
+79
+00:04:40,535 --> 00:04:43,250
+but they can be preserved.
+
+80
+00:04:43,250 --> 00:04:46,579
+How can they be preserved?
+
+81
+00:04:46,579 --> 00:04:48,995
+What sort of guarantees we have?
+
+82
+00:04:48,995 --> 00:04:53,090
+Let's take a quick example and actually calculate that out.
+
+83
+00:04:53,089 --> 00:04:57,259
+So let's say, we take the first two rows here.
+
+84
+00:04:57,259 --> 00:04:58,992
+So this one and this one,
+
+85
+00:04:58,992 --> 00:05:02,269
+the first two points in our dataset.
+
+86
+00:05:02,269 --> 00:05:05,164
+And then these are their values after projection,
+
+87
+00:05:05,165 --> 00:05:10,230
+so same samples but different level of dimensionality.
+
+88
+00:05:10,230 --> 00:05:16,210
+And so what the Johnson-Lindenstrauss lemma tells us that the distance
+
+89
+00:05:16,209 --> 00:05:23,289
+between the two points in the projection squared is sort of squeezed by,
+
+90
+00:05:23,290 --> 00:05:26,980
+so it's larger than the distance between the two points in
+
+91
+00:05:26,980 --> 00:05:32,754
+the original dataset squared times one minus epsilon.
+
+92
+00:05:32,754 --> 00:05:34,360
+So epsilon is, sort of,
+
+93
+00:05:34,360 --> 00:05:42,790
+the level of error that we are allowing the random projection to have in the projection.
+
+94
+00:05:42,790 --> 00:05:49,110
+So the distance between the two points in the projected dataset will be larger
+
+95
+00:05:49,110 --> 00:05:52,395
+than one minus epsilon times
+
+96
+00:05:52,394 --> 00:05:56,669
+square of distance of the two points in the original dataset,
+
+97
+00:05:56,670 --> 00:06:02,670
+and it will be smaller than one plus epsilon of that distance squared.
+
+98
+00:06:02,670 --> 00:06:05,100
+I've actually calculated those numbers.
+
+99
+00:06:05,100 --> 00:06:09,490
+So the distance between these two points is 125.6.
+
+100
+00:06:09,490 --> 00:06:11,970
+So we put that in here.
+
+101
+00:06:11,970 --> 00:06:14,250
+Epsilon, the default value,
+
+102
+00:06:14,250 --> 00:06:15,533
+so we didn't change anything,
+
+103
+00:06:15,533 --> 00:06:19,395
+the default value in Scikit-learn is 0.1.
+
+104
+00:06:19,394 --> 00:06:22,549
+It can take any value from zero to one.
+
+105
+00:06:22,550 --> 00:06:26,350
+So if we do it like this,
+
+106
+00:06:26,350 --> 00:06:29,725
+the distance between these two points is 125.8.
+
+107
+00:06:29,725 --> 00:06:35,110
+And so, this distance here will be larger than
+
+108
+00:06:35,110 --> 00:06:41,905
+0.9 times this distance and smaller than 1.1 times this distance squared.
+
+109
+00:06:41,904 --> 00:06:46,569
+And so you can see that epsilon is sort of like a liver.
+
+110
+00:06:46,569 --> 00:06:53,740
+It goes into the calculation of how many columns are produced,
+
+111
+00:06:53,740 --> 00:06:56,995
+and it is the level of error that we are allowing
+
+112
+00:06:56,995 --> 00:07:02,340
+the distortion to have in this reduction of dimensionality.
+
+113
+00:07:02,339 --> 00:07:06,074
+So this guarantee happens,
+
+114
+00:07:06,074 --> 00:07:12,675
+preserves the distance between every pair of points in the dataset.
+
+115
+00:07:12,675 --> 00:07:14,835
+So it's not just one and two,
+
+116
+00:07:14,834 --> 00:07:16,919
+it's one and every other point,
+
+117
+00:07:16,920 --> 00:07:18,060
+and two and every other point.
+
+118
+00:07:18,060 --> 00:07:20,490
+So that guarantee is there,
+
+119
+00:07:20,490 --> 00:07:26,250
+and epsilon is just an input into the function that we can use to,
+
+120
+00:07:26,250 --> 00:07:32,759
+say, preserve the distances by this degree.
+

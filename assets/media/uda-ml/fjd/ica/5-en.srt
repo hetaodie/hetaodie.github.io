@@ -1,0 +1,52 @@
+1
+00:00:00,200 --> 00:00:04,830
+To implement independent component analysis in scikit-learn,
+
+2
+00:00:04,830 --> 00:00:09,310
+we import FastICA, and then,
+
+3
+00:00:09,310 --> 00:00:13,449
+our datasets can be a list,
+
+4
+00:00:13,449 --> 00:00:15,744
+or an array containing other arrays.
+
+5
+00:00:15,744 --> 00:00:16,869
+So, here, signal one,
+
+6
+00:00:16,870 --> 00:00:17,964
+signal two, signal three,
+
+7
+00:00:17,964 --> 00:00:20,589
+these can be wave files,
+
+8
+00:00:20,589 --> 00:00:25,750
+and we zip them into one dataset.
+
+9
+00:00:25,750 --> 00:00:28,509
+And then, we declare FastICA,
+
+10
+00:00:28,510 --> 00:00:30,190
+and we give it the number of components,
+
+11
+00:00:30,190 --> 00:00:32,664
+the original components that we want to retrieve.
+
+12
+00:00:32,664 --> 00:00:35,424
+And then, we tell it to fit, and then,
+
+13
+00:00:35,424 --> 00:00:43,099
+components would contain the independent components that the algorithm was able to find.
+

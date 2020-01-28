@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:02,439
+In terms of applications,
+
+2
+00:00:02,439 --> 00:00:06,925
+ICA is widely used in medical scanners.
+
+3
+00:00:06,924 --> 00:00:13,455
+And so, this is an example of a type of brain scan called the EEG or MEG,
+
+4
+00:00:13,455 --> 00:00:17,865
+where each of these sensors detects
+
+5
+00:00:17,864 --> 00:00:25,689
+electric signals or in a similar test magnetic signals inside the brain.
+
+6
+00:00:25,690 --> 00:00:31,020
+And so each of these is you know the electric sensor and each of them would produce
+
+7
+00:00:31,019 --> 00:00:38,024
+these readings that are all mixtures of things happening inside the brain.
+
+8
+00:00:38,024 --> 00:00:46,714
+And so ICA can be used where these are the initial or actual readings of this data.
+
+9
+00:00:46,715 --> 00:00:52,965
+ICA is an algorithm that's able to look at them and then find the independent components
+
+10
+00:00:52,965 --> 00:00:59,655
+inside the brain that generated these readings and where, that are mixed here.
+
+11
+00:00:59,655 --> 00:01:05,609
+Because an electric signal would be generating when one part of the brain would bounce,
+
+12
+00:01:05,609 --> 00:01:09,659
+would be hard to tell because you have the skull separating
+
+13
+00:01:09,659 --> 00:01:13,784
+the sensors from the actual places.
+
+14
+00:01:13,784 --> 00:01:17,924
+So ICA is widely used in scenarios like this.
+
+15
+00:01:17,924 --> 00:01:24,164
+It's also used in FMRIs the same way for a lot of brain scans.
+
+16
+00:01:24,165 --> 00:01:27,840
+So these are the independent components and it can isolate
+
+17
+00:01:27,840 --> 00:01:32,275
+where certain signals came from in the brain.
+
+18
+00:01:32,275 --> 00:01:39,310
+There have been attempts at using ICA for financial data.
+
+19
+00:01:39,310 --> 00:01:42,424
+I don't know that this is a very popular thing to do,
+
+20
+00:01:42,424 --> 00:01:45,039
+but it's just interesting to look at I guess.
+
+21
+00:01:45,040 --> 00:01:53,930
+And so this is one paper that tries to apply ICA to a factor model in finance let's say.
+
+22
+00:01:53,930 --> 00:01:59,065
+So this data is stocks, stock signals.
+
+23
+00:01:59,064 --> 00:02:04,620
+And it tries to isolate what caused the stocks to go up and down,
+
+24
+00:02:04,620 --> 00:02:06,668
+what components are there.
+
+25
+00:02:06,668 --> 00:02:12,205
+And most of these papers that are trying to do ICA in finance, something like this.
+
+26
+00:02:12,205 --> 00:02:14,790
+The economy is completely,
+
+27
+00:02:14,789 --> 00:02:20,625
+is a very complex system and so they rarely would come up with
+
+28
+00:02:20,625 --> 00:02:26,502
+things that are of deep need, of real value.
+
+29
+00:02:26,502 --> 00:02:30,659
+It just could be interesting to look at, I guess.
+
+30
+00:02:30,659 --> 00:02:36,930
+There's another one looking at financial data as well.
+
+31
+00:02:36,930 --> 00:02:43,689
+And so this is a data set of five stores and this is the cash flow of them.
+
+32
+00:02:43,689 --> 00:02:45,419
+So there's a chain,
+
+33
+00:02:45,419 --> 00:02:47,649
+a retail chain of some sort.
+
+34
+00:02:47,650 --> 00:02:54,030
+And so this is the cash flow over 140 weeks.
+
+35
+00:02:54,030 --> 00:02:57,735
+And so you see spikes that go up and they go down.
+
+36
+00:02:57,735 --> 00:03:00,385
+To make it a little bit more clear, let's break it down.
+
+37
+00:03:00,384 --> 00:03:02,317
+So this is the first year,
+
+38
+00:03:02,318 --> 00:03:04,250
+this is the second year,
+
+39
+00:03:04,250 --> 00:03:08,034
+and this is a part of the third year that is available.
+
+40
+00:03:08,034 --> 00:03:11,423
+So you can see dip here,
+
+41
+00:03:11,423 --> 00:03:12,905
+or spike and then a dip.
+
+42
+00:03:12,905 --> 00:03:17,122
+This is about Christmastime I guess.
+
+43
+00:03:17,122 --> 00:03:19,019
+So if we do ICA to this,
+
+44
+00:03:19,020 --> 00:03:21,844
+we get these four components.
+
+45
+00:03:21,844 --> 00:03:29,099
+And they would give some indication of things that are happening.
+
+46
+00:03:29,099 --> 00:03:33,090
+So this first component captures this rise,
+
+47
+00:03:33,090 --> 00:03:36,969
+the spike and dip in Christmas for example.
+
+48
+00:03:36,969 --> 00:03:41,147
+And this fourth one captures the,
+
+49
+00:03:41,147 --> 00:03:48,080
+during the summer month there seems to be a bit of a slump here.
+
+50
+00:03:48,080 --> 00:03:52,304
+So this is another thing that I thought is interesting to look at.
+
+51
+00:03:52,305 --> 00:03:57,640
+There aren't a lot of papers or applications of using ICA
+
+52
+00:03:57,639 --> 00:04:03,349
+in a financial data but it could be intriguing.
+

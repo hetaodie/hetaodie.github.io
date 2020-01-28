@@ -1,0 +1,56 @@
+1
+00:00:01,260 --> 00:00:07,734
+The implementation of random prediction in scikit-learn is pretty straightforward.
+
+2
+00:00:07,735 --> 00:00:15,730
+So, we just import the library here and then we declare it.
+
+3
+00:00:15,730 --> 00:00:18,274
+SparseRandomProjection is the faster.
+
+4
+00:00:18,274 --> 00:00:19,939
+So, there's a Gaussian random projection.
+
+5
+00:00:19,940 --> 00:00:22,300
+There's SparseRandomProjection.
+
+6
+00:00:22,300 --> 00:00:25,295
+This is a little bit more performant.
+
+7
+00:00:25,295 --> 00:00:27,310
+And then we fit.transform,
+
+8
+00:00:27,309 --> 00:00:31,724
+pass in our dataset, and then we get the new transformed dataset.
+
+9
+00:00:31,725 --> 00:00:37,329
+And so, here, if we want to declare or specify a specific value for epsilon,
+
+10
+00:00:37,329 --> 00:00:44,329
+we pass it here, or if we want to force it into a specific size or number of components.
+
+11
+00:00:44,329 --> 00:00:46,015
+If we don't specify anything,
+
+12
+00:00:46,015 --> 00:00:50,230
+the number of components is automatic and it's calculated
+
+13
+00:00:50,229 --> 00:00:56,039
+by using epsilon and by using the number of points or samples in the dataset,
+
+14
+00:00:56,039 --> 00:01:00,109
+so to choose based on the dataset.
+
