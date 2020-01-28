@@ -1,0 +1,92 @@
+1
+00:00:00,000 --> 00:00:04,919
+Scikit-learn makes it incredibly easy to do hierarchical clustering.
+
+2
+00:00:04,919 --> 00:00:07,769
+We just have to import the cluster library.
+
+3
+00:00:07,769 --> 00:00:09,674
+And then Agglomerative Clustering,
+
+4
+00:00:09,675 --> 00:00:12,315
+as we've mentioned, is the implementation.
+
+5
+00:00:12,314 --> 00:00:15,614
+We hand it how many number of clusters we want to produce,
+
+6
+00:00:15,615 --> 00:00:17,850
+and then the type of linkage we're looking for.
+
+7
+00:00:17,850 --> 00:00:21,660
+Ward is the default. So we don't have to have to mention ward if you want to do it.
+
+8
+00:00:21,660 --> 00:00:23,714
+And then, we just tell it to fit predict,
+
+9
+00:00:23,714 --> 00:00:26,190
+and the return would be the labels.
+
+10
+00:00:26,190 --> 00:00:28,515
+And so, if our dataset has 10 points,
+
+11
+00:00:28,515 --> 00:00:31,800
+fit_predict would return an array of 10 elements,
+
+12
+00:00:31,800 --> 00:00:38,115
+each element is the label of the cluster that that data point belongs to.
+
+13
+00:00:38,115 --> 00:00:43,980
+If we want to draw these hierarchical tree shapes called dendrograms,
+
+14
+00:00:43,979 --> 00:00:46,285
+we cannot do that with scikit-learn,
+
+15
+00:00:46,286 --> 00:00:48,420
+we have to use scipy for that.
+
+16
+00:00:48,420 --> 00:00:50,850
+And so here, we just load up the datasets,
+
+17
+00:00:50,850 --> 00:00:53,490
+we just say 10 points, and then here,
+
+18
+00:00:53,490 --> 00:00:55,015
+we are doing the clustering,
+
+19
+00:00:55,015 --> 00:00:57,865
+so we used ward in scipy,
+
+20
+00:00:57,865 --> 00:01:00,550
+and it would return a linkage matrix.
+
+21
+00:01:00,549 --> 00:01:04,289
+We pass that linkage matrix to the dendrogram method, and then,
+
+22
+00:01:04,290 --> 00:01:07,250
+that plots the tree for us.
+
+23
+00:01:07,250 --> 00:01:09,000
+Isn't that incredible?
+

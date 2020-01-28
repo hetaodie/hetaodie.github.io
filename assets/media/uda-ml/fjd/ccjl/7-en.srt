@@ -1,0 +1,88 @@
+1
+00:00:00,000 --> 00:00:03,600
+Let's look at a few examples of hierarchical clustering.
+
+2
+00:00:03,600 --> 00:00:07,634
+But before that, we can discuss advantages and disadvantages.
+
+3
+00:00:07,634 --> 00:00:11,160
+The main advantage that we get from hierarchical clustering is
+
+4
+00:00:11,160 --> 00:00:14,519
+that the resulting hierarchical representations are
+
+5
+00:00:14,519 --> 00:00:17,039
+very informative and they provide us with
+
+6
+00:00:17,039 --> 00:00:22,035
+an additional ability to visualize the clustering structure of the datasets.
+
+7
+00:00:22,035 --> 00:00:25,320
+Hierarchical clustering is especially potent when the data
+
+8
+00:00:25,320 --> 00:00:28,710
+contains real hierarchical relationships inside of it,
+
+9
+00:00:28,710 --> 00:00:31,045
+kind of like evolutionary biology.
+
+10
+00:00:31,045 --> 00:00:34,850
+The disadvantages of hierarchical clustering is that, one,
+
+11
+00:00:34,850 --> 00:00:38,240
+it's sensitive to noise and outliers so you're going to have to
+
+12
+00:00:38,240 --> 00:00:42,500
+clean up the data set from any noise and outliers beforehand,
+
+13
+00:00:42,500 --> 00:00:44,570
+and that it's computationally intensive.
+
+14
+00:00:44,570 --> 00:00:48,200
+So if you have a large data set with a lot of dimensions,
+
+15
+00:00:48,200 --> 00:00:52,925
+it can be a little bit slow running at big O of N squared.
+
+16
+00:00:52,924 --> 00:00:56,689
+One example of an application of hierarchical clustering
+
+17
+00:00:56,689 --> 00:01:00,799
+is this paper that uses average linkage, actually,
+
+18
+00:01:00,799 --> 00:01:09,079
+to cluster secreted proteins and uses that to create clusters different types of fungus.
+
+19
+00:01:09,079 --> 00:01:18,469
+Another example uses complete linkage to draw this diagram of the human microbiome.
+
+20
+00:01:18,469 --> 00:01:23,629
+And you'll find links to these and other applications in the text below the video.
+
+21
+00:01:23,629 --> 00:01:25,399
+And with this, now,
+
+22
+00:01:25,400 --> 00:01:30,930
+we are ready to look at density-based clustering with DBSCAN in the next video.
+

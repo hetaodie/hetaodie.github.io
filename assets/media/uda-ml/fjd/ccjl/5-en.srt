@@ -1,0 +1,400 @@
+1
+00:00:00,000 --> 00:00:01,710
+In this video, we'll look at
+
+2
+00:00:01,710 --> 00:00:05,580
+three different techniques for doing hierarchical clustering,
+
+3
+00:00:05,580 --> 00:00:07,814
+other than single link clustering.
+
+4
+00:00:07,815 --> 00:00:09,535
+As a matter of fact,
+
+5
+00:00:09,535 --> 00:00:13,800
+if you try to do single link clustering in Scikit-learn,
+
+6
+00:00:13,800 --> 00:00:17,445
+you will not be able to because it's not there.
+
+7
+00:00:17,445 --> 00:00:22,359
+The three hierarchical clustering techniques we'll be looking at in this video are all
+
+8
+00:00:22,359 --> 00:00:26,769
+part of the agglomerative clustering component of Scikit-learn,
+
+9
+00:00:26,769 --> 00:00:29,914
+which does not actually include single link clustering,
+
+10
+00:00:29,914 --> 00:00:32,875
+but it does include complete link clustering.
+
+11
+00:00:32,875 --> 00:00:35,920
+Agglomerative clustering is this part of
+
+12
+00:00:35,920 --> 00:00:39,216
+hierarchical clustering that starts from the bottom up,
+
+13
+00:00:39,216 --> 00:00:43,949
+assuming that each point is a cluster and then building out the other clusters.
+
+14
+00:00:43,950 --> 00:00:48,550
+So this is to separate it from a different part of hierarchical or clustering,
+
+15
+00:00:48,549 --> 00:00:51,250
+where it assumes everything is one cluster and
+
+16
+00:00:51,250 --> 00:00:54,325
+then it breaks it down into smaller clusters.
+
+17
+00:00:54,325 --> 00:00:58,594
+Complete link clustering works very similarly to single link clustering.
+
+18
+00:00:58,594 --> 00:01:00,887
+And so it would start out the same way,
+
+19
+00:01:00,887 --> 00:01:03,369
+assuming each point is its own cluster,
+
+20
+00:01:03,369 --> 00:01:05,500
+and then it would compute all the distances between
+
+21
+00:01:05,500 --> 00:01:09,534
+all the clusters and then merge the nearest two clusters.
+
+22
+00:01:09,534 --> 00:01:13,492
+And so the closest two clusters in the beginning would be 4 and 5,
+
+23
+00:01:13,492 --> 00:01:15,640
+and so we put them in a cluster.
+
+24
+00:01:15,640 --> 00:01:17,004
+We note that on the side.
+
+25
+00:01:17,004 --> 00:01:19,045
+And then 1 and 2, and then 6 and 8,
+
+26
+00:01:19,045 --> 00:01:21,415
+just like single link.
+
+27
+00:01:21,415 --> 00:01:23,395
+There's a little bit of a difference here,
+
+28
+00:01:23,394 --> 00:01:25,750
+where the distance between 7 and
+
+29
+00:01:25,750 --> 00:01:31,045
+the orange cluster is not the distance between 7 and the closest point, 6.
+
+30
+00:01:31,045 --> 00:01:36,186
+Complete link actually looks at the farthest two points in the two clusters,
+
+31
+00:01:36,186 --> 00:01:38,884
+and that is the distance between two clusters.
+
+32
+00:01:38,885 --> 00:01:43,390
+And so 7 and 8 is actually the distance between this cluster,
+
+33
+00:01:43,390 --> 00:01:44,515
+containing only one point,
+
+34
+00:01:44,515 --> 00:01:46,284
+7, and this orange cluster.
+
+35
+00:01:46,284 --> 00:01:50,064
+And so that would turn out to be the minimum distance between clusters,
+
+36
+00:01:50,064 --> 00:01:52,810
+and so it would merge the two clusters,
+
+37
+00:01:52,810 --> 00:01:56,015
+just the same as single link but for a different reason here.
+
+38
+00:01:56,015 --> 00:01:59,439
+This step is the only difference between single link and
+
+39
+00:01:59,439 --> 00:02:03,259
+complete link in this example dataset.
+
+40
+00:02:03,260 --> 00:02:08,485
+And then we continue to build out our tree until we have our entire tree.
+
+41
+00:02:08,485 --> 00:02:10,405
+And then we have the choice of,
+
+42
+00:02:10,405 --> 00:02:12,905
+how many clusters do we want? Do we want two?
+
+43
+00:02:12,905 --> 00:02:14,254
+We break the tree here,
+
+44
+00:02:14,254 --> 00:02:15,889
+and we have this as one cluster,
+
+45
+00:02:15,889 --> 00:02:17,679
+and this as another cluster.
+
+46
+00:02:17,680 --> 00:02:20,500
+So, the distance measure in complete link is
+
+47
+00:02:20,500 --> 00:02:24,289
+the two farthest points between two clusters.
+
+48
+00:02:24,289 --> 00:02:26,109
+So if we have a step,
+
+49
+00:02:26,110 --> 00:02:27,445
+we arrive at a step,
+
+50
+00:02:27,444 --> 00:02:29,454
+where we have these three clusters.
+
+51
+00:02:29,455 --> 00:02:33,535
+The distances between pink one and the purple one is this,
+
+52
+00:02:33,534 --> 00:02:35,199
+the farthest two points.
+
+53
+00:02:35,199 --> 00:02:37,614
+The distance between green and purple is this,
+
+54
+00:02:37,615 --> 00:02:41,695
+and the distance between green and pink is this.
+
+55
+00:02:41,694 --> 00:02:46,560
+And so now, we have calculated the distances between the clusters that we have,
+
+56
+00:02:46,560 --> 00:02:49,569
+we choose the minimal distance between two clusters,
+
+57
+00:02:49,569 --> 00:02:51,875
+and then we group those two clusters together.
+
+58
+00:02:51,875 --> 00:02:57,669
+A distance measure like this in complete link produces compact clusters,
+
+59
+00:02:57,669 --> 00:03:03,250
+which are generally thought of as better than the clusters produced by single link.
+
+60
+00:03:03,250 --> 00:03:05,875
+But then again, the best distance measure
+
+61
+00:03:05,875 --> 00:03:09,960
+really depends on your dataset and what you're trying to achieve.
+
+62
+00:03:09,960 --> 00:03:11,680
+One challenge with complete link,
+
+63
+00:03:11,680 --> 00:03:13,495
+just like we mentioned with single link,
+
+64
+00:03:13,495 --> 00:03:15,990
+is that it's only looking at this one point.
+
+65
+00:03:15,990 --> 00:03:20,200
+Once it's determined what the two farthest points are,
+
+66
+00:03:20,199 --> 00:03:22,479
+it stops considering the other points.
+
+67
+00:03:22,479 --> 00:03:24,519
+And so in a case like this,
+
+68
+00:03:24,520 --> 00:03:29,635
+where these points might have been maybe part of another cluster here,
+
+69
+00:03:29,634 --> 00:03:31,539
+complete link, in fact,
+
+70
+00:03:31,539 --> 00:03:35,644
+disregards them and only looks at the farthest points.
+
+71
+00:03:35,645 --> 00:03:40,314
+And so it might be good to think about other ways to calculate the distance measure.
+
+72
+00:03:40,314 --> 00:03:43,525
+This includes our next example, average link.
+
+73
+00:03:43,525 --> 00:03:45,939
+This is also in Scikit-learn, and basically,
+
+74
+00:03:45,939 --> 00:03:51,289
+it looks at the distance between every point and every other point in the other cluster.
+
+75
+00:03:51,289 --> 00:03:56,590
+And then the average of all these distances is the distance between the two clusters.
+
+76
+00:03:56,590 --> 00:03:59,469
+Finally, we have Ward's method.
+
+77
+00:03:59,469 --> 00:04:05,965
+This is the default method in Scikit-learn for hierarchical clustering,
+
+78
+00:04:05,965 --> 00:04:11,319
+and it's a method that tries to minimize variance when merging two clusters.
+
+79
+00:04:11,319 --> 00:04:14,784
+The way Ward's method calculates the distance between clusters,
+
+80
+00:04:14,784 --> 00:04:17,430
+let's say clusters A and B here,
+
+81
+00:04:17,430 --> 00:04:22,295
+is that it would try to find a central point, and that's simple.
+
+82
+00:04:22,295 --> 00:04:26,790
+That's just averaging all these points that would give you a central point.
+
+83
+00:04:26,790 --> 00:04:31,155
+And then we can calculate the distance between every point and the center point.
+
+84
+00:04:31,154 --> 00:04:33,459
+And then we raise that to the power of two,
+
+85
+00:04:33,459 --> 00:04:36,094
+and then add them all up like this.
+
+86
+00:04:36,095 --> 00:04:40,990
+But then we have to subtract the variance already existing in the clusters.
+
+87
+00:04:40,990 --> 00:04:43,990
+We do that by estimating the central point in the cluster,
+
+88
+00:04:43,990 --> 00:04:46,220
+so this is the central point in cluster A,
+
+89
+00:04:46,220 --> 00:04:50,815
+and then we subtract A_1 square and subtract A_2 square,
+
+90
+00:04:50,814 --> 00:04:53,290
+which are the distances between the first point in
+
+91
+00:04:53,290 --> 00:04:56,030
+the center and the second point in the center.
+
+92
+00:04:56,029 --> 00:04:58,474
+We do the same thing with Cluster B as well,
+
+93
+00:04:58,475 --> 00:05:02,350
+and then that would be the distance between these two clusters.
+
+94
+00:05:02,350 --> 00:05:04,060
+We do the same with these two clusters,
+
+95
+00:05:04,060 --> 00:05:05,274
+and then these two clusters,
+
+96
+00:05:05,274 --> 00:05:08,620
+and then whichever one is least,
+
+97
+00:05:08,620 --> 00:05:10,509
+we merge those two clusters.
+
+98
+00:05:10,509 --> 00:05:12,800
+And that is Ward's method.
+
+99
+00:05:12,800 --> 00:05:14,045
+In the next concept,
+
+100
+00:05:14,045 --> 00:05:16,000
+we'll be looking at implementation.
+

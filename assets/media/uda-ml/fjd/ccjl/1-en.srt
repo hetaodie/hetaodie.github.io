@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:03,379
+Hello. I'm Jay, and in this lesson,
+
+2
+00:00:03,379 --> 00:00:06,514
+we'll look at clustering methods beyond K-means.
+
+3
+00:00:06,514 --> 00:00:08,074
+Now that you know K-means,
+
+4
+00:00:08,074 --> 00:00:11,329
+you have an understanding of one powerful way to explore data that
+
+5
+00:00:11,330 --> 00:00:15,220
+can help you extract some patterns out of almost any data set.
+
+6
+00:00:15,220 --> 00:00:18,155
+K-means is not without its downsides, however.
+
+7
+00:00:18,155 --> 00:00:20,630
+K-means is great for cases like this,
+
+8
+00:00:20,629 --> 00:00:23,674
+especially if you know the number of clusters beforehand.
+
+9
+00:00:23,675 --> 00:00:25,435
+So let me ask you this,
+
+10
+00:00:25,434 --> 00:00:28,885
+if I asked you to find three clusters in this dataset,
+
+11
+00:00:28,885 --> 00:00:31,134
+can you do it using only intuition?
+
+12
+00:00:31,135 --> 00:00:34,984
+I'm sure you can, and K-means can as well.
+
+13
+00:00:34,984 --> 00:00:37,314
+But what about a data set like this?
+
+14
+00:00:37,314 --> 00:00:40,384
+If we were looking for three clusters in this dataset,
+
+15
+00:00:40,384 --> 00:00:43,504
+specifically these three clusters,
+
+16
+00:00:43,505 --> 00:00:46,080
+do you think K-means would be able to find them?
+
+17
+00:00:46,079 --> 00:00:50,699
+K-means wouldn't actually be able to carve out these three clusters successfully.
+
+18
+00:00:50,700 --> 00:00:53,929
+This is a side effect of relying on distance to
+
+19
+00:00:53,929 --> 00:00:58,189
+centroid as a definition of a cluster in K-means.
+
+20
+00:00:58,189 --> 00:01:01,339
+This leads K-means to always try to find clusters that are
+
+21
+00:01:01,340 --> 00:01:05,960
+circular or spherical or hyper-spherical in higher dimensions.
+
+22
+00:01:05,959 --> 00:01:09,875
+This is an example dataset used to compare clustering algorithms.
+
+23
+00:01:09,875 --> 00:01:12,784
+It's called a two-crescent dataset.
+
+24
+00:01:12,784 --> 00:01:15,079
+You can probably guess if K-means would be able to find
+
+25
+00:01:15,079 --> 00:01:17,584
+the two clusters we need to find here,
+
+26
+00:01:17,584 --> 00:01:20,074
+each in the shape of a crescent.
+
+27
+00:01:20,075 --> 00:01:24,945
+And true enough, K-means would not be able to carve out these two shapes.
+
+28
+00:01:24,944 --> 00:01:30,500
+This is, again, the spherical and hyper-spherical nature of K-means.
+
+29
+00:01:30,500 --> 00:01:32,674
+Depending on the scenario, however,
+
+30
+00:01:32,674 --> 00:01:35,049
+K-means can do a good job with
+
+31
+00:01:35,049 --> 00:01:37,984
+a larger number of clusters if that's what we were looking for.
+
+32
+00:01:37,984 --> 00:01:40,069
+But it's not in this case because we were trying to
+
+33
+00:01:40,069 --> 00:01:42,859
+carve out the two clusters specifically.
+
+34
+00:01:42,859 --> 00:01:46,325
+We'll be using a number of data sets to compare
+
+35
+00:01:46,325 --> 00:01:49,430
+the various clustering methods that we'll be looking
+
+36
+00:01:49,430 --> 00:01:53,090
+at throughout this lesson and comparing them with K-means.
+
+37
+00:01:53,090 --> 00:01:58,385
+One of them is this sort of random distribution, sort of uniform,
+
+38
+00:01:58,385 --> 00:02:01,147
+and K-means clusters it like this,
+
+39
+00:02:01,147 --> 00:02:03,105
+which kind of makes sense,
+
+40
+00:02:03,105 --> 00:02:07,890
+like, how would you find what three clusters exist in this shape?
+
+41
+00:02:07,890 --> 00:02:09,800
+So, intuitively, it's a little bit hard,
+
+42
+00:02:09,800 --> 00:02:14,405
+so K-means' answer is plausible, I would say.
+
+43
+00:02:14,405 --> 00:02:16,669
+We looked at the two crescent dataset.
+
+44
+00:02:16,669 --> 00:02:18,399
+This is how K-means clusters it.
+
+45
+00:02:18,400 --> 00:02:21,495
+Another one is called the two rings dataset.
+
+46
+00:02:21,495 --> 00:02:24,210
+So, here, the purpose is to find two clusters.
+
+47
+00:02:24,210 --> 00:02:28,189
+One of them is the central ring and the outer ring is the other one.
+
+48
+00:02:28,189 --> 00:02:30,919
+And, hopefully, you know by now that K-means is not
+
+49
+00:02:30,919 --> 00:02:33,884
+able to find clusters in those shapes.
+
+50
+00:02:33,884 --> 00:02:39,554
+This is another dataset where there's a little bit of density here and density here,
+
+51
+00:02:39,555 --> 00:02:43,230
+and the challenge here for K-means is to find three clusters.
+
+52
+00:02:43,229 --> 00:02:45,274
+And when we set K to 3,
+
+53
+00:02:45,275 --> 00:02:46,962
+it does a reasonable job,
+
+54
+00:02:46,962 --> 00:02:49,709
+I would say, in carving them out.
+
+55
+00:02:49,710 --> 00:02:53,465
+We looked at this one and we also looked at this one,
+
+56
+00:02:53,465 --> 00:02:57,500
+where K-means does a really good job of segmenting it into clusters.
+
+57
+00:02:57,500 --> 00:03:00,604
+So we'll be using these datasets to compare
+
+58
+00:03:00,604 --> 00:03:02,629
+the other clustering methods that we'll
+
+59
+00:03:02,629 --> 00:03:06,620
+introduce to supplement what K-means can and cannot do.
+
+60
+00:03:06,620 --> 00:03:12,034
+This is all to say that while K-means remains a key member of our clustering toolbox,
+
+61
+00:03:12,034 --> 00:03:13,579
+it's also important to introduce
+
+62
+00:03:13,580 --> 00:03:19,145
+a couple more clustering algorithms that can be more appropriate in certain situations.
+
+63
+00:03:19,145 --> 00:03:21,370
+And that's what we'll start looking at in the next video.
+

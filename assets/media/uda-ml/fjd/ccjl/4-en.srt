@@ -1,0 +1,320 @@
+1
+00:00:00,000 --> 00:00:03,930
+Now that we have looked at how single-link clustering works,
+
+2
+00:00:03,930 --> 00:00:07,140
+let's take a minute to compare it
+
+3
+00:00:07,139 --> 00:00:11,070
+with k-means on these datasets that we've looked at before.
+
+4
+00:00:11,070 --> 00:00:12,380
+So, for the first one,
+
+5
+00:00:12,380 --> 00:00:16,440
+k-means seemed to do a better job at breaking down
+
+6
+00:00:16,440 --> 00:00:20,760
+this uniformly distributed datasets into three clusters.
+
+7
+00:00:20,760 --> 00:00:25,050
+While in single-link, we can see that one drawback of
+
+8
+00:00:25,050 --> 00:00:29,910
+one cluster eating up the entire dataset and then two clusters being small.
+
+9
+00:00:29,910 --> 00:00:33,990
+So, it seems that k-means does a better job in this case.
+
+10
+00:00:33,990 --> 00:00:35,700
+With the two crescents,
+
+11
+00:00:35,700 --> 00:00:39,250
+single-link is able to carve them out perfectly.
+
+12
+00:00:39,250 --> 00:00:42,960
+This is because these datasets are close to each
+
+13
+00:00:42,960 --> 00:00:47,520
+other and then there's a good amount of separation between the two crescents.
+
+14
+00:00:47,520 --> 00:00:51,465
+And so, this is a case where a single-ink does better than k-means.
+
+15
+00:00:51,465 --> 00:00:57,720
+Two rings is another really well-done job for a single-link.
+
+16
+00:00:57,719 --> 00:00:59,629
+It carves them out beautifully.
+
+17
+00:00:59,630 --> 00:01:01,020
+We have the inside ring and
+
+18
+00:01:01,020 --> 00:01:03,945
+the outside ring as the two clusters that we were looking for.
+
+19
+00:01:03,945 --> 00:01:05,579
+In this dataset here,
+
+20
+00:01:05,579 --> 00:01:07,664
+k-means does a better job here.
+
+21
+00:01:07,665 --> 00:01:10,965
+We have one cluster that went and ate up everything.
+
+22
+00:01:10,965 --> 00:01:14,685
+So, not the best job for single-link here.
+
+23
+00:01:14,685 --> 00:01:19,469
+This is not the best job as well, I mean,
+
+24
+00:01:19,469 --> 00:01:22,090
+but it's able to carve this one out,
+
+25
+00:01:22,090 --> 00:01:27,960
+but this cluster of one point is not really very meaningful or helpful to us.
+
+26
+00:01:27,959 --> 00:01:34,079
+And with this, it does the same job that k-means did.
+
+27
+00:01:34,079 --> 00:01:38,459
+But there is one additional thing that we can get out of this,
+
+28
+00:01:38,459 --> 00:01:39,629
+which we've discussed before,
+
+29
+00:01:39,629 --> 00:01:43,685
+is the hierarchies or the dendrograms that result from this.
+
+30
+00:01:43,685 --> 00:01:45,150
+So, let's look at them.
+
+31
+00:01:45,150 --> 00:01:47,070
+So, with this uniform,
+
+32
+00:01:47,069 --> 00:01:49,619
+we can see, this is how it looks.
+
+33
+00:01:49,620 --> 00:01:54,295
+And we don't really get much information from the hierarchy here.
+
+34
+00:01:54,295 --> 00:01:58,125
+We can kind of tell that there are no clear clusters that
+
+35
+00:01:58,125 --> 00:02:02,385
+we can break the datasets down into.
+
+36
+00:02:02,385 --> 00:02:04,245
+With the two crescents,
+
+37
+00:02:04,245 --> 00:02:08,504
+we can see that there is one cluster here and then another cluster here,
+
+38
+00:02:08,504 --> 00:02:12,164
+and they're separated by a lot of distance.
+
+39
+00:02:12,164 --> 00:02:16,609
+And while we can tell that visually by looking at this one graph here,
+
+40
+00:02:16,610 --> 00:02:19,394
+one thing that's important is that,
+
+41
+00:02:19,394 --> 00:02:21,450
+what if our dataset had three,
+
+42
+00:02:21,449 --> 00:02:23,729
+or four, or 10, or 100 dimensions?
+
+43
+00:02:23,729 --> 00:02:26,849
+We will not be able to graph it into dimensions like
+
+44
+00:02:26,849 --> 00:02:31,180
+this and just easily be able to visually tell that they're separated.
+
+45
+00:02:31,180 --> 00:02:33,795
+But no matter how many dimensions we have,
+
+46
+00:02:33,794 --> 00:02:38,364
+we can produce a dendrogram into dimensions that would look exactly like this.
+
+47
+00:02:38,365 --> 00:02:44,310
+And so, this is a real valuable way for us to be able to visualize datasets,
+
+48
+00:02:44,310 --> 00:02:47,360
+even if they have multiple dimensions.
+
+49
+00:02:47,360 --> 00:02:51,420
+With the two rings, we can also see the two structures clearly here,
+
+50
+00:02:51,419 --> 00:02:54,489
+separated by a lot of distance.
+
+51
+00:02:54,490 --> 00:02:56,260
+So, this is very useful.
+
+52
+00:02:56,259 --> 00:02:57,750
+I love this example.
+
+53
+00:02:57,750 --> 00:03:00,780
+So, well, single-link was not able to find,
+
+54
+00:03:00,780 --> 00:03:02,616
+and this cluster has one closer,
+
+55
+00:03:02,616 --> 00:03:03,900
+and I define this point,
+
+56
+00:03:03,900 --> 00:03:06,870
+this group, as another cluster, let's say.
+
+57
+00:03:06,870 --> 00:03:12,090
+In the hierarchy, you can see that there are three structures.
+
+58
+00:03:12,090 --> 00:03:17,133
+Even if the direct result is not indicative of the three clusters that you want,
+
+59
+00:03:17,133 --> 00:03:19,365
+the dentrogram actually tells you something,
+
+60
+00:03:19,365 --> 00:03:21,960
+that maybe you if can experiment a little bit,
+
+61
+00:03:21,960 --> 00:03:25,365
+maybe try other hierarchical clustering methods,
+
+62
+00:03:25,365 --> 00:03:29,530
+you can be able to isolate three separate clusters.
+
+63
+00:03:29,530 --> 00:03:31,259
+And this also works very well here.
+
+64
+00:03:31,259 --> 00:03:36,000
+So, while we wanted to find these three clusters, this is one,
+
+65
+00:03:36,000 --> 00:03:39,175
+and this is two, and this is three,
+
+66
+00:03:39,175 --> 00:03:40,530
+it wasn't able to do it,
+
+67
+00:03:40,530 --> 00:03:42,060
+but if we look at the dendrogram,
+
+68
+00:03:42,060 --> 00:03:43,280
+we can easily see that.
+
+69
+00:03:43,280 --> 00:03:45,800
+This seems to be like a cluster,
+
+70
+00:03:45,800 --> 00:03:46,890
+this seems to be like cluster,
+
+71
+00:03:46,889 --> 00:03:48,099
+and this seems to be like cluster.
+
+72
+00:03:48,099 --> 00:03:50,655
+So, the dendrograms give us
+
+73
+00:03:50,655 --> 00:03:57,657
+additional insights that maybe the direct results of the clustering misses.
+
+74
+00:03:57,657 --> 00:04:00,480
+And here, we can see this is a very easy example
+
+75
+00:04:00,479 --> 00:04:04,869
+where there is a lot of distance separating those three,
+
+76
+00:04:04,870 --> 00:04:07,254
+and these two are closer to each other.
+
+77
+00:04:07,254 --> 00:04:11,800
+So, these two are these two structures here.
+
+78
+00:04:11,800 --> 00:04:13,514
+And so, this is an examination of
+
+79
+00:04:13,514 --> 00:04:17,995
+how a single-link compares and how useful these dendrograms can be.
+
+80
+00:04:17,995 --> 00:04:22,019
+Let's proceed by looking at other types of hierarchical clustering.
+

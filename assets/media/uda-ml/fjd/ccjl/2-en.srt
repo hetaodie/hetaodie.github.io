@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:03,759
+In this lesson, we'll look at two more clustering methods.
+
+2
+00:00:03,759 --> 00:00:06,330
+The first one is called Hierarchical Clustering,
+
+3
+00:00:06,330 --> 00:00:09,705
+and it results in a structure of clusters that gives us
+
+4
+00:00:09,705 --> 00:00:13,484
+a visual indication of how clusters relate to each other.
+
+5
+00:00:13,484 --> 00:00:16,649
+And then, we'll look at Density-based Clustering.
+
+6
+00:00:16,649 --> 00:00:20,129
+Specifically, we'll look at an algorithm called DBSCAN,
+
+7
+00:00:20,129 --> 00:00:25,559
+which stands for Density-based Spatial Clustering of Applications with Noise,
+
+8
+00:00:25,559 --> 00:00:28,469
+which is robust against datasets with noise,
+
+9
+00:00:28,469 --> 00:00:31,660
+and does not require us to specify a number of clusters.
+
+10
+00:00:31,660 --> 00:00:36,465
+Basically, it clusters points that are densely packed together,
+
+11
+00:00:36,465 --> 00:00:39,465
+and labels other points as noise.
+
+12
+00:00:39,465 --> 00:00:44,070
+And this is an algorithm that works really well on the two-crescent dataset.
+
+13
+00:00:44,070 --> 00:00:48,000
+So, let's start by looking at hierarchical clustering in the next video.
+

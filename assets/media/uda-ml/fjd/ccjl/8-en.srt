@@ -1,0 +1,360 @@
+1
+00:00:00,620 --> 00:00:04,394
+This is a look at how DBSCAN works.
+
+2
+00:00:04,394 --> 00:00:10,349
+DBSCAN stands for density-based spatial clustering of applications with noise.
+
+3
+00:00:10,349 --> 00:00:13,980
+It grips together points that are closely packed together.
+
+4
+00:00:13,980 --> 00:00:16,920
+In this example, we can see a stark difference from
+
+5
+00:00:16,920 --> 00:00:20,175
+the way that other clustering methods we've seen work.
+
+6
+00:00:20,175 --> 00:00:24,000
+That difference is that not every point is part of a cluster.
+
+7
+00:00:24,000 --> 00:00:27,059
+DBSCAN have labeled these points as noise,
+
+8
+00:00:27,059 --> 00:00:33,274
+and this shows us the power of DBSCAN in how it can deal with datasets that have noise.
+
+9
+00:00:33,274 --> 00:00:37,625
+Let's look at an example of how DBSCAN works.
+
+10
+00:00:37,625 --> 00:00:39,320
+Let's say we have this dataset.
+
+11
+00:00:39,320 --> 00:00:43,130
+DBSCAN starts by arbitrarily selecting a point.
+
+12
+00:00:43,130 --> 00:00:44,810
+Let's say this point here.
+
+13
+00:00:44,810 --> 00:00:46,730
+So, when we take the point,
+
+14
+00:00:46,729 --> 00:00:48,642
+we look in the neighborhood around it,
+
+15
+00:00:48,643 --> 00:00:50,840
+defined by this distance,
+
+16
+00:00:50,840 --> 00:00:54,650
+epsilon, which is one inputs that we pass to DBSCAN.
+
+17
+00:00:54,649 --> 00:00:57,754
+Are there any other points in this neighborhood?
+
+18
+00:00:57,755 --> 00:01:00,545
+And it turns out that there are none here.
+
+19
+00:01:00,545 --> 00:01:03,980
+So, this point is regarded as a noise point.
+
+20
+00:01:03,979 --> 00:01:05,894
+It's not part of any cluster.
+
+21
+00:01:05,894 --> 00:01:07,464
+Then we take another point.
+
+22
+00:01:07,465 --> 00:01:09,100
+Let's say this point here.
+
+23
+00:01:09,099 --> 00:01:10,434
+Let's look at its neighborhood.
+
+24
+00:01:10,435 --> 00:01:11,530
+Are there any other points?
+
+25
+00:01:11,530 --> 00:01:14,230
+Yes, it turns out to be there are two points here,
+
+26
+00:01:14,230 --> 00:01:17,005
+including the point that we're looking at.
+
+27
+00:01:17,004 --> 00:01:19,464
+Is that enough to classify as a cluster?
+
+28
+00:01:19,465 --> 00:01:21,219
+Well, that's another input,
+
+29
+00:01:21,219 --> 00:01:22,870
+minimum number of points.
+
+30
+00:01:22,870 --> 00:01:24,210
+And so, with this run,
+
+31
+00:01:24,210 --> 00:01:26,515
+the minimum number of points is five.
+
+32
+00:01:26,515 --> 00:01:28,930
+So, we're only two points here,
+
+33
+00:01:28,930 --> 00:01:32,545
+not five, and so this point is noise.
+
+34
+00:01:32,545 --> 00:01:34,344
+If we do the same thing with this point here,
+
+35
+00:01:34,344 --> 00:01:36,727
+it would also turn out to be noise because there are
+
+36
+00:01:36,727 --> 00:01:40,239
+no five points around it in its neighborhood.
+
+37
+00:01:40,239 --> 00:01:42,179
+Let's look at this point here.
+
+38
+00:01:42,180 --> 00:01:44,840
+This is its neighborhood. Are there five points?
+
+39
+00:01:44,840 --> 00:01:47,522
+Well, there are one, two, three, four,
+
+40
+00:01:47,522 --> 00:01:49,025
+even if we count these,
+
+41
+00:01:49,025 --> 00:01:52,576
+which they're probably not part of it, that's only four.
+
+42
+00:01:52,575 --> 00:01:54,649
+So, this is also noise.
+
+43
+00:01:54,650 --> 00:01:58,594
+Things start to become interesting when we look at this central point here.
+
+44
+00:01:58,594 --> 00:01:59,989
+This is its neighborhood,
+
+45
+00:01:59,989 --> 00:02:02,479
+and there are one,
+
+46
+00:02:02,480 --> 00:02:04,340
+two, three, four, five points here. And so, yay!
+
+47
+00:02:04,340 --> 00:02:06,305
+We have found a cluster.
+
+48
+00:02:06,305 --> 00:02:09,349
+This point is now called a core point,
+
+49
+00:02:09,349 --> 00:02:12,210
+and we've identified our first cluster.
+
+50
+00:02:12,210 --> 00:02:16,135
+Then, we continue to proceed to each point in this cluster,
+
+51
+00:02:16,134 --> 00:02:19,044
+identifying if they are core points or not.
+
+52
+00:02:19,044 --> 00:02:23,169
+And then, none of these other points have five in their neighborhoods.
+
+53
+00:02:23,169 --> 00:02:25,959
+So, while they are part of cluster one,
+
+54
+00:02:25,960 --> 00:02:28,945
+they are regarded all as border points.
+
+55
+00:02:28,944 --> 00:02:32,514
+And so, now we pick another point. Let's say this point here.
+
+56
+00:02:32,514 --> 00:02:35,013
+Are there five points in its neighborhood?
+
+57
+00:02:35,014 --> 00:02:39,010
+Yes, there are. So, this point is now a core point.
+
+58
+00:02:39,009 --> 00:02:42,354
+We continue to look at the points in its neighborhood.
+
+59
+00:02:42,354 --> 00:02:45,204
+This one turns out to be a border point.
+
+60
+00:02:45,205 --> 00:02:46,660
+So, it's still part of the cluster,
+
+61
+00:02:46,659 --> 00:02:48,520
+but it's not a core point.
+
+62
+00:02:48,520 --> 00:02:50,875
+This one is a core point.
+
+63
+00:02:50,875 --> 00:02:53,995
+And so, we continue to examine these points,
+
+64
+00:02:53,995 --> 00:02:57,730
+and this in the end will give us another cluster, cluster two.
+
+65
+00:02:57,729 --> 00:03:00,819
+And notice that the shape of cluster two is different.
+
+66
+00:03:00,819 --> 00:03:04,344
+So, we can say that cluster one is sort of compact but
+
+67
+00:03:04,344 --> 00:03:08,754
+closer to continue to be elongated and not necessarily compact.
+
+68
+00:03:08,754 --> 00:03:13,419
+Let's compare DBSCAN to k-means on these benchmark datasets.
+
+69
+00:03:13,419 --> 00:03:14,919
+For the first one,
+
+70
+00:03:14,919 --> 00:03:16,750
+DBSCAN gives us this.
+
+71
+00:03:16,750 --> 00:03:18,490
+Not terribly useful.
+
+72
+00:03:18,490 --> 00:03:21,475
+All the points are part of one cluster.
+
+73
+00:03:21,474 --> 00:03:24,114
+For the two crescent dataset however,
+
+74
+00:03:24,115 --> 00:03:27,085
+DBSCAN carves them really nicely,
+
+75
+00:03:27,085 --> 00:03:30,235
+and this is all without being handed the number of clusters.
+
+76
+00:03:30,235 --> 00:03:35,890
+So, DBSCAN only gets epsilon and the minimum number of points as its inputs,
+
+77
+00:03:35,889 --> 00:03:37,494
+not number of clusters.
+
+78
+00:03:37,495 --> 00:03:41,495
+And so, the two crescents DBSCAN does a really good job with them.
+
+79
+00:03:41,495 --> 00:03:43,295
+What about the two rings?
+
+80
+00:03:43,294 --> 00:03:45,079
+Also, good job there.
+
+81
+00:03:45,080 --> 00:03:47,120
+It carves them out really nicely.
+
+82
+00:03:47,120 --> 00:03:52,009
+With this dataset, the parameters of DBSCAN are probably a little bit aggressive,
+
+83
+00:03:52,009 --> 00:03:54,579
+and so these are all noise.
+
+84
+00:03:54,580 --> 00:03:56,380
+And then, we have one, two, three,
+
+85
+00:03:56,379 --> 00:03:58,729
+four, five, six clusters.
+
+86
+00:03:58,729 --> 00:04:00,259
+The same thing happens here,
+
+87
+00:04:00,259 --> 00:04:04,324
+where it found the central masses of the three clusters we're after.
+
+88
+00:04:04,324 --> 00:04:06,409
+But maybe if we change the inputs a little bit,
+
+89
+00:04:06,409 --> 00:04:11,164
+it would be able to cleanly separate the three shapes that we would be after here.
+
+90
+00:04:11,164 --> 00:04:15,199
+And with this dataset, it does a really good job just like k-means.
+

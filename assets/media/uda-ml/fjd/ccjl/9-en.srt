@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:04,429
+Scikit-learn makes implementing DBSCAN a breeze.
+
+2
+00:00:04,429 --> 00:00:06,359
+We just declare it here,
+
+3
+00:00:06,360 --> 00:00:09,350
+we pass it epsilon and number of samples.
+
+4
+00:00:09,349 --> 00:00:11,695
+There are default values if we don't declare them,
+
+5
+00:00:11,695 --> 00:00:12,900
+but this is how we do.
+
+6
+00:00:12,900 --> 00:00:15,865
+And then we just pass the data set and say fit.
+
+7
+00:00:15,865 --> 00:00:21,579
+Db.labels now contains an array representing which cluster each point belongs to.
+
+8
+00:00:21,579 --> 00:00:25,209
+So, minus one is actually noise,
+
+9
+00:00:25,210 --> 00:00:26,714
+but then zero, one,
+
+10
+00:00:26,714 --> 00:00:28,602
+and two, and three, and so on, so forth,
+
+11
+00:00:28,602 --> 00:00:32,100
+these are the clusters that each point belongs to.
+

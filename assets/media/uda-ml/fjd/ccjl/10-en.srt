@@ -1,0 +1,208 @@
+1
+00:00:00,000 --> 00:00:03,150
+Before looking at a couple of applications for DBSCAN,
+
+2
+00:00:03,150 --> 00:00:06,420
+let's discuss its advantages and disadvantages.
+
+3
+00:00:06,420 --> 00:00:08,820
+The first advantage of using DBSCAN is that we
+
+4
+00:00:08,820 --> 00:00:11,430
+don't need to specify the number of clusters.
+
+5
+00:00:11,430 --> 00:00:14,370
+DBSCAN will just find them based on how densely
+
+6
+00:00:14,370 --> 00:00:17,355
+packed the points are and the other inputs that we pass into it,
+
+7
+00:00:17,355 --> 00:00:20,595
+namely epsilon and minimum number of points.
+
+8
+00:00:20,595 --> 00:00:24,360
+The second advantage of DBSCAN is flexibility in
+
+9
+00:00:24,360 --> 00:00:29,215
+the shapes and sizes of clusters it's able to find and carve out.
+
+10
+00:00:29,215 --> 00:00:32,465
+So DBSCAN is not limited to a certain shape;
+
+11
+00:00:32,465 --> 00:00:35,690
+it can trace out densely packed points as long as
+
+12
+00:00:35,690 --> 00:00:39,530
+the density is continued into pretty much any shape.
+
+13
+00:00:39,530 --> 00:00:42,890
+And, finally, it's robust in that it's able to deal with
+
+14
+00:00:42,890 --> 00:00:46,940
+noise and outliers in the data sets that we pass to it.
+
+15
+00:00:46,940 --> 00:00:51,410
+On the other hand, there are a couple of nitpicks that we can say about DBSCAN.
+
+16
+00:00:51,410 --> 00:00:57,215
+The first one is that border points that are reachable from two clusters
+
+17
+00:00:57,215 --> 00:00:59,450
+are assigned to the cluster that finds them
+
+18
+00:00:59,450 --> 00:01:03,770
+first and since points are visited in an arbitrary order,
+
+19
+00:01:03,770 --> 00:01:09,510
+DBSCAN is not guaranteed to return the same clustering if this is the case.
+
+20
+00:01:09,510 --> 00:01:13,560
+Thankfully though, most datasets do not face this issue.
+
+21
+00:01:13,560 --> 00:01:16,800
+The second disadvantage for DBSCAN is that it faces
+
+22
+00:01:16,800 --> 00:01:21,000
+difficulties finding clusters of varying densities.
+
+23
+00:01:21,000 --> 00:01:22,815
+For cases like that, however,
+
+24
+00:01:22,815 --> 00:01:26,595
+we can use a variation of DBSCAN called HDBSCAN.
+
+25
+00:01:26,595 --> 00:01:30,570
+There're links to it in the text below the video.
+
+26
+00:01:30,570 --> 00:01:34,650
+And now we can look at a couple of really cool applications for DBSCAN.
+
+27
+00:01:34,650 --> 00:01:36,630
+This is one paper that looks at
+
+28
+00:01:36,630 --> 00:01:41,265
+network traffic and tries to classify it using clustering algorithms.
+
+29
+00:01:41,265 --> 00:01:45,690
+So, let's say you're a network administrator and you have people
+
+30
+00:01:45,690 --> 00:01:50,358
+running BitTorrent on your network and you want to classify traffic,
+
+31
+00:01:50,358 --> 00:01:54,383
+is it BitTorrent, is it just regular web traffic,
+
+32
+00:01:54,383 --> 00:01:59,775
+especially if you can't peek at the actual packets themselves and tell.
+
+33
+00:01:59,775 --> 00:02:05,010
+This paper compares k-means and DBSCAN in this classification,
+
+34
+00:02:05,010 --> 00:02:08,430
+the unsupervised classification of network traffic.
+
+35
+00:02:08,430 --> 00:02:11,970
+This graph here shows the accuracy of
+
+36
+00:02:11,970 --> 00:02:16,815
+that classification based on different epsilon distance values,
+
+37
+00:02:16,815 --> 00:02:22,470
+and in here we can look at different epsilon distance value as well as
+
+38
+00:02:22,470 --> 00:02:25,485
+different minimum number of points value and then how that
+
+39
+00:02:25,485 --> 00:02:29,040
+affects the accuracy of the classification.
+
+40
+00:02:29,040 --> 00:02:31,725
+Another cool example is this paper doing
+
+41
+00:02:31,725 --> 00:02:34,860
+anomaly detection in temperature data using DBSCAN.
+
+42
+00:02:34,860 --> 00:02:40,035
+And the way to do that is to set minimum number of points and epsilon
+
+43
+00:02:40,035 --> 00:02:46,125
+to values that group most of the samples in the dataset into one or a few clusters.
+
+44
+00:02:46,125 --> 00:02:48,840
+And then the points that are labeled as noise we
+
+45
+00:02:48,840 --> 00:02:52,245
+would regard these as outliers or anomalies.
+
+46
+00:02:52,245 --> 00:02:57,780
+And by changing minimum number of points and epsilon we can
+
+47
+00:02:57,780 --> 00:03:04,095
+change how permissive or aggressive we want the anomaly detection to be.
+
+48
+00:03:04,095 --> 00:03:10,058
+You can find links to these two papers in the links below but specifically,
+
+49
+00:03:10,058 --> 00:03:14,970
+I really loved reading this network traffic paper because it shows you the methodology
+
+50
+00:03:14,970 --> 00:03:20,040
+of clustering from the beginning to the end with a thought process that goes into it.
+
+51
+00:03:20,040 --> 00:03:21,540
+It's a really cool example.
+
+52
+00:03:21,540 --> 00:03:23,800
+I advise you, go through this paper
+

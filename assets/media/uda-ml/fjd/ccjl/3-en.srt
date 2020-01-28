@@ -1,0 +1,308 @@
+1
+00:00:00,000 --> 00:00:04,019
+Luis showed us a hierarchical clustering example in
+
+2
+00:00:04,019 --> 00:00:08,129
+which a pizza parlor wanted to cluster the locations of its customers,
+
+3
+00:00:08,130 --> 00:00:12,210
+so that it can determine where it should open up its branches.
+
+4
+00:00:12,210 --> 00:00:15,955
+This was an example of a method called single link clustering.
+
+5
+00:00:15,955 --> 00:00:18,269
+Let's look at it more closely.
+
+6
+00:00:18,269 --> 00:00:22,964
+So say, we have this dataset that has two features that we've plotted here.
+
+7
+00:00:22,964 --> 00:00:26,574
+We want to cluster it using single link clustering.
+
+8
+00:00:26,574 --> 00:00:31,725
+The first step is to assume that each point is already a cluster,
+
+9
+00:00:31,725 --> 00:00:33,660
+and we'll give each point a label,
+
+10
+00:00:33,659 --> 00:00:35,649
+so we can talk about them.
+
+11
+00:00:35,649 --> 00:00:37,979
+Then, the next step would be to calculate the distances
+
+12
+00:00:37,979 --> 00:00:40,799
+between each point and each other points,
+
+13
+00:00:40,799 --> 00:00:46,109
+and then we choose the smallest distance between two clusters,
+
+14
+00:00:46,109 --> 00:00:49,984
+and we group those two points into a cluster like this.
+
+15
+00:00:49,984 --> 00:00:51,195
+On the side here,
+
+16
+00:00:51,195 --> 00:00:54,250
+we will add up that cluster in this shape
+
+17
+00:00:54,250 --> 00:00:58,466
+with this sort of bracket connecting the two points.
+
+18
+00:00:58,466 --> 00:01:02,519
+And then, we can go on and find the nearest two clusters to each other,
+
+19
+00:01:02,520 --> 00:01:04,680
+and that would turn out to be these two,
+
+20
+00:01:04,680 --> 00:01:07,305
+and we put them on the side there,
+
+21
+00:01:07,305 --> 00:01:10,350
+and then this would be our third cluster,
+
+22
+00:01:10,349 --> 00:01:14,034
+and we have that in the shape on the side there.
+
+23
+00:01:14,034 --> 00:01:16,019
+The problem is a little bit different now.
+
+24
+00:01:16,019 --> 00:01:17,879
+Look at this example here.
+
+25
+00:01:17,879 --> 00:01:22,259
+So, what is the distance between the orange cluster and point number 7.
+
+26
+00:01:22,260 --> 00:01:24,954
+Is it the distance between seven and six?
+
+27
+00:01:24,954 --> 00:01:27,326
+Is it the distance between seven and eight?
+
+28
+00:01:27,326 --> 00:01:28,439
+Or is it, for example,
+
+29
+00:01:28,439 --> 00:01:30,734
+the average of them, or is it something else?
+
+30
+00:01:30,734 --> 00:01:34,290
+And it turns out that this is one of the things that separates
+
+31
+00:01:34,290 --> 00:01:38,243
+the various types of hierarchical clustering methods,
+
+32
+00:01:38,243 --> 00:01:39,769
+and we'll look at a few of those.
+
+33
+00:01:39,769 --> 00:01:44,189
+Single link looks at the closest point in the cluster, and so,
+
+34
+00:01:44,189 --> 00:01:47,039
+the distance between these two clusters is the distance
+
+35
+00:01:47,040 --> 00:01:50,770
+between seven and six which is the closest point to it here.
+
+36
+00:01:50,769 --> 00:01:53,039
+And so, this distance turns out to be the closest
+
+37
+00:01:53,040 --> 00:01:56,655
+between all the other distances between clusters here,
+
+38
+00:01:56,655 --> 00:02:00,415
+and so, we group seven with this cluster here.
+
+39
+00:02:00,415 --> 00:02:05,305
+Notice that this new cluster has another cluster as a child of it,
+
+40
+00:02:05,305 --> 00:02:09,819
+and so, that's reflected here when we wrap it like this.
+
+41
+00:02:09,819 --> 00:02:14,724
+And here, you can start to understand how our tree will start to grow.
+
+42
+00:02:14,724 --> 00:02:17,789
+If we continue to add the clusters together,
+
+43
+00:02:17,789 --> 00:02:22,764
+we can have this tree that encompasses the entire data points.
+
+44
+00:02:22,764 --> 00:02:25,054
+This is also called a dendrogram.
+
+45
+00:02:25,055 --> 00:02:27,055
+So, where are the clusters?
+
+46
+00:02:27,055 --> 00:02:29,640
+An input that we have to give to single link is to say,
+
+47
+00:02:29,639 --> 00:02:31,184
+how many clusters we are looking for.
+
+48
+00:02:31,185 --> 00:02:33,390
+So, if we want two clusters,
+
+49
+00:02:33,389 --> 00:02:35,314
+we can say, okay after building this tree,
+
+50
+00:02:35,314 --> 00:02:39,530
+we can say, alright, this is a height of the tree where there are only two links,
+
+51
+00:02:39,530 --> 00:02:41,561
+so we can cut the tree at this height,
+
+52
+00:02:41,561 --> 00:02:45,205
+and that would result in us having this tree as one cluster,
+
+53
+00:02:45,205 --> 00:02:48,065
+and then these as another cluster.
+
+54
+00:02:48,064 --> 00:02:50,115
+If we want three clusters,
+
+55
+00:02:50,115 --> 00:02:51,885
+we can cut the tree at this height,
+
+56
+00:02:51,884 --> 00:02:54,689
+and then that would give us this point in one cluster,
+
+57
+00:02:54,689 --> 00:02:57,659
+this in a second cluster, and this in three.
+
+58
+00:02:57,659 --> 00:03:02,384
+And you can see, you can go to each height would give you a different number of clusters.
+
+59
+00:03:02,384 --> 00:03:06,004
+And so, single link clustering or hierarchical clustering, in general,
+
+60
+00:03:06,004 --> 00:03:11,859
+can give us either one cluster or the number of our samples,
+
+61
+00:03:11,860 --> 00:03:14,825
+number of over data points in clusters, and everything between.
+
+62
+00:03:14,824 --> 00:03:16,199
+So, as we've mentioned,
+
+63
+00:03:16,199 --> 00:03:19,560
+the distance measure between clusters is
+
+64
+00:03:19,560 --> 00:03:23,824
+the thing that separates a lot of the hierarchical clustering methods.
+
+65
+00:03:23,824 --> 00:03:28,074
+Single link looks at the closest points between two clusters,
+
+66
+00:03:28,074 --> 00:03:30,869
+and then it compares those,
+
+67
+00:03:30,870 --> 00:03:34,598
+and so, between these distances between clusters,
+
+68
+00:03:34,598 --> 00:03:36,660
+this is the smallest, and so,
+
+69
+00:03:36,659 --> 00:03:40,949
+these would be the two clusters that we will group in this step.
+
+70
+00:03:40,949 --> 00:03:47,204
+This, however, leads single link to sometimes produce elongated clusters.
+
+71
+00:03:47,205 --> 00:03:49,690
+Well, in a lot of cases we would like,
+
+72
+00:03:49,689 --> 00:03:52,784
+you know, more compact clusters.
+
+73
+00:03:52,784 --> 00:03:57,060
+It also results in single link clustering sometimes having a cluster
+
+74
+00:03:57,060 --> 00:04:01,925
+that eats up most of the data set.
+
+75
+00:04:01,925 --> 00:04:05,594
+So, that's why we'll look at other hierarchical clustering methods.
+
+76
+00:04:05,594 --> 00:04:07,125
+But before we do that,
+
+77
+00:04:07,125 --> 00:04:10,810
+let's do a quick comparison with K-means.
+
