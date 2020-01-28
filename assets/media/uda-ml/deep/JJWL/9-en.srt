@@ -1,0 +1,344 @@
+1
+00:00:00,000 --> 00:00:03,689
+The last video, we motivated the idea of replacing
+
+2
+00:00:03,689 --> 00:00:06,980
+a fully connected layer with a locally connected layer.
+
+3
+00:00:06,980 --> 00:00:10,769
+This locally connected layer contained fewer weights,
+
+4
+00:00:10,769 --> 00:00:12,884
+which were shared across space.
+
+5
+00:00:12,884 --> 00:00:17,160
+In this video, we formalized that intuition and defined
+
+6
+00:00:17,160 --> 00:00:20,010
+convolutional layers which are one type of
+
+7
+00:00:20,010 --> 00:00:25,179
+hidden layer that you will encounter in a convolutional neural network.
+
+8
+00:00:25,178 --> 00:00:29,284
+First, we break the image up into smaller pieces.
+
+9
+00:00:29,285 --> 00:00:30,495
+In the last video,
+
+10
+00:00:30,495 --> 00:00:34,000
+we broke our image into four equally sized pieces,
+
+11
+00:00:34,000 --> 00:00:38,115
+color coded red, green, yellow, and blue.
+
+12
+00:00:38,115 --> 00:00:42,024
+Towards breaking up the image for building a convolutional layer,
+
+13
+00:00:42,024 --> 00:00:47,353
+we first select a width and height that defines a convolution window.
+
+14
+00:00:47,353 --> 00:00:49,875
+We then simply slide this window
+
+15
+00:00:49,875 --> 00:00:54,224
+horizontally and vertically over the matrix of image pixels.
+
+16
+00:00:54,223 --> 00:00:59,265
+At each position, the window specifies a small piece within the image
+
+17
+00:00:59,265 --> 00:01:04,954
+and defines a collection of pixels to which we connect a single hidden node.
+
+18
+00:01:04,953 --> 00:01:08,264
+We call this hidden layer a convolutional layer.
+
+19
+00:01:08,265 --> 00:01:12,495
+But let's dig a little deeper into how a regional collection of
+
+20
+00:01:12,495 --> 00:01:17,355
+input nodes influences the value of a node in the convolutional layer.
+
+21
+00:01:17,355 --> 00:01:20,504
+We could represent the weights connecting the nodes
+
+22
+00:01:20,504 --> 00:01:24,209
+by writing a numerical value on top of the arrows.
+
+23
+00:01:24,209 --> 00:01:29,715
+Then in order to get the value of a node in the convolutional layer for this image input,
+
+24
+00:01:29,715 --> 00:01:34,379
+we operate as we did with neural networks with multiplying
+
+25
+00:01:34,379 --> 00:01:39,810
+the input nodes by their corresponding weights and summing up the result.
+
+26
+00:01:39,810 --> 00:01:42,734
+When we do that, we get zero.
+
+27
+00:01:42,733 --> 00:01:45,708
+Just as with neural networks there is a bias.
+
+28
+00:01:45,709 --> 00:01:48,489
+For now, assume that the bias is zero.
+
+29
+00:01:48,489 --> 00:01:53,694
+We'll always add a ReLu activation function to our convolutional layers.
+
+30
+00:01:53,694 --> 00:01:55,719
+Recall the ReLu function leaves
+
+31
+00:01:55,718 --> 00:02:00,324
+positive values alone and sends all negative values to zero.
+
+32
+00:02:00,325 --> 00:02:04,090
+In this case, our zero stays zero.
+
+33
+00:02:04,090 --> 00:02:09,438
+And thus, we can plug in the value for the first node in the convolutional layer.
+
+34
+00:02:09,438 --> 00:02:14,288
+The values of all other nodes are calculated in exactly the same way.
+
+35
+00:02:14,288 --> 00:02:18,823
+With first multiplying each input node by the weights.
+
+36
+00:02:18,824 --> 00:02:21,145
+Now, we get a negative two.
+
+37
+00:02:21,145 --> 00:02:23,820
+Recall the bias is still zero,
+
+38
+00:02:23,819 --> 00:02:25,704
+so we won't add anything.
+
+39
+00:02:25,705 --> 00:02:29,629
+But now, when we apply the ReLu activation function,
+
+40
+00:02:29,628 --> 00:02:33,633
+our negative two is transformed to zero.
+
+41
+00:02:33,633 --> 00:02:35,948
+We can repeat this process to get the value
+
+42
+00:02:35,949 --> 00:02:39,719
+of every other node in the convolutional layer.
+
+43
+00:02:39,718 --> 00:02:43,478
+We'll see that instead of representing the weights on top of the arrows,
+
+44
+00:02:43,479 --> 00:02:47,199
+it will prove more convenient to represent them in a grid.
+
+45
+00:02:47,199 --> 00:02:50,400
+When the weights are represented in a grid in this way,
+
+46
+00:02:50,400 --> 00:02:52,849
+we call the grid a filter.
+
+47
+00:02:52,848 --> 00:02:57,489
+Its size will always match the size of the convolutional window.
+
+48
+00:02:57,490 --> 00:03:02,620
+In this case, our filter has a height of three and a width of three.
+
+49
+00:03:02,620 --> 00:03:05,349
+Now the process of calculating the values of
+
+50
+00:03:05,348 --> 00:03:08,843
+the nodes in the hidden layer is much more intuitive.
+
+51
+00:03:08,843 --> 00:03:11,092
+Let's see how it looks when we calculate
+
+52
+00:03:11,092 --> 00:03:14,843
+the value of the first node in the convolutional layer.
+
+53
+00:03:14,843 --> 00:03:17,500
+Again, we start with multiplying each of
+
+54
+00:03:17,500 --> 00:03:21,908
+the input nodes with their corresponding weights and summing up the result.
+
+55
+00:03:21,908 --> 00:03:28,114
+This yielded zero, and so applying the ReLu activation function again yields zero.
+
+56
+00:03:28,115 --> 00:03:31,930
+But what's happening with these large values of three?
+
+57
+00:03:31,930 --> 00:03:35,615
+Let's inspect the corresponding section of the image.
+
+58
+00:03:35,615 --> 00:03:38,905
+You'll notice that the positive values in the filter
+
+59
+00:03:38,905 --> 00:03:44,435
+perfectly correspond to the largest values in this region of the image.
+
+60
+00:03:44,435 --> 00:03:46,365
+The converse is also true.
+
+61
+00:03:46,365 --> 00:03:51,715
+The negative values in the filter corresponding to the smallest values in the image.
+
+62
+00:03:51,715 --> 00:03:57,098
+In fact, since we rescaled the pixels in the image to lie between zero and one,
+
+63
+00:03:57,098 --> 00:04:01,454
+with one representing white and zero representing a black pixel.
+
+64
+00:04:01,455 --> 00:04:04,479
+This three is the largest value that we can
+
+65
+00:04:04,479 --> 00:04:07,789
+get in the convolutional layer for this filter.
+
+66
+00:04:07,788 --> 00:04:12,608
+That is the pattern in this region with a diagonal white stripe down the middle,
+
+67
+00:04:12,609 --> 00:04:17,709
+is the only arrangement of pixels that will yield this maximal value.
+
+68
+00:04:17,709 --> 00:04:21,338
+We see that the three is also repeated here and can
+
+69
+00:04:21,338 --> 00:04:25,740
+verify that the corresponding region in the image is identical.
+
+70
+00:04:25,740 --> 00:04:27,819
+But looking back at the filter,
+
+71
+00:04:27,819 --> 00:04:32,199
+where we've also depicted larger numbers with lighter colors.
+
+72
+00:04:32,199 --> 00:04:34,000
+You can see that the patterns match,
+
+73
+00:04:34,000 --> 00:04:37,509
+each depicts a light diagonal stripe.
+
+74
+00:04:37,509 --> 00:04:43,350
+In fact, when we use convolutional neural networks will often visualize the filters,
+
+75
+00:04:43,350 --> 00:04:46,120
+and that visualization will tell us
+
+76
+00:04:46,120 --> 00:04:49,194
+what kind of pattern the filter is designed to detect.
+
+77
+00:04:49,194 --> 00:04:51,084
+Just like in neural networks,
+
+78
+00:04:51,084 --> 00:04:55,060
+these weights will not be set in advance and will instead be
+
+79
+00:04:55,060 --> 00:05:00,310
+learned by the network as the weights that minimize our loss function.
+
+80
+00:05:00,310 --> 00:05:04,810
+So far, our network only has one filter and so we're only
+
+81
+00:05:04,810 --> 00:05:10,088
+able to gain information as to whether a single pattern was detected or not.
+
+82
+00:05:10,088 --> 00:05:12,430
+If we wanted to discover more patterns,
+
+83
+00:05:12,430 --> 00:05:14,845
+we would need to use more filters.
+
+84
+00:05:14,845 --> 00:05:16,293
+In the next video,
+
+85
+00:05:16,293 --> 00:05:21,040
+we'll continue our discussion of convolutional layers and begin by discussing,
+
+86
+00:05:21,040 --> 00:05:26,000
+why you would want to search for more than just a single pattern in an image?
+

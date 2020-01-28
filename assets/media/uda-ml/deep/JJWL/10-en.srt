@@ -1,0 +1,480 @@
+1
+00:00:00,000 --> 00:00:02,819
+Consider this image of a dog.
+
+2
+00:00:02,819 --> 00:00:05,009
+A single region in this image,
+
+3
+00:00:05,009 --> 00:00:08,734
+may have many different patterns that we want to detect.
+
+4
+00:00:08,734 --> 00:00:11,323
+Consider this region for instance,
+
+5
+00:00:11,323 --> 00:00:13,105
+this region has teeth,
+
+6
+00:00:13,105 --> 00:00:15,685
+some whiskers, and a tongue.
+
+7
+00:00:15,685 --> 00:00:18,989
+In that case, to understand this image we
+
+8
+00:00:18,989 --> 00:00:23,135
+need filters for detecting all three of these characteristics.
+
+9
+00:00:23,135 --> 00:00:26,190
+One for each of teeth, whiskers, and tongue.
+
+10
+00:00:26,190 --> 00:00:30,675
+Recall the case of a single convolutional filter,
+
+11
+00:00:30,675 --> 00:00:35,219
+adding another filter is probably exactly what you'd expect.
+
+12
+00:00:35,219 --> 00:00:40,575
+Where we just populate an additional collection of nodes in the convolutional layer.
+
+13
+00:00:40,575 --> 00:00:43,079
+This collection has its own shared set of
+
+14
+00:00:43,079 --> 00:00:47,158
+weights that differ from the weights for the blue nodes above them.
+
+15
+00:00:47,158 --> 00:00:51,269
+In fact, it's common to have tens to hundreds of these collections
+
+16
+00:00:51,270 --> 00:00:55,960
+in a convolutional layer-- each corresponding to their own filter.
+
+17
+00:00:55,960 --> 00:01:00,478
+Let's now execute some code to see what these collections look like.
+
+18
+00:01:00,478 --> 00:01:04,078
+After all, each is formatted in the same way as an image,
+
+19
+00:01:04,078 --> 00:01:06,703
+namely as a matrix of values.
+
+20
+00:01:06,703 --> 00:01:10,454
+We'll be visualizing the output of a Jupyter notebook.
+
+21
+00:01:10,454 --> 00:01:14,519
+If you like and you can follow along with the link below.
+
+22
+00:01:14,519 --> 00:01:20,855
+So, say we're working with an image of Udacity's self-driving car as input.
+
+23
+00:01:20,855 --> 00:01:22,469
+Let's use four filters,
+
+24
+00:01:22,468 --> 00:01:26,503
+each four pixels high and four pixels wide.
+
+25
+00:01:26,504 --> 00:01:31,230
+Recall each filter will be convolved across the height and width
+
+26
+00:01:31,230 --> 00:01:36,564
+the image to produce an entire collection of nodes in the convolutional layer.
+
+27
+00:01:36,563 --> 00:01:39,298
+In this case, since we have four filters,
+
+28
+00:01:39,299 --> 00:01:41,730
+we'll have four collections of nodes.
+
+29
+00:01:41,730 --> 00:01:44,099
+In practice of for to each of
+
+30
+00:01:44,099 --> 00:01:48,750
+these four collections is either feature maps or as activation maps.
+
+31
+00:01:48,750 --> 00:01:51,075
+When we visualize these feature maps,
+
+32
+00:01:51,075 --> 00:01:54,394
+we see that they look like filtered images.
+
+33
+00:01:54,394 --> 00:01:58,530
+That is we've taken all of the complicated dense information in
+
+34
+00:01:58,530 --> 00:02:01,140
+the original image and in each of
+
+35
+00:02:01,140 --> 00:02:06,165
+these four cases outputted a much simpler image with less information.
+
+36
+00:02:06,165 --> 00:02:08,772
+By peeking at the structure of the filters,
+
+37
+00:02:08,772 --> 00:02:12,519
+you can see that the first two filters discover vertical edges,
+
+38
+00:02:12,519 --> 00:02:16,979
+where the last two detect horizontal edges in the image.
+
+39
+00:02:16,979 --> 00:02:19,485
+Remember that lighter values and the feature map
+
+40
+00:02:19,485 --> 00:02:23,715
+mean that the pattern in the filter was detected in the image.
+
+41
+00:02:23,715 --> 00:02:27,150
+So can you match the lighter regions in each feature map with
+
+42
+00:02:27,150 --> 00:02:31,319
+their corresponding areas in the original image?
+
+43
+00:02:31,318 --> 00:02:33,810
+In this activation map for instance,
+
+44
+00:02:33,810 --> 00:02:39,319
+we can see a clear white line defining the right edge of the car.
+
+45
+00:02:39,318 --> 00:02:40,378
+This is because all of
+
+46
+00:02:40,378 --> 00:02:44,804
+the corresponding regions in the car image closely resemble the filter.
+
+47
+00:02:44,805 --> 00:02:48,090
+Where we have a vertical line of dark pixels
+
+48
+00:02:48,090 --> 00:02:51,699
+to the left of a vertical line of lighter pixels.
+
+49
+00:02:51,699 --> 00:02:55,530
+If you think about it you'll notice that edges in images appear as
+
+50
+00:02:55,530 --> 00:03:00,544
+a line of lighter pixels next to a line of darker pixels.
+
+51
+00:03:00,544 --> 00:03:03,960
+This image for instance contains many regions that would be
+
+52
+00:03:03,960 --> 00:03:09,150
+discovered or detected by one of the four filters we defined before.
+
+53
+00:03:09,150 --> 00:03:12,150
+Filters that function as edge detectors are very
+
+54
+00:03:12,150 --> 00:03:16,550
+important in CNNs and we'll revisit them later.
+
+55
+00:03:16,550 --> 00:03:23,530
+So now we know how to understand convolutional layers that have a grayscale images input.
+
+56
+00:03:23,530 --> 00:03:26,064
+But what about color images?
+
+57
+00:03:26,064 --> 00:03:29,609
+Well, we've seen that grayscale images are interpreted by
+
+58
+00:03:29,610 --> 00:03:34,485
+the computer as a 2D array with height and width.
+
+59
+00:03:34,485 --> 00:03:42,960
+Color images are interpreted by the computer as a 3D array with height, width and depth.
+
+60
+00:03:42,960 --> 00:03:45,224
+In the case of RGB images,
+
+61
+00:03:45,223 --> 00:03:47,829
+the depth is three.
+
+62
+00:03:47,830 --> 00:03:55,395
+This 3D array is best conceptualized as a stack of three two-dimensional matrices,
+
+63
+00:03:55,395 --> 00:03:58,469
+where we have matrices corresponding to the red,
+
+64
+00:03:58,468 --> 00:04:02,008
+green, and blue channels of the image.
+
+65
+00:04:02,008 --> 00:04:05,473
+So how do we perform a convolution on a color image?
+
+66
+00:04:05,473 --> 00:04:08,688
+As was the case with grayscale images,
+
+67
+00:04:08,688 --> 00:04:13,530
+we still move a filter horizontally and vertically across the image.
+
+68
+00:04:13,530 --> 00:04:18,540
+Only now the filter is itself three dimensional to have a value for
+
+69
+00:04:18,540 --> 00:04:24,310
+each color channel at each horizontal and vertical location in the image array.
+
+70
+00:04:24,310 --> 00:04:30,610
+Just as we think of the color image as a stack of three two-dimensional matrices,
+
+71
+00:04:30,610 --> 00:04:35,189
+you can also think of the filter as a stack of three two-dimensional matrices.
+
+72
+00:04:35,189 --> 00:04:38,610
+Both the color image and the filter have red,
+
+73
+00:04:38,610 --> 00:04:41,125
+green, and blue channels.
+
+74
+00:04:41,125 --> 00:04:46,694
+Now to obtain the values of the nodes in the feature map corresponding to this filter,
+
+75
+00:04:46,694 --> 00:04:50,278
+we do pretty much the same thing we did before.
+
+76
+00:04:50,278 --> 00:04:54,509
+Only now, our sum is over three times as many terms.
+
+77
+00:04:54,509 --> 00:04:59,220
+We emphasize that here we've depicted the calculation of the value of
+
+78
+00:04:59,220 --> 00:05:05,220
+a single node in a convolutional layer for one filter on a color image.
+
+79
+00:05:05,220 --> 00:05:10,004
+If we wanted to picture the case of a color image with multiple filters,
+
+80
+00:05:10,004 --> 00:05:12,990
+instead of having a single 3D array,
+
+81
+00:05:12,990 --> 00:05:15,165
+which corresponds to one filter,
+
+82
+00:05:15,165 --> 00:05:20,675
+we would define multiple 3D arrays-- each defining a filter.
+
+83
+00:05:20,675 --> 00:05:23,129
+Here we've depicted three filters,
+
+84
+00:05:23,129 --> 00:05:29,329
+each is a 3D array that you can think of as a stack of three 2D arrays.
+
+85
+00:05:29,329 --> 00:05:32,459
+Here's where it starts to get really cool.
+
+86
+00:05:32,459 --> 00:05:36,660
+You can think about each of the feature maps in a convolutional layer along
+
+87
+00:05:36,660 --> 00:05:42,264
+the same lines as an image channel and stack them to get a 3D array.
+
+88
+00:05:42,264 --> 00:05:45,750
+Then, we can use this 3D array as input to
+
+89
+00:05:45,750 --> 00:05:49,620
+still another convolutional layer to discover
+
+90
+00:05:49,620 --> 00:05:55,329
+patterns within the patterns that we discovered in the first convolutional layer.
+
+91
+00:05:55,329 --> 00:06:01,824
+We can then do this again to discover patterns within patterns within patterns.
+
+92
+00:06:01,824 --> 00:06:05,040
+Remember that in some sense convolutional layers
+
+93
+00:06:05,040 --> 00:06:10,095
+aren't too different from the dense layers that you saw in the previous section.
+
+94
+00:06:10,095 --> 00:06:13,319
+Dense layers are fully connected meaning that
+
+95
+00:06:13,319 --> 00:06:17,415
+the nodes are connected to every node in the previous layer.
+
+96
+00:06:17,415 --> 00:06:20,759
+Convolutional layers are locally connected where
+
+97
+00:06:20,759 --> 00:06:25,845
+their nodes are connected to only a small subset of the previous layers' nodes.
+
+98
+00:06:25,845 --> 00:06:30,420
+Convolutional layers also had this added perimeter sharing.
+
+99
+00:06:30,420 --> 00:06:31,980
+But in both cases,
+
+100
+00:06:31,980 --> 00:06:34,410
+with convolutional and dense layers,
+
+101
+00:06:34,410 --> 00:06:36,824
+inference works the same way.
+
+102
+00:06:36,824 --> 00:06:42,160
+Both have weights and biases that are initially randomly generated.
+
+103
+00:06:42,160 --> 00:06:46,903
+So in the case of CNNs where the weights take the form of convolutional filters,
+
+104
+00:06:46,903 --> 00:06:49,588
+those filters are randomly generated and
+
+105
+00:06:49,588 --> 00:06:53,264
+so are the patterns that they're initially designed to detect.
+
+106
+00:06:53,264 --> 00:06:59,410
+As with MLPs, when we construct to CNN we will always specify a loss function.
+
+107
+00:06:59,410 --> 00:07:02,338
+In the case of multiclass classification,
+
+108
+00:07:02,338 --> 00:07:05,594
+this will be categorical cross-entropy loss.
+
+109
+00:07:05,595 --> 00:07:09,285
+Then as we train the model through back propagation,
+
+110
+00:07:09,285 --> 00:07:15,634
+the filters are updated at each epic to take on values that minimize the loss function.
+
+111
+00:07:15,634 --> 00:07:19,079
+In other words, the CNN determines what kind
+
+112
+00:07:19,079 --> 00:07:22,783
+of patterns it needs to detect based on the loss function.
+
+113
+00:07:22,783 --> 00:07:27,224
+We'll visualize these patterns later and see that for instance,
+
+114
+00:07:27,225 --> 00:07:29,199
+if our dataset contains dogs,
+
+115
+00:07:29,199 --> 00:07:31,060
+the CNN is able to,
+
+116
+00:07:31,060 --> 00:07:35,069
+on its own, learn filters that look like dogs.
+
+117
+00:07:35,069 --> 00:07:37,963
+So with CNNs to emphasize,
+
+118
+00:07:37,963 --> 00:07:41,084
+we won't specify the values of the filters or
+
+119
+00:07:41,084 --> 00:07:44,903
+tell the CNN what kind of patterns it needs to detect.
+
+120
+00:07:44,903 --> 00:07:47,759
+These will be learned from the data.
+

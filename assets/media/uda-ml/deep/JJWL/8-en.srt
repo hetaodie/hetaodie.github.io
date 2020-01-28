@@ -1,0 +1,424 @@
+1
+00:00:00,000 --> 00:00:02,395
+In the previous video,
+
+2
+00:00:02,395 --> 00:00:07,153
+we used MLPs to decode images of handwritten numerical digits.
+
+3
+00:00:07,153 --> 00:00:10,120
+Before feeding a gray scale image to an MLP,
+
+4
+00:00:10,119 --> 00:00:13,750
+we had to first convert its matrix to a vector.
+
+5
+00:00:13,750 --> 00:00:18,969
+This vector was then fed as input to an MLP with two hidden layers.
+
+6
+00:00:18,969 --> 00:00:24,320
+We saw that it was a perfectly valid model for classifying images in the MNIST dataset.
+
+7
+00:00:24,320 --> 00:00:28,804
+In fact, we got less than 2% error on our held out test images.
+
+8
+00:00:28,803 --> 00:00:32,024
+But for other image classification problems,
+
+9
+00:00:32,024 --> 00:00:33,990
+where we might need to analyze more
+
+10
+00:00:33,990 --> 00:00:38,075
+sophisticated real world images with more complicated patterns,
+
+11
+00:00:38,075 --> 00:00:39,939
+we'll need a different technique.
+
+12
+00:00:39,939 --> 00:00:44,070
+In this video, towards motivating and defining CNNs,
+
+13
+00:00:44,070 --> 00:00:48,060
+we specify a few improvements that eliminate some of the drawbacks and
+
+14
+00:00:48,060 --> 00:00:53,439
+limitations that we encounter when performing image classification with MLPs.
+
+15
+00:00:53,439 --> 00:00:57,090
+Specifically, we'll adjust two important issues.
+
+16
+00:00:57,090 --> 00:01:02,545
+First, we've seen that MLPs use a lot of parameters.
+
+17
+00:01:02,545 --> 00:01:04,890
+The MLP from the previous video,
+
+18
+00:01:04,890 --> 00:01:08,700
+for our very small 28 by 28 images,
+
+19
+00:01:08,700 --> 00:01:12,509
+already contained over half a million parameters.
+
+20
+00:01:12,509 --> 00:01:15,810
+You can imagine that the computational complexity for
+
+21
+00:01:15,810 --> 00:01:21,609
+even moderately sized images could get out of control pretty fast.
+
+22
+00:01:21,608 --> 00:01:25,158
+Another issue is that we throw away all of
+
+23
+00:01:25,159 --> 00:01:31,094
+the 2-D information contained in an image when we flatten its matrix to a vector.
+
+24
+00:01:31,093 --> 00:01:34,399
+This spatial information or knowledge of where
+
+25
+00:01:34,400 --> 00:01:38,224
+the pixels are located in reference to each other is
+
+26
+00:01:38,224 --> 00:01:41,299
+relevant to understanding the image and could aid
+
+27
+00:01:41,299 --> 00:01:47,000
+significantly towards elucidating the patterns contained in the pixel values.
+
+28
+00:01:47,000 --> 00:01:51,745
+This suggests that we need an entirely new way of processing image input,
+
+29
+00:01:51,745 --> 00:01:56,055
+where the 2-D information is not entirely lost.
+
+30
+00:01:56,055 --> 00:02:01,685
+CNNs will address these problems by using layers that are more sparsely connected.
+
+31
+00:02:01,685 --> 00:02:04,129
+Where the connections between layers are
+
+32
+00:02:04,129 --> 00:02:08,419
+informed by the 2-D structure of the image matrix.
+
+33
+00:02:08,419 --> 00:02:12,800
+Furthermore, CNNs will accept our matrix as input.
+
+34
+00:02:12,800 --> 00:02:19,610
+For illustration, consider a toy example with four by four images of handwritten digits.
+
+35
+00:02:19,610 --> 00:02:21,335
+Our goal remains the same,
+
+36
+00:02:21,335 --> 00:02:25,909
+we'd like to classify the digit that's depicted in the image.
+
+37
+00:02:25,908 --> 00:02:31,114
+After converting the four by four matrix to a 16 dimensional vector,
+
+38
+00:02:31,115 --> 00:02:35,840
+we can supply the vector as input to an MLP.
+
+39
+00:02:35,840 --> 00:02:40,604
+We construct an MLP with a single hidden layer with four nodes.
+
+40
+00:02:40,604 --> 00:02:44,168
+The output layer has 10 nodes.
+
+41
+00:02:44,169 --> 00:02:48,044
+As in the MLP in the previous video,
+
+42
+00:02:48,044 --> 00:02:53,770
+the output has a softmax activation function and returns a 10-dimensional vector
+
+43
+00:02:53,770 --> 00:02:56,740
+containing the probability that the image depicts
+
+44
+00:02:56,740 --> 00:03:00,564
+each of the possible digits zero through nine.
+
+45
+00:03:00,563 --> 00:03:02,378
+If we've trained our model well,
+
+46
+00:03:02,378 --> 00:03:07,840
+the vector will predict that a seven is depicted in the image with high probability.
+
+47
+00:03:07,840 --> 00:03:10,840
+But let's clean up this figure by replacing
+
+48
+00:03:10,840 --> 00:03:15,074
+this detailed depiction with the suggested output layer.
+
+49
+00:03:15,074 --> 00:03:18,594
+Here, the box annotated with it's a seven,
+
+50
+00:03:18,593 --> 00:03:23,663
+is just shorthand notation for an output layer which predicts a seven.
+
+51
+00:03:23,663 --> 00:03:25,329
+Just looking at this MLP,
+
+52
+00:03:25,330 --> 00:03:29,284
+it becomes apparent that there may be some redundancy.
+
+53
+00:03:29,283 --> 00:03:36,064
+Does every hidden node need to be connected to every pixel in the original image?
+
+54
+00:03:36,064 --> 00:03:40,468
+Perhaps not, consider breaking the image into four regions.
+
+55
+00:03:40,468 --> 00:03:42,938
+Here, color coded as red,
+
+56
+00:03:42,938 --> 00:03:45,628
+green, yellow, and blue.
+
+57
+00:03:45,628 --> 00:03:48,563
+Then, each hidden node could be connected to
+
+58
+00:03:48,563 --> 00:03:52,185
+only the pixels in one of these four regions.
+
+59
+00:03:52,185 --> 00:03:58,270
+Here, each headed node sees only a quarter of the original image.
+
+60
+00:03:58,270 --> 00:04:01,794
+In the case of the previous fully connected layer,
+
+61
+00:04:01,794 --> 00:04:04,960
+every hidden node was responsible for gaining
+
+62
+00:04:04,960 --> 00:04:09,305
+an understanding of the entire image all at once.
+
+63
+00:04:09,305 --> 00:04:12,400
+With this new regional breakdown and the assignment of
+
+64
+00:04:12,400 --> 00:04:16,278
+small local groups of pixels to different hidden nodes,
+
+65
+00:04:16,278 --> 00:04:21,670
+every hidden node finds patterns in only one of the four regions in the image.
+
+66
+00:04:21,670 --> 00:04:26,528
+Then, each hidden node still reports to the output layer where
+
+67
+00:04:26,528 --> 00:04:28,959
+the output layer combines the findings for
+
+68
+00:04:28,959 --> 00:04:32,689
+the discovered patterns learned separately in each region.
+
+69
+00:04:32,689 --> 00:04:36,694
+This so called locally connected layer
+
+70
+00:04:36,694 --> 00:04:40,949
+uses far fewer parameters than a densely connected layer.
+
+71
+00:04:40,949 --> 00:04:43,910
+It's less prone to overfitting and truly
+
+72
+00:04:43,910 --> 00:04:48,754
+understands how to tease out the patterns contained in image data.
+
+73
+00:04:48,754 --> 00:04:52,665
+We can rearrange each of these vectors as a matrix.
+
+74
+00:04:52,665 --> 00:04:58,845
+Where now the relationships between the nodes in each layer are more obvious.
+
+75
+00:04:58,845 --> 00:05:01,430
+We could expand the number of patterns that we're able to
+
+76
+00:05:01,430 --> 00:05:04,040
+detect while still making use of
+
+77
+00:05:04,040 --> 00:05:07,490
+the 2-D structure to selectively and conservatively
+
+78
+00:05:07,490 --> 00:05:11,329
+add weights to the model by introducing more hidden nodes.
+
+79
+00:05:11,329 --> 00:05:18,050
+Where each is still confined to analyzing a single small region within the image.
+
+80
+00:05:18,050 --> 00:05:20,689
+The red nodes in the hidden layer are still
+
+81
+00:05:20,689 --> 00:05:23,884
+only connected to the red nodes in the input layer.
+
+82
+00:05:23,884 --> 00:05:28,220
+With the same color coding for all other colors.
+
+83
+00:05:28,220 --> 00:05:33,810
+After all we saw in the previous videos on neural networks that by expanding the number
+
+84
+00:05:33,810 --> 00:05:39,694
+of nodes in the hidden layer we can discover more complex patterns in our data.
+
+85
+00:05:39,694 --> 00:05:43,870
+We now have two collections of hidden nodes where each collection
+
+86
+00:05:43,870 --> 00:05:49,384
+contains nodes responsible for examining a different region of the image.
+
+87
+00:05:49,384 --> 00:05:52,360
+It will prove useful to have each of the hidden nodes
+
+88
+00:05:52,360 --> 00:05:55,680
+within a collection share a common group of weights.
+
+89
+00:05:55,680 --> 00:05:58,269
+The idea being that different regions within
+
+90
+00:05:58,269 --> 00:06:01,774
+the image can share the same kind of information.
+
+91
+00:06:01,774 --> 00:06:05,394
+In other words, every pattern that's relevant towards
+
+92
+00:06:05,394 --> 00:06:09,800
+understanding the image could appear anywhere within the image.
+
+93
+00:06:09,800 --> 00:06:14,485
+Perhaps the simplest way to see how this parameter sharing will help
+
+94
+00:06:14,485 --> 00:06:21,329
+our neural network classify objects is through a higher resolution image example.
+
+95
+00:06:21,329 --> 00:06:22,720
+Say you have an image,
+
+96
+00:06:22,720 --> 00:06:26,689
+and you want your network to say it's an image containing a cat.
+
+97
+00:06:26,689 --> 00:06:28,610
+It doesn't matter where the cat is.
+
+98
+00:06:28,610 --> 00:06:31,329
+It's still an image with the cat.
+
+99
+00:06:31,329 --> 00:06:33,430
+If your network has to learn about kittens in
+
+100
+00:06:33,430 --> 00:06:37,348
+the left corner and kittens in the right corner independently.
+
+101
+00:06:37,348 --> 00:06:39,829
+That's a lot of work that it has to do.
+
+102
+00:06:39,829 --> 00:06:44,560
+Instead, we tell the network explicitly that objects and images
+
+103
+00:06:44,560 --> 00:06:49,735
+are largely the same whether they're on the left or the right of the picture.
+
+104
+00:06:49,735 --> 00:06:53,454
+And this is partially accomplished through weight sharing.
+
+105
+00:06:53,454 --> 00:06:58,314
+All of these ideas will motivate so-called convolutional layers,
+
+106
+00:06:58,314 --> 00:07:01,730
+which we present in the next video.
+

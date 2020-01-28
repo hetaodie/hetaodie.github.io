@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:04,753
+We're now ready to introduce you to the second and final type of layer
+
+2
+00:00:04,753 --> 00:00:09,693
+that we'll need to introduce before building our own convolutional neural networks.
+
+3
+00:00:09,694 --> 00:00:15,955
+These so-called pooling layers often take convolutional layers as input.
+
+4
+00:00:15,955 --> 00:00:18,780
+Recall that a convolutional layer is a stack of feature
+
+5
+00:00:18,780 --> 00:00:22,679
+maps- where we have one feature map for each filter.
+
+6
+00:00:22,679 --> 00:00:24,975
+A complicated dataset with
+
+7
+00:00:24,975 --> 00:00:29,684
+many different object categories will require a large number of filters,
+
+8
+00:00:29,684 --> 00:00:33,600
+each responsible for finding a pattern in the image.
+
+9
+00:00:33,600 --> 00:00:35,923
+More filters means a bigger stack,
+
+10
+00:00:35,923 --> 00:00:40,769
+which means that the dimensionality of our convolutional layers can get quite large.
+
+11
+00:00:40,770 --> 00:00:44,429
+Higher dimensionality means we'll need to use more parameters,
+
+12
+00:00:44,429 --> 00:00:47,039
+which can lead to overfitting.
+
+13
+00:00:47,039 --> 00:00:50,935
+Thus, we need a method for reducing this dimensionality.
+
+14
+00:00:50,935 --> 00:00:54,905
+This is the role of pooling layers within a convolutional neural network.
+
+15
+00:00:54,905 --> 00:00:59,454
+We'll focus on two different types of pooling layers.
+
+16
+00:00:59,454 --> 00:01:02,234
+The first type is a max pooling layer.
+
+17
+00:01:02,234 --> 00:01:07,030
+Max pooling layers will take a stack of feature maps as input.
+
+18
+00:01:07,030 --> 00:01:11,415
+Here we've enlarged and visualized all three of the feature maps.
+
+19
+00:01:11,415 --> 00:01:13,314
+As with convolutional layers,
+
+20
+00:01:13,313 --> 00:01:16,404
+we'll define a window size and stride.
+
+21
+00:01:16,405 --> 00:01:20,819
+In this case we'll use a window size of two and a stride of two.
+
+22
+00:01:20,819 --> 00:01:23,064
+To construct the max pooling layer,
+
+23
+00:01:23,063 --> 00:01:26,128
+we'll work with each feature mapped separately.
+
+24
+00:01:26,129 --> 00:01:28,379
+Let's begin with the first feature map.
+
+25
+00:01:28,379 --> 00:01:32,715
+We start with our window in the top left corner of the image.
+
+26
+00:01:32,715 --> 00:01:36,989
+The value of the corresponding node in the max pooling layer is
+
+27
+00:01:36,989 --> 00:01:42,165
+calculated by just taking the maximum of the pixels contained in the window.
+
+28
+00:01:42,165 --> 00:01:45,674
+In this case we had a 1, 9, 5,
+
+29
+00:01:45,674 --> 00:01:47,174
+and 4 in our window,
+
+30
+00:01:47,174 --> 00:01:50,219
+so 9 was the maximum.
+
+31
+00:01:50,218 --> 00:01:54,375
+If we continue this process and do it for all of our feature maps,
+
+32
+00:01:54,375 --> 00:01:58,453
+the output is a stack with the same number of feature maps,
+
+33
+00:01:58,453 --> 00:02:03,039
+but each feature map has been reduced in width and height.
+
+34
+00:02:03,040 --> 00:02:08,895
+In this case the width and height are half of that of the previous convolutional layer.
+
+35
+00:02:08,895 --> 00:02:11,759
+Global average pooling is a bit different.
+
+36
+00:02:11,758 --> 00:02:17,603
+For a layer of this type we specify neither window size nor stride.
+
+37
+00:02:17,604 --> 00:02:22,365
+This type of pooling is a more extreme type of dimensionality reduction.
+
+38
+00:02:22,365 --> 00:02:25,080
+It takes a stack of feature maps and computes
+
+39
+00:02:25,080 --> 00:02:29,310
+the average value of the nodes for each map in the stack.
+
+40
+00:02:29,310 --> 00:02:32,128
+As before, we'll work with each feature map
+
+41
+00:02:32,128 --> 00:02:36,073
+separately beginning with the first feature map.
+
+42
+00:02:36,074 --> 00:02:42,680
+To get the average value of the nodes we first sum up all the values which yields 80.
+
+43
+00:02:42,680 --> 00:02:47,580
+Then we divide by the total number of nodes, which is 16.
+
+44
+00:02:47,580 --> 00:02:51,930
+This yields five, which is the value for the node here.
+
+45
+00:02:51,930 --> 00:02:56,120
+Repeating the process for the remaining two feature maps,
+
+46
+00:02:56,120 --> 00:02:58,563
+we get two values of four.
+
+47
+00:02:58,563 --> 00:03:02,043
+Our final output is a stack of feature maps
+
+48
+00:03:02,044 --> 00:03:06,824
+where each feature map has been reduced to a single value.
+
+49
+00:03:06,824 --> 00:03:08,360
+In this way we see that
+
+50
+00:03:08,360 --> 00:03:14,949
+a global average pooling layer takes a 3D array and turns it into a vector.
+
+51
+00:03:14,949 --> 00:03:18,949
+Here we have a vector with three entries.
+
+52
+00:03:18,949 --> 00:03:22,819
+Let's summarize what we've learned with the food analogy.
+
+53
+00:03:22,818 --> 00:03:25,568
+We'll think of a convolutional layer as a stack of
+
+54
+00:03:25,568 --> 00:03:29,343
+pancakes with one pancake for each feature map.
+
+55
+00:03:29,343 --> 00:03:34,359
+Pooling layers take that stack and give us back a stack with the same number of
+
+56
+00:03:34,360 --> 00:03:39,774
+pancakes except the output pancakes are smaller in width and height.
+
+57
+00:03:39,774 --> 00:03:45,919
+Non-global pooling layers represent a moderate reduction in pancake size.
+
+58
+00:03:45,919 --> 00:03:48,759
+Where each pancake is generally about half as
+
+59
+00:03:48,758 --> 00:03:52,883
+tall and half as wide as its corresponding input pancake.
+
+60
+00:03:52,883 --> 00:03:59,834
+The global pooling layers reduce each input pancake to essentially an output crumb.
+
+61
+00:03:59,835 --> 00:04:04,270
+But, we still have one crumb for each input pancake.
+
+62
+00:04:04,270 --> 00:04:08,064
+In this video, we've focused on two types of pooling layers,
+
+63
+00:04:08,063 --> 00:04:14,000
+but feel free to read about the others in the Keras documentation linked below.
+

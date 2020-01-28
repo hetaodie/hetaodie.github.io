@@ -1,0 +1,204 @@
+1
+00:00:00,000 --> 00:00:04,035
+We've seen that you can control the behavior of a convolutional layer
+
+2
+00:00:04,035 --> 00:00:08,219
+by specifying the number of filters and the size of each filter.
+
+3
+00:00:08,220 --> 00:00:10,830
+For instance, to increase the number of nodes in
+
+4
+00:00:10,830 --> 00:00:14,355
+a convolutional layer you could increase the number of filters.
+
+5
+00:00:14,355 --> 00:00:19,515
+To increase the size of the detected patterns you could increase the size of your filter.
+
+6
+00:00:19,515 --> 00:00:22,649
+But there are even more hyper parameters that you can do.
+
+7
+00:00:22,649 --> 00:00:27,725
+One of these hyper parameters is referred to as the stride of the convolution.
+
+8
+00:00:27,725 --> 00:00:32,158
+The stride is just the amount by which the filter slides over the image.
+
+9
+00:00:32,158 --> 00:00:36,189
+In the example in the previous video the stride was one and we
+
+10
+00:00:36,189 --> 00:00:40,335
+moved the convolution window horizontally and vertically across the image,
+
+11
+00:00:40,335 --> 00:00:41,850
+one pixel at a time.
+
+12
+00:00:41,850 --> 00:00:44,820
+A stride of one makes the convolutional layer
+
+13
+00:00:44,820 --> 00:00:48,829
+roughly the same width and height as the input image.
+
+14
+00:00:48,829 --> 00:00:54,505
+In this animation, we've drawn the purple convolutional layer as stacked feature maps.
+
+15
+00:00:54,505 --> 00:00:57,381
+If we instead make the stride equal to two,
+
+16
+00:00:57,381 --> 00:01:01,868
+the convolutional layer is about half of the width and height of the image.
+
+17
+00:01:01,868 --> 00:01:06,480
+I save roughly because it depends on what you do at the edge of your image.
+
+18
+00:01:06,480 --> 00:01:09,194
+To see how the treatment of the edges will matter,
+
+19
+00:01:09,194 --> 00:01:13,480
+consider our toy example of a 5x5 grayscale image.
+
+20
+00:01:13,480 --> 00:01:17,355
+Say we have a different filter now with the height and width of two,
+
+21
+00:01:17,355 --> 00:01:19,484
+say the stride is also two,
+
+22
+00:01:19,483 --> 00:01:24,030
+then as before we start with the filter and the top left corner of
+
+23
+00:01:24,030 --> 00:01:29,694
+the image and calculate the value for the first node and the convolutional layer.
+
+24
+00:01:29,694 --> 00:01:34,370
+We then move the filter two units to the right and do the same.
+
+25
+00:01:34,370 --> 00:01:37,819
+But when we move the filter two more units to the right,
+
+26
+00:01:37,819 --> 00:01:40,659
+the filter extends outside the image.
+
+27
+00:01:40,659 --> 00:01:42,079
+What do we do now?
+
+28
+00:01:42,078 --> 00:01:46,158
+Do we still want to keep the corresponding convolutional node?
+
+29
+00:01:46,159 --> 00:01:49,760
+For now, let's just populate the places where the filter
+
+30
+00:01:49,760 --> 00:01:54,159
+extends outside with a question mark and proceed as planned.
+
+31
+00:01:54,159 --> 00:01:59,450
+So now, how do we deal with these nodes where the filter extended outside the image?
+
+32
+00:01:59,450 --> 00:02:03,344
+We could as a first option just get rid of them.
+
+33
+00:02:03,343 --> 00:02:06,348
+Note that if we choose this option it's possible that
+
+34
+00:02:06,349 --> 00:02:11,919
+our convolutional layer has no information about some regions of the image.
+
+35
+00:02:11,919 --> 00:02:16,939
+This is the case here for the right and bottom edges of the image.
+
+36
+00:02:16,938 --> 00:02:18,862
+As a second option,
+
+37
+00:02:18,862 --> 00:02:22,008
+we could plan ahead for this case by padding the image with
+
+38
+00:02:22,008 --> 00:02:27,043
+zeros to give the filter more space to move.
+
+39
+00:02:27,044 --> 00:02:29,659
+Now when we populate the convolutional layer we
+
+40
+00:02:29,658 --> 00:02:32,959
+get contributions from every region in the image.
+
+41
+00:02:32,960 --> 00:02:36,439
+We can specify which option we'd like to be the case
+
+42
+00:02:36,438 --> 00:02:41,084
+by setting what's known as the padding for our convolutional layer.
+
+43
+00:02:41,085 --> 00:02:44,770
+If you prefer the first case where you're okay with
+
+44
+00:02:44,770 --> 00:02:47,860
+potentially losing some nodes in the convolutional layer,
+
+45
+00:02:47,860 --> 00:02:49,885
+you'll set your padding to 'valid.'
+
+46
+00:02:49,884 --> 00:02:52,824
+On the other hand, if you prefer the second case,
+
+47
+00:02:52,824 --> 00:02:54,938
+you'll set your padding to 'same.'
+
+48
+00:02:54,938 --> 00:02:57,401
+If you'd like more details about padding,
+
+49
+00:02:57,401 --> 00:03:00,529
+you're encouraged to check out the optional reading below.
+
+50
+00:03:00,530 --> 00:03:04,000
+In the next lesson we show you how to pass
+
+51
+00:03:04,000 --> 00:03:07,770
+these arguments into Keras when tuning your convolutional layers.
+

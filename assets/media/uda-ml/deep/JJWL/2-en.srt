@@ -1,0 +1,256 @@
+1
+00:00:00,000 --> 00:00:03,160
+CNNs achieve state of the art results in
+
+2
+00:00:03,160 --> 00:00:06,969
+a variety of problem areas including Voice User Interfaces,
+
+3
+00:00:06,969 --> 00:00:10,118
+Natural Language Processing, and computer vision.
+
+4
+00:00:10,118 --> 00:00:12,775
+In the field of Voice User Interfaces,
+
+5
+00:00:12,775 --> 00:00:14,710
+Google made use of CNNs in
+
+6
+00:00:14,710 --> 00:00:18,820
+its recently released WaveNet model which we've linked to below.
+
+7
+00:00:18,820 --> 00:00:22,210
+WaveNet takes any piece of text as input and does
+
+8
+00:00:22,210 --> 00:00:28,370
+an excellent job of returning computer-generated audio of a human reading the text.
+
+9
+00:00:28,370 --> 00:00:33,875
+What's really cool is that if you supply the algorithm with enough samples of your voice,
+
+10
+00:00:33,875 --> 00:00:37,243
+it's possible to train it to sound just like you.
+
+11
+00:00:37,243 --> 00:00:40,030
+As for the field of Natural Language Processing,
+
+12
+00:00:40,030 --> 00:00:43,030
+you'll see later that Recurrent Neural Networks are
+
+13
+00:00:43,030 --> 00:00:46,835
+used more frequently than Convolutional Neural Networks.
+
+14
+00:00:46,835 --> 00:00:50,840
+CNNs, however, can be used in this area too.
+
+15
+00:00:50,840 --> 00:00:53,409
+We provide a link below that shows you how
+
+16
+00:00:53,408 --> 00:00:57,079
+CNNs are used to extract information from sentences.
+
+17
+00:00:57,079 --> 00:00:59,914
+This information can be used to classify sentiment.
+
+18
+00:00:59,914 --> 00:01:03,283
+For example, is the writer happy or sad?
+
+19
+00:01:03,283 --> 00:01:04,730
+If they're talking about a movie,
+
+20
+00:01:04,730 --> 00:01:06,719
+did they like or dislike it?
+
+21
+00:01:06,718 --> 00:01:11,078
+In this program, we'll focus on applications and computer vision and
+
+22
+00:01:11,078 --> 00:01:16,044
+specifically work towards applying CNNs to image classification tasks.
+
+23
+00:01:16,045 --> 00:01:18,939
+Given an image, your CNN will assign
+
+24
+00:01:18,938 --> 00:01:24,184
+a corresponding label which you believe summarizes the content of the image.
+
+25
+00:01:24,185 --> 00:01:26,980
+This is a core problem in computer vision and
+
+26
+00:01:26,980 --> 00:01:30,375
+has applications in a wide range of problem areas.
+
+27
+00:01:30,375 --> 00:01:33,280
+For instance, CNNs are used to teach
+
+28
+00:01:33,280 --> 00:01:38,105
+artificially intelligent agents to play video games such as Atari Breakout.
+
+29
+00:01:38,105 --> 00:01:41,530
+The CNN-based models are able to learn to play
+
+30
+00:01:41,530 --> 00:01:45,534
+games without being given any prior knowledge of what a ball is.
+
+31
+00:01:45,534 --> 00:01:49,768
+And without even being told precisely what the controls do,
+
+32
+00:01:49,768 --> 00:01:52,790
+the agent only sees the screen and
+
+33
+00:01:52,790 --> 00:01:57,819
+its score but it does have access to all of the controls that you'd give a human user.
+
+34
+00:01:57,819 --> 00:01:59,664
+With this limited knowledge,
+
+35
+00:01:59,664 --> 00:02:06,129
+CNNs can extract crucial information that allows them to develop a useful strategy.
+
+36
+00:02:06,129 --> 00:02:09,860
+CNNs have even been trained to play Pictionary.
+
+37
+00:02:09,860 --> 00:02:12,669
+There's currently an app called Quickdraw that
+
+38
+00:02:12,669 --> 00:02:15,969
+guesses what you're drawing based on your finger-drawn picture.
+
+39
+00:02:15,968 --> 00:02:20,823
+The applications of CNNs are almost limitless.
+
+40
+00:02:20,824 --> 00:02:22,060
+Go, for example, is
+
+41
+00:02:22,060 --> 00:02:27,729
+an ancient Chinese board game considered one of the most complex games in existence.
+
+42
+00:02:27,729 --> 00:02:30,294
+It said that there are more configurations
+
+43
+00:02:30,294 --> 00:02:34,594
+in the game than there are atoms in the universe.
+
+44
+00:02:34,593 --> 00:02:39,218
+Recently, researchers from Google's DeepMind use CNNs to train
+
+45
+00:02:39,218 --> 00:02:44,688
+an artificially intelligent agent to beat human professional Go players.
+
+46
+00:02:44,688 --> 00:02:49,525
+CNNs also allowed drones to navigate unfamiliar territory.
+
+47
+00:02:49,525 --> 00:02:54,215
+Drones are now used to deliver medical supplies to remote areas.
+
+48
+00:02:54,215 --> 00:02:56,590
+And CNNs give the drone the ability to
+
+49
+00:02:56,590 --> 00:03:00,580
+see or to determine what's happening in streaming video data.
+
+50
+00:03:00,580 --> 00:03:05,514
+But for now we'll consider algorithms that can decode images of text.
+
+51
+00:03:05,514 --> 00:03:09,474
+Maybe you'd like to digitize the historical book or your handwritten notes,
+
+52
+00:03:09,473 --> 00:03:12,519
+then you could start with developing an algorithm that can
+
+53
+00:03:12,520 --> 00:03:16,770
+identify images of letters or numbers or punctuation.
+
+54
+00:03:16,770 --> 00:03:19,449
+Similarly, you could develop an algorithm to
+
+55
+00:03:19,449 --> 00:03:23,185
+aid self-driving cars with reading road signs.
+
+56
+00:03:23,185 --> 00:03:27,430
+Likewise, Google has built a better more accurate street maps of the world
+
+57
+00:03:27,430 --> 00:03:32,968
+by training an algorithm that can read house numbers signs from street view images.
+
+58
+00:03:32,968 --> 00:03:37,978
+CNNs achieved state of the art performance in all of these problem domains.
+
+59
+00:03:37,979 --> 00:03:40,539
+We mentioned that while it's possible to use
+
+60
+00:03:40,538 --> 00:03:44,571
+the neural network from the previous section for image classification,
+
+61
+00:03:44,572 --> 00:03:46,270
+you can almost always,
+
+62
+00:03:46,270 --> 00:03:49,659
+if not always, get better results with the CNN.
+
+63
+00:03:49,658 --> 00:03:51,383
+In the next few videos,
+
+64
+00:03:51,383 --> 00:03:54,000
+we will explore why this is the case.
+

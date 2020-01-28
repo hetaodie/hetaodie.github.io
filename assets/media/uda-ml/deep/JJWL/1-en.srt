@@ -1,0 +1,32 @@
+1
+00:00:00,000 --> 00:00:02,955
+Now that you have a solid foundation in Neural Networks,
+
+2
+00:00:02,955 --> 00:00:06,570
+we are excited to teach you about convolutional neural networks.
+
+3
+00:00:06,570 --> 00:00:10,330
+I'm happy to introduce you to Alexis Cook, an expert in the subject.
+
+4
+00:00:10,330 --> 00:00:12,359
+Hi everyone. I'm Alexis.
+
+5
+00:00:12,359 --> 00:00:13,980
+Over the next several videos,
+
+6
+00:00:13,980 --> 00:00:16,814
+I'll help you learn more about Convolutional Neural Networks,
+
+7
+00:00:16,814 --> 00:00:19,480
+which we'll also refer to as CNNs.
+
+8
+00:00:19,480 --> 00:00:23,199
+For now, let's investigate some of their fascinating applications.
+

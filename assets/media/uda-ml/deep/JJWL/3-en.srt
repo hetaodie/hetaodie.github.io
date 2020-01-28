@@ -1,0 +1,264 @@
+1
+00:00:00,000 --> 00:00:03,720
+Let's begin by investigating how deep learning can
+
+2
+00:00:03,720 --> 00:00:07,448
+be used to recognize handwritten numerical digits.
+
+3
+00:00:07,448 --> 00:00:11,939
+We'll design in image classification algorithm that takes pictures of
+
+4
+00:00:11,939 --> 00:00:17,393
+handwritten numbers and identifies the numbers represented in the images.
+
+5
+00:00:17,393 --> 00:00:20,369
+To do this, we'll use the MNIST Database which
+
+6
+00:00:20,370 --> 00:00:24,989
+contains 70000 grayscale images of handwritten digits.
+
+7
+00:00:24,989 --> 00:00:29,065
+Each depicts one of the numbers zero through nine.
+
+8
+00:00:29,065 --> 00:00:30,839
+This database is perhaps one of
+
+9
+00:00:30,838 --> 00:00:34,689
+the most famous databases in the field of machine learning.
+
+10
+00:00:34,689 --> 00:00:38,204
+We'll work with this data set for the next few videos.
+
+11
+00:00:38,204 --> 00:00:43,725
+You're strongly encouraged to follow along in the Jupyter notebook linked below.
+
+12
+00:00:43,725 --> 00:00:47,085
+It's relatively straightforward to download MNIST in Keras.
+
+13
+00:00:47,085 --> 00:00:50,579
+After importing the necessary python module,
+
+14
+00:00:50,579 --> 00:00:52,618
+it's only one line of code to get
+
+15
+00:00:52,618 --> 00:00:57,054
+our train and test images along with their corresponding labels.
+
+16
+00:00:57,054 --> 00:00:59,685
+When we look at the first six training images,
+
+17
+00:00:59,685 --> 00:01:04,450
+we immediately notice that some digits are more legible than others.
+
+18
+00:01:04,450 --> 00:01:07,890
+If you squint just right the nine could pass for a four,
+
+19
+00:01:07,890 --> 00:01:10,019
+and you can imagine that the data set may
+
+20
+00:01:10,019 --> 00:01:12,900
+contain some threes that could pass for eight's.
+
+21
+00:01:12,900 --> 00:01:16,305
+Our algorithm will have to conquer these difficulties.
+
+22
+00:01:16,305 --> 00:01:19,859
+To accomplish our task we need to train an algorithm that
+
+23
+00:01:19,858 --> 00:01:23,613
+can examine the images and discover patterns.
+
+24
+00:01:23,614 --> 00:01:25,920
+It will need to attain some level of
+
+25
+00:01:25,920 --> 00:01:29,655
+understanding for what makes a hand-drawn one look like a one,
+
+26
+00:01:29,655 --> 00:01:34,515
+and how images of ones differ from images of twos or threes.
+
+27
+00:01:34,515 --> 00:01:37,409
+These discovered patterns can then be used to
+
+28
+00:01:37,409 --> 00:01:41,310
+decipher the digits in images that it hasn't seen before.
+
+29
+00:01:41,310 --> 00:01:47,295
+To begin, let's check what a computer sees when we input one of these images.
+
+30
+00:01:47,295 --> 00:01:50,564
+Any grayscale image is interpreted by the computer
+
+31
+00:01:50,563 --> 00:01:54,313
+as a matrix with one entry for each image pixel.
+
+32
+00:01:54,313 --> 00:02:00,268
+Each image in the MNIST Database is 28 pixels high and 28 pixels wide,
+
+33
+00:02:00,269 --> 00:02:05,709
+and so understood by the computer as a 28 by 28 matrix.
+
+34
+00:02:05,709 --> 00:02:09,675
+White pixels are encoded as 255.
+
+35
+00:02:09,675 --> 00:02:12,615
+Black pixels are encoded as 0.
+
+36
+00:02:12,615 --> 00:02:18,955
+And gray pixels appear in the matrix as an integer somewhere in between.
+
+37
+00:02:18,955 --> 00:02:20,935
+As a quick preprocessing step,
+
+38
+00:02:20,935 --> 00:02:27,539
+we'll rescale each image to instead have values in the range from 0 to 1.
+
+39
+00:02:27,538 --> 00:02:33,793
+To do this, we'll divide every pixel in every image by 255.
+
+40
+00:02:33,794 --> 00:02:38,715
+Before supplying the data to a deep network in Keras,
+
+41
+00:02:38,715 --> 00:02:42,194
+we'll also need to preprocess the labels.
+
+42
+00:02:42,193 --> 00:02:47,628
+Currently, each image has a label that's integer valued.
+
+43
+00:02:47,628 --> 00:02:51,554
+We'll need to convert this to a one-hot encoding.
+
+44
+00:02:51,555 --> 00:02:56,634
+Each label will be transformed to a vector with mostly zeros.
+
+45
+00:02:56,633 --> 00:02:59,043
+If the label was originally a 7,
+
+46
+00:02:59,044 --> 00:03:03,020
+we'll put a 1 in the seventh entry of the vector.
+
+47
+00:03:03,020 --> 00:03:05,719
+Our second training image depicts a 3,
+
+48
+00:03:05,718 --> 00:03:11,878
+so I'll put a 1 in the third entry of its label vector, and so on.
+
+49
+00:03:11,878 --> 00:03:15,929
+We do this in cell 5 of the Jupyter notebook.
+
+50
+00:03:15,930 --> 00:03:19,650
+Now that our data appears to be sufficiently preprocessed,
+
+51
+00:03:19,650 --> 00:03:23,969
+do you think we can use the neural networks from the previous lesson?
+
+52
+00:03:23,969 --> 00:03:28,080
+Could we just input this image data to an MLP and operate as we
+
+53
+00:03:28,080 --> 00:03:32,694
+did before when we were doing classification? Not exactly.
+
+54
+00:03:32,693 --> 00:03:37,024
+Recall that MLPs only take vectors as input.
+
+55
+00:03:37,025 --> 00:03:40,155
+So in order to use an MLP with images,
+
+56
+00:03:40,155 --> 00:03:42,943
+which you've seen are encoded as matrices,
+
+57
+00:03:42,943 --> 00:03:46,948
+we have to first convert all of our matrices to vectors.
+
+58
+00:03:46,949 --> 00:03:52,430
+We'll illustrate this conversion process on the toy example depicted here.
+
+59
+00:03:52,430 --> 00:03:58,319
+In the case of a 4 by 4 image we can construct a vector with 16 entries.
+
+60
+00:03:58,318 --> 00:04:04,288
+Where the first four entries of our vector correspond to the first row of our old matrix.
+
+61
+00:04:04,288 --> 00:04:09,614
+The second four entries correspond to the second row and so on.
+
+62
+00:04:09,615 --> 00:04:13,155
+In the case of our 28 by 28 matrices,
+
+63
+00:04:13,155 --> 00:04:18,660
+will flatten them to a vector with 784 entries.
+
+64
+00:04:18,660 --> 00:04:21,254
+After encoding our images as vectors,
+
+65
+00:04:21,254 --> 00:04:25,305
+they can be fed into the input layer of an MLP.
+
+66
+00:04:25,305 --> 00:04:28,000
+We'll do this in the next video.
+

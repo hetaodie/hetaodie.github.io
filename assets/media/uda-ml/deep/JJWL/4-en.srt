@@ -1,0 +1,180 @@
+1
+00:00:00,000 --> 00:00:06,299
+In this video we'll create a neural network for discovering the patterns in our data.
+
+2
+00:00:06,299 --> 00:00:09,448
+After training, we'll be able to use the network to
+
+3
+00:00:09,448 --> 00:00:13,379
+classify the digits contained in new images.
+
+4
+00:00:13,380 --> 00:00:17,670
+Since our data points are vectors with 784 entries,
+
+5
+00:00:17,670 --> 00:00:22,015
+the input layer will have 784 nodes.
+
+6
+00:00:22,015 --> 00:00:27,660
+Let's start with two hidden layers each containing 512 nodes let's say.
+
+7
+00:00:27,660 --> 00:00:30,524
+Our output layer has to distinguish between
+
+8
+00:00:30,524 --> 00:00:34,810
+10 different digits and so I'll give it 10 nodes.
+
+9
+00:00:34,810 --> 00:00:36,914
+In this lesson we'll always add
+
+10
+00:00:36,914 --> 00:00:41,625
+a softmax activation function to the final fully connected layer.
+
+11
+00:00:41,625 --> 00:00:44,490
+It ensures that the network outputs an estimate for
+
+12
+00:00:44,490 --> 00:00:49,109
+the probability that each potential digit is depicted in the image.
+
+13
+00:00:49,109 --> 00:00:53,320
+We'll now specify this drafted model in keras.
+
+14
+00:00:53,320 --> 00:00:57,493
+If you recall how we specified neural networks in the last lesson,
+
+15
+00:00:57,493 --> 00:01:00,375
+this code shouldn't look too different.
+
+16
+00:01:00,375 --> 00:01:02,579
+I've only added one new thing,
+
+17
+00:01:02,579 --> 00:01:05,019
+it's the flatten layer.
+
+18
+00:01:05,019 --> 00:01:09,000
+This layer appears before you specify the MLP.
+
+19
+00:01:09,000 --> 00:01:13,390
+It takes the image matrix's input and converts it to a vector.
+
+20
+00:01:13,390 --> 00:01:19,855
+In the model summary we can see that it outputs a vector with 784 entries.
+
+21
+00:01:19,855 --> 00:01:23,459
+This model is great as a first draft but let's
+
+22
+00:01:23,459 --> 00:01:28,215
+make it a little better using the tools that you learned about in the previous lesson.
+
+23
+00:01:28,215 --> 00:01:33,930
+We'll begin by adding a ReLU activation function to all of our hidden layers.
+
+24
+00:01:33,930 --> 00:01:35,939
+Remember that this function leaves
+
+25
+00:01:35,938 --> 00:01:40,363
+positive values alone and sends all negative values to zero.
+
+26
+00:01:40,364 --> 00:01:45,329
+We saw that the ReLU function helps with what's known as the vanishing gradients problem.
+
+27
+00:01:45,328 --> 00:01:47,878
+By adding the ReLU function,
+
+28
+00:01:47,879 --> 00:01:52,739
+we'll see that our model is able to attain much better accuracy.
+
+29
+00:01:52,739 --> 00:01:59,245
+This activation function will also be extensively used in convolutional neural networks.
+
+30
+00:01:59,245 --> 00:02:00,915
+If you train this new model,
+
+31
+00:02:00,915 --> 00:02:04,980
+you'll notice some evidence of over-fitting where the model does
+
+32
+00:02:04,980 --> 00:02:07,829
+a really good job at predicting the digits and
+
+33
+00:02:07,828 --> 00:02:12,234
+the training data set but it doesn't do so well on the test images.
+
+34
+00:02:12,235 --> 00:02:15,770
+You'll have a chance to check this out for yourselves soon.
+
+35
+00:02:15,770 --> 00:02:19,004
+In the meantime in order to minimize over-fitting,
+
+36
+00:02:19,003 --> 00:02:23,818
+we've learned in the last lesson that we can add dropout layers.
+
+37
+00:02:23,818 --> 00:02:26,413
+We'll add a couple to this model.
+
+38
+00:02:26,413 --> 00:02:33,103
+Remember that the dropout layers must be supplied a parameter between zero and one.
+
+39
+00:02:33,104 --> 00:02:36,000
+This value corresponds to the probability
+
+40
+00:02:36,000 --> 00:02:40,003
+that any node in the network is removed during training.
+
+41
+00:02:40,003 --> 00:02:41,860
+When deciding its value,
+
+42
+00:02:41,860 --> 00:02:46,258
+it's recommended to start small and see how the network responds.
+
+43
+00:02:46,258 --> 00:02:50,068
+Then you can increase it if you see that it's necessary.
+
+44
+00:02:50,068 --> 00:02:54,133
+We've chosen to set this parameter to 0.2.
+
+45
+00:02:54,133 --> 00:02:58,000
+In the next video we'll continue to work with the model.
+

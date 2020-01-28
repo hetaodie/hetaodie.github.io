@@ -1,0 +1,264 @@
+1
+00:00:00,000 --> 00:00:02,160
+Now that we've compiled the model,
+
+2
+00:00:02,160 --> 00:00:03,995
+we're ready for training.
+
+3
+00:00:03,995 --> 00:00:07,724
+The training steps should look somewhat familiar from the last lesson.
+
+4
+00:00:07,724 --> 00:00:10,130
+To understand the modifications,
+
+5
+00:00:10,130 --> 00:00:14,175
+we'll first need to introduce the idea of model validation.
+
+6
+00:00:14,175 --> 00:00:16,379
+So far, we've checked how well our models are
+
+7
+00:00:16,379 --> 00:00:20,789
+performing based on how the loss in accuracy changed with epoch.
+
+8
+00:00:20,789 --> 00:00:22,605
+If you've designed your own models,
+
+9
+00:00:22,605 --> 00:00:25,949
+you've likely discovered that it's not always clear how many layers
+
+10
+00:00:25,949 --> 00:00:29,839
+the network should have or how many nodes to place in each layer.
+
+11
+00:00:29,838 --> 00:00:32,429
+How many epochs should you use?
+
+12
+00:00:32,429 --> 00:00:37,780
+There are a lot of decisions that need to be made when designing an architecture.
+
+13
+00:00:37,780 --> 00:00:40,829
+One method that's used in practice involves breaking
+
+14
+00:00:40,829 --> 00:00:43,963
+the data set into three sets called train,
+
+15
+00:00:43,963 --> 00:00:46,604
+validation and test sets.
+
+16
+00:00:46,604 --> 00:00:49,608
+Each is treated separately by the model.
+
+17
+00:00:49,609 --> 00:00:54,670
+The model looks only at the training data when deciding how to modify its weights.
+
+18
+00:00:54,670 --> 00:00:57,475
+At every epoch, the model checks how its
+
+19
+00:00:57,475 --> 00:01:01,085
+doing by checking its accuracy on the validation set.
+
+20
+00:01:01,085 --> 00:01:04,379
+But its important to note that it does not use
+
+21
+00:01:04,379 --> 00:01:09,194
+any part of the validation set for the back propagation step.
+
+22
+00:01:09,194 --> 00:01:13,260
+We use the training set to find all the patterns we can and
+
+23
+00:01:13,260 --> 00:01:17,834
+the validation set tells us if our chosen model is performing well.
+
+24
+00:01:17,834 --> 00:01:22,445
+Since the model doesn't use the validation set for deciding the weights,
+
+25
+00:01:22,445 --> 00:01:26,483
+it can also tell us if we're over-fitting to the training set.
+
+26
+00:01:26,483 --> 00:01:31,089
+For instance, say use of the model to train for 200 epochs,
+
+27
+00:01:31,090 --> 00:01:33,000
+but around epoch 100,
+
+28
+00:01:33,000 --> 00:01:35,790
+you notice some evidence of over-fitting,
+
+29
+00:01:35,790 --> 00:01:42,180
+where the training loss starts to decrease but the validation loss starts to increase.
+
+30
+00:01:42,180 --> 00:01:45,719
+Then you'll want to keep the weights around epoch 100,
+
+31
+00:01:45,718 --> 00:01:49,979
+and ignore or throw away the weights from the later epochs.
+
+32
+00:01:49,980 --> 00:01:53,219
+This is along the lines of what we do in the notebook.
+
+33
+00:01:53,218 --> 00:01:56,429
+But this kind of process can also prove useful if
+
+34
+00:01:56,430 --> 00:02:00,180
+we have multiple potential architectures to choose from.
+
+35
+00:02:00,180 --> 00:02:04,409
+Say for instance, you're deciding the number of layers to put in the model.
+
+36
+00:02:04,409 --> 00:02:06,614
+Then you'll want to save the weight from
+
+37
+00:02:06,614 --> 00:02:09,990
+each potential architecture for later comparison.
+
+38
+00:02:09,990 --> 00:02:15,110
+And you'll always pick the model that gets the lowest validation loss.
+
+39
+00:02:15,110 --> 00:02:19,905
+You might be wondering, why must we create a third dataset?
+
+40
+00:02:19,905 --> 00:02:23,340
+Couldn't we just use the test set for this purpose?
+
+41
+00:02:23,340 --> 00:02:26,218
+Well, the idea is that when we go to test the model it
+
+42
+00:02:26,218 --> 00:02:29,968
+looks at data that it has truly never seen before.
+
+43
+00:02:29,968 --> 00:02:34,948
+Even though the model doesn't use the validation set to update its weights,
+
+44
+00:02:34,949 --> 00:02:40,205
+our model selection process is biased in favor of the validation set.
+
+45
+00:02:40,205 --> 00:02:43,860
+Thus, we need three separate sets of data.
+
+46
+00:02:43,860 --> 00:02:45,719
+Returning to the code,
+
+47
+00:02:45,718 --> 00:02:51,109
+notice that the fit method takes validation split as an argument.
+
+48
+00:02:51,110 --> 00:02:53,944
+In this case, we've supplied 0.2.
+
+49
+00:02:53,943 --> 00:02:57,869
+So 20% of the data originally assigned as
+
+50
+00:02:57,870 --> 00:03:04,349
+training data will be removed from the training set and instead used as a validation set.
+
+51
+00:03:04,348 --> 00:03:09,869
+The model checkpoint class permits us to save the model weights after each epoch.
+
+52
+00:03:09,870 --> 00:03:15,360
+The file path parameters specifies the location where we'd like to save the weights.
+
+53
+00:03:15,360 --> 00:03:19,110
+By setting the 'save best only' parameter to 'true',
+
+54
+00:03:19,110 --> 00:03:21,479
+you can tell the model to save
+
+55
+00:03:21,479 --> 00:03:26,094
+only the weights to get the best accuracy on the validation set.
+
+56
+00:03:26,093 --> 00:03:28,090
+When you set verbose to one,
+
+57
+00:03:28,090 --> 00:03:30,824
+the text output during the training process
+
+58
+00:03:30,824 --> 00:03:34,479
+will let you know when the weights file is updated.
+
+59
+00:03:34,479 --> 00:03:36,419
+After creating this check pointer,
+
+60
+00:03:36,419 --> 00:03:42,025
+you pass it as a parameter when you fit the model. But now it's your turn.
+
+61
+00:03:42,025 --> 00:03:46,974
+Run the model in the Jupyter notebook and take a look at the training output.
+
+62
+00:03:46,973 --> 00:03:49,201
+You should see that on most epochs,
+
+63
+00:03:49,201 --> 00:03:51,810
+the validation loss decreases.
+
+64
+00:03:51,810 --> 00:03:53,430
+This is a sign that we've created
+
+65
+00:03:53,430 --> 00:03:58,300
+a good model and we'll get good performance on the test dataset.
+
+66
+00:03:58,300 --> 00:04:01,000
+We'll check this out in the next video.
+
