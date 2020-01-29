@@ -1,0 +1,96 @@
+1
+00:00:00,000 --> 00:00:01,770
+At this point in the lesson,
+
+2
+00:00:01,770 --> 00:00:04,529
+you've used policy evaluation to determine how
+
+3
+00:00:04,530 --> 00:00:08,250
+good a policy is by calculating its value function.
+
+4
+00:00:08,250 --> 00:00:12,539
+You've also used policy improvement which uses the value function for
+
+5
+00:00:12,539 --> 00:00:18,059
+a policy to construct a new policy that's better than or equal to the current one.
+
+6
+00:00:18,059 --> 00:00:22,589
+I mentioned that it will make sense to combine these two algorithms to
+
+7
+00:00:22,589 --> 00:00:28,019
+produce an algorithm that successively proposes better and better policies.
+
+8
+00:00:28,019 --> 00:00:31,125
+The name for the algorithm that combines these two steps
+
+9
+00:00:31,125 --> 00:00:35,130
+is policy iteration and it's our current focus.
+
+10
+00:00:35,130 --> 00:00:39,790
+The algorithm begins with an initial guess for the optimal policy.
+
+11
+00:00:39,789 --> 00:00:41,429
+It makes sense to begin with
+
+12
+00:00:41,429 --> 00:00:44,310
+the equal probable random policy where for
+
+13
+00:00:44,310 --> 00:00:48,475
+each state each action is equally likely to be chosen.
+
+14
+00:00:48,475 --> 00:00:54,160
+Then we'll use policy evaluation to obtain the corresponding value function.
+
+15
+00:00:54,159 --> 00:01:00,027
+Next, we'll use policy improvement to obtain a better or equivalent policy.
+
+16
+00:01:00,027 --> 00:01:02,820
+Then we just repeat this loop over and over with
+
+17
+00:01:02,820 --> 00:01:05,805
+policy evaluation and then policy improvement
+
+18
+00:01:05,805 --> 00:01:07,830
+until finally we encounter
+
+19
+00:01:07,829 --> 00:01:12,829
+a policy improvement step that doesn't result in any change to the policy.
+
+20
+00:01:12,829 --> 00:01:16,125
+And, what's great is that in the case of a finite MDP,
+
+21
+00:01:16,125 --> 00:01:19,230
+we have guaranteed convergence to the optimal policy.
+
+22
+00:01:19,230 --> 00:01:21,719
+In the next concept, you'll have the chance to
+
+23
+00:01:21,719 --> 00:01:24,000
+combine all the code you've already written to
+
+24
+00:01:24,000 --> 00:01:29,000
+finally help your agent use policy iteration to obtain an optimal policy.
+
