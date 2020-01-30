@@ -1,0 +1,128 @@
+1
+00:00:00,000 --> 00:00:05,669
+Let's try to develop a complete architecture to train the actor and critic components.
+
+2
+00:00:05,669 --> 00:00:08,314
+Think about what the process looks like.
+
+3
+00:00:08,314 --> 00:00:12,910
+Initially, the actor follows some random policy and behaves pretty badly.
+
+4
+00:00:12,910 --> 00:00:15,509
+The critic observes this behavior and provides
+
+5
+00:00:15,509 --> 00:00:19,285
+feedback letting the actor know how bad it was.
+
+6
+00:00:19,285 --> 00:00:23,679
+Learning from this, the actor updates its policy pi and performs again,
+
+7
+00:00:23,679 --> 00:00:27,175
+and the critic continues to provide more feedback.
+
+8
+00:00:27,175 --> 00:00:29,695
+The critic also updates its own notes or
+
+9
+00:00:29,695 --> 00:00:33,869
+the value function so that it can provide better feedback.
+
+10
+00:00:33,869 --> 00:00:36,209
+This process can go on till the actor reaches
+
+11
+00:00:36,210 --> 00:00:38,774
+some predetermined threshold of performance,
+
+12
+00:00:38,774 --> 00:00:41,469
+or when not much improvement is seen.
+
+13
+00:00:41,469 --> 00:00:44,670
+Note that all along the critic has also been learning to give
+
+14
+00:00:44,670 --> 00:00:47,039
+better and better feedback by observing
+
+15
+00:00:47,039 --> 00:00:50,670
+the states and rewards obtained from the environment.
+
+16
+00:00:50,670 --> 00:00:54,789
+Now that we have a complete picture of how the different components interact,
+
+17
+00:00:54,789 --> 00:00:58,424
+let's reintroduce the math behind each component.
+
+18
+00:00:58,424 --> 00:01:02,729
+The policy approximator pi is parameterized by theta.
+
+19
+00:01:02,729 --> 00:01:08,664
+The value function approximator q hat is parameterized by w. At each time-step t,
+
+20
+00:01:08,665 --> 00:01:13,658
+we sample the current state of the environment as t. Using this as the input,
+
+21
+00:01:13,658 --> 00:01:16,905
+the policy produces an action At.
+
+22
+00:01:16,905 --> 00:01:20,129
+The actor takes this action in the environment producing
+
+23
+00:01:20,129 --> 00:01:25,739
+the next state St+1 as well as a reward Rt+1.
+
+24
+00:01:25,739 --> 00:01:28,716
+Now the critic computes the value of taking action A
+
+25
+00:01:28,716 --> 00:01:33,424
+in state St using the value function q hat,
+
+26
+00:01:33,424 --> 00:01:37,369
+and the actor updates its policy parameters theta using
+
+27
+00:01:37,370 --> 00:01:45,155
+this q value using these updated parameters the actor produces the next action At+1.
+
+28
+00:01:45,155 --> 00:01:49,400
+Finally, the critic updates its own value function.
+
+29
+00:01:49,400 --> 00:01:52,528
+This process is repeated at each time-step,
+
+30
+00:01:52,528 --> 00:01:54,620
+not just at the end of episodes.
+
+31
+00:01:54,620 --> 00:01:57,050
+So both the actor and the critic can make
+
+32
+00:01:57,049 --> 00:02:01,000
+more efficient use of the interactions with the environment.
+

@@ -1,0 +1,104 @@
+1
+00:00:00,000 --> 00:00:03,029
+Actor-critic approaches are a variant of
+
+2
+00:00:03,029 --> 00:00:07,022
+policy-based methods that reuse the idea of value functions.
+
+3
+00:00:07,022 --> 00:00:11,789
+Remember, actor encodes the policy and critic encodes the value function,
+
+4
+00:00:11,789 --> 00:00:14,504
+tells the actor how good its policy is.
+
+5
+00:00:14,505 --> 00:00:18,570
+And since we can choose to represent the actor and critic separately,
+
+6
+00:00:18,570 --> 00:00:23,385
+we suddenly have a lot more flexibility in designing our reinforcement learning agents.
+
+7
+00:00:23,385 --> 00:00:27,630
+This has opened up a broad area of research where people are applying
+
+8
+00:00:27,629 --> 00:00:32,119
+reinforcement learning to problems that we could not even dream of solving before.
+
+9
+00:00:32,119 --> 00:00:35,844
+Deep mind surprise the world by beating humans at go,
+
+10
+00:00:35,844 --> 00:00:38,740
+but it also helped reduce Google's data center
+
+11
+00:00:38,740 --> 00:00:43,780
+cooling bill by 40 percent using reinforcement learning.
+
+12
+00:00:43,780 --> 00:00:46,855
+Open AI is probably more famous for Gym,
+
+13
+00:00:46,854 --> 00:00:51,099
+a platform that researchers can use to publish learning algorithms and
+
+14
+00:00:51,100 --> 00:00:56,328
+compare how they perform on different video games and simulated physics problems.
+
+15
+00:00:56,328 --> 00:01:01,210
+But they are also applying reinforcement learning to teach real physical robots
+
+16
+00:01:01,210 --> 00:01:06,655
+to learn complex tasks like picking and placing blocks and imitating humans.
+
+17
+00:01:06,655 --> 00:01:10,349
+Numerous other groups are actively pushing the boundaries
+
+18
+00:01:10,349 --> 00:01:14,233
+of what is possible to achieve using reinforcement learning,
+
+19
+00:01:14,233 --> 00:01:16,919
+and you can be a part of this community too.
+
+20
+00:01:16,920 --> 00:01:20,250
+But remember, to solve the next big challenge,
+
+21
+00:01:20,250 --> 00:01:24,750
+you need a healthy dose of creativity more than anything else.
+
+22
+00:01:24,750 --> 00:01:28,155
+Keep an eye on the latest advancements in the field.
+
+23
+00:01:28,155 --> 00:01:29,966
+Dive into research papers,
+
+24
+00:01:29,966 --> 00:01:31,530
+articles, and blog posts.
+
+25
+00:01:31,530 --> 00:01:35,325
+Try to implement new algorithms and experiment with them.
+
+26
+00:01:35,325 --> 00:01:41,290
+I'm really eager to see what problems you solve with reinforcement learning.
+

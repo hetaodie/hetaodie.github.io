@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:04,740
+So, how does the advantage function affect our actor-critic algorithm?
+
+2
+00:00:04,740 --> 00:00:07,365
+Let's start with our policy update rule.
+
+3
+00:00:07,365 --> 00:00:12,164
+We want to replace this state action value with the advantage value.
+
+4
+00:00:12,164 --> 00:00:16,530
+So, a natural approach is to define an additional state value function
+
+5
+00:00:16,530 --> 00:00:21,725
+V-hat parametrize by W-prime and subtract it from the Q value.
+
+6
+00:00:21,725 --> 00:00:26,035
+This means, the critic now has to keep track of two value functions,
+
+7
+00:00:26,035 --> 00:00:29,379
+Q-hat and V-hat, and learn them over time.
+
+8
+00:00:29,379 --> 00:00:31,539
+There is an easier way to do this.
+
+9
+00:00:31,539 --> 00:00:37,524
+It turns out that the TD error delta is a good estimator of the advantage function.
+
+10
+00:00:37,524 --> 00:00:40,929
+Using this method, the critic now has to compute and
+
+11
+00:00:40,929 --> 00:00:45,600
+learn a single value function V-hat. Neat, isn't it?
+

@@ -1,0 +1,184 @@
+1
+00:00:00,000 --> 00:00:05,799
+Let's take a closer look at our update mechanisms to see if we can improve things.
+
+2
+00:00:05,799 --> 00:00:09,000
+Remember where this policy update rule comes from?
+
+3
+00:00:09,000 --> 00:00:11,629
+It is based on the policy gradients method where we
+
+4
+00:00:11,630 --> 00:00:14,625
+change the policy parameters by a small fraction,
+
+5
+00:00:14,625 --> 00:00:19,015
+alpha, of the gradient of the objective function, J theta.
+
+6
+00:00:19,015 --> 00:00:23,010
+Now, this gradient can be expressed as the expected value of
+
+7
+00:00:23,010 --> 00:00:28,676
+the derivative of the log probabilities produced by the policy times some score function,
+
+8
+00:00:28,676 --> 00:00:30,449
+R. In this case,
+
+9
+00:00:30,449 --> 00:00:35,729
+we are using the action value function Q-hat as the score function.
+
+10
+00:00:35,729 --> 00:00:39,769
+What makes this approach work is that we can compute this expectation
+
+11
+00:00:39,770 --> 00:00:45,200
+iteratively by taking small steps defined by our learning rate, alpha.
+
+12
+00:00:45,200 --> 00:00:48,970
+It is important to ensure that we are always taking small steps.
+
+13
+00:00:48,969 --> 00:00:52,304
+We still want to move in the direction pointed to by the gradient,
+
+14
+00:00:52,304 --> 00:00:56,524
+but we want to avoid any giant leaps because we are ultimately sampling
+
+15
+00:00:56,524 --> 00:01:01,350
+a stochastic process and individual samples may vary a lot.
+
+16
+00:01:01,350 --> 00:01:03,984
+Wherever there is an expected value,
+
+17
+00:01:03,984 --> 00:01:06,084
+there is an associated variance.
+
+18
+00:01:06,084 --> 00:01:09,024
+And if we're trying to estimate this expected value,
+
+19
+00:01:09,025 --> 00:01:12,430
+it would be nice to have low variance among the samples,
+
+20
+00:01:12,430 --> 00:01:15,885
+that would make the process more stable.
+
+21
+00:01:15,885 --> 00:01:20,770
+The magnitude of this variance is mainly affected by the score function here, Q-hat.
+
+22
+00:01:20,769 --> 00:01:22,450
+At each time step,
+
+23
+00:01:22,450 --> 00:01:28,275
+the value of Q-hat can vary quite a bit since it is based on individual rewards.
+
+24
+00:01:28,275 --> 00:01:31,330
+This can result in policy update steps of different sizes,
+
+25
+00:01:31,329 --> 00:01:32,774
+a small step here,
+
+26
+00:01:32,775 --> 00:01:34,295
+a giant leap there.
+
+27
+00:01:34,295 --> 00:01:38,790
+Okay, so how can we reduce this variance?
+
+28
+00:01:38,790 --> 00:01:43,310
+Let's think of Q values as being sampled from some distribution.
+
+29
+00:01:43,310 --> 00:01:48,200
+Now, let's say this fits a normal or Gaussian distribution.
+
+30
+00:01:48,200 --> 00:01:51,394
+Can you tell what the mean of this distribution is?
+
+31
+00:01:51,394 --> 00:01:55,414
+Well, the mean is the expected value of Q-hat.
+
+32
+00:01:55,415 --> 00:01:57,332
+For a particular state, S,
+
+33
+00:01:57,331 --> 00:02:00,929
+this distribution is over the space of actions.
+
+34
+00:02:00,930 --> 00:02:05,615
+So, the expected value is essentially equal to the value of the state.
+
+35
+00:02:05,614 --> 00:02:11,210
+If we subtract this mean from each Q value and use that as our new score function,
+
+36
+00:02:11,210 --> 00:02:13,730
+that should bring the mean score value down to
+
+37
+00:02:13,729 --> 00:02:18,204
+zero and help reduce the variance of update steps.
+
+38
+00:02:18,205 --> 00:02:22,070
+This new score function is known as the Advantage Function.
+
+39
+00:02:22,069 --> 00:02:24,294
+Intuitively, it makes a lot of sense.
+
+40
+00:02:24,294 --> 00:02:27,139
+A Q value tells us how much reward we expect to
+
+41
+00:02:27,139 --> 00:02:30,619
+get by taking action A and state S. Whereas,
+
+42
+00:02:30,620 --> 00:02:33,590
+the advantage value tells us how much more reward
+
+43
+00:02:33,590 --> 00:02:37,370
+we expect beyond the expected value of the state.
+
+44
+00:02:37,370 --> 00:02:43,384
+That is, what are we gaining by taking this action instead of any action at random?
+
+45
+00:02:43,384 --> 00:02:47,554
+So, not only does the Advantage Function stabilize learning,
+
+46
+00:02:47,555 --> 00:02:51,230
+it also provides a better way to differentiate between actions.
+

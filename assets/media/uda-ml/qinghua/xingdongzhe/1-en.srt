@@ -1,0 +1,68 @@
+1
+00:00:02,240 --> 00:00:08,504
+Reinforcement learning problems can be solved using two broad categories of methods.
+
+2
+00:00:08,505 --> 00:00:12,540
+In Value-Based Methods like Monte-Carlo learning or Q-learning,
+
+3
+00:00:12,539 --> 00:00:16,799
+we try to represent the value of each state or state action pair.
+
+4
+00:00:16,800 --> 00:00:21,359
+Then, given any state we can pick the action with the best value.
+
+5
+00:00:21,359 --> 00:00:24,809
+This works well when you have a finite number of actions.
+
+6
+00:00:24,809 --> 00:00:27,195
+Policy-Based Methods on the other hand,
+
+7
+00:00:27,195 --> 00:00:31,170
+encode the mapping from states to actions without worrying about
+
+8
+00:00:31,170 --> 00:00:35,910
+value representations and then try to directly optimize the policy,
+
+9
+00:00:35,909 --> 00:00:40,169
+this is especially useful when you're action space is continuous,
+
+10
+00:00:40,170 --> 00:00:42,855
+or when you need stochastic policies.
+
+11
+00:00:42,854 --> 00:00:46,019
+The main challenge with policy-based methods is
+
+12
+00:00:46,020 --> 00:00:49,545
+that it is hard to compute how good a policy is.
+
+13
+00:00:49,545 --> 00:00:54,405
+This is where we bring in the idea of value functions back into the picture.
+
+14
+00:00:54,405 --> 00:00:59,054
+Instead of calculating the policy objective from rewards or returns,
+
+15
+00:00:59,054 --> 00:01:00,509
+what if we kept track of
+
+16
+00:01:00,509 --> 00:01:05,295
+state or state action values and use those to compute the objective?
+
+17
+00:01:05,295 --> 00:01:09,700
+That's exactly what Actor-Critic Methods are all about.
+
