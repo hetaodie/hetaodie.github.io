@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:04,960
+Reinforcement learning is ultimately about learning an optimal policy.
+
+2
+00:00:04,960 --> 00:00:07,620
+So far, we've been looking at value-based methods,
+
+3
+00:00:07,620 --> 00:00:10,379
+where we try to find the optimal value function and
+
+4
+00:00:10,380 --> 00:00:13,745
+our policy is implicitly defined by that value function,
+
+5
+00:00:13,744 --> 00:00:17,114
+for example, using Epsilon-Freedy action selection.
+
+6
+00:00:17,114 --> 00:00:19,439
+But can we directly find
+
+7
+00:00:19,440 --> 00:00:23,970
+that optimal policy without worrying about a value function at all?
+
+8
+00:00:23,969 --> 00:00:26,519
+That's what we'll try to do in this lesson.
+
+9
+00:00:26,519 --> 00:00:29,500
+Later, we'll look at a combination of these two approaches,
+
+10
+00:00:29,500 --> 00:00:31,350
+known as Actor-Critic method.
+

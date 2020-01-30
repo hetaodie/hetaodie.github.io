@@ -1,0 +1,248 @@
+1
+00:00:00,000 --> 00:00:02,850
+With an objective function in hand,
+
+2
+00:00:02,850 --> 00:00:07,211
+we can now think about finding a policy that maximizes it.
+
+3
+00:00:07,211 --> 00:00:10,230
+An objective function can be quite complex.
+
+4
+00:00:10,230 --> 00:00:14,070
+Think of it as a surface with many peaks and valleys.
+
+5
+00:00:14,070 --> 00:00:16,875
+Here it's a function of two parameters with the height
+
+6
+00:00:16,875 --> 00:00:20,175
+indicating the policies objective value j theta.
+
+7
+00:00:20,175 --> 00:00:24,317
+But the same idea extends to more than two parameters.
+
+8
+00:00:24,317 --> 00:00:27,594
+Now, we don't know anything about this surface.
+
+9
+00:00:27,594 --> 00:00:32,128
+So how do we find the spot where the objective value is at its maximum?
+
+10
+00:00:32,128 --> 00:00:37,852
+Our first approach is to search for the best policy by repeatedly nudging it around.
+
+11
+00:00:37,853 --> 00:00:41,585
+Let's start with some arbitrary policy pi,
+
+12
+00:00:41,585 --> 00:00:43,570
+defined by its parameters theta,
+
+13
+00:00:43,570 --> 00:00:47,380
+and evaluate it by applying that policy in the environment.
+
+14
+00:00:47,380 --> 00:00:50,020
+This gives us an objective value,
+
+15
+00:00:50,020 --> 00:00:55,573
+so you can imagine the policy lying somewhere on the objective function surface.
+
+16
+00:00:55,573 --> 00:00:58,450
+Now we can change the policy parameters
+
+17
+00:00:58,450 --> 00:01:01,720
+slightly so that the objective value also changes.
+
+18
+00:01:01,719 --> 00:01:06,204
+This can be achieved by adding some small Gaussian noise to the parameters.
+
+19
+00:01:06,204 --> 00:01:10,539
+If the new policies value is better than our best value so far,
+
+20
+00:01:10,540 --> 00:01:15,265
+we can set this policy to be our new best policy and iterate.
+
+21
+00:01:15,265 --> 00:01:18,474
+This general approach is known as hill climbing.
+
+22
+00:01:18,474 --> 00:01:23,524
+You literally walk the objective function surface till you reach the top of a hill.
+
+23
+00:01:23,525 --> 00:01:25,185
+Simple, isn't it?
+
+24
+00:01:25,185 --> 00:01:28,950
+The best part is that you can use any policy function.
+
+25
+00:01:28,950 --> 00:01:32,790
+It does not need to be differentiable or even continuous,
+
+26
+00:01:32,790 --> 00:01:35,385
+but because you're taking random steps,
+
+27
+00:01:35,385 --> 00:01:39,506
+this may not result in the most efficient path up the hill.
+
+28
+00:01:39,506 --> 00:01:42,689
+One small improvement to this approach is to choose
+
+29
+00:01:42,689 --> 00:01:47,730
+a small number of neighboring policies at each iteration and pick the best among them.
+
+30
+00:01:47,730 --> 00:01:51,674
+It's easier to understand this by looking at a contour plot.
+
+31
+00:01:51,674 --> 00:01:54,509
+Again, starting with an arbitrary policy,
+
+32
+00:01:54,510 --> 00:01:57,344
+evaluate it to find out where it lies.
+
+33
+00:01:57,344 --> 00:02:01,289
+Generate a few candidate policies by perturbing the parameters
+
+34
+00:02:01,290 --> 00:02:05,925
+randomly and evaluate each policy by interacting with the environment.
+
+35
+00:02:05,924 --> 00:02:10,155
+This gives us an idea of the neighborhood of the current policy.
+
+36
+00:02:10,155 --> 00:02:15,030
+Now, pick the candidate policy that looks most promising and iterate.
+
+37
+00:02:15,030 --> 00:02:19,949
+This variation is known as steepest ascent hill climbing and it helps reduce
+
+38
+00:02:19,949 --> 00:02:25,125
+the risk of selecting a next policy that may lead to a suboptimal solution.
+
+39
+00:02:25,125 --> 00:02:27,930
+You could still get stuck in local optima.
+
+40
+00:02:27,930 --> 00:02:31,935
+But there are some modifications that can help mitigate that,
+
+41
+00:02:31,935 --> 00:02:36,527
+for example, by using random restarts or simulated annealing.
+
+42
+00:02:36,527 --> 00:02:39,849
+Simulated annealing uses a predefined schedule
+
+43
+00:02:39,849 --> 00:02:42,745
+to control how the policy space is explored.
+
+44
+00:02:42,745 --> 00:02:45,310
+Starting with a large noise parameter,
+
+45
+00:02:45,310 --> 00:02:47,754
+that is a broad neighborhood to explore,
+
+46
+00:02:47,754 --> 00:02:50,500
+we gradually reduce the noise or radius
+
+47
+00:02:50,500 --> 00:02:54,009
+as we get closer and closer to the optimal solution.
+
+48
+00:02:54,009 --> 00:02:56,530
+This is somewhat like a kneeling and iron.
+
+49
+00:02:56,530 --> 00:03:00,219
+By heating it up and then letting it cool down gradually.
+
+50
+00:03:00,219 --> 00:03:02,650
+It allows iron molecules to settle into
+
+51
+00:03:02,650 --> 00:03:07,510
+an optimal arrangement resulting in a hardened metal. Hence the name.
+
+52
+00:03:07,509 --> 00:03:10,269
+We can also make our approach more adaptive to
+
+53
+00:03:10,270 --> 00:03:13,090
+the changes in policy values being observed.
+
+54
+00:03:13,090 --> 00:03:17,185
+Here's the intuition, whenever we find a better policy than before,
+
+55
+00:03:17,185 --> 00:03:20,199
+we're likely getting closer to the optimal policy.
+
+56
+00:03:20,199 --> 00:03:24,939
+So it makes sense to reduce our search radius for generating the next policy.
+
+57
+00:03:24,939 --> 00:03:30,400
+This translates to reducing or decaying the variance of the Gaussian noise we add.
+
+58
+00:03:30,400 --> 00:03:33,564
+So far it's just like simulated annealing.
+
+59
+00:03:33,564 --> 00:03:38,590
+But if we don't find a better policy it's probably a good idea to increase
+
+60
+00:03:38,590 --> 00:03:43,543
+our search radius and continue exploring from the current best policy.
+
+61
+00:03:43,543 --> 00:03:49,310
+This small tweak to stochastic policy search makes it much less likely to get stuck,
+
+62
+00:03:49,310 --> 00:03:53,340
+especially in domains with a complicated objective function.
+

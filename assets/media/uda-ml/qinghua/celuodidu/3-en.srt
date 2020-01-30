@@ -1,0 +1,284 @@
+1
+00:00:00,000 --> 00:00:03,270
+We can extend policy-based methods to cover
+
+2
+00:00:03,270 --> 00:00:08,429
+large and continuous state spaces by using a function to approximate the policy,
+
+3
+00:00:08,429 --> 00:00:11,054
+just like value function approximation.
+
+4
+00:00:11,054 --> 00:00:14,459
+To do this, we parameterize the policy with theta,
+
+5
+00:00:14,460 --> 00:00:18,179
+which can be the weights of a neural network or some other model.
+
+6
+00:00:18,179 --> 00:00:23,309
+Our goal would then be to optimize these parameters to find the best policy.
+
+7
+00:00:23,309 --> 00:00:28,004
+One simple approximation function is the Linear combination of features.
+
+8
+00:00:28,004 --> 00:00:30,779
+But since we want our ultimate output to be
+
+9
+00:00:30,780 --> 00:00:34,289
+a probability distribution that we can sample actions from,
+
+10
+00:00:34,289 --> 00:00:36,549
+we need to use some transformation.
+
+11
+00:00:36,549 --> 00:00:41,359
+For example, we can apply the Softmax Function which exponentiates
+
+12
+00:00:41,359 --> 00:00:44,719
+the Linear combination result and then normalizes it
+
+13
+00:00:44,719 --> 00:00:48,545
+by dividing by the sum of exponentials for all actions.
+
+14
+00:00:48,545 --> 00:00:53,300
+This produces a set of action probability values that sum to one.
+
+15
+00:00:53,299 --> 00:00:57,724
+Note that this only works for a discrete set of actions.
+
+16
+00:00:57,725 --> 00:01:01,760
+For example, the mountain car environment in OpenAI,
+
+17
+00:01:01,759 --> 00:01:05,644
+has two continuous state variables, position and velocity.
+
+18
+00:01:05,644 --> 00:01:08,973
+And a discrete action space with three actions,
+
+19
+00:01:08,974 --> 00:01:10,204
+zero to push left,
+
+20
+00:01:10,204 --> 00:01:13,090
+one for no push and two to push right.
+
+21
+00:01:13,090 --> 00:01:19,155
+You can model the car's behavior with a Softmax Policy and learn to optimize it.
+
+22
+00:01:19,155 --> 00:01:21,540
+But there is also a version with
+
+23
+00:01:21,540 --> 00:01:26,415
+a single continuous action variable that can take negative values to push left,
+
+24
+00:01:26,415 --> 00:01:27,750
+zero for no push,
+
+25
+00:01:27,750 --> 00:01:29,275
+or positive to push right.
+
+26
+00:01:29,275 --> 00:01:34,635
+This is more realistic and it affords greater flexibility in taking actions,
+
+27
+00:01:34,635 --> 00:01:39,835
+but it is also more challenging because of the continuous action space.
+
+28
+00:01:39,834 --> 00:01:43,654
+When we have an environment with a continuous action space,
+
+29
+00:01:43,655 --> 00:01:45,769
+we can use a Gaussian Policy.
+
+30
+00:01:45,769 --> 00:01:48,469
+That is, we sample actions from a Gaussian or
+
+31
+00:01:48,469 --> 00:01:50,929
+normal distribution where the parameters
+
+32
+00:01:50,930 --> 00:01:53,870
+of the distribution are determined by our features.
+
+33
+00:01:53,870 --> 00:01:56,075
+For example, the mean mu,
+
+34
+00:01:56,075 --> 00:02:00,140
+can be our simple linear combination of features and the variance
+
+35
+00:02:00,140 --> 00:02:04,564
+sigma squared can be fixed or parameterized in a similar way.
+
+36
+00:02:04,564 --> 00:02:09,349
+We can apply the same trick to any approximation function that produces
+
+37
+00:02:09,349 --> 00:02:14,810
+some values and turn them into probabilities that represent a stochastic policy.
+
+38
+00:02:14,810 --> 00:02:18,974
+Now, how do we decide which policy is the best?
+
+39
+00:02:18,974 --> 00:02:23,474
+We need some objective measure that tells us how good a policy is,
+
+40
+00:02:23,474 --> 00:02:27,329
+and it needs to be a function of the policy parameters.
+
+41
+00:02:27,330 --> 00:02:29,580
+Intuitively, this needs to capture
+
+42
+00:02:29,580 --> 00:02:33,555
+the expected value of rewards obtained under that policy.
+
+43
+00:02:33,555 --> 00:02:36,825
+Let's introduce the idea of a trajectory, tau,
+
+44
+00:02:36,824 --> 00:02:40,185
+which you can think of as a complete or partial episode.
+
+45
+00:02:40,185 --> 00:02:45,870
+Thus, the expected value can be computed by sampling over multiple trajectories.
+
+46
+00:02:45,870 --> 00:02:49,480
+Now, if you have an episodic task at hand.
+
+47
+00:02:49,479 --> 00:02:54,744
+Then one option is to use the mean of the return from the first time step G1.
+
+48
+00:02:54,745 --> 00:02:59,020
+That is, the cumulative discounted rewards for the entire episode.
+
+49
+00:02:59,020 --> 00:03:02,920
+This is equivalent to the value of the starting state.
+
+50
+00:03:02,919 --> 00:03:07,329
+In continuing environments, we can't rely on a specific start state,
+
+51
+00:03:07,330 --> 00:03:11,950
+so it's better to tie the objective to a measure that is not dependent on that.
+
+52
+00:03:11,949 --> 00:03:15,864
+One such measure is the average or expected state value.
+
+53
+00:03:15,865 --> 00:03:20,125
+Intuitively, you want to prefer a policy that leads to a higher average.
+
+54
+00:03:20,125 --> 00:03:23,280
+But some states may occur more often than others.
+
+55
+00:03:23,280 --> 00:03:26,180
+So each state value now needs to be weighted
+
+56
+00:03:26,180 --> 00:03:29,375
+by the probability of occurrence of the respective state,
+
+57
+00:03:29,375 --> 00:03:31,955
+that is, it stationary probability.
+
+58
+00:03:31,955 --> 00:03:36,125
+You can calculate this by dividing the number of occurrences of the state,
+
+59
+00:03:36,125 --> 00:03:39,199
+by the total number of occurrences of all states.
+
+60
+00:03:39,199 --> 00:03:43,339
+A related measure is the average action value,
+
+61
+00:03:43,340 --> 00:03:46,250
+or Q value, calculated in a similar way.
+
+62
+00:03:46,250 --> 00:03:49,849
+But remember that the goal of encoding the policy directly,
+
+63
+00:03:49,849 --> 00:03:54,419
+is so that we don't have to keep track of state values or action values.
+
+64
+00:03:54,419 --> 00:03:57,609
+So, a measure that we can compute directly,
+
+65
+00:03:57,610 --> 00:04:00,340
+is the average reward at each time step.
+
+66
+00:04:00,340 --> 00:04:03,280
+The interesting thing, is that all these formulations
+
+67
+00:04:03,280 --> 00:04:06,580
+seem to work equally well for optimizing policies.
+
+68
+00:04:06,580 --> 00:04:08,395
+Which objective you choose,
+
+69
+00:04:08,395 --> 00:04:11,335
+depends on the nature of the problem or environment.
+
+70
+00:04:11,335 --> 00:04:14,349
+Pick whichever is the most convenient to compute and
+
+71
+00:04:14,349 --> 00:04:17,920
+best reflects the true objective you're aiming for.
+

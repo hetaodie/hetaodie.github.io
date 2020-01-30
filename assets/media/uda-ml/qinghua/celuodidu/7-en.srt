@@ -1,0 +1,436 @@
+1
+00:00:00,000 --> 00:00:03,734
+So far, we've looked at policy-based methods that
+
+2
+00:00:03,734 --> 00:00:07,424
+only use the goodness of a policy as the objective function,
+
+3
+00:00:07,424 --> 00:00:10,934
+that is, how much reward we expect to get out of it.
+
+4
+00:00:10,935 --> 00:00:15,690
+What this means is that we are not bothered with what actions the policy takes,
+
+5
+00:00:15,689 --> 00:00:17,054
+what states at visits,
+
+6
+00:00:17,054 --> 00:00:18,870
+how frequently, et cetera.
+
+7
+00:00:18,870 --> 00:00:22,650
+All we care about is the overall expected reward.
+
+8
+00:00:22,649 --> 00:00:25,244
+This can result in two policies that are
+
+9
+00:00:25,245 --> 00:00:28,019
+close to each other in the objective function space,
+
+10
+00:00:28,019 --> 00:00:30,884
+but wildly different in the way they behave.
+
+11
+00:00:30,885 --> 00:00:34,725
+Let's take a four-legged walking robot as an example.
+
+12
+00:00:34,725 --> 00:00:37,545
+One policy might make the robot walk this way,
+
+13
+00:00:37,545 --> 00:00:42,164
+while another policy might make it walk with this completely different gait.
+
+14
+00:00:42,164 --> 00:00:45,269
+Both policies are reasonable solutions.
+
+15
+00:00:45,270 --> 00:00:48,570
+Let's assume policy A is our current policy,
+
+16
+00:00:48,570 --> 00:00:50,984
+and policy B is the direction that our
+
+17
+00:00:50,984 --> 00:00:54,570
+objective of gradient points toward, a better policy.
+
+18
+00:00:54,570 --> 00:01:00,375
+Our optimization algorithm will try to update the parameters to move from A towards B,
+
+19
+00:01:00,375 --> 00:01:01,634
+but not all the way,
+
+20
+00:01:01,634 --> 00:01:04,219
+since we use a learning step, alpha.
+
+21
+00:01:04,219 --> 00:01:08,724
+So, we land up with some intermediate set of policy parameters,
+
+22
+00:01:08,724 --> 00:01:11,964
+but these may result in very poor performance.
+
+23
+00:01:11,965 --> 00:01:15,859
+This is very common in complex control tasks like walking,
+
+24
+00:01:15,859 --> 00:01:20,439
+where the coordination and timing between different actions is very important.
+
+25
+00:01:20,439 --> 00:01:25,554
+The algorithm is still learning to improve the policy and arrive at something reasonable,
+
+26
+00:01:25,555 --> 00:01:30,250
+but the learning process itself can be very unstable and inefficient.
+
+27
+00:01:30,250 --> 00:01:33,864
+Moreover, in certain applications like robotics,
+
+28
+00:01:33,864 --> 00:01:37,007
+where we are dealing with electro mechanical components,
+
+29
+00:01:37,007 --> 00:01:41,545
+drastic changes in policy parameters may literally break things.
+
+30
+00:01:41,545 --> 00:01:44,350
+For these reasons, we should pay attention to
+
+31
+00:01:44,349 --> 00:01:47,769
+the policy parameters in addition to the objective function.
+
+32
+00:01:47,769 --> 00:01:52,164
+In fact, we might want to play some constraints on the policy parameters,
+
+33
+00:01:52,165 --> 00:01:54,550
+that you are only allowed to change the parameters in
+
+34
+00:01:54,549 --> 00:01:57,507
+a certain way or by a certain amount.
+
+35
+00:01:57,507 --> 00:02:01,899
+This can be implemented in our gradient-based algorithms by adding a constraint,
+
+36
+00:02:01,900 --> 00:02:07,175
+that the difference between two policies is at most some threshold, delta.
+
+37
+00:02:07,174 --> 00:02:10,139
+Another way to introduce this constraint is to
+
+38
+00:02:10,139 --> 00:02:12,779
+add a penalty term to the objective function,
+
+39
+00:02:12,780 --> 00:02:15,150
+that is sum multiple of this difference.
+
+40
+00:02:15,150 --> 00:02:18,765
+If we try to optimize for this combined objective function,
+
+41
+00:02:18,764 --> 00:02:21,944
+then we'll be driven towards policies that are better,
+
+42
+00:02:21,944 --> 00:02:24,375
+but not too different at each step.
+
+43
+00:02:24,375 --> 00:02:27,810
+This helps stabilize the learning algorithm and it's kind of
+
+44
+00:02:27,810 --> 00:02:31,335
+like adding regularization to machine learning algorithms.
+
+45
+00:02:31,335 --> 00:02:33,330
+But in both these approaches,
+
+46
+00:02:33,330 --> 00:02:35,760
+whether we add a constraint or a penalty,
+
+47
+00:02:35,759 --> 00:02:40,125
+we need some way to quantify the difference between two policies.
+
+48
+00:02:40,125 --> 00:02:45,169
+A naive way to compute the difference between two policies is to use the difference
+
+49
+00:02:45,169 --> 00:02:50,674
+between their parameter vectors and take the norm of the difference, say Euclidean norm.
+
+50
+00:02:50,675 --> 00:02:54,950
+If your policies are some complex function of the parameters which is
+
+51
+00:02:54,949 --> 00:02:59,569
+indeed the case when using deep neural networks or other machine learning models,
+
+52
+00:02:59,569 --> 00:03:02,389
+then the parameter difference may not accurately
+
+53
+00:03:02,389 --> 00:03:05,629
+reflect the difference between how the policies behave,
+
+54
+00:03:05,629 --> 00:03:08,889
+what actions they ultimately produce.
+
+55
+00:03:08,889 --> 00:03:11,284
+In order to come up with a better distance measure,
+
+56
+00:03:11,284 --> 00:03:16,340
+we need to think about a policy as a probability distribution over actions.
+
+57
+00:03:16,340 --> 00:03:21,575
+This perspective is especially useful when we have a continuous action space.
+
+58
+00:03:21,574 --> 00:03:25,339
+Consider the continuous version of the cart pull problem,
+
+59
+00:03:25,340 --> 00:03:28,969
+where you no longer have binary actions for left and right.
+
+60
+00:03:28,969 --> 00:03:33,590
+Instead, you can apply any amount of force between minus one and plus one,
+
+61
+00:03:33,590 --> 00:03:36,950
+like minus 0.5 or plus 0.8.
+
+62
+00:03:36,949 --> 00:03:41,750
+Our policy is the probability distribution over this range of actions.
+
+63
+00:03:41,750 --> 00:03:45,229
+Note that the distribution can be different from state to state.
+
+64
+00:03:45,229 --> 00:03:47,014
+If we have continuous states,
+
+65
+00:03:47,014 --> 00:03:48,709
+we can unify these into
+
+66
+00:03:48,710 --> 00:03:54,135
+a single continuous distribution over the combined range of states and actions.
+
+67
+00:03:54,134 --> 00:03:57,182
+Consider that we have two such policies,
+
+68
+00:03:57,182 --> 00:03:59,889
+each is a distribution over states and actions.
+
+69
+00:03:59,889 --> 00:04:03,684
+Now, how do we compare these distributions?
+
+70
+00:04:03,685 --> 00:04:09,370
+One statistical measure we can use is the Kullback Leibler, or KL divergence.
+
+71
+00:04:09,370 --> 00:04:13,045
+The KL divergence of p with respect to q,
+
+72
+00:04:13,044 --> 00:04:15,819
+is defined as the integral of p of x,
+
+73
+00:04:15,819 --> 00:04:19,120
+times log of p of x by q of x.
+
+74
+00:04:19,120 --> 00:04:26,319
+We can rewrite log p of x by q of x as log p of x minus log q of x,
+
+75
+00:04:26,319 --> 00:04:29,435
+which might make it easier to understand.
+
+76
+00:04:29,435 --> 00:04:31,766
+Here are the original distributions,
+
+77
+00:04:31,766 --> 00:04:34,754
+p of x and q of x.
+
+78
+00:04:34,754 --> 00:04:38,250
+We take the log of the two probabilities,
+
+79
+00:04:38,250 --> 00:04:40,814
+and then at each point x,
+
+80
+00:04:40,814 --> 00:04:44,730
+we take the difference between these log probabilities.
+
+81
+00:04:44,730 --> 00:04:47,550
+Finally, we scale the difference by one of
+
+82
+00:04:47,550 --> 00:04:52,845
+the probability values and sum that up over the entire range of x.
+
+83
+00:04:52,845 --> 00:04:55,380
+Intuitively, this is the area of
+
+84
+00:04:55,379 --> 00:04:59,819
+the non-overlapping region between the two log probability distributions,
+
+85
+00:04:59,819 --> 00:05:02,625
+but summed up at each location x,
+
+86
+00:05:02,625 --> 00:05:05,685
+using one of the probabilities as a reference.
+
+87
+00:05:05,685 --> 00:05:09,915
+Which means, the KL divergence of p with respect to q,
+
+88
+00:05:09,915 --> 00:05:16,395
+is not equal to that of q to p. It is an asymmetric distance measure.
+
+89
+00:05:16,394 --> 00:05:19,409
+The way we apply this to policy gradients is,
+
+90
+00:05:19,410 --> 00:05:23,362
+we compute the KL divergence between the current policy, theta,
+
+91
+00:05:23,362 --> 00:05:26,279
+and any new candidate policy, theta-prime,
+
+92
+00:05:26,279 --> 00:05:31,995
+and then we use this difference term as the constraint part of our objective function.
+
+93
+00:05:31,995 --> 00:05:35,935
+This term punishes new policies that change the behavior too much.
+
+94
+00:05:35,935 --> 00:05:40,810
+So, the new policy has to produce that much more value to be considered better.
+
+95
+00:05:40,810 --> 00:05:44,470
+In the context of the overall policy gradients algorithm,
+
+96
+00:05:44,470 --> 00:05:47,470
+this helps create a more stable learning process
+
+97
+00:05:47,470 --> 00:05:50,845
+where the policy is not jumping around as much.
+
+98
+00:05:50,845 --> 00:05:55,323
+Several variance of constraint policy gradients have been developed,
+
+99
+00:05:55,322 --> 00:05:58,699
+including the popular trust region policy optimization,
+
+100
+00:05:58,699 --> 00:06:01,269
+or TRPO algorithm, and more recently,
+
+101
+00:06:01,269 --> 00:06:04,555
+proximal policy optimization or PPO.
+
+102
+00:06:04,555 --> 00:06:08,290
+Here's PPO being applied to a really hard environment.
+
+103
+00:06:08,290 --> 00:06:11,545
+The agent is trying to reach a target, the pink ball.
+
+104
+00:06:11,545 --> 00:06:15,235
+All the while, learning to walk, run, turn,
+
+105
+00:06:15,235 --> 00:06:16,960
+recover from minor hits,
+
+106
+00:06:16,959 --> 00:06:20,544
+and how to stand up from the ground when it is knocked over.
+
+107
+00:06:20,545 --> 00:06:23,379
+This demonstrates how the ability to play with
+
+108
+00:06:23,379 --> 00:06:27,654
+the objective function allows us to build in several kinds of constraints,
+
+109
+00:06:27,654 --> 00:06:32,809
+including additional losses that can further guide our agent's learning.
+

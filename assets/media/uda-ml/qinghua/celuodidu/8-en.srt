@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:02,250
+Policy gradients have proven to be
+
+2
+00:00:02,250 --> 00:00:05,804
+a very powerful family of methods and reinforcement learning.
+
+3
+00:00:05,804 --> 00:00:07,469
+As we've seen in this lesson,
+
+4
+00:00:07,469 --> 00:00:11,089
+they have several advantages over value based methods.
+
+5
+00:00:11,089 --> 00:00:13,835
+They directly map from states to actions,
+
+6
+00:00:13,835 --> 00:00:16,625
+so you don't need to deal with value functions.
+
+7
+00:00:16,625 --> 00:00:21,750
+You can use them to learn continuous control tasks where your actions are real numbers.
+
+8
+00:00:21,750 --> 00:00:23,714
+Not just discrete choices.
+
+9
+00:00:23,714 --> 00:00:28,679
+And they represent the choice over actions as a probability distribution,
+
+10
+00:00:28,679 --> 00:00:31,859
+so you get true stochastic policies for free.
+
+11
+00:00:31,859 --> 00:00:35,579
+Several improvements to the basic policy gradients approach
+
+12
+00:00:35,579 --> 00:00:39,559
+have been proposed and new ones are coming out all the time.
+
+13
+00:00:39,560 --> 00:00:42,270
+This is an active area of research.
+
+14
+00:00:42,270 --> 00:00:45,180
+If you want to keep up with the latest advancements,
+
+15
+00:00:45,179 --> 00:00:48,000
+look for recently published papers in this area,
+
+16
+00:00:48,000 --> 00:00:50,219
+try to understand the algorithms,
+
+17
+00:00:50,219 --> 00:00:52,000
+and implement them yourself.
+

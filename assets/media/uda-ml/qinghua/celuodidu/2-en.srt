@@ -1,0 +1,436 @@
+1
+00:00:00,000 --> 00:00:04,170
+You may be wondering why do we need to find optimal policies
+
+2
+00:00:04,170 --> 00:00:08,465
+directly when value-based methods seem to work so well.
+
+3
+00:00:08,465 --> 00:00:11,775
+There are three arguments we'll consider, simplicity,
+
+4
+00:00:11,775 --> 00:00:16,225
+stochastic policies, and continuous action spaces.
+
+5
+00:00:16,225 --> 00:00:19,546
+Remember that in value-based methods like Q-learning,
+
+6
+00:00:19,546 --> 00:00:22,440
+we invented this idea of a value function as
+
+7
+00:00:22,440 --> 00:00:26,660
+an intermediate step towards finding the optimal policy.
+
+8
+00:00:26,660 --> 00:00:29,250
+It helps us rephrase the problem in terms
+
+9
+00:00:29,250 --> 00:00:32,455
+of something that is easier to understand and learn.
+
+10
+00:00:32,455 --> 00:00:36,320
+But if our ultimate goal is to find that optimal policy,
+
+11
+00:00:36,320 --> 00:00:39,090
+do you really need this value function?
+
+12
+00:00:39,090 --> 00:00:42,725
+Can we directly estimate the optimal policy?
+
+13
+00:00:42,725 --> 00:00:45,637
+What would such a policy look like?
+
+14
+00:00:45,637 --> 00:00:47,930
+If we go with a deterministic approach,
+
+15
+00:00:47,930 --> 00:00:53,270
+then the policy simply needs to be a mapping or function from states to actions.
+
+16
+00:00:53,270 --> 00:00:55,171
+And in the stochastic case,
+
+17
+00:00:55,171 --> 00:01:01,235
+this would be the conditional probability of each action given a certain state.
+
+18
+00:01:01,235 --> 00:01:05,870
+We would then choose an action based on this probability distribution.
+
+19
+00:01:05,870 --> 00:01:10,663
+This is simpler in the sense that we are directly getting to the problem at hand,
+
+20
+00:01:10,663 --> 00:01:13,400
+but it also avoids having to store a bunch of
+
+21
+00:01:13,400 --> 00:01:17,195
+additional data that may or may not always be useful.
+
+22
+00:01:17,195 --> 00:01:22,010
+For example, large portions of the state space may have the same value.
+
+23
+00:01:22,010 --> 00:01:26,720
+Formulating the policy in this manner allows us to make such generalizations where
+
+24
+00:01:26,720 --> 00:01:32,745
+possible and focus more on the complicated regions of the state space.
+
+25
+00:01:32,745 --> 00:01:35,860
+One of the main advantages of policy-based methods over
+
+26
+00:01:35,860 --> 00:01:41,045
+value-based methods is that they can learn true stochastic policies.
+
+27
+00:01:41,045 --> 00:01:44,710
+This is like picking a random number from a special kind of machine.
+
+28
+00:01:44,710 --> 00:01:47,980
+One, where the chances of each number being
+
+29
+00:01:47,980 --> 00:01:52,775
+selected depends on some state variables that can be changed.
+
+30
+00:01:52,775 --> 00:01:57,415
+In contrast, when we apply epsilon-greedy actions selection to a value function,
+
+31
+00:01:57,415 --> 00:02:01,200
+that does add some randomness, but it's a hack.
+
+32
+00:02:01,200 --> 00:02:04,480
+Flip a coin, if it's heads follow a deterministic policy,
+
+33
+00:02:04,480 --> 00:02:06,765
+hence pick an action at random.
+
+34
+00:02:06,765 --> 00:02:09,730
+The underlying value function can still drive
+
+35
+00:02:09,730 --> 00:02:13,150
+us towards certain actions more than others.
+
+36
+00:02:13,150 --> 00:02:15,355
+Let's see how this can be problematic.
+
+37
+00:02:15,355 --> 00:02:19,180
+Say you're learning to play rock-paper-scissors.
+
+38
+00:02:19,180 --> 00:02:22,195
+Scissors cut paper, paper covers rock,
+
+39
+00:02:22,195 --> 00:02:24,543
+and rock break scissors.
+
+40
+00:02:24,543 --> 00:02:28,375
+Your opponent reveals their move at the same time as you.
+
+41
+00:02:28,375 --> 00:02:32,135
+So you can't really use that to decide what to pick.
+
+42
+00:02:32,135 --> 00:02:34,840
+In fact it turns out that the optimal policy
+
+43
+00:02:34,840 --> 00:02:38,510
+here is to choose an action uniformly at random.
+
+44
+00:02:38,510 --> 00:02:42,982
+Anything else, like a deterministic policy or even a stochastic policy,
+
+45
+00:02:42,982 --> 00:02:47,800
+with some non-uniformity can be exploited by the opponent.
+
+46
+00:02:47,800 --> 00:02:52,945
+Another situation where a stochastic policy helps is when we have aliased states,
+
+47
+00:02:52,945 --> 00:02:58,180
+that is, two or more states that we perceive to be identical but are actually different.
+
+48
+00:02:58,180 --> 00:03:02,420
+In this sense, their environment is partially observable,
+
+49
+00:03:02,420 --> 00:03:06,425
+but such situations can arise more often than you think.
+
+50
+00:03:06,425 --> 00:03:08,815
+Consider this grid world for instance,
+
+51
+00:03:08,815 --> 00:03:11,253
+which consists of smooth, white,
+
+52
+00:03:11,253 --> 00:03:13,037
+and rough gray cells,
+
+53
+00:03:13,037 --> 00:03:16,396
+and there is a banana in the bottom metal cell and a chili,
+
+54
+00:03:16,396 --> 00:03:18,970
+each in the bottom-left and right corners.
+
+55
+00:03:18,970 --> 00:03:23,320
+Obviously, agent George needs to find a reliable policy to get to
+
+56
+00:03:23,320 --> 00:03:28,950
+the banana and avoid landing on the chilies no matter what cell he starts in.
+
+57
+00:03:28,950 --> 00:03:30,490
+But here's the catch,
+
+58
+00:03:30,490 --> 00:03:33,100
+all he can sense is whether the current cell is
+
+59
+00:03:33,100 --> 00:03:37,415
+smooth or rough and whether it has a wall on each side.
+
+60
+00:03:37,415 --> 00:03:39,820
+Think of this as the only observations
+
+61
+00:03:39,820 --> 00:03:42,845
+or features that are available from the environment.
+
+62
+00:03:42,845 --> 00:03:46,240
+He can't sense anything about neighboring cells either.
+
+63
+00:03:46,240 --> 00:03:48,860
+When George is in the top middle cell,
+
+64
+00:03:48,860 --> 00:03:53,270
+he can sense it's smooth and only has a single wall to the north.
+
+65
+00:03:53,270 --> 00:03:57,405
+So he can reliably take a step downwards and reach the banana.
+
+66
+00:03:57,405 --> 00:04:01,377
+When he isn't either of the top left or right cells,
+
+67
+00:04:01,377 --> 00:04:03,220
+he can sense the sidewalls.
+
+68
+00:04:03,220 --> 00:04:07,090
+So he can recognize which of the two extreme cells he is in and
+
+69
+00:04:07,090 --> 00:04:12,070
+can learn to reliably step away from the chilies and toward the center.
+
+70
+00:04:12,070 --> 00:04:15,475
+The trouble is, when he's in one of the rough gray cells,
+
+71
+00:04:15,475 --> 00:04:17,730
+he can't tell which one he's in,
+
+72
+00:04:17,730 --> 00:04:20,110
+all the features are identical.
+
+73
+00:04:20,110 --> 00:04:23,050
+If he's using a value function representation,
+
+74
+00:04:23,050 --> 00:04:25,838
+then the value of these cells is equal,
+
+75
+00:04:25,838 --> 00:04:28,870
+since they both map to the same state and
+
+76
+00:04:28,870 --> 00:04:32,955
+the corresponding best action must also be identical.
+
+77
+00:04:32,955 --> 00:04:35,805
+So, depending on his experiences,
+
+78
+00:04:35,805 --> 00:04:41,070
+George might learn to either go right or go left from both the cells,
+
+79
+00:04:41,070 --> 00:04:45,015
+resulting in an overall policy like this, which is fine.
+
+80
+00:04:45,015 --> 00:04:47,180
+Except for this region,
+
+81
+00:04:47,180 --> 00:04:51,585
+George will keep oscillating between these two cells and never get out.
+
+82
+00:04:51,585 --> 00:04:54,750
+With a small epsilon-greedy policy,
+
+83
+00:04:54,750 --> 00:04:57,285
+George might be able to come out by chance,
+
+84
+00:04:57,285 --> 00:05:01,250
+but that's very inefficient and could take indefinitely long.
+
+85
+00:05:01,250 --> 00:05:03,495
+And if he kept a high epsilon,
+
+86
+00:05:03,495 --> 00:05:06,855
+that might result in bad actions in other states.
+
+87
+00:05:06,855 --> 00:05:12,465
+We can clearly see that the other value-based policy would not be ideal either.
+
+88
+00:05:12,465 --> 00:05:14,835
+The best he can do is to assign
+
+89
+00:05:14,835 --> 00:05:18,990
+equal probability to moving left or right from these aliased states.
+
+90
+00:05:18,990 --> 00:05:22,340
+He's much more likely to get out of the traps soon.
+
+91
+00:05:22,340 --> 00:05:27,675
+A value-based approach tends to learn a deterministic or near deterministic policy,
+
+92
+00:05:27,675 --> 00:05:29,610
+whereas a policy-based approach in
+
+93
+00:05:29,610 --> 00:05:33,805
+this situation can learn the desired stochastic policy.
+
+94
+00:05:33,805 --> 00:05:36,945
+Our final reason for exploring policy-based methods
+
+95
+00:05:36,945 --> 00:05:40,800
+is that they are well-suited for continuous action spaces.
+
+96
+00:05:40,800 --> 00:05:44,865
+When we use a value-based method even with a function approximator,
+
+97
+00:05:44,865 --> 00:05:48,840
+our output consists of a value for each action.
+
+98
+00:05:48,840 --> 00:05:53,880
+Now, if the action space is discrete and there are a finite number of actions,
+
+99
+00:05:53,880 --> 00:05:57,770
+we can easily pick the action with the maximum value.
+
+100
+00:05:57,770 --> 00:06:00,790
+But if the action space is continuous,
+
+101
+00:06:00,790 --> 00:06:05,470
+then this makes operation turns into an optimization problem itself.
+
+102
+00:06:05,470 --> 00:06:10,750
+It's like trying to find a global maximum of a continuous function which is non-trivial,
+
+103
+00:06:10,750 --> 00:06:14,035
+especially if the function is not convex.
+
+104
+00:06:14,035 --> 00:06:18,071
+A similar issue exists in higher dimensional action spaces,
+
+105
+00:06:18,071 --> 00:06:20,705
+lots of possible actions to evaluate.
+
+106
+00:06:20,705 --> 00:06:25,445
+It would be nice if we could map a given state to an action directly.
+
+107
+00:06:25,445 --> 00:06:29,060
+Even if the resulting policy is a bit more complex,
+
+108
+00:06:29,060 --> 00:06:33,005
+it would significantly reduce the computation time needed to act,
+
+109
+00:06:33,005 --> 00:06:37,000
+and that's something a policy-based method can enable.
+
