@@ -1,0 +1,260 @@
+1
+00:00:00,000 --> 00:00:04,915
+Experience replay helps us address one type of correlation.
+
+2
+00:00:04,915 --> 00:00:08,550
+That is between consecutive experience tuples.
+
+3
+00:00:08,550 --> 00:00:13,285
+There is another kind of correlation that Q-learning is susceptible to.
+
+4
+00:00:13,285 --> 00:00:18,745
+Q-learning is a form of Temporal Difference or TD learning, right?
+
+5
+00:00:18,745 --> 00:00:21,220
+Here, R plus gamma times
+
+6
+00:00:21,219 --> 00:00:25,585
+the maximum possible value from the next state is called the TD target.
+
+7
+00:00:25,585 --> 00:00:28,179
+And our goal is to reduce the difference between
+
+8
+00:00:28,179 --> 00:00:32,104
+this target and the currently predicted Q-value.
+
+9
+00:00:32,104 --> 00:00:34,944
+This difference is the TD error.
+
+10
+00:00:34,945 --> 00:00:37,869
+Now, the TD target here is supposed to be
+
+11
+00:00:37,869 --> 00:00:40,939
+a replacement for the true value function q pi (S,
+
+12
+00:00:40,939 --> 00:00:44,414
+A) which is unknown to us.
+
+13
+00:00:44,414 --> 00:00:49,164
+We originally used q pi to define a squared error loss,
+
+14
+00:00:49,164 --> 00:00:55,564
+and differentiated that with respect to w to get our gradient descent update rule.
+
+15
+00:00:55,564 --> 00:01:01,007
+Now, q pi is not dependent on our function approximation or its parameters,
+
+16
+00:01:01,008 --> 00:01:04,885
+thus resulting in a simple derivative, an update rule.
+
+17
+00:01:04,885 --> 00:01:10,300
+But, our TD target is dependent on these parameters which means simply
+
+18
+00:01:10,299 --> 00:01:13,239
+replacing the true value function q pi with
+
+19
+00:01:13,239 --> 00:01:17,494
+a target like this is mathematically incorrect.
+
+20
+00:01:17,495 --> 00:01:20,484
+We can get away with it in practice because
+
+21
+00:01:20,484 --> 00:01:24,099
+every update results in a small change to the parameters.
+
+22
+00:01:24,099 --> 00:01:26,619
+We're just generally in the right direction.
+
+23
+00:01:26,620 --> 00:01:32,938
+If we set alpha equals one and leap towards the target then we'd likely overshoot,
+
+24
+00:01:32,938 --> 00:01:35,515
+and land in the wrong place.
+
+25
+00:01:35,515 --> 00:01:39,250
+Also, this is less of a concern when we use a lookup table or
+
+26
+00:01:39,250 --> 00:01:44,319
+a dictionary since Q-values are stored separately for each state action pair.
+
+27
+00:01:44,319 --> 00:01:49,429
+But, it can affect learning significantly when we use function approximation,
+
+28
+00:01:49,430 --> 00:01:55,040
+where all the Q-values are intrinsically tied together through the function parameters.
+
+29
+00:01:55,040 --> 00:01:59,650
+You may be thinking, "Doesn't experience replay take care of this problem?"
+
+30
+00:01:59,650 --> 00:02:04,109
+Well, it addresses a similar but slightly different issue.
+
+31
+00:02:04,109 --> 00:02:06,519
+There we broke the correlation effects between
+
+32
+00:02:06,519 --> 00:02:11,414
+consecutive experience tuples by sampling them randomly out of order.
+
+33
+00:02:11,414 --> 00:02:17,394
+Here, the correlation is between the target and the parameters we are changing.
+
+34
+00:02:17,395 --> 00:02:21,040
+This is like chasing a moving target, literally.
+
+35
+00:02:21,039 --> 00:02:23,534
+In fact, it's worse.
+
+36
+00:02:23,534 --> 00:02:25,710
+It's like trying to train a donkey to walk
+
+37
+00:02:25,710 --> 00:02:29,490
+straight by sitting on it and dangling a carrot in front.
+
+38
+00:02:29,490 --> 00:02:32,600
+Yes, the donkey might step forward and the carriage
+
+39
+00:02:32,599 --> 00:02:36,534
+usually gets further away always staying a little out of reach.
+
+40
+00:02:36,534 --> 00:02:38,444
+But, contrary to popular belief,
+
+41
+00:02:38,444 --> 00:02:41,174
+this doesn't quite work as you would expect.
+
+42
+00:02:41,175 --> 00:02:43,620
+The carrot is much more likely to bounce around
+
+43
+00:02:43,620 --> 00:02:46,650
+randomly throwing the donkey off with every jerky
+
+44
+00:02:46,650 --> 00:02:50,039
+step each action affects the next position of
+
+45
+00:02:50,039 --> 00:02:54,299
+the target in a very complicated and unpredictable manner.
+
+46
+00:02:54,300 --> 00:02:56,460
+You shouldn't be surprised if the donkey gets
+
+47
+00:02:56,460 --> 00:03:00,260
+frustrated jumping around the spot and gives up.
+
+48
+00:03:00,259 --> 00:03:02,669
+Instead, you should get off the donkey
+
+49
+00:03:02,669 --> 00:03:05,934
+stand in one place and dangle the carrot from there.
+
+50
+00:03:05,935 --> 00:03:07,935
+Once the donkey reaches that spot,
+
+51
+00:03:07,935 --> 00:03:09,449
+move a few steps ahead,
+
+52
+00:03:09,449 --> 00:03:11,729
+dangle another carrot and repeat.
+
+53
+00:03:11,729 --> 00:03:15,929
+What you're essentially doing is decoupling the target's position from
+
+54
+00:03:15,930 --> 00:03:20,985
+the donkey's actions giving it a more stable learning environment.
+
+55
+00:03:20,985 --> 00:03:25,200
+We can do pretty much the same thing in Q-learning by
+
+56
+00:03:25,199 --> 00:03:29,359
+fixing the function parameters used to generate our target.
+
+57
+00:03:29,360 --> 00:03:33,060
+The fixed parameters indicated by a w minus are
+
+58
+00:03:33,060 --> 00:03:37,949
+basically a copy of w that we don't change during the learning step.
+
+59
+00:03:37,949 --> 00:03:41,339
+In practice, we copied w into w minus,
+
+60
+00:03:41,340 --> 00:03:46,235
+use it to generate targets while changing w for a certain number of learning steps.
+
+61
+00:03:46,235 --> 00:03:49,140
+Then, we update w minus with the latest w,
+
+62
+00:03:49,139 --> 00:03:52,689
+again, learn for a number of steps and so on.
+
+63
+00:03:52,689 --> 00:03:55,919
+This decouples the target from the parameters,
+
+64
+00:03:55,919 --> 00:03:58,454
+makes the learning algorithm much more stable,
+
+65
+00:03:58,455 --> 00:04:02,680
+and less likely to diverge or fall into oscillations.
+

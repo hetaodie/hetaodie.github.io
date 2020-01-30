@@ -1,0 +1,196 @@
+1
+00:00:00,000 --> 00:00:02,745
+Our second strategy will be to develop
+
+2
+00:00:02,745 --> 00:00:06,629
+a temporal difference technique with function approximation.
+
+3
+00:00:06,629 --> 00:00:10,964
+Compare the incremental update step between Monte Carlo learning,
+
+4
+00:00:10,964 --> 00:00:14,669
+where we use the actual return obtained through the episode
+
+5
+00:00:14,669 --> 00:00:19,500
+with the temporal difference case where we use an estimated return.
+
+6
+00:00:19,500 --> 00:00:22,035
+This is called the TD target.
+
+7
+00:00:22,035 --> 00:00:24,861
+And in the simplest case, TD zero,
+
+8
+00:00:24,861 --> 00:00:28,769
+we use the next reward plus the discounted value of the next state.
+
+9
+00:00:28,769 --> 00:00:30,750
+In a similar manner as before,
+
+10
+00:00:30,750 --> 00:00:35,234
+we can use this TD target in place of our unknown true value function.
+
+11
+00:00:35,234 --> 00:00:37,710
+This gives us something concrete to work with.
+
+12
+00:00:37,710 --> 00:00:40,905
+No more articles or other imaginary creatures.
+
+13
+00:00:40,905 --> 00:00:46,125
+Note that we had to adapt the value function to use our function approximator V hat.
+
+14
+00:00:46,125 --> 00:00:50,369
+This entire difference is called the TD error and denoted by
+
+15
+00:00:50,369 --> 00:00:55,379
+delta T. We can extend the same idea to action value functions as well.
+
+16
+00:00:55,380 --> 00:01:00,304
+All right, we're ready to build an algorithm around this update rule.
+
+17
+00:01:00,304 --> 00:01:05,650
+We'll use a TD zero target and focus on the control problem again.
+
+18
+00:01:05,650 --> 00:01:07,045
+As you may recall,
+
+19
+00:01:07,045 --> 00:01:09,760
+this is essentially the SARSA algorithm.
+
+20
+00:01:09,760 --> 00:01:13,450
+We begin by initializing our parameters W arbitrarily.
+
+21
+00:01:13,450 --> 00:01:16,750
+Our policy PI is implicitly defined as an epsilon
+
+22
+00:01:16,750 --> 00:01:21,144
+greedy choice over our approximate action value function Q hat.
+
+23
+00:01:21,144 --> 00:01:24,069
+Then, we start interacting with the environment.
+
+24
+00:01:24,069 --> 00:01:29,789
+For each episode, we begin with some initial state S obtained from the environment.
+
+25
+00:01:29,790 --> 00:01:33,470
+We continue interacting till we reach a terminal state.
+
+26
+00:01:33,469 --> 00:01:35,164
+At each time step,
+
+27
+00:01:35,165 --> 00:01:41,420
+we choose an action A to perform and observe the reward R and next state S prime.
+
+28
+00:01:41,420 --> 00:01:44,540
+Now, we choose another action A prime,
+
+29
+00:01:44,540 --> 00:01:48,860
+this time from state S prime according to our epsilon greedy policy PI.
+
+30
+00:01:48,859 --> 00:01:53,209
+This gives us all we need for the SARSA update,
+
+31
+00:01:53,209 --> 00:01:56,269
+S, A, R, S prime, A prime.
+
+32
+00:01:56,269 --> 00:02:01,909
+We plug these into our gradient descent update rule and adjust our weights accordingly.
+
+33
+00:02:01,909 --> 00:02:06,009
+Finally, we simply roll over S prime to be the new S,
+
+34
+00:02:06,010 --> 00:02:08,879
+A prime to be the new A and repeat.
+
+35
+00:02:08,879 --> 00:02:11,144
+This formulation is useful for
+
+36
+00:02:11,145 --> 00:02:16,409
+episodic tasks where each episode is guaranteed to terminate.
+
+37
+00:02:16,409 --> 00:02:22,109
+It can be adapted to continuing tasks by eliminating the distinct boundary
+
+38
+00:02:22,110 --> 00:02:28,155
+between episodes and treating the sequence of interactions as one long unending episode.
+
+39
+00:02:28,155 --> 00:02:31,080
+SARSA is an on policy algorithm.
+
+40
+00:02:31,080 --> 00:02:32,820
+Which means that we are updating
+
+41
+00:02:32,819 --> 00:02:36,389
+the same policy that we are following to carry out actions.
+
+42
+00:02:36,389 --> 00:02:40,484
+This usually works very well and converges pretty quickly
+
+43
+00:02:40,485 --> 00:02:45,375
+because you are using the most updated policy to take each decision.
+
+44
+00:02:45,375 --> 00:02:47,899
+But this also has some drawbacks,
+
+45
+00:02:47,899 --> 00:02:50,490
+mainly that the policy being learned and the one
+
+46
+00:02:50,490 --> 00:02:53,574
+being followed are intimately tied to each other.
+
+47
+00:02:53,574 --> 00:02:56,550
+What if we wanted to follow one policy,
+
+48
+00:02:56,550 --> 00:03:01,590
+say one that is more exploratory while learning the more optimal policy?
+
+49
+00:03:01,590 --> 00:03:05,530
+That's where we need off policy algorithms.
+

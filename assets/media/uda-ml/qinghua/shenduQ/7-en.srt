@@ -1,0 +1,440 @@
+1
+00:00:00,000 --> 00:00:04,230
+The idea of experience replay and its application to training
+
+2
+00:00:04,230 --> 00:00:08,914
+neural networks for reinforcement learning isn't new.
+
+3
+00:00:08,914 --> 00:00:14,414
+It was originally proposed to make more efficient use of observed experiences.
+
+4
+00:00:14,414 --> 00:00:17,429
+Consider the basic online Q-learning algorithm where we
+
+5
+00:00:17,429 --> 00:00:20,609
+interact with the environment and at each time step,
+
+6
+00:00:20,609 --> 00:00:24,600
+we obtain a state action reward next state tuple.
+
+7
+00:00:24,600 --> 00:00:27,435
+Learn from it and then discarded.
+
+8
+00:00:27,434 --> 00:00:31,189
+Moving on to the next tuple in the following timestep.
+
+9
+00:00:31,190 --> 00:00:32,925
+This seems a little wasteful.
+
+10
+00:00:32,924 --> 00:00:38,399
+We could possibly learn more from these experienced tuples if we stored them somewhere.
+
+11
+00:00:38,399 --> 00:00:44,164
+Moreover, some states are pretty rare to come by and some actions can be pretty costly,
+
+12
+00:00:44,164 --> 00:00:47,875
+so it would be nice to recall such experiences.
+
+13
+00:00:47,875 --> 00:00:51,450
+That is exactly what a replay buffer allows us to do.
+
+14
+00:00:51,450 --> 00:00:55,920
+We store each experienced tuple in this buffer as we are interacting with
+
+15
+00:00:55,920 --> 00:01:01,300
+the environment and then sample a small batch of tuples from it in order to learn.
+
+16
+00:01:01,299 --> 00:01:06,185
+As a result, we are able to learn from individual tuples multiple times,
+
+17
+00:01:06,185 --> 00:01:11,469
+recall rare occurrences, and in general make better use of fire experience.
+
+18
+00:01:11,469 --> 00:01:14,909
+But there is another critical problem that experience replay can
+
+19
+00:01:14,909 --> 00:01:18,944
+help with and this is what DQN takes advantage of.
+
+20
+00:01:18,944 --> 00:01:21,494
+If you think about the experiences being obtained,
+
+21
+00:01:21,495 --> 00:01:26,939
+you realize that every action AT affects the next state ST in some way,
+
+22
+00:01:26,939 --> 00:01:32,099
+which means that a sequence of experienced tuples can be highly correlated.
+
+23
+00:01:32,099 --> 00:01:36,089
+A naive Q-learning approach that learns from each of these experiences in
+
+24
+00:01:36,090 --> 00:01:41,585
+sequential order runs the risk of getting swayed by the effects of this correlation.
+
+25
+00:01:41,585 --> 00:01:45,674
+With experience replay, can sample from this buffer at random.
+
+26
+00:01:45,674 --> 00:01:50,519
+It doesn't have to be in the same sequence as we stored the tuples.
+
+27
+00:01:50,519 --> 00:01:53,969
+This helps break the correlation and ultimately prevents
+
+28
+00:01:53,969 --> 00:01:58,525
+action values from oscillating or diverging catastrophically.
+
+29
+00:01:58,525 --> 00:02:01,743
+Now, this might be a little hard to understand,
+
+30
+00:02:01,742 --> 00:02:04,114
+so let's look at an example.
+
+31
+00:02:04,114 --> 00:02:09,710
+I'm learning to play tennis and I like to practice rallying against the wall.
+
+32
+00:02:09,710 --> 00:02:13,295
+I'm more confident with my forehand shot than my backhand,
+
+33
+00:02:13,294 --> 00:02:15,619
+and I can hit the ball fairly straight.
+
+34
+00:02:15,620 --> 00:02:18,515
+So the ball keeps coming back around the same area
+
+35
+00:02:18,514 --> 00:02:22,189
+to my right and I keep hitting forehand shots.
+
+36
+00:02:22,189 --> 00:02:26,525
+Now, if I were an online Q-learning agent learning as I play,
+
+37
+00:02:26,525 --> 00:02:28,534
+this is what I might pick up.
+
+38
+00:02:28,534 --> 00:02:30,724
+When the ball comes to my right,
+
+39
+00:02:30,724 --> 00:02:32,780
+I should hit with my forehand,
+
+40
+00:02:32,780 --> 00:02:38,194
+less certainly at first but with increasing confidence as I repeatedly hit the ball.
+
+41
+00:02:38,194 --> 00:02:41,639
+Great! I'm learning to play forehand pretty well,
+
+42
+00:02:41,639 --> 00:02:45,199
+but I'm not exploring the rest of the state space.
+
+43
+00:02:45,199 --> 00:02:47,294
+This could be addressed by using
+
+44
+00:02:47,294 --> 00:02:51,559
+an Epsilon-Greedy policy acting randomly with a small chance.
+
+45
+00:02:51,560 --> 00:02:57,020
+So I try different combinations of states and actions and sometimes I make mistakes,
+
+46
+00:02:57,020 --> 00:03:00,980
+but I eventually figure out the best overall policy.
+
+47
+00:03:00,979 --> 00:03:03,229
+Use a forehand shot when the ball comes to
+
+48
+00:03:03,229 --> 00:03:06,724
+my right and a backhand when it comes to my left.
+
+49
+00:03:06,724 --> 00:03:11,120
+Perfect, this learning strategy seems to work well with a Q-table,
+
+50
+00:03:11,120 --> 00:03:17,034
+where we have assumed this highly simplified state space with just two discrete states.
+
+51
+00:03:17,034 --> 00:03:23,344
+But when we consider a continuous state space things can fall apart. Let's see how.
+
+52
+00:03:23,344 --> 00:03:29,090
+First the ball can actually come anywhere between the extreme left and extreme right.
+
+53
+00:03:29,090 --> 00:03:31,340
+If I tried to discretize this range into
+
+54
+00:03:31,340 --> 00:03:34,784
+small buckets I wouldn't have too many possibilities.
+
+55
+00:03:34,784 --> 00:03:37,699
+What if I end up learning a policy with holes in it,
+
+56
+00:03:37,699 --> 00:03:41,984
+states or situations that I may not have visited during practice.
+
+57
+00:03:41,985 --> 00:03:47,260
+Instead it makes more sense to use a function approximator like a linear combination of
+
+58
+00:03:47,259 --> 00:03:53,379
+RBF kernels or a Q-network that can generalize my learning across the space.
+
+59
+00:03:53,379 --> 00:03:58,354
+Now, every time the ball comes to my right and I successfully hit a forehand shot,
+
+60
+00:03:58,354 --> 00:04:00,814
+my value function changes slightly.
+
+61
+00:04:00,814 --> 00:04:05,000
+It becomes more positive around the exact region where the ball came,
+
+62
+00:04:05,000 --> 00:04:10,710
+but also raises the value for the forehand shot in general across the state space.
+
+63
+00:04:10,710 --> 00:04:13,925
+The effect is less pronounced away from the exact spot,
+
+64
+00:04:13,925 --> 00:04:16,185
+but over time it can add up.
+
+65
+00:04:16,185 --> 00:04:20,120
+And that's exactly what happens when I try to learn while playing,
+
+66
+00:04:20,120 --> 00:04:23,235
+processing each experience tuple in order.
+
+67
+00:04:23,235 --> 00:04:26,375
+For instance, if my forehand shot is fairly straight,
+
+68
+00:04:26,375 --> 00:04:29,819
+I likely get back the ball around the same spot.
+
+69
+00:04:29,819 --> 00:04:32,954
+This produces a state very similar to the previous one,
+
+70
+00:04:32,954 --> 00:04:36,019
+so I use my forehand again and if it is successful
+
+71
+00:04:36,019 --> 00:04:39,529
+it reinforces my belief that forehand is a good choice.
+
+72
+00:04:39,529 --> 00:04:42,559
+I can easily get trapped in this cycle.
+
+73
+00:04:42,560 --> 00:04:47,540
+Ultimately, if I don't see too many examples of the ball coming to my left for a while,
+
+74
+00:04:47,540 --> 00:04:50,420
+then the value of the forehand shot can become greater
+
+75
+00:04:50,420 --> 00:04:54,074
+than backhand across the entire state space.
+
+76
+00:04:54,074 --> 00:04:58,865
+My policy would then be to choose forehand regardless of where I see the ball coming.
+
+77
+00:04:58,865 --> 00:05:02,925
+Disaster. Okay, how can we fix this?
+
+78
+00:05:02,925 --> 00:05:07,100
+The first thing I should do is stop learning while practicing.
+
+79
+00:05:07,100 --> 00:05:10,400
+This time is best spent in trying out different shots
+
+80
+00:05:10,399 --> 00:05:14,489
+playing a little randomly and thus exploring the state space.
+
+81
+00:05:14,490 --> 00:05:17,569
+It then becomes important to remember my interactions,
+
+82
+00:05:17,569 --> 00:05:21,034
+what shots worked well in what situations, et cetera.
+
+83
+00:05:21,035 --> 00:05:24,463
+When I take a break or when I am back home and resting,
+
+84
+00:05:24,463 --> 00:05:29,180
+that's a good time to recall these experiences and learn from them.
+
+85
+00:05:29,180 --> 00:05:33,995
+The main advantage is that now I have a more comprehensive set of examples.
+
+86
+00:05:33,995 --> 00:05:35,954
+Somewhere the ball came to my right,
+
+87
+00:05:35,954 --> 00:05:37,654
+somewhere it came to my left,
+
+88
+00:05:37,654 --> 00:05:40,434
+some forehand shots, some backhand.
+
+89
+00:05:40,435 --> 00:05:43,939
+I can generalize patterns from across these examples,
+
+90
+00:05:43,939 --> 00:05:47,089
+recalling them in whatever order I please.
+
+91
+00:05:47,089 --> 00:05:50,239
+This helps me avoid being fixated on one region of
+
+92
+00:05:50,240 --> 00:05:54,819
+the state space or reinforcing the same action over and over.
+
+93
+00:05:54,819 --> 00:05:56,314
+After a round of learning,
+
+94
+00:05:56,314 --> 00:05:59,464
+I can go back to playing with my updated value function.
+
+95
+00:05:59,464 --> 00:06:04,389
+Again, collect a bunch of experiences and then learn from them in a batch.
+
+96
+00:06:04,389 --> 00:06:09,125
+In this way, experience replay can help us learn a more robust policy,
+
+97
+00:06:09,125 --> 00:06:12,439
+one that is not affected by the inherent correlation
+
+98
+00:06:12,439 --> 00:06:17,295
+present in the sequence of observed experience tuples.
+
+99
+00:06:17,295 --> 00:06:18,425
+If you think about it,
+
+100
+00:06:18,425 --> 00:06:20,920
+this approach is basically building a database of
+
+101
+00:06:20,920 --> 00:06:24,210
+samples and then learning a mapping from them.
+
+102
+00:06:24,209 --> 00:06:27,219
+In that sense experience replay helps us reduce
+
+103
+00:06:27,220 --> 00:06:30,370
+the reinforcement learning problem or at least value
+
+104
+00:06:30,370 --> 00:06:34,090
+learning portion of it to a supervised learning scenario.
+
+105
+00:06:34,089 --> 00:06:35,814
+That's clever.
+
+106
+00:06:35,814 --> 00:06:38,769
+We can then apply other models learning techniques and
+
+107
+00:06:38,769 --> 00:06:40,379
+best practices developed in
+
+108
+00:06:40,379 --> 00:06:44,589
+the supervised learning literature through reinforcement learning.
+
+109
+00:06:44,589 --> 00:06:48,009
+We can even improve upon this idea, for example,
+
+110
+00:06:48,009 --> 00:06:53,000
+by prioritizing experience tuples that are rare or more important.
+

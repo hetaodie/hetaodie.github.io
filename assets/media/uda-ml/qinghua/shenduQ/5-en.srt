@@ -1,0 +1,244 @@
+1
+00:00:00,000 --> 00:00:03,930
+Q-learning is an Off-policy variant of TD learning.
+
+2
+00:00:03,930 --> 00:00:08,085
+Let's see how we can adapt it to work with function approximation.
+
+3
+00:00:08,085 --> 00:00:12,975
+Just like SARSA, we initialize parameters w arbitrarily,
+
+4
+00:00:12,974 --> 00:00:17,655
+and define an epsilon greedy policy pi based on the Q-values.
+
+5
+00:00:17,655 --> 00:00:21,765
+Over multiple episodes, we use this epsilon greedy policy
+
+6
+00:00:21,765 --> 00:00:26,385
+to repeatedly take an action and observe the reward and next state.
+
+7
+00:00:26,385 --> 00:00:29,280
+The main difference is in the update step.
+
+8
+00:00:29,280 --> 00:00:33,855
+Instead of picking the next action from the same epsilon greedy policy,
+
+9
+00:00:33,854 --> 00:00:36,219
+we choose an action greedily,
+
+10
+00:00:36,219 --> 00:00:40,009
+which would maximize the expected value going forward.
+
+11
+00:00:40,009 --> 00:00:43,039
+Note that we do not actually take this action,
+
+12
+00:00:43,039 --> 00:00:45,875
+it is only used for performing the update.
+
+13
+00:00:45,875 --> 00:00:49,039
+In fact, we don't even need to pick this action,
+
+14
+00:00:49,039 --> 00:00:52,774
+we can simply use the max Q value for the next state.
+
+15
+00:00:52,774 --> 00:00:56,539
+This is why Q-learning is considered an off-policy method.
+
+16
+00:00:56,539 --> 00:00:58,939
+We use one policy to take actions,
+
+17
+00:00:58,939 --> 00:01:01,265
+the epsilon greedy policy pi,
+
+18
+00:01:01,265 --> 00:01:05,555
+and yet another policy to perform value updates, a greedy policy.
+
+19
+00:01:05,555 --> 00:01:09,560
+Although both of them are defined on the same underlying Q-values,
+
+20
+00:01:09,560 --> 00:01:12,405
+these two are indeed different policies.
+
+21
+00:01:12,405 --> 00:01:18,010
+Alright, this is what the Q-learning algorithm looks like for episodic tasks.
+
+22
+00:01:18,010 --> 00:01:22,840
+We can use the same algorithm for continuing tasks by treating
+
+23
+00:01:22,840 --> 00:01:26,049
+the whole unending sequence as one long episode
+
+24
+00:01:26,049 --> 00:01:30,265
+or modify it slightly to remove the concept of episodes.
+
+25
+00:01:30,265 --> 00:01:32,125
+Both forms are equivalent,
+
+26
+00:01:32,125 --> 00:01:36,219
+in either case we may need some additional criteria to figure out when
+
+27
+00:01:36,219 --> 00:01:41,459
+we have fully learned the task or to detect if we're failing miserably.
+
+28
+00:01:41,459 --> 00:01:45,854
+Let's take a moment to compare SARSA and Q learning.
+
+29
+00:01:45,855 --> 00:01:51,765
+SARSA is an On-policy algorithm that follows the same policy that it is learning.
+
+30
+00:01:51,765 --> 00:01:55,439
+In general, this is more suitable for online learning.
+
+31
+00:01:55,439 --> 00:01:56,849
+At any point of time,
+
+32
+00:01:56,849 --> 00:02:01,890
+you are using the most updated policy as per your interactions with the environment.
+
+33
+00:02:01,890 --> 00:02:07,034
+However, it also means that if you use Epsilon Greedy action selection,
+
+34
+00:02:07,034 --> 00:02:09,804
+which is necessary to encourage exploration,
+
+35
+00:02:09,804 --> 00:02:14,224
+then this randomness also affects the Q-values that are learned.
+
+36
+00:02:14,224 --> 00:02:18,310
+On the other hand, Q learning is an Off-policy method.
+
+37
+00:02:18,310 --> 00:02:20,530
+Meaning the policy it follows to choose
+
+38
+00:02:20,530 --> 00:02:23,604
+actions is different from the policy it is learning.
+
+39
+00:02:23,604 --> 00:02:26,484
+This can lead to bad online performance,
+
+40
+00:02:26,485 --> 00:02:28,240
+because there is a disconnect between
+
+41
+00:02:28,240 --> 00:02:31,165
+the policy you are learning and the one you are following.
+
+42
+00:02:31,164 --> 00:02:34,479
+But the good thing is that the Epsilon Greedy nature of
+
+43
+00:02:34,479 --> 00:02:38,649
+action selection does not impact the Q-values learned.
+
+44
+00:02:38,650 --> 00:02:41,800
+Thus the two approaches have their pros and cons,
+
+45
+00:02:41,800 --> 00:02:46,135
+and which algorithm you choose will depend on the characteristics of the environment
+
+46
+00:02:46,134 --> 00:02:51,579
+and your preferences regarding online performance versus more accurate learning.
+
+47
+00:02:51,580 --> 00:02:56,110
+The biggest reason Off-policy methods like Q-learning have got
+
+48
+00:02:56,110 --> 00:02:58,780
+so much attention is that they decouple
+
+49
+00:02:58,780 --> 00:03:02,860
+the actions and agent takes in the environment from its learning process.
+
+50
+00:03:02,860 --> 00:03:07,690
+That gives us the opportunity to build different variations of our learning algorithm.
+
+51
+00:03:07,689 --> 00:03:10,900
+For instance, you can use a more exploratory policy
+
+52
+00:03:10,900 --> 00:03:14,245
+while acting and yet learned the optimal value function.
+
+53
+00:03:14,245 --> 00:03:17,020
+Yes, the online performance will be bad,
+
+54
+00:03:17,020 --> 00:03:22,750
+but at some point we can stop exploring and follow the optimal policy for better results.
+
+55
+00:03:22,750 --> 00:03:27,960
+In fact, the policy used to take actions need not be the agent zone,
+
+56
+00:03:27,960 --> 00:03:30,899
+a human can demonstrate what actions to take,
+
+57
+00:03:30,899 --> 00:03:34,939
+and the agent can learn from observing the effects of those actions.
+
+58
+00:03:34,939 --> 00:03:38,659
+It also makes it easier to learn offline or in batches
+
+59
+00:03:38,659 --> 00:03:42,799
+since an update to the policy need not be performed at every step.
+
+60
+00:03:42,800 --> 00:03:45,380
+This as we will see is critical for
+
+61
+00:03:45,379 --> 00:03:49,740
+reliably training neural networks for reinforcement learning
+

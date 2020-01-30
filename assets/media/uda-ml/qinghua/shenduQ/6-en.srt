@@ -1,0 +1,272 @@
+1
+00:00:03,229 --> 00:00:07,500
+In 2015, Deep Mind made a breakthrough by
+
+2
+00:00:07,500 --> 00:00:11,684
+designing an agent that learned to play video games better than humans.
+
+3
+00:00:11,685 --> 00:00:15,179
+Yes, it's probably easy to write a program that plays pong
+
+4
+00:00:15,179 --> 00:00:18,660
+perfectly if you have access to the underlying game state,
+
+5
+00:00:18,660 --> 00:00:21,135
+position of the ball, paddles, et cetera.
+
+6
+00:00:21,135 --> 00:00:24,554
+But this agent was only given raw pixel data,
+
+7
+00:00:24,554 --> 00:00:26,864
+what a human player would see on screen.
+
+8
+00:00:26,864 --> 00:00:31,859
+And it learned to play a bunch of different Atari games, all from scratch.
+
+9
+00:00:31,859 --> 00:00:35,060
+They call this agent a Deep Q Network,
+
+10
+00:00:35,060 --> 00:00:38,125
+let's take a close look at how it works.
+
+11
+00:00:38,125 --> 00:00:41,500
+True to its name, at the heart of the agent is
+
+12
+00:00:41,500 --> 00:00:45,609
+a deep neural network that acts as a function approximator.
+
+13
+00:00:45,609 --> 00:00:50,229
+You pass in images from your favorite video game one screen at a time,
+
+14
+00:00:50,229 --> 00:00:52,914
+and it produces a vector of action values,
+
+15
+00:00:52,914 --> 00:00:56,335
+with the max value indicating the action to take.
+
+16
+00:00:56,335 --> 00:00:58,314
+As a reinforcement signal,
+
+17
+00:00:58,314 --> 00:01:02,199
+it is fed back the change in game score at each time step.
+
+18
+00:01:02,200 --> 00:01:06,685
+In the beginning when the neural network is initialized with random values,
+
+19
+00:01:06,685 --> 00:01:09,340
+the actions taken are all over the place.
+
+20
+00:01:09,340 --> 00:01:11,665
+It's really bad as you would expect,
+
+21
+00:01:11,665 --> 00:01:15,820
+but overtime it begins to associate situations and sequences in
+
+22
+00:01:15,819 --> 00:01:20,709
+the game with appropriate actions and learns to actually play the game well.
+
+23
+00:01:20,709 --> 00:01:23,619
+Consider how complex the input space is.
+
+24
+00:01:23,620 --> 00:01:29,260
+Atari games are displayed at a resolution of 210 by 160 pixels,
+
+25
+00:01:29,260 --> 00:01:33,685
+with 128 possible colors for each pixel.
+
+26
+00:01:33,685 --> 00:01:40,105
+This is still technically a discrete state space but very large to process as is.
+
+27
+00:01:40,105 --> 00:01:42,145
+To reduce this complexity,
+
+28
+00:01:42,144 --> 00:01:45,774
+the Deep Mind team decided to perform some minimal processing,
+
+29
+00:01:45,775 --> 00:01:47,780
+convert the frames to gray scale,
+
+30
+00:01:47,780 --> 00:01:52,215
+and scale them down to a square 84 by 84 pixel block.
+
+31
+00:01:52,215 --> 00:01:57,960
+Square images allowed them to use more optimized neural network operations on GPUs.
+
+32
+00:01:57,959 --> 00:02:01,634
+In order to give the agent access to a sequence of frames,
+
+33
+00:02:01,635 --> 00:02:04,800
+they stacked four such frames together resulting in
+
+34
+00:02:04,799 --> 00:02:09,155
+a final state space size of 84 by 84 by 4.
+
+35
+00:02:09,155 --> 00:02:11,560
+There might be other approaches to dealing with
+
+36
+00:02:11,560 --> 00:02:16,180
+sequential data but this was a simple approach that seemed to work pretty well.
+
+37
+00:02:16,180 --> 00:02:17,635
+On the output side,
+
+38
+00:02:17,634 --> 00:02:20,454
+unlike a traditional reinforcement learning setup
+
+39
+00:02:20,455 --> 00:02:23,410
+where only one Q value is produced at a time,
+
+40
+00:02:23,409 --> 00:02:25,930
+the Deep Q network is designed to produce
+
+41
+00:02:25,930 --> 00:02:30,444
+a Q value for every possible action in a single forward pass.
+
+42
+00:02:30,444 --> 00:02:34,974
+Without this, you would have to run the network individually for every action.
+
+43
+00:02:34,974 --> 00:02:38,784
+Instead, you can now simply use this vector to take an action,
+
+44
+00:02:38,784 --> 00:02:45,034
+either stochastically, or by choosing the one with the maximum value. Neat, isn't it?
+
+45
+00:02:45,034 --> 00:02:49,620
+These innovative input and output transformations support
+
+46
+00:02:49,620 --> 00:02:53,534
+a powerful yet simple neural network architecture under the hood.
+
+47
+00:02:53,534 --> 00:02:57,329
+The screen images are first processed by convolutional layers.
+
+48
+00:02:57,330 --> 00:03:01,094
+This allows the system to exploit spatial relationships,
+
+49
+00:03:01,094 --> 00:03:03,930
+and can sploit spatial rule space.
+
+50
+00:03:03,930 --> 00:03:08,175
+Also, since four frames are stacked and provided as input,
+
+51
+00:03:08,175 --> 00:03:13,800
+these convolutional layers also extract some temporal properties across those frames.
+
+52
+00:03:13,800 --> 00:03:16,485
+The original DQN agent used
+
+53
+00:03:16,485 --> 00:03:21,700
+three such convolutional layers with RLU activation, regularized linear units.
+
+54
+00:03:21,699 --> 00:03:26,224
+They were followed by one fully-connected hidden layer with RLU activation,
+
+55
+00:03:26,224 --> 00:03:31,835
+and one fully-connected linear output layer that produced the vector of action values.
+
+56
+00:03:31,835 --> 00:03:36,320
+This same architecture was used for all the Atari games they tested on,
+
+57
+00:03:36,319 --> 00:03:41,609
+but each game was learned from scratch with a freshly initialized network.
+
+58
+00:03:41,610 --> 00:03:45,115
+Training such a network requires a lot of data,
+
+59
+00:03:45,115 --> 00:03:49,435
+but even then, it is not guaranteed to converge on the optimal value function.
+
+60
+00:03:49,435 --> 00:03:53,949
+In fact, there are situations where the network weights can oscillate or diverge,
+
+61
+00:03:53,949 --> 00:03:57,369
+due to the high correlation between actions and states.
+
+62
+00:03:57,370 --> 00:04:01,405
+This can result in a very unstable and ineffective policy.
+
+63
+00:04:01,405 --> 00:04:03,520
+In order to overcome these challenges,
+
+64
+00:04:03,520 --> 00:04:06,040
+the researchers came up with several techniques that
+
+65
+00:04:06,039 --> 00:04:08,949
+slightly modified the base Q learning algorithm.
+
+66
+00:04:08,949 --> 00:04:11,919
+We'll take a look at two of these techniques that I
+
+67
+00:04:11,919 --> 00:04:14,799
+feel are the most important contributions of their work;
+
+68
+00:04:14,800 --> 00:04:18,329
+experience replay, and fixed Q targets.
+

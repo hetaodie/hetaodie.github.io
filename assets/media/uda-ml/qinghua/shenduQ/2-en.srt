@@ -1,0 +1,172 @@
+1
+00:00:00,000 --> 00:00:03,950
+So how do neural networks fit into reinforcement learning?
+
+2
+00:00:03,950 --> 00:00:10,515
+Well, remember how neural networks are touted as universal function approximators?
+
+3
+00:00:10,515 --> 00:00:14,730
+What if we use neural networks to represent our value functions?
+
+4
+00:00:14,730 --> 00:00:18,120
+Would that work? Let's take a closer look.
+
+5
+00:00:18,120 --> 00:00:22,320
+A state value function maps any state as to a real number
+
+6
+00:00:22,320 --> 00:00:27,554
+which indicates how valuable that state is according to the current policy pi.
+
+7
+00:00:27,554 --> 00:00:31,064
+If we used a neural network to approximate this function,
+
+8
+00:00:31,065 --> 00:00:34,789
+then the input would need to be fed in as a vector.
+
+9
+00:00:34,789 --> 00:00:39,359
+Now we already know how to do this using a feature transformation x.
+
+10
+00:00:39,359 --> 00:00:42,960
+Now the input can progress through the network.
+
+11
+00:00:42,960 --> 00:00:46,454
+And if it is designed to output a single real number,
+
+12
+00:00:46,454 --> 00:00:47,774
+that is our value,
+
+13
+00:00:47,774 --> 00:00:49,909
+as estimated by the network.
+
+14
+00:00:49,909 --> 00:00:52,439
+Great! This seems to fall in place with
+
+15
+00:00:52,439 --> 00:00:56,250
+the general idea of approximating a value function with the weights of
+
+16
+00:00:56,250 --> 00:00:59,219
+the neural network forming the parameter vector W.
+
+17
+00:00:59,219 --> 00:01:04,450
+The question is how do we learn these parameters.
+
+18
+00:01:04,450 --> 00:01:08,170
+If we have a reference or a target we're trying to reach, for example,
+
+19
+00:01:08,170 --> 00:01:11,500
+V pi provided by some oracle we can use
+
+20
+00:01:11,500 --> 00:01:17,579
+the squared difference between the estimated and target value as our error or loss.
+
+21
+00:01:17,579 --> 00:01:20,230
+Then we can back propagate it through the network
+
+22
+00:01:20,230 --> 00:01:23,760
+adjusting weights along the way to minimize loss.
+
+23
+00:01:23,760 --> 00:01:27,445
+One popular method for adjusting weights is gradient descent,
+
+24
+00:01:27,444 --> 00:01:32,500
+where we iteratively change weights a small step away from the direction of error.
+
+25
+00:01:32,500 --> 00:01:34,927
+In order to apply gradient descent,
+
+26
+00:01:34,927 --> 00:01:37,644
+we need to know the derivative of the value function
+
+27
+00:01:37,644 --> 00:01:42,129
+represented by the network with respect to its weights.
+
+28
+00:01:42,129 --> 00:01:44,739
+Now this can become very complex,
+
+29
+00:01:44,739 --> 00:01:47,875
+especially for networks with deep architectures.
+
+30
+00:01:47,875 --> 00:01:52,674
+But we have pretty efficient algorithms implemented in libraries like TensorFlow,
+
+31
+00:01:52,674 --> 00:01:56,530
+Theano, and MXNet to train neural nets for us.
+
+32
+00:01:56,530 --> 00:01:58,704
+All we need is a way to figure out
+
+33
+00:01:58,704 --> 00:02:02,799
+the loss and that's where our knowledge of reinforcement learning comes in.
+
+34
+00:02:02,799 --> 00:02:08,254
+At this point, let's also consider the action value function Q.
+
+35
+00:02:08,254 --> 00:02:11,949
+The update rule looks very similar to what we had for
+
+36
+00:02:11,949 --> 00:02:16,299
+the state value function V. But we have the same problem here.
+
+37
+00:02:16,300 --> 00:02:18,451
+For most practical problems,
+
+38
+00:02:18,450 --> 00:02:24,014
+there is no oracle to tell us what the correct value function V pi or Q pi should be.
+
+39
+00:02:24,014 --> 00:02:26,799
+We need to use a more realistic target.
+
+40
+00:02:26,800 --> 00:02:30,750
+One that is based on our interactions with the environment.
+
+41
+00:02:30,750 --> 00:02:36,310
+This is where reinforcement learning fundamentally differs from supervised learning.
+
+42
+00:02:36,310 --> 00:02:39,580
+Next we'll look at some strategies we can apply to find
+
+43
+00:02:39,580 --> 00:02:45,000
+suitable targets to use in place of the true value functions in these equations.
+

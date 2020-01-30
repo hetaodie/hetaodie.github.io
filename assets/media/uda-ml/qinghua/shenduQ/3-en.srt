@@ -1,0 +1,132 @@
+1
+00:00:00,000 --> 00:00:03,750
+Our first strategy is to use Monte Carlo Learning.
+
+2
+00:00:03,750 --> 00:00:06,660
+Recall the incremental step that is used in
+
+3
+00:00:06,660 --> 00:00:10,230
+classical Monte Carlo Learning to update value functions.
+
+4
+00:00:10,230 --> 00:00:14,670
+Here, Gt is the return that is the cumulative discounted reward
+
+5
+00:00:14,669 --> 00:00:20,699
+received following time T. That's a suitable target to attain, isn't it?
+
+6
+00:00:20,699 --> 00:00:24,179
+So, let's take our neural network update rule and simply
+
+7
+00:00:24,179 --> 00:00:28,679
+substitute the unknown true value function with this return.
+
+8
+00:00:28,679 --> 00:00:32,000
+This gives us a concrete update rule for
+
+9
+00:00:32,000 --> 00:00:37,829
+state value functions represented by neural nets or other function approximators.
+
+10
+00:00:37,829 --> 00:00:39,929
+As you might have guessed,
+
+11
+00:00:39,929 --> 00:00:44,119
+we can do the same for action value functions as well.
+
+12
+00:00:44,119 --> 00:00:47,844
+Now that we have the main building block, the update rule.
+
+13
+00:00:47,844 --> 00:00:52,560
+Let's build a complete Monte Carlo algorithm around that.
+
+14
+00:00:52,560 --> 00:00:55,200
+Let's focus on the control problem and adapt
+
+15
+00:00:55,200 --> 00:00:59,420
+our classic Monte Carlo algorithm to work with a function approximator.
+
+16
+00:00:59,420 --> 00:01:04,320
+It generally includes an evaluation step where we try
+
+17
+00:01:04,319 --> 00:01:09,434
+to estimate the value of each state action pair under the current policy.
+
+18
+00:01:09,435 --> 00:01:12,150
+We do this by interacting with the environment
+
+19
+00:01:12,150 --> 00:01:14,880
+to generate an episode using the policy PI,
+
+20
+00:01:14,879 --> 00:01:18,089
+and then for each time step T in the episode,
+
+21
+00:01:18,090 --> 00:01:22,760
+we update the parameter vector W using the state action pair St At,
+
+22
+00:01:22,760 --> 00:01:28,564
+and the return Gt computed from the remainder of the episode.
+
+23
+00:01:28,564 --> 00:01:31,950
+This is followed by an improvement step where we extract
+
+24
+00:01:31,950 --> 00:01:36,200
+an epsilon greedy policy based on these Q values.
+
+25
+00:01:36,200 --> 00:01:40,265
+At the beginning, we need to initialize our parameters W,
+
+26
+00:01:40,265 --> 00:01:42,030
+let's say we do that randomly,
+
+27
+00:01:42,030 --> 00:01:47,400
+and start with a policy PI defined in the same epsilon greedy manner.
+
+28
+00:01:47,400 --> 00:01:51,180
+Then we can repeat these two steps over and over till the weights
+
+29
+00:01:51,180 --> 00:01:57,200
+converge resulting in the optimal value function and hence the corresponding policy.
+
+30
+00:01:57,200 --> 00:02:01,079
+Note that this is the every visit version of Monte Carlo.
+
+31
+00:02:01,079 --> 00:02:02,945
+For the first visit version,
+
+32
+00:02:02,945 --> 00:02:05,340
+you only perform the weight update when you see
+
+33
+00:02:05,340 --> 00:02:09,000
+the state action pair for the first time in an episode.
+

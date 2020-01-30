@@ -1,0 +1,52 @@
+1
+00:00:00,000 --> 00:00:03,285
+I hope you got a good sense of deep Q learning,
+
+2
+00:00:03,285 --> 00:00:08,594
+how it combines the best of reinforcement learning with recent advances in deep learning.
+
+3
+00:00:08,595 --> 00:00:12,330
+I also hope that you'll realize how this opens up a world of
+
+4
+00:00:12,330 --> 00:00:14,490
+possibilities for you to experiment
+
+5
+00:00:14,490 --> 00:00:17,579
+with different neural net architectures value functions,
+
+6
+00:00:17,579 --> 00:00:23,119
+learning algorithms and not to mention the wide variety of environments you can tackle.
+
+7
+00:00:23,120 --> 00:00:27,010
+Before you move on to studying other reinforcement learning approaches,
+
+8
+00:00:27,010 --> 00:00:29,410
+I encourage you to try and implement agents for
+
+9
+00:00:29,410 --> 00:00:33,475
+different problems especially on platforms like OpenAI Gym.
+
+10
+00:00:33,475 --> 00:00:37,225
+See which ones deep Q learning is able to solve reliably,
+
+11
+00:00:37,225 --> 00:00:39,535
+and which ones it finds challenging.
+
+12
+00:00:39,534 --> 00:00:44,140
+That will help you gain a deeper understanding of the algorithm and motivate
+
+13
+00:00:44,140 --> 00:00:49,370
+the need for other approaches such as policy gradients and actor-critic methods.
+

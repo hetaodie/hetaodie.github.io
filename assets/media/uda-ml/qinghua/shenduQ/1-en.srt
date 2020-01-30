@@ -1,0 +1,64 @@
+1
+00:00:02,910 --> 00:00:07,480
+Deep-Q learning is an elegant algorithm that demonstrates how you
+
+2
+00:00:07,480 --> 00:00:11,470
+can use neural networks to solve reinforcement learning problems.
+
+3
+00:00:11,470 --> 00:00:14,506
+It has expanded the range of domains we can tackle,
+
+4
+00:00:14,506 --> 00:00:18,175
+especially those with large and continuous state spaces.
+
+5
+00:00:18,175 --> 00:00:21,565
+I'm sure you're eager to find out how it works,
+
+6
+00:00:21,565 --> 00:00:24,370
+that's exactly what we're going to do in this lesson.
+
+7
+00:00:24,370 --> 00:00:29,950
+We'll first take a look at how neural networks can be used to represent value functions.
+
+8
+00:00:29,949 --> 00:00:34,225
+Next, we'll adapt the two main classes of model free approaches,
+
+9
+00:00:34,225 --> 00:00:39,320
+Monte Carlo and Temporal-Difference Learning to work with this new representation.
+
+10
+00:00:39,320 --> 00:00:43,274
+Remember that Q-learning is a variant of TD learning,
+
+11
+00:00:43,274 --> 00:00:45,299
+so this will prepare you to understand and
+
+12
+00:00:45,299 --> 00:00:48,314
+implement the Deep Q-learning algorithm yourself.
+
+13
+00:00:48,314 --> 00:00:51,299
+Finally, you'll learn how to harness the power of
+
+14
+00:00:51,299 --> 00:00:54,659
+deep learning including Convolutional and Recurrent Neural
+
+15
+00:00:54,659 --> 00:00:57,959
+Nets to teach computer's tasks that seem almost
+
+16
+00:00:57,960 --> 00:01:01,950
+impossible to learn from scratch like playing video games.
+

@@ -1,0 +1,200 @@
+1
+00:00:00,000 --> 00:00:02,160
+We're now ready to take a look at
+
+2
+00:00:02,160 --> 00:00:06,179
+the Deep Q-Learning Algorithm and implement it on our own.
+
+3
+00:00:06,179 --> 00:00:10,500
+There are two main processes that are interleaved in this algorithm.
+
+4
+00:00:10,500 --> 00:00:14,279
+One, is where we sample the environment by performing actions
+
+5
+00:00:14,279 --> 00:00:18,224
+and store away the observed experienced tuples in a replay memory.
+
+6
+00:00:18,225 --> 00:00:22,440
+The other is where we select the small batch of tuples from this memory,
+
+7
+00:00:22,440 --> 00:00:27,425
+randomly, and learn from that batch using a gradient descent update step.
+
+8
+00:00:27,425 --> 00:00:31,480
+These two processes are not directly dependent on each other.
+
+9
+00:00:31,480 --> 00:00:35,500
+So, you could perform multiple sampling steps then one learning step,
+
+10
+00:00:35,500 --> 00:00:39,295
+or even multiple learning steps with different random batches.
+
+11
+00:00:39,295 --> 00:00:43,130
+The rest of the algorithm is designed to support these steps.
+
+12
+00:00:43,130 --> 00:00:46,320
+In the beginning you need to initialize an empty replay
+
+13
+00:00:46,320 --> 00:00:49,612
+memory D. Note that memory is finite,
+
+14
+00:00:49,612 --> 00:00:52,128
+so you may want to use something like a circular Q
+
+15
+00:00:52,128 --> 00:00:56,429
+that retains the N most recent experience tuples.
+
+16
+00:00:56,429 --> 00:01:01,530
+Then, you also need to initialize the parameters or weights of your neural network.
+
+17
+00:01:01,530 --> 00:01:05,010
+There are certain best practices that you can use, for instance,
+
+18
+00:01:05,010 --> 00:01:08,295
+sample the weights randomly from a normal distribution with
+
+19
+00:01:08,295 --> 00:01:12,900
+variance equal to two by the number of inputs to each neuron.
+
+20
+00:01:12,900 --> 00:01:16,020
+These initialization methods are typically available in
+
+21
+00:01:16,019 --> 00:01:19,170
+modern deep learning libraries like Keras and TensorFlow,
+
+22
+00:01:19,170 --> 00:01:21,840
+so you won't need to implement them yourself.
+
+23
+00:01:21,840 --> 00:01:24,734
+To use the fixed Q targets technique,
+
+24
+00:01:24,734 --> 00:01:31,064
+you need a second set of parameters w- which you can initialize to w. Now,
+
+25
+00:01:31,064 --> 00:01:35,924
+remember that the specific algorithm was designed to work with video games.
+
+26
+00:01:35,924 --> 00:01:41,009
+So, for each episode and each time step t within that episode you observe
+
+27
+00:01:41,010 --> 00:01:43,650
+a raw screen image or input frame x
+
+28
+00:01:43,650 --> 00:01:47,520
+t which you need to convert to grayscale crop to a square size,
+
+29
+00:01:47,519 --> 00:01:50,009
+etc.. Also, in order to capture
+
+30
+00:01:50,010 --> 00:01:55,344
+temporal relationships you can stack a few input frames to build each state vector.
+
+31
+00:01:55,344 --> 00:02:00,233
+Let's denote this pre-processing and stacking operation by the function phi,
+
+32
+00:02:00,233 --> 00:02:05,479
+which takes a sequence of frames and produces some combined representation.
+
+33
+00:02:05,480 --> 00:02:08,599
+Note that if we want to stack say four frames
+
+34
+00:02:08,599 --> 00:02:12,169
+will have to do something special for the first, three time steps.
+
+35
+00:02:12,169 --> 00:02:15,439
+For instance, we can treat those missing frames as blank,
+
+36
+00:02:15,439 --> 00:02:17,780
+or just used copies of the first frame,
+
+37
+00:02:17,780 --> 00:02:23,555
+or we can just skip storing the experience tuples till we get a complete sequence.
+
+38
+00:02:23,555 --> 00:02:27,500
+In practice, you won't be able to run the learning step immediately.
+
+39
+00:02:27,500 --> 00:02:32,055
+You will need to wait till you have sufficient number of tuples in memory.
+
+40
+00:02:32,055 --> 00:02:35,575
+Note that we do not clear out the memory after each episode,
+
+41
+00:02:35,574 --> 00:02:40,839
+this enables us to recall and build batches of experiences from across episodes.
+
+42
+00:02:40,840 --> 00:02:45,610
+There are many other techniques and optimizations that are used in the DQN paper,
+
+43
+00:02:45,610 --> 00:02:47,170
+such as reward clipping,
+
+44
+00:02:47,169 --> 00:02:51,219
+error clipping, storing past actions as part of the state vector,
+
+45
+00:02:51,219 --> 00:02:52,914
+dealing with terminal states,
+
+46
+00:02:52,914 --> 00:02:54,729
+digging epsilon over time, et cetera.
+
+47
+00:02:54,729 --> 00:02:57,384
+I encourage you to read the paper,
+
+48
+00:02:57,384 --> 00:03:02,155
+especially the methods section before trying to implement the algorithm yourself.
+
+49
+00:03:02,155 --> 00:03:05,379
+Note that you may need to choose which techniques you apply
+
+50
+00:03:05,379 --> 00:03:08,780
+and adapt them for different types of environments.
+
